@@ -1,0 +1,15 @@
+# CPU data checks with Python 3.10 and existing torch 2.1.2; not a training environment.
+numpy==1.24.4
+pandas==2.2.3
+pyarrow==14.0.1
+pydantic==2.10.6
+omegaconf==2.3.0
+av==12.3.0
+torchvision==0.16.2
+einops==0.8.1
+albumentations==1.4.18
+albucore==0.0.17
+opencv-python-headless==4.10.0.84
+pipablepytorch3d==0.7.6
+accelerate==1.5.2
+numpydantic==1.6.9

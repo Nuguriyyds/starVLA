@@ -1317,10 +1317,19 @@ class LeRobotSingleDataset(Dataset):
         elif self._lerobot_version == "v3.0":
             tasks_path = self.dataset_path / LE_ROBOT3_TASKS_FILENAME
             df = pd.read_parquet(tasks_path)
-            df = df.reset_index()  # convert index to a column, typically named 'index'
-            df = df.rename(columns={'index': 'task'})  # rename 'index' column to 'task'
-            df = df[['task_index', 'task']]  # reorder columns
-            return df
+            # v3 exports may keep task text in a column or in the pandas index.
+            if "task_index" not in df.columns and df.index.name == "task_index":
+                df = df.reset_index()
+            if "task" not in df.columns:
+                if df.index.name not in (None, "task") or not all(
+                    isinstance(value, str) for value in df.index
+                ):
+                    raise ValueError(f"Unsupported task table schema: {tasks_path}")
+                df = df.rename_axis("task").reset_index()
+            if not {"task_index", "task"}.issubset(df.columns):
+                raise ValueError(f"Missing task_index/task columns: {tasks_path}")
+            # get_language uses .loc with task IDs, which need not equal row IDs.
+            return df[["task_index", "task"]].set_index("task_index", verify_integrity=True)
     def _check_integrity(self):
         """Use the config to check if the keys are valid and detect silent data corruption."""
         ERROR_MSG_HEADER = f"Error occurred in initializing dataset {self.dataset_name}:\n"
@@ -1591,8 +1600,8 @@ class LeRobotSingleDataset(Dataset):
                 video_file_index = episode_meta["data/file_index"]
             video_filename = self.video_path_pattern.format(
                 video_key=original_key,
-                chunk_index=episode_meta["data/chunk_index"],
-                file_index=episode_meta["data/file_index"],
+                chunk_index=video_chunk_index,
+                file_index=video_file_index,
             )
         return self.dataset_path / video_filename
 
@@ -1725,6 +1734,9 @@ class LeRobotSingleDataset(Dataset):
         assert self.curr_traj_data is not None, f"No data found for {trajectory_id=}"
         assert le_key in self.curr_traj_data.columns, f"No {le_key} found in {trajectory_id=}"
         data_array: np.ndarray = np.stack(self.curr_traj_data[le_key])  # type: ignore
+        # A scalar sensor column is a one-dimensional state/action feature.
+        if data_array.ndim == 1:
+            data_array = data_array[:, None]
         assert data_array.ndim == 2, f"Expected 2D array, got key {le_key} is{data_array.shape} array"
         le_indices = np.arange(
             le_state_or_action_cfg[key].start,

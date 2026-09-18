@@ -1,0 +1,81 @@
+{
+  "action": {
+    "robot1_pose": {
+      "original_key": "observation.umi.robot1_finger_relative_eef_pose",
+      "start": 0,
+      "end": 7,
+      "absolute": true,
+      "dtype": "float32"
+    },
+    "robot1_gripper": {
+      "original_key": "observation.umi.robot1_sensor_magnetic_encoder",
+      "start": 0,
+      "end": 1,
+      "absolute": true,
+      "dtype": "float32"
+    },
+    "robot2_pose": {
+      "original_key": "observation.umi.robot2_finger_relative_eef_pose",
+      "start": 0,
+      "end": 7,
+      "absolute": true,
+      "dtype": "float32"
+    },
+    "robot2_gripper": {
+      "original_key": "observation.umi.robot2_sensor_magnetic_encoder",
+      "start": 0,
+      "end": 1,
+      "absolute": true,
+      "dtype": "float32"
+    }
+  },
+  "state": {
+    "robot1_pose": {
+      "original_key": "observation.umi.robot1_finger_relative_eef_pose",
+      "start": 0,
+      "end": 7,
+      "absolute": true,
+      "dtype": "float32"
+    },
+    "robot1_gripper": {
+      "original_key": "observation.umi.robot1_sensor_magnetic_encoder",
+      "start": 0,
+      "end": 1,
+      "absolute": true,
+      "dtype": "float32"
+    },
+    "robot2_pose": {
+      "original_key": "observation.umi.robot2_finger_relative_eef_pose",
+      "start": 0,
+      "end": 7,
+      "absolute": true,
+      "dtype": "float32"
+    },
+    "robot2_gripper": {
+      "original_key": "observation.umi.robot2_sensor_magnetic_encoder",
+      "start": 0,
+      "end": 1,
+      "absolute": true,
+      "dtype": "float32"
+    }
+  },
+  "video": {
+    "left_head": {
+      "original_key": "observation.images.head_left"
+    },
+    "right_head": {
+      "original_key": "observation.images.head_right"
+    },
+    "left_hand": {
+      "original_key": "observation.images.wrist_left"
+    },
+    "right_hand": {
+      "original_key": "observation.images.wrist_right"
+    }
+  },
+  "annotation": {
+    "human.action.task_description": {
+      "original_key": "task_index"
+    }
+  }
+}
