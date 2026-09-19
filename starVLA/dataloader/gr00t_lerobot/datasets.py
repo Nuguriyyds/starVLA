@@ -835,37 +835,58 @@ class LeRobotSingleDataset(Dataset):
             pf for pf in parquet_files if "episode_033675.parquet" not in pf.name
         ]
 
-        if is_main():
-            le_statistics = _load_or_compute_statistics(
-                stats_path,
-                stats_cache_config=stats_cache_config,
-                parquet_paths=parquet_files_filtered,
-                dataset_name=self.dataset_name,
-                action_mode=action_mode,
-                lerobot_modality_meta=le_modality_meta,
-                action_keys_full=action_keys_full,
-                state_keys_full=state_keys_full,
-                action_indices=action_indices,
-                state_indices=state_indices,
-                action_mode_apply_keys=apply_keys,
-                action_mode_state_map=normalized_state_map,
-            )
+        supplied_stats = (self.data_cfg or {}).get("raw_lowdim_statistics")
+        if supplied_stats is not None:
+            # Small audited raw-value datasets can supply in-memory statistics.
+            # Do not scan malformed excluded rows or persist subset stats as a
+            # full-dataset cache. Other datasets retain the existing path.
+            if action_mode != "abs":
+                raise ValueError("raw_lowdim_statistics requires action_mode=abs")
+            le_statistics = {}
+            for modality in ("state", "action"):
+                for spec in getattr(le_modality_meta, modality).values():
+                    source = spec.original_key
+                    if source not in supplied_stats:
+                        raise ValueError(f"Missing raw_lowdim_statistics for {source}")
+                    stats = {}
+                    for name in ("mean", "std", "min", "max", "q01", "q99"):
+                        array = np.asarray(supplied_stats[source][name], dtype=np.float64)
+                        if array.ndim != 1 or len(array) < spec.end or not np.isfinite(array).all():
+                            raise ValueError(f"Invalid raw_lowdim_statistics: {source}.{name}")
+                        stats[name] = array.tolist()
+                    le_statistics[source] = stats
         else:
-            le_statistics = None
-
-        if dist.is_initialized():
-            dist.barrier()
-
-        if le_statistics is None:
-            le_statistics = _load_stats_cache(
-                stats_path,
-                stats_cache_config,
-                invalidate_legacy=False,
-            )
-            if le_statistics is None:
-                raise RuntimeError(
-                    f"Dataset statistics cache is missing or invalid after sync: {stats_path}"
+            if is_main():
+                le_statistics = _load_or_compute_statistics(
+                    stats_path,
+                    stats_cache_config=stats_cache_config,
+                    parquet_paths=parquet_files_filtered,
+                    dataset_name=self.dataset_name,
+                    action_mode=action_mode,
+                    lerobot_modality_meta=le_modality_meta,
+                    action_keys_full=action_keys_full,
+                    state_keys_full=state_keys_full,
+                    action_indices=action_indices,
+                    state_indices=state_indices,
+                    action_mode_apply_keys=apply_keys,
+                    action_mode_state_map=normalized_state_map,
                 )
+            else:
+                le_statistics = None
+
+            if dist.is_initialized():
+                dist.barrier()
+
+            if le_statistics is None:
+                le_statistics = _load_stats_cache(
+                    stats_path,
+                    stats_cache_config,
+                    invalidate_legacy=False,
+                )
+                if le_statistics is None:
+                    raise RuntimeError(
+                        f"Dataset statistics cache is missing or invalid after sync: {stats_path}"
+                    )
 
         for stat in le_statistics.values():
             DatasetStatisticalValues.model_validate(stat)
@@ -1387,6 +1408,11 @@ class LeRobotSingleDataset(Dataset):
 
     def _pack_sample(self, data: dict) -> dict:
         """Pack transformed modality data into training sample format."""
+        # Preserve the repository default; raw UMI checks explicitly request FP32.
+        dtype_name = (self.data_cfg or {}).get("lowdim_dtype", "float16")
+        if dtype_name not in ("float16", "float32"):
+            raise ValueError(f"lowdim_dtype must be float16 or float32, got {dtype_name!r}")
+        lowdim_dtype = np.dtype(dtype_name)
         step_images = []
         for video_key in self.modality_keys["video"]:
             image = data[video_key][0]
@@ -1397,7 +1423,7 @@ class LeRobotSingleDataset(Dataset):
         action = []
         for action_key in self.modality_keys["action"]:
             action.append(data[action_key])
-        action = np.concatenate(action, axis=1).astype(np.float16)
+        action = np.concatenate(action, axis=1).astype(lowdim_dtype, copy=False)
 
         sample = {
             "action": action,
@@ -1419,7 +1445,7 @@ class LeRobotSingleDataset(Dataset):
                     stacklevel=2,
                 )
             else:
-                state = np.concatenate(state, axis=1).astype(np.float16)
+                state = np.concatenate(state, axis=1).astype(lowdim_dtype, copy=False)
                 sample["state"] = state
 
         return sample
@@ -1733,6 +1759,18 @@ class LeRobotSingleDataset(Dataset):
         # Get the data array, shape: (T, D)
         assert self.curr_traj_data is not None, f"No data found for {trajectory_id=}"
         assert le_key in self.curr_traj_data.columns, f"No {le_key} found in {trajectory_id=}"
+        # The private complete-window path reads only selected rows. A malformed
+        # row outside an accepted window must not poison its numeric stacking.
+        if (getattr(self, "data_cfg", None) or {}).get("strict_window_sampling", False):
+            if np.any(step_indices < 0) or np.any(step_indices >= max_length):
+                raise ValueError("strict_window_sampling forbids state/action padding")
+            selected = np.stack(self.curr_traj_data[le_key].iloc[step_indices].tolist())
+            if selected.ndim == 1:
+                selected = selected[:, None]
+            if selected.ndim != 2:
+                raise ValueError(f"Invalid selected signal shape for {le_key}: {selected.shape}")
+            spec = le_state_or_action_cfg[key]
+            return selected[:, spec.start:spec.end]
         data_array: np.ndarray = np.stack(self.curr_traj_data[le_key])  # type: ignore
         # A scalar sensor column is a one-dimensional state/action feature.
         if data_array.ndim == 1:

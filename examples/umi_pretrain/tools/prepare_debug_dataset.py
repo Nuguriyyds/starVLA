@@ -1,6 +1,7 @@
 """Extract curated episode 0; write only to a new private directory."""
 import argparse
 import json
+import os
 from pathlib import Path
 import shutil
 
@@ -8,9 +9,11 @@ import numpy as np
 import pyarrow.compute as pc
 import pyarrow.parquet as pq
 
+from umi_valid_windows import DATA_VERSION, HORIZON, validate_mapping
+
 REPO = Path(__file__).resolve().parents[3]
 PRIVATE = REPO.parent.resolve()
-SOURCE_ROOT = Path("/mnt/workspace/public/roban_umi/restricted_data").resolve()
+SOURCE_ROOT = Path(os.environ.get("ROBAN_SOURCE_ROOT", "/mnt/nas/public/roban_umi/restricted_data")).resolve()
 DEFAULT_SOURCE = SOURCE_ROOT / "derived/umi_v30_curated_v1"
 
 
@@ -36,6 +39,7 @@ def main():
         raise FileExistsError(f"Output already exists; reuse it or choose a new --output: {output}")
     modality = REPO / "examples/umi_pretrain/train_files/modality.json"
     mapping = json.loads(modality.read_text())
+    validate_mapping(mapping)
     info = json.loads((source / "meta/info.json").read_text())
     episodes = select(pq.read_table(source / "meta/episodes/chunk-000/file-000.parquet"), "episode_index", 0)
     if len(episodes) != 1:
@@ -43,7 +47,7 @@ def main():
     ep = episodes.to_pylist()[0]
     data_rel = info["data_path"].format(chunk_index=ep["data/chunk_index"], file_index=ep["data/file_index"])
     data = select(pq.read_table(inside(source / data_rel, SOURCE_ROOT)), "episode_index", 0)
-    if len(data) != ep["length"] or len(data) < 9:
+    if len(data) != ep["length"] or len(data) < HORIZON + 1:
         raise ValueError("Incomplete episode or insufficient frames for the action horizon")
     if not np.array_equal(data["frame_index"].to_numpy(), np.arange(len(data))):
         raise ValueError("This helper expects episode 0 to start at frame 0")
@@ -83,6 +87,7 @@ def main():
         target.symlink_to(src_video)
     manifest = {
         "source": str(source), "episode_index": 0, "frames": len(data),
+        "data_version": DATA_VERSION, "action_horizon": HORIZON,
         "task_ids": task_ids, "video_mode": "symlink; original offsets preserved",
         "videos": [{"key": k, "source": str(s), "from_timestamp": t} for k, s, _, t in videos],
     }

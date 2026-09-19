@@ -1,7 +1,7 @@
 {
   "action": {
     "robot1_pose": {
-      "original_key": "observation.umi.robot1_finger_relative_eef_pose",
+      "original_key": "observation.umi.robot1_finger_eef_pose",
       "start": 0,
       "end": 7,
       "absolute": true,
@@ -15,7 +15,7 @@
       "dtype": "float32"
     },
     "robot2_pose": {
-      "original_key": "observation.umi.robot2_finger_relative_eef_pose",
+      "original_key": "observation.umi.robot2_finger_eef_pose",
       "start": 0,
       "end": 7,
       "absolute": true,
@@ -31,7 +31,7 @@
   },
   "state": {
     "robot1_pose": {
-      "original_key": "observation.umi.robot1_finger_relative_eef_pose",
+      "original_key": "observation.umi.robot1_finger_eef_pose",
       "start": 0,
       "end": 7,
       "absolute": true,
@@ -45,7 +45,7 @@
       "dtype": "float32"
     },
     "robot2_pose": {
-      "original_key": "observation.umi.robot2_finger_relative_eef_pose",
+      "original_key": "observation.umi.robot2_finger_eef_pose",
       "start": 0,
       "end": 7,
       "absolute": true,

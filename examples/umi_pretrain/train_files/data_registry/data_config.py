@@ -1,4 +1,9 @@
-"""Roban UMI: four views, 16D measured state, and next-eight-frame targets."""
+"""Roban UMI world-pose-16D: four views and future frames 1 through 16.
+
+Left then right: xyz, quaternion xyzw, and continuous gripper width in metres.
+State and action share the recording world frame; targets are measured poses,
+not executable robot TCP commands. Raw-value checks retain FP32 via data_cfg.
+"""
 
 from starVLA.dataloader.gr00t_lerobot.datasets import ModalityConfig
 from starVLA.dataloader.gr00t_lerobot.transform.base import ComposedModalityTransform

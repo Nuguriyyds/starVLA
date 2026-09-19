@@ -109,6 +109,25 @@ class LeRobotV3MetadataTests(unittest.TestCase):
         np.testing.assert_array_equal(state, [[11.0, 21.0]])
         np.testing.assert_array_equal(future, [[11.0, 21.0], [12.0, 22.0], [13.0, 23.0]])
 
+    def test_strict_window_ignores_malformed_pose_outside_window(self):
+        self.set_signal([[0., 1.], [2., 3.], [4., 5.], [6., 7.], None], 0, 2)
+        self.dataset.data_cfg = {"strict_window_sampling": True}
+        future = self.dataset.get_state_or_action(5, "action", "action.signal", 0)
+        np.testing.assert_array_equal(future, [[2., 3.], [4., 5.], [6., 7.]])
+
+    def test_strict_window_ignores_missing_scalar_outside_window(self):
+        self.set_signal([1., 2., 3., 4., None], 0, 1)
+        self.dataset.data_cfg = {"strict_window_sampling": True}
+        future = self.dataset.get_state_or_action(5, "action", "action.signal", 0)
+        self.assertNotEqual(future.dtype, np.dtype("object"))
+        np.testing.assert_array_equal(future, [[2.], [3.], [4.]])
+
+    def test_strict_window_rejects_padding(self):
+        self.set_signal([1., 2., 3., 4.], 0, 1)
+        self.dataset.data_cfg = {"strict_window_sampling": True}
+        with self.assertRaisesRegex(ValueError, "forbids"):
+            self.dataset.get_state_or_action(5, "action", "action.signal", 2)
+
     def test_per_camera_file_indices_override_data_indices(self):
         self.dataset.trajectory_ids_to_metadata = {5: {
             "data/chunk_index": 0, "data/file_index": 0,
