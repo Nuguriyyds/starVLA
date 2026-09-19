@@ -1,0 +1,39 @@
+# Data-access overlay; merge into the existing QwenPI training configuration.
+# This is not a complete launch/optimizer/distributed-training configuration.
+framework:
+  action_model:
+    action_dim: 16
+    state_dim: 16
+    action_horizon: 16
+datasets:
+  vla_data:
+    dataset_py: umi_indexed
+    data_mix: roban_umi_indexed
+    # Full candidate pool: includes any later validation selection. Use only for
+    # access checks until a task/scene semantic split is confirmed; this is not
+    # an approved formal-training split.
+    index_dir: /mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_access_v1
+    # Override source_root after an explicit data relocation if necessary.
+    source_root: null
+    # The curated videos/ directory links into this existing source-video tree.
+    allowed_video_roots:
+      - /mnt/nas/public/roban_umi/restricted_data/source/umi/videos
+    source_identity: size_mtime
+    normalization: none
+    image_size: [224, 224]
+    per_device_batch_size: 1
+    num_workers: 2
+    multiprocessing_context: spawn
+    persistent_workers: true
+    prefetch_factor: 2
+    pin_memory: false
+    drop_last: true
+    shuffle: true
+    shuffle_block_size: 4096
+    seed: 42
+    row_cache_mib: 128
+    row_cache_items: 32
+    file_cache_items: 4
+    video_cache_items: 8
+    episode_cache_items: 128
+    return_metadata: false

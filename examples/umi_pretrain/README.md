@@ -184,3 +184,185 @@ PY_BIN=/mnt/workspace/Native_Policy/user/wyt/.venvs/qwenpi-ppu-py312/bin/python
 第一项检查实际训练/推理的各层 attention 路径，固定随机状态比较 state 平移扰动前后的速度及完整动作预测，并检查 state_encoder 梯度；不更新参数。第一项失败时不会启动后面的短训练。诊断和训练分别创建私人 runs 子目录，输出位置由脚本打印。
 
 这两项通过只说明运行路径和短程更新可用，不代表原生动作表示的最终效果，也不作为旧 checkpoint 已恢复正常的证据。全量预训练适配不在本次修改范围内。
+
+## 第一阶段：全量元数据目录
+
+`tools/build_umi_catalog.py` 只读取 `meta/info.json`、任务表、
+episode 元数据及已有的 merge/curation 来源映射，不读取逐帧数值、
+解码视频、加载模型、过滤窗口或计算归一化。已有 debug 入口保持不变。
+
+使用已有私人 Python 环境。输出目录必须尚不存在；工具拒绝覆盖已有目录
+或写入公共源数据。命令行输出只允许放在私人 `../data_preparation/` 下。
+
+```bash
+cd /mnt/workspace/Native_Policy/user/wyt/starVLA-umi-pretrain
+PY_BIN=/mnt/workspace/Native_Policy/user/wyt/.venvs/qwenpi-ppu-py312/bin/python
+CATALOG_ROOT=/mnt/workspace/Native_Policy/user/wyt/data_preparation
+CATALOG_RUN=$(date -u +%Y%m%dT%H%M%SZ)
+
+# 少量 episode 元数据检查；任务和已有来源映射表仍完整读取。
+"$PY_BIN" -B -u examples/umi_pretrain/tools/build_umi_catalog.py \
+  --output "$CATALOG_ROOT/roban_umi_world_pose_v1_probe_$CATALOG_RUN" \
+  --max-meta-files 3 --check-files
+
+# 全量元数据盘点；--check-files 只检查引用文件是否存在。
+"$PY_BIN" -B -u examples/umi_pretrain/tools/build_umi_catalog.py \
+  --output "$CATALOG_ROOT/roban_umi_world_pose_v1_$CATALOG_RUN" \
+  --check-files
+
+# 合成数据的 CPU 测试，不读取生产数据的逐帧内容或加载模型。
+"$PY_BIN" -B -m unittest discover -s tests -p test_umi_catalog.py -v
+```
+
+默认源目录为本文记录的精选数据目录，可通过 `--source` 覆盖。
+`--batch-size` 与 `--part-rows` 控制元数据读取和输出分片大小。
+关联与汇总使用输出目录内的 SQLite，不在内存中展开逐帧索引。
+
+主要产物：
+
+- `catalog_config.json`：源信息、选项、代码 commit、工作区状态及工具哈希。
+- `episode_manifest/part-*.parquet`：episode 身份、全局范围、数据文件、
+  四相机独立偏移、任务关联、原始来源映射及逐条异常。
+- `task_catalog.parquet`、`task_distribution.parquet`：任务原文与 episode 级分布。
+- `schema_report.json`：原始 schema、输入元数据哈希及缺失字段。
+- `catalog_report.json`：总量、分布、来源覆盖及异常计数。
+- `source_groups.parquet`、`file_inventory.parquet`、`catalog_index.sqlite3`：
+  来源路径分组、引用文件清单及用于审计关联的磁盘索引。
+
+`dataset_from_index`/`dataset_to_index` 是全局索引；
+curation 的 `local_dataset_*` 是 set 内累计索引，不保证是文件内行号。
+因此清单保留 `data_locator=episode_index_filter`，文件内行范围留空。
+后续索引阶段确定真实文件内偏移后，才能直接按行切片。
+
+`source_mcap` 按已有说明映射为规范 OSS 路径，但不同路径不证明内容
+或 session 不同。场景、session、采集者只保留明确提供的字段，不从任务文本、
+set ID 或路径层级猜测。多任务 episode 会计入每个关联任务，其帧数不是
+互斥的逐任务标注时长。
+
+有限扫描标记 `scan_complete=false`。完整扫描检查总量、全局范围连续性、
+首尾位置及映射一致性。元数据异常保留记录，标记 `completed_with_issues`
+并以退出码 2 结束；失败产物保留在独立目录。文件存在不代表内容有效。
+这个目录供下一阶段建立有效窗口索引使用，尚不是可直接训练的数据集。
+
+
+### 第一阶段验收（2026-09-19）
+
+- 14 项元数据工具 CPU 测试通过。
+- 全量扫描 366 个 episode 元数据文件，输出 40 份清单：327,667 条 episode、1,023,415,387 帧、99,027 个任务。
+- 按 30 fps 计算的名义时长为 9,476.07 小时，未进行有效窗口过滤。
+- 引用的 49,236 个数值/视频文件均存在；元数据一致性检查未发现异常或警告。没有读取这些文件的逐帧内容或解码视频。
+- 每条 episode 均关联 source_mcap；源路径全部唯一。没有明确的 scene/session/collector 字段，不能据此排除不同源路径下的同次采集或重复内容泄漏。
+- 结果目录：`/mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_world_pose_v1`。源 commit 为 `7866233`，实际扫描工具哈希与元数据哈希已保存在报告中。
+
+
+## 第二阶段：全量低维有效窗口索引
+
+`tools/build_umi_window_index.py` 读取第一阶段的完整 catalog，直接扫描全部
+3,286 个物理低维 Parquet。`tools/umi_window_rules.py` 是已有过滤规则的
+NumPy/Arrow 实现；未修改小样本检查器、模型或正式训练入口。
+本轮按用户要求不运行小样本或合成测试，完成静态审查后直接启动全量扫描。
+
+每个物理文件的必要列在内存中处理，实际最大 341,712 行；默认单文件
+100 万行资源保护，超限记为失败，不截断。默认 2 个 CPU worker，不用训练卡。
+四路视频、IMU、触觉以及不参与已有规则的 gap_ns 列不读取。
+
+规则保持 world-pose-16D、robot1 后接 robot2、原始 FP32、未来 1..16 帧。
+当前行及未来 16 行都必须有效；任务、帧序号及时间连续性按已有规则检查。
+不改四元数、不裁剪开度、不补齐、不删除无效行后拼接。根时间戳先按整数
+纳秒求差，传感器自己的时间戳不要求 30Hz，也不新增 gap_ns 阈值。
+
+工具核验每文件的 episode 集合、每 episode 实测长度和全局 index 序列。
+不将 frame_index 当作原始行位置；多个非连续物理片段保存在 segment 表。
+若真实文件分配与 catalog 不符，该文件失败并报告，不猜测跨文件映射。
+读取批次和 row group 边界不会截断窗口。
+
+首次启动（输出目录必须尚不存在）：
+
+```bash
+cd /mnt/workspace/Native_Policy/user/wyt/starVLA-umi-pretrain
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+/mnt/workspace/Native_Policy/user/wyt/.venvs/qwenpi-ppu-py312/bin/python -B -u \
+  examples/umi_pretrain/tools/build_umi_window_index.py \
+  --catalog /mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_world_pose_v1 \
+  --output /mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_world_pose_windows_v1 \
+  --workers 2
+```
+
+已有后台扫描不要重复启动。运行进度位于输出目录的
+`scan_progress/progress.json`，其中有父进程 PID、完成文件数、处理行数、
+有效窗口数和吞吐。需要平稳停止时向这个父进程发送
+`kill -TERM <父PID>`，停止提交新文件并等待当前文件完成。
+前台 Ctrl+C 可能同时打断 worker，尚未提交的文件在恢复时重做。
+
+恢复时使用上面同一命令并增加 `--resume`。规则、代码、catalog、
+字段映射和 horizon 指纹必须一致；worker 数可以改变。
+已完成文件会复核源文件 size/mtime 和输出 SHA256。源数据 size/mtime
+不是内容哈希；源数据在整个准备过程中应保持不变。
+不要在扫描期间修改两个新工具或旧规则模块，再尝试混合恢复。
+
+主要产物：
+
+- `window_index_config.json`：固定输入、规则、字段映射和代码哈希。
+- `episode_segments/`：episode 原始行位置到实际文件行段的对应关系。
+- `valid_anchor_ranges/`：有效起点的半开区间，坐标是 episode 原始行位置。
+- `episode_quality_parts/`：逐文件落盘的 episode 质量结果。
+- `episode_quality.parquet`：全量成功后合并的质量表。
+- `task_window_distribution.parquet`：全量成功后的任务行数及有效窗口数量。
+- `scan_progress/completed/`：每物理文件的原子完成记录，包含结果哈希。
+- `scan_progress/failed/`：失败诊断；恢复成功后以 completed 标记为准。
+- `window_index_report.json`：完成或平稳停止时的全局报告。
+
+完整候选窗口数 = 有效窗口数 + 因质量/连续性拒绝的候选数。
+末尾不够 16 帧的起点单列，不混入完整候选；多标签原因可能重叠，
+主要拒绝原因互斥。时长分别统计原始行、有效行、有效窗口覆盖的去重行，
+不能用窗口数乘 16 计算独立数据时长。
+
+此结果只说明低维条件和目标满足当前规则，未验证全量图像内容或时间对齐，
+也尚未划分训练/验证集、计算归一化或改变采样权重。
+
+
+## 第二阶段补充：训练范围内的质量审计
+
+全量索引已完成：3,286 个文件成功，1,013,325,887 个有效窗口，504,659 个
+起点区间，覆盖 1,021,400,431 个去重原始行，约 9,457.41 名义小时。
+
+新增 `tools/audit_umi_trainable_quality.py` 和 `tools/umi_quality_metrics.py`。
+旧位置/开度/范数诊断包含可解析原始行；旧相邻变化包含有效连续边，
+不限定完整窗口。旧范数 std 的 sum-squares 差分存在消减误差，旧报告
+保留作为来源记录；新审计使用 FP64 count/mean/M2（Chan）合并。
+
+新审计按冻结的 segment/range 分开统计 raw、row_valid、window_covered，
+并单独构造窗口内部边的覆盖范围。先计算源存储四元数范数，仅在旋转诊断
+中单位化并取 abs(dot)。分位数只给固定直方图的区间，阈值桶不用于清洗。
+它重读必要低维列，但不重新生成窗口、不修改原始数值、模型或旧指纹。
+
+已有后台任务不要重复启动。默认输出：
+`/mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_trainable_quality_v1`。
+入口命令为：
+```bash
+cd /mnt/workspace/Native_Policy/user/wyt/starVLA-umi-pretrain
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+/mnt/workspace/Native_Policy/user/wyt/.venvs/qwenpi-ppu-py312/bin/python -B -u \
+  examples/umi_pretrain/tools/audit_umi_trainable_quality.py --workers 2
+```
+恢复增加 `--resume`，规则/工具版本须不变。平稳停止向 progress.json
+记录的父 PID 发送 SIGTERM。
+
+产物包括 `trainable_quality_report.json`、`quality_cases.parquet`、
+`quality_review.md`，分别保存统计、可定位上下文和待解释问题。
+已知极值文件优先处理，初步报告 scan_complete=false，不能当全量频率。
+来源分布用 source_set_id，不能冒充设备/session/场景分类。
+仅做静态审查后直接运行实际全量审计，没有重跑小样本训练测试。
+
+
+## Indexed full-dataset access
+
+See [indexed access documentation](indexed_access/README.md) for the immutable runtime index, lazy UMI Dataset, block sampler, and configuration overlay.
+
+## 元数据候选划分与待确认的语义标签
+
+见[划分与视图构建说明](splits/README.md)。`build_umi_splits.py` 基于冻结元数据按原始采集来源组生成约 1% 候选验证池和五份候选训练清单，默认输出 `../data_preparation/roban_umi_splits_metadata_candidate_v1/`。当前均衡只使用有效窗口量、task ID 和 source set；task ID 不等于任务类别，source set 不等于场景，尚未检验任务／场景语义均衡，不能据此固定最终划分。
+
+当前没有构建六个分片视图。`build_umi_split_views.py` 仅在显式传入 `--allow-candidate-splits` 时允许候选清单接口检查，默认输出 `../data_preparation/roban_umi_candidate_views_v1/`；这不是当前默认执行步骤，也不意味着可以启动正式训练。
+
+下一步先确定语义标签 schema 和分类口径。使用者负责查看文本／视频、确定类别并抽查纠错；之后程序按确认的标签批量关联、分组分配和核对分布，不需要手工逐条划分 32 万条 episode。语义标签接入与相应平衡约束尚未实现。保留现有质量政策，不做新的数据清洗；训练集归一化、阶段训练和完整续训仍待后续。

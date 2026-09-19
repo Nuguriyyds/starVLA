@@ -34,7 +34,10 @@ def save_dataset_statistics(dataset_statistics, run_dir):
 
 def build_dataloader(cfg, dataset_py="lerobot_datasets_oxe"): # TODO now here only is get dataset, we need mv dataloader to here
 
-    if dataset_py == "lerobot_datasets":
+    if dataset_py == "umi_indexed":
+        from starVLA.dataloader.umi_indexed_dataset import make_umi_dataloader
+        return make_umi_dataloader(cfg)
+    elif dataset_py == "lerobot_datasets":
         from starVLA.dataloader.lerobot_datasets import get_vla_dataset, collate_fn
         vla_dataset_cfg = cfg.datasets.vla_data
 
