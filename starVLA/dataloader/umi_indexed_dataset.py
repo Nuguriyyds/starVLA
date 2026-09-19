@@ -511,7 +511,7 @@ def make_umi_dataloader(cfg):
                       prefetch_factor=int(data.get("prefetch_factor", 2)),
                       multiprocessing_context=data.get("multiprocessing_context", "spawn"))
     loader = DataLoader(**kwargs)
-    if not dist.is_initialized() or dist.get_rank() == 0:
+    if data.get("write_access_record", True) and (not dist.is_initialized() or dist.get_rank() == 0):
         output = Path(cfg.output_dir)
         output.mkdir(parents=True, exist_ok=True)
         record = dict(dataset.provenance(), sampler=sampler.state_dict(),

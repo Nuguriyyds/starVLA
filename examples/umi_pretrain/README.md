@@ -365,8 +365,12 @@ See [indexed access documentation](indexed_access/README.md) for the immutable r
 
 当前没有构建六个分片视图。`build_umi_split_views.py` 仅在显式传入 `--allow-candidate-splits` 时允许候选清单接口检查，默认输出 `../data_preparation/roban_umi_candidate_views_v1/`；这不是当前默认执行步骤，也不意味着可以启动正式训练。
 
-下一步先确定语义标签 schema 和分类口径。使用者负责查看文本／视频、确定类别并抽查纠错；之后程序按确认的标签批量关联、分组分配和核对分布，不需要手工逐条划分 32 万条 episode。语义标签接入与相应平衡约束尚未实现。保留现有质量政策，不做新的数据清洗；训练集归一化、阶段训练和完整续训仍待后续。
+最终划分仍需确定语义标签 schema 和分类口径。使用者负责查看文本／视频、确定类别并抽查纠错；之后程序按确认的标签批量关联、分组分配和核对分布，不需要手工逐条划分 32 万条 episode。语义标签接入与相应平衡约束尚未实现。保留现有质量政策，不做新的数据清洗；归一化与阶段训练接口先用工程视图验收。
 
 ## 可逆归一化与离线统计接口
 
 见[归一化工程说明](normalization/README.md)。原始 Dataset 和 `read_lowdim()` 保持原值语义，factory 可用独立包装层加载 `mean_std` 统计；支持 state/action 正变换和最终动作反变换。离线工具按实际有效窗口出现次数加权，FP64 增量统计、文件级恢复，不解码视频。本轮仅在明确的小型工程视图上拟合和验证；正式配置拒绝工程统计，正式训练池与统计量仍待确认。
+
+## 分阶段训练与完整续训
+
+见[训练入口说明](training/README.md)。新增 `starVLA.training.train_umi_pretrain`，将完整计划与本次进程暂停点分开；只在成功 optimizer update 后提交全局窗口游标。使用 Accelerate 保存模型、Adam、scheduler、阶段进度和每 rank 随机状态，完成标记发布后才更新 latest。阶段切换保留优化状态并释放旧 loader。当前支持单设备和普通 DDP；DeepSpeed/FSDP、64 卡通信与正式语义划分另行验收。

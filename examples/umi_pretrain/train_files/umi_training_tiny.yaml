@@ -1,0 +1,21 @@
+version: umi-training-plan-v1
+purpose: engineering
+model_kind: tiny
+training:
+  seed: 42
+  batch_size: 2
+  gradient_accumulation_steps: 2
+  num_workers: 2
+  prefetch_factor: 2
+  mixed_precision: 'no'
+  lr: 0.003
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  warmup_updates: 2
+  save_every: 6
+  eval_every: 2
+  trace_samples: true
+stages:
+  - {name: A, size: 23, offset: 0, updates: 6}
+  - {name: B, size: 27, offset: 100, updates: 6}
+evaluation: {name: evaluation, size: 12, offset: 200, seed: 9876}

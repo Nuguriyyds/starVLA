@@ -98,13 +98,15 @@ class UMIBlockShuffleSampler(Sampler[int]):
             "start_index", start_index, minimum=0, maximum=self.size
         )
 
-    def set_epoch(self, epoch: int, *, start_index: int = 0) -> None:
-        """Select an epoch, resetting its offset unless one is explicitly given.
+    def set_epoch(self, epoch: int, *, start_index: int | None = None) -> None:
+        """Preserve a restored cursor when a framework re-selects the same epoch.
 
-        Call before creating the epoch's iterator. On resume, do not subsequently
-        reset this with ``set_epoch(epoch)`` unless offset zero is intended.
+        A different epoch starts at zero. Pass start_index=0 to explicitly rewind
+        the current epoch; omission is deliberately different from zero.
         """
         new_epoch = _integer("epoch", epoch, minimum=0, maximum=_UINT64_MASK)
+        if start_index is None:
+            start_index = self.start_index if new_epoch == self.epoch else 0
         new_offset = _integer(
             "start_index", start_index, minimum=0, maximum=self.size
         )

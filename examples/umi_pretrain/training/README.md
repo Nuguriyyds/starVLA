@@ -1,0 +1,140 @@
+# UMI 分阶段训练与完整续训
+
+入口：`python -m starVLA.training.train_umi_pretrain`。
+
+这一版复用 QwenPI、索引 Dataset、固定归一化和 Accelerate。原有
+`train_starvla.py`、debug 训练入口、动作头、字段、过滤规则均保留。
+工程配置只用于训练程序验收，不代表语义划分获批，也不启动全量预训练。
+
+本轮实际结果见[验收记录](VALIDATION.md)，其中区分CPU精确对照、真实模型
+短程更新与尚未验证的后端/规模。
+
+## 支持范围
+
+- 单设备以及普通 DDP；CPU 双进程用 Gloo，设备 DDP 用 NCCL 兼容接口。
+- 参数及 AdamW 状态保留 FP32，AdamW `fused=False, foreach=False`；可选择
+  Accelerate `no`/`bf16`。QwenPI 保留已验证的 VLM→动作头 FP32 桥接。
+- 完整更新边界的保存、停止、恢复；同一计划中的多个数据阶段连续优化。
+- 当前 Dataset 读取和缩放均为确定性操作；不承诺新增随机增强后的精确恢复。
+- **本版明确拒绝 DeepSpeed/ZeRO、FSDP、FP16 scaler 和改变卡数的恢复。**
+  这些后端的保存格式、优化器及 scheduler 所有权需另做验收，不由普通 DDP
+  测试推导支持。此次不涉及 64 卡通信或吞吐。
+- 共享 POSIX 文件系统；训练只写 `--output-dir`。同一个 run 用文件锁防止
+  两个任务同时写入，进程退出后锁自动释放。
+
+## 两种工程配置
+
+`train_files/umi_training_tiny.yaml`：CPU 小模型、AdamW、12 次更新，A/B 各6次，
+每进程 batch=2、梯度累积=2、worker=2。N=23/27 特意不能被全局 batch 整除，
+用于验证尾部和 epoch。A/B 是不同的合成数据视图。
+
+`train_files/umi_training_qwenpi_engineering.yaml`：真实 Qwen3-VL-2B-Instruct，
+四路当前图像、世界系双手位姿与开度、未来1～16帧，沿用固定工程统计量。
+两个工程视图对应 episode 325202/325203（通过原索引编译器生成）。A/B各2次
+更新、累积=2，用于建立 Adam 状态、写完整 checkpoint、退出后加载及切阶段。
+工程评测使用独立 loader，但与训练工程数据重叠，**不能解释为泛化性能**。
+
+所有阶段共用同一个归一化文件；启动不拟合统计量。正式模式需要现有归一化
+模块认可的 formal 统计与实验合同，工程统计不能直接改标签冒充。
+
+## 启动和暂停
+
+在仓库根目录、已经验证的私人环境中运行。例如：
+
+```bash
+python -m starVLA.training.train_umi_pretrain \
+  --plan examples/umi_pretrain/train_files/umi_training_qwenpi_engineering.yaml \
+  --output-dir /mnt/workspace/Native_Policy/user/wyt/runs/umi_staged_engineering \
+  --stop-after-update 1
+```
+
+新进程继续同一 run：
+
+```bash
+python -m starVLA.training.train_umi_pretrain \
+  --plan examples/umi_pretrain/train_files/umi_training_qwenpi_engineering.yaml \
+  --output-dir /mnt/workspace/Native_Policy/user/wyt/runs/umi_staged_engineering \
+  --resume latest
+```
+
+PPU 运行前仍需加载平台 SDK 环境并选择空闲设备；使用已有环境，不重新安装
+依赖。CPU 加 `--cpu`，普通多进程使用 `torchrun`/`python -m torch.distributed.run`。
+
+`--stop-after-update` 是本次进程暂停点，不改变完整计划。SIGINT/SIGTERM 只
+设置停止请求，所有 rank 在下一次完整更新后保存退出；启动前/文件写入期
+被强杀只能使用此前已发布的 checkpoint。首次运行输出目录必须不存在，
+显式 `--resume` 缺失、损坏或身份不匹配必须失败，绝不退回重新初始化。
+
+## 样本进度和阶段
+
+全局更新 batch = 进程数 × 每进程 batch × 累积次数。每个 epoch 仅消费能
+组成完整更新的前缀，剩余尾部计入 `dropped_tail_samples`，不补重复样本，
+不跨 epoch 或 stage 累积。视图不足一次完整更新则报错。
+
+采样器只生成全局流，Accelerate 按进程分一次；不另加 DistributedSampler
+或 skip_first_batches。worker 预取不提交进度。一次有限 loss/梯度对应的
+optimizer update 成功后，scheduler 只推进一次，再提交样本游标。
+
+进度记录表示**下一次更新的位置**：A完成后保存时，stage_index已经指向B。
+切阶段仅替换 loader，关闭旧 worker、文件和视频缓存；模型、Adam动量、
+scheduler、归一化、全局 step 继续沿用。重复 set_epoch(同一个epoch) 不清空
+已恢复游标；显式 `start_index=0` 才重置。
+
+epoch 被预算截断时尚未访问的大段样本不记作尾部；只有完成可执行前缀后
+不足一个全局更新的余数记作尾部。曝光次数不是去重帧数或数据小时数。
+
+## 输出与完整性
+
+```text
+run_identity.json                 内容身份、代码版本、运行与参数组约束
+plan_requested.json               完整计划，暂停点不在此计划中
+normalization/statistics.json     实际统计文件的原字节副本
+data_access/all_views.json        所有阶段和评测的来源
+data_access/stage_A/...           每阶段来源记录，互不覆盖
+checkpoints/update_XXXXXXXX/      模型+optimizer+进度+scheduler+每rank RNG
+  manifest.json                  所有文件字节数和 SHA-256
+  COMPLETED.json                 仅完整写入后发布
+latest.json                      指向最近完整发布点
+exports/                         预留的推理导出位置，不可当作resume
+updates.jsonl / progress.json     以已提交更新计数的日志与进度
+trace_rank_N.jsonl                工程样本追踪，正式运行可关闭
+```
+
+保存时所有 rank 调用 `accelerator.save_state()`，进度和唯一所有者 scheduler
+显式注册为 custom checkpoint。额外严格保存并恢复 Python、NumPy、Torch
+CPU/设备与 loader generator：Accelerate 某些版本会把 RNG 恢复异常降为日志，
+此入口不接受这种静默降级。数据迭代器创建和评测保留训练 RNG；当前 worker
+只执行确定性变换，base seed由stage/epoch确定。
+
+先在隐藏临时目录完成所有 rank 文件，再计算文件摘要，写完成标记、发布
+目录及 latest 指针。半成品目录不参与 latest 选择；不自动回退到更早点。
+强制中断后未持久化的更新可能重算，恢复时工程 trace/日志去除这些未提交
+记录。SHA-256 校验会产生读取 checkpoint 的开销；这是当前严格验收的取舍。
+文件与目录执行 fsync，但远端存储的持久性仍依赖其服务端保证。
+
+首次严格恢复要求相同代码内容/commit、模型工件、数据视图、规则、表示、
+归一化内容、完整阶段计划、参数组、world size、batch、累积和关键库版本。
+归一化和视图以内容识别，不能只验证路径。权重文件本身不满足完整恢复条件。
+
+## 可重复验收
+
+```bash
+CUDA_VISIBLE_DEVICES= OMP_NUM_THREADS=1 python \
+  examples/umi_pretrain/tools/check_umi_training_resume.py \
+  --output-dir /mnt/workspace/Native_Policy/user/wyt/runs/umi_cpu_acceptance \
+  --world-size 1
+
+CUDA_VISIBLE_DEVICES= OMP_NUM_THREADS=1 python \
+  examples/umi_pretrain/tools/check_umi_training_resume.py \
+  --output-dir /mnt/workspace/Native_Policy/user/wyt/runs/umi_ddp_acceptance \
+  --world-size 2
+```
+
+两条测试都运行实际入口：连续12次更新，对比在3/6/9步退出并用新进程恢复；
+比较最终模型、Adam状态、scheduler、所有rank RNG，以及逐更新样本与LR。
+另将各rank样本交织还原，独立核对 sampler 的全局流，防止两条路径犯同样
+的重复/跳样本错误。拒绝半成品、权重冒充、改变视图/计划和formal误用合成数据。
+
+`tests/test_umi_training_state.py` 和 `tests/test_umi_checkpoint.py` 另覆盖尾部、
+无效状态、保存中途故障注入、latest不被半成品覆盖，以及统计哈希/卡数变更
+和等长文件损坏。旧 sampler/normalization factory 测试作为本轮改动的回归。
