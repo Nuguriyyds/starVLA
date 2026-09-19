@@ -1,7 +1,8 @@
 """Read immutable UMI window indexes without enumerating individual windows.
 
-This adapter returns the existing QwenPI sample interface. It performs no
-normalization, relabeling, padding, replacement sampling, or quality filtering.
+The raw Dataset performs no normalization, relabeling, padding, replacement
+sampling, or quality filtering. The factory can add an explicit normalization
+wrapper; read_lowdim() on the raw Dataset always retains its original meaning.
 The access index is built offline by build_umi_access_index.py.
 """
 from collections import OrderedDict
@@ -415,6 +416,70 @@ def collate_umi_samples(batch):
     return batch
 
 
+class UMINormalizedDataset(Dataset):
+    """Apply fixed parameters outside the raw reader, without mutating samples.
+
+    Access raw low-dimensional values through raw_dataset.read_lowdim(). The
+    wrapper deliberately does not alias that method to a transformed result.
+    Normalization parameters are picklable; raw worker handles remain managed
+    by UMIIndexedDataset's existing process-local lifecycle.
+    """
+    def __init__(self, raw_dataset, normalizer):
+        self.raw_dataset = raw_dataset
+        self.normalizer = normalizer
+
+    def __len__(self):
+        return len(self.raw_dataset)
+
+    def __getitem__(self, index):
+        raw = self.raw_dataset[index]
+        sample = dict(raw)
+        sample["state"] = self.normalizer.normalize_state(raw["state"])
+        sample["action"] = self.normalizer.normalize_action(raw["action"])
+        if "umi_metadata" in raw:
+            sample["umi_metadata"] = dict(raw["umi_metadata"], normalization=self.normalizer.provenance())
+        return sample
+
+    def provenance(self):
+        raw = self.raw_dataset.provenance()
+        return dict(raw, raw_reader_normalization="none", normalization="mean_std",
+                    model_lowdim_space="fixed_mean_std",
+                    normalization_details=self.normalizer.provenance())
+
+    def close(self):
+        self.raw_dataset.close()
+
+
+def apply_umi_normalization(raw_dataset, data):
+    """Resolve an explicit transform; never fit statistics at training startup."""
+    mode = data.get("normalization", "none")
+    if mode == "none":
+        if data.get("normalization_statistics") is not None:
+            raise ValueError("normalization_statistics was supplied with normalization=none")
+        return raw_dataset
+    if mode != "mean_std":
+        raise ValueError("UMI normalization must be none or mean_std")
+    path = data.get("normalization_statistics")
+    if not path or not isinstance(path, (str, Path)):
+        raise ValueError("mean_std requires an explicit normalization_statistics file")
+    purpose = data.get("normalization_purpose", "engineering")
+    if purpose not in ("engineering", "formal"):
+        raise ValueError("normalization_purpose must be engineering or formal")
+    contract_path = data.get("normalization_experiment_contract")
+    contract = None
+    if contract_path is not None:
+        if not isinstance(contract_path, (str, Path)):
+            raise TypeError("normalization_experiment_contract must be a JSON file path")
+        contract = json.loads(Path(contract_path).read_text(encoding="utf-8"))
+    from starVLA.dataloader.umi_normalization import UMINormalizer
+    normalizer = UMINormalizer(
+        "mean_std", statistics_path=path, access_meta=raw_dataset.meta,
+        current_view_fingerprint=raw_dataset.view_fingerprint,
+        purpose=purpose, experiment_contract=contract,
+    )
+    return UMINormalizedDataset(raw_dataset, normalizer)
+
+
 def make_umi_dataloader(cfg):
     """Factory used by the existing trainer; Accelerate shards the loader once."""
     import torch
@@ -423,8 +488,6 @@ def make_umi_dataloader(cfg):
     from starVLA.dataloader.umi_sampler import UMIBlockShuffleSampler
 
     data = cfg.datasets.vla_data
-    if data.get("normalization", "none") != "none":
-        raise ValueError("This access version emits raw FP32; training normalization must be added explicitly")
     for key, expected in (("action_dim", 16), ("state_dim", 16), ("action_horizon", 16)):
         if int(cfg.framework.action_model[key]) != expected:
             raise ValueError(f"Indexed UMI requires framework.action_model.{key}={expected}")
@@ -433,6 +496,7 @@ def make_umi_dataloader(cfg):
         "video_cache_items", "episode_cache_items", "source_identity", "decode_tolerance_seconds",
         "return_metadata") if key in data and data[key] is not None}
     dataset = UMIIndexedDataset(data.index_dir, **options)
+    dataset = apply_umi_normalization(dataset, data)
     sampler = UMIBlockShuffleSampler(len(dataset), block_size=int(data.get("shuffle_block_size", 4096)),
                                      seed=int(data.get("seed", 42)), shuffle=data.get("shuffle", True))
     workers = int(data.get("num_workers", 2))

@@ -1,0 +1,13 @@
+# ENGINEERING ONLY. Overlay on umi_indexed_data.yaml and the existing model config.
+# Does not approve task/scene selection or create a formal training experiment.
+datasets:
+  vla_data:
+    dataset_py: umi_indexed
+    index_dir: /mnt/workspace/Native_Policy/user/wyt/data_preparation/umi_normalization_engineering_v1/access
+    normalization: mean_std
+    normalization_statistics: /mnt/workspace/Native_Policy/user/wyt/data_preparation/umi_normalization_engineering_v1/statistics.json
+    normalization_purpose: engineering
+    normalization_experiment_contract: null
+    num_workers: 0
+    shuffle: false
+    drop_last: false

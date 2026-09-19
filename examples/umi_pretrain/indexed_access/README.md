@@ -70,11 +70,11 @@ cfg = OmegaConf.merge(
 
 - 全量目录是候选池，尚未确定最终训练／验证归属。[划分工具](../splits/README.md)目前只生成 task ID／source set 层面的候选清单，尚未检查任务类别／场景语义均衡，不能据此固定正式划分。
 - 候选清单默认位于 `../data_preparation/roban_umi_splits_metadata_candidate_v1/`。当前没有构建六个分片视图；可选接口检查需对 `build_umi_split_views.py` 显式传入 `--allow-candidate-splits`，其默认输出为 `../data_preparation/roban_umi_candidate_views_v1/`。接口通过不等于语义划分通过。
-- `normalization: none` 明确表示原始 FP32；还未计算或应用正式训练集归一化，不生成伪造的 `dataset_statistics.json`。
+- `normalization: none` 保留原始 FP32。可选 `mean_std` 通过显式统计文件和包装层接入，见[归一化接口](../normalization/README.md)；当前只有工程统计，正式训练集统计仍未拟合，也不生成伪造的 `dataset_statistics.json`。
 - sampler 的 state_dict 是可用接口，完整 trainer checkpoint 和分布式消费游标恢复尚未接入。Accelerate 可能在迭代入口调用 set_epoch，正式恢复时要统筹设置顺序；不能只保存 sampler 就宣称完整续训完成。
 - sampler 产生的全局流不自行按 rank 分片，交给 Accelerate 一次分片。CPU 流测试已覆盖 `even_batches`/`drop_last`；各 rank 须有同一视图、seed、epoch 和消费游标，正式 trainer 仍需统一尾部及恢复计数。
 - 分块打乱兼顾文件局部性，不等于十亿个窗口的全局均匀随机排列，也不提供任务均衡采样。
 - 数值文件使用 size/mtime 校验。迁移阿里云后若 mtime 改变，需核对数据一致性后显式选择 `source_identity: size`；它不等于文件内容哈希验证。
 - 视频按时间定位成功不证明传感器精确同步。解码超出 episode 范围或无法在时间容差内定位会报错，不自动删除窗口。
 
-`view_fingerprint` 在 provenance 和样本 trace 中标识当前视图；旧全量目录可由已有哈希派生，毋须重建。下一步先确定语义标签 schema：使用者负责确定任务／场景类别、查看视频和抽查纠错，程序随后按确认的标签批量关联、分组分配并核对分布，无需手工逐条划分所有 episode。标签接入与语义平衡尚未实现。划分确认后，再完成训练集统计与归一化、正式训练及完整恢复；不用重写字段适配或模型结构。
+`view_fingerprint` 在 provenance 和样本 trace 中标识当前视图；旧全量目录可由已有哈希派生，毋须重建。语义标签 schema 由使用者确定任务／场景类别、查看视频和抽查纠错，随后再按确认的标签批量关联、分组分配并核对分布。标签接入与语义平衡尚未实现；工程接口开发可以并行推进。正式统计须等训练池确认后拟合，阶段训练及完整恢复仍待接入。
