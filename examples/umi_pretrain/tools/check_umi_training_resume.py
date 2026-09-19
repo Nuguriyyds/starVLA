@@ -39,10 +39,17 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--world-size", type=int, choices=(1, 2), default=1)
+    parser.add_argument("--performance", action="store_true", help="Also prove instrumentation on/off preserves exact training states")
     args = parser.parse_args()
     root = args.output_dir.resolve()
     root.mkdir(parents=True, exist_ok=False)
     plan = REPO / "examples/umi_pretrain/train_files/umi_training_tiny.yaml"
+    unmeasured_plan = plan
+    if args.performance:
+        measured = yaml.safe_load(plan.read_text())
+        measured["performance"] = dict(enabled=True, warmup_updates=2, detail_updates=2)
+        plan = root / "measured_plan.yaml"
+        plan.write_text(yaml.safe_dump(measured))
     env = dict(os.environ, CUDA_VISIBLE_DEVICES="", OMP_NUM_THREADS="1", MKL_NUM_THREADS="1",
                OPENBLAS_NUM_THREADS="1", PYTHONPATH=str(REPO), ACCELERATE_USE_CPU="true")
     command = [sys.executable]
@@ -84,6 +91,11 @@ def main():
         left = torch.load(root / "continuous" / checkpoint / name, map_location="cpu", weights_only=False)
         right = torch.load(root / "resumed" / checkpoint / name, map_location="cpu", weights_only=False)
         assert_tree(left, right)
+    if args.performance:
+        launch("instrumentation_disabled", config=unmeasured_plan)
+        for name in filenames:
+            assert_tree(torch.load(root / "continuous" / checkpoint / name, map_location="cpu", weights_only=False),
+                        torch.load(root / "instrumentation_disabled" / checkpoint / name, map_location="cpu", weights_only=False))
     traces = []
     for rank in range(args.world_size):
         def read_trace(run):
@@ -134,6 +146,7 @@ def main():
               "gradient_accumulation": 2, "updates": 12, "restart_boundaries": [3, 6, 9],
               "model_optimizer_scheduler_rng_bitwise_equal": True,
               "samples_match_global_sampler_exactly": True, "rejection_checks": 5, "processes": calls}
+    report["instrumentation_on_off_bitwise_equal"] = bool(args.performance)
     (root / "acceptance.json").write_text(json.dumps(report, indent=2))
     print(json.dumps({k: v for k, v in report.items() if k != "processes"}, indent=2), flush=True)
 

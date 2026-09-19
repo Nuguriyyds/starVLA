@@ -3,7 +3,7 @@
 Only load trusted checkpoints produced by this training entry. Optimizer and RNG
 files use PyTorch serialization. A weights export is deliberately not resumable.
 """
-from contextlib import contextmanager
+from contextlib import contextmanager, nullcontext
 import hashlib
 import json
 import os
@@ -179,10 +179,14 @@ def inspect_checkpoint(path, identity):
 
 
 class UMICheckpoints:
-    def __init__(self, accelerator, run_dir, identity, progress):
+    def __init__(self, accelerator, run_dir, identity, progress, performance=None):
         self.accelerator, self.run_dir = accelerator, Path(run_dir)
         self.identity, self.progress = identity, progress
         self.latest = None
+        self.performance = performance
+
+    def measure(self, name):
+        return self.performance.span(name) if self.performance else nullcontext()
 
     def resolve(self, requested):
         def resolve_main():
@@ -223,8 +227,9 @@ class UMICheckpoints:
             accelerator.wait_for_everyone()
             # Every rank must enter distributed saving. Only publication is rank 0.
             with preserve_rng(generator):
-                accelerator.save_state(str(temporary), safe_serialization=False)
-                torch.save(capture_rng(generator), temporary / f"strict_rng_{accelerator.process_index}.pt")
+                with self.measure("checkpoint_state_write"):
+                    accelerator.save_state(str(temporary), safe_serialization=False)
+                    torch.save(capture_rng(generator), temporary / f"strict_rng_{accelerator.process_index}.pt")
             accelerator.wait_for_everyone()
 
             def publish():
@@ -233,9 +238,11 @@ class UMICheckpoints:
                 for file in sorted(temporary.iterdir()):
                     if not file.is_file():
                         raise ValueError("Unexpected sharded checkpoint layout for this backend")
-                    with file.open("rb") as stream:
-                        os.fsync(stream.fileno())
-                    files[file.name] = {"bytes": file.stat().st_size, "sha256": sha256_file(file)}
+                    with self.measure("checkpoint_file_fsync"):
+                        with file.open("rb") as stream:
+                            os.fsync(stream.fileno())
+                    with self.measure("checkpoint_file_hash"):
+                        files[file.name] = {"bytes": file.stat().st_size, "sha256": sha256_file(file)}
                 manifest = dict(version="umi-full-checkpoint-v1", step=step,
                                 identity=self.identity, identity_fingerprint=fingerprint(self.identity), files=files)
                 write_json(temporary / "manifest.json", manifest)
@@ -246,10 +253,11 @@ class UMICheckpoints:
                     required.update({f"random_states_{rank}.pkl", f"strict_rng_{rank}.pt"})
                 if not required <= files.keys():
                     raise ValueError("Accelerate did not write all required training/rank states")
-                write_json(temporary / "COMPLETED.json", {"manifest_sha256": sha256_file(temporary / "manifest.json")})
-                os.rename(temporary, destination)
-                sync_directory(destination.parent)
-                write_json(self.run_dir / "latest.json", {"checkpoint": name, "step": step})
+                with self.measure("checkpoint_publish_marker_rename"):
+                    write_json(temporary / "COMPLETED.json", {"manifest_sha256": sha256_file(temporary / "manifest.json")})
+                    os.rename(temporary, destination)
+                    sync_directory(destination.parent)
+                    write_json(self.run_dir / "latest.json", {"checkpoint": name, "step": step})
             main_call(accelerator, publish)
         else:
             main_call(accelerator, lambda: write_json(self.run_dir / "latest.json", {"checkpoint": name, "step": step}))

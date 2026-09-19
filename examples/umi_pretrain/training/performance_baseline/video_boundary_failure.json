@@ -1,0 +1,71 @@
+{
+  "index": 126293227,
+  "episode": 34300,
+  "camera": {
+    "camera": "observation.images.head_right",
+    "video_path": "videos/observation.images.head_right/chunk-001/file-557.mp4",
+    "chunk_index": 1,
+    "file_index": 557,
+    "from_timestamp": 286.066677666,
+    "to_timestamp": 407.73334433266666,
+    "source_frame_count": 3652
+  },
+  "tolerance_seconds": 0.033334333333333334,
+  "trace": {
+    "dataset_index": 126293227,
+    "episode_index": 34300,
+    "episode_row_offset": 0,
+    "frame_index": 0,
+    "future_frame_indices": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "timestamp": 0.0,
+    "task_index": 6525,
+    "locations": [
+      {
+        "data_file": "data/chunk-000/file-438.parquet",
+        "file_row_start": 0,
+        "file_row_end_exclusive": 17
+      }
+    ],
+    "rule_fingerprint": "b27d620df2cb6d438cf173b92a6f3602e377bf002fc3d5b20e0eed780964173b",
+    "view_fingerprint": "96735ecbc752fa60784c770af2e7166604a6f4285639ba696965091ff715350e"
+  },
+  "nearby_video_timestamps": [
+    {
+      "seconds": 286.066677,
+      "offset": -6.659999485236767e-07,
+      "inside_episode": false
+    },
+    {
+      "seconds": 286.100013,
+      "offset": 0.03333533400001443,
+      "inside_episode": true
+    },
+    {
+      "seconds": 286.133342,
+      "offset": 0.0666643340000519,
+      "inside_episode": true
+    },
+    {
+      "seconds": 286.166672,
+      "offset": 0.09999433400003,
+      "inside_episode": true
+    }
+  ]
+}

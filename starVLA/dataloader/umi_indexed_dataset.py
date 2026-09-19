@@ -13,6 +13,7 @@ import operator
 import os
 from pathlib import Path, PurePosixPath
 import sqlite3
+import time
 
 import numpy as np
 import pyarrow as pa
@@ -64,10 +65,16 @@ class _BoundedCache:
     def __init__(self, max_items, max_bytes=None, close=None):
         self.max_items, self.max_bytes, self.closer = max_items, max_bytes, close
         self.items, self.bytes = OrderedDict(), 0
+        self.track = False
+        self.hits = self.misses = self.evictions = 0
 
     def get(self, key):
         if key not in self.items:
+            if self.track:
+                self.misses += 1
             return None
+        if self.track:
+            self.hits += 1
         value, size = self.items.pop(key)
         self.items[key] = (value, size)
         return value
@@ -87,6 +94,8 @@ class _BoundedCache:
     def _remove(self, key):
         value, size = self.items.pop(key)
         self.bytes -= size
+        if self.track:
+            self.evictions += 1
         if self.closer is not None:
             self.closer(value)
 
@@ -106,7 +115,7 @@ class UMIIndexedDataset(Dataset):
                  row_cache_mib=128, row_cache_items=32, file_cache_items=4,
                  video_cache_items=8, episode_cache_items=128,
                  source_identity="size_mtime", decode_tolerance_seconds=None,
-                 return_metadata=False, allowed_video_roots=()):
+                 return_metadata=False, allowed_video_roots=(), performance_diagnostics=False):
         self.index_dir = Path(index_dir).resolve()
         self.meta = json.loads((self.index_dir / "meta.json").read_text(encoding="utf-8"))
         if (self.meta.get("version") != "roban-umi-access-v1" or self.meta.get("horizon") != 16
@@ -157,6 +166,9 @@ class UMIIndexedDataset(Dataset):
         if not math.isfinite(self.decode_tolerance_seconds) or self.decode_tolerance_seconds <= 0:
             raise ValueError("decode_tolerance_seconds must be finite and positive")
         self.return_metadata = bool(return_metadata)
+        self.performance_diagnostics = bool(performance_diagnostics)
+        if self.performance_diagnostics and not self.return_metadata:
+            raise ValueError("performance_diagnostics requires return_metadata")
         self._pid = None
         self._db = self._rows = self._files = self._videos = self._episodes = self._tasks = None
         self._ranges = self._cumulative = None
@@ -190,6 +202,8 @@ class UMIIndexedDataset(Dataset):
         self._videos = _BoundedCache(self.video_cache_items, close=lambda item: item[0].close())
         self._episodes = _BoundedCache(self.episode_cache_items)
         self._tasks = _BoundedCache(1024)
+        for cache in (self._rows, self._files, self._videos, self._episodes, self._tasks):
+            cache.track = self.performance_diagnostics
         self._pid = os.getpid()
 
     def close(self):
@@ -382,7 +396,9 @@ class UMIIndexedDataset(Dataset):
 
     def __getitem__(self, index):
         try:
+            start = time.monotonic() if self.performance_diagnostics else None
             data = self.read_lowdim(index)
+            lowdim_end = time.monotonic() if self.performance_diagnostics else None
             cameras = {camera["camera"]: camera for camera in data["cameras"]}
             images, decoded = [], []
             for key in CAMERAS:
@@ -393,6 +409,13 @@ class UMIIndexedDataset(Dataset):
                       "action": data["action"], "robot_tag": "new_embodiment"}
             if self.return_metadata:
                 sample["umi_metadata"] = dict(data["trace"], video_decode=decoded, reader_pid=os.getpid())
+            if self.performance_diagnostics:
+                sample["umi_metadata"]["performance"] = dict(
+                    lowdim_seconds=lowdim_end-start, video_seconds=time.monotonic()-lowdim_end,
+                    caches={name: dict(hits=cache.hits, misses=cache.misses, evictions=cache.evictions,
+                                       bytes=cache.bytes, items=len(cache.items)) for name, cache in
+                            (("rows", self._rows), ("files", self._files), ("videos", self._videos),
+                             ("episodes", self._episodes), ("tasks", self._tasks))})
             return sample
         except Exception as error:
             raise RuntimeError(f"UMI read failed at dataset_index={index}: {error}") from error
@@ -494,7 +517,7 @@ def make_umi_dataloader(cfg):
     options = {key: data[key] for key in (
         "source_root", "allowed_video_roots", "image_size", "row_cache_mib", "row_cache_items", "file_cache_items",
         "video_cache_items", "episode_cache_items", "source_identity", "decode_tolerance_seconds",
-        "return_metadata") if key in data and data[key] is not None}
+        "return_metadata", "performance_diagnostics") if key in data and data[key] is not None}
     dataset = UMIIndexedDataset(data.index_dir, **options)
     dataset = apply_umi_normalization(dataset, data)
     sampler = UMIBlockShuffleSampler(len(dataset), block_size=int(data.get("shuffle_block_size", 4096)),

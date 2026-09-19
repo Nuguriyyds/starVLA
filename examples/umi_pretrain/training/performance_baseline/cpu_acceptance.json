@@ -1,0 +1,194 @@
+{
+  "status": "passed",
+  "world_size": 1,
+  "workers_per_rank": 2,
+  "gradient_accumulation": 2,
+  "updates": 12,
+  "restart_boundaries": [
+    3,
+    6,
+    9
+  ],
+  "model_optimizer_scheduler_rng_bitwise_equal": true,
+  "samples_match_global_sampler_exactly": true,
+  "rejection_checks": 5,
+  "processes": [
+    {
+      "command": [
+        "/mnt/workspace/Native_Policy/user/wyt/.venvs/qwenpi-ppu-py312/bin/python",
+        "-m",
+        "starVLA.training.train_umi_pretrain",
+        "--cpu",
+        "--plan",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/measured_plan.yaml",
+        "--output-dir",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/continuous"
+      ],
+      "exit_code": 0,
+      "log": "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/process_00_continuous.log"
+    },
+    {
+      "command": [
+        "/mnt/workspace/Native_Policy/user/wyt/.venvs/qwenpi-ppu-py312/bin/python",
+        "-m",
+        "starVLA.training.train_umi_pretrain",
+        "--cpu",
+        "--plan",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/measured_plan.yaml",
+        "--output-dir",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/resumed",
+        "--stop-after-update",
+        "3"
+      ],
+      "exit_code": 0,
+      "log": "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/process_01_resumed.log"
+    },
+    {
+      "command": [
+        "/mnt/workspace/Native_Policy/user/wyt/.venvs/qwenpi-ppu-py312/bin/python",
+        "-m",
+        "starVLA.training.train_umi_pretrain",
+        "--cpu",
+        "--plan",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/measured_plan.yaml",
+        "--output-dir",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/resumed",
+        "--stop-after-update",
+        "6",
+        "--resume",
+        "latest"
+      ],
+      "exit_code": 0,
+      "log": "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/process_02_resumed.log"
+    },
+    {
+      "command": [
+        "/mnt/workspace/Native_Policy/user/wyt/.venvs/qwenpi-ppu-py312/bin/python",
+        "-m",
+        "starVLA.training.train_umi_pretrain",
+        "--cpu",
+        "--plan",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/measured_plan.yaml",
+        "--output-dir",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/resumed",
+        "--stop-after-update",
+        "9",
+        "--resume",
+        "latest"
+      ],
+      "exit_code": 0,
+      "log": "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/process_03_resumed.log"
+    },
+    {
+      "command": [
+        "/mnt/workspace/Native_Policy/user/wyt/.venvs/qwenpi-ppu-py312/bin/python",
+        "-m",
+        "starVLA.training.train_umi_pretrain",
+        "--cpu",
+        "--plan",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/measured_plan.yaml",
+        "--output-dir",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/resumed",
+        "--resume",
+        "latest"
+      ],
+      "exit_code": 0,
+      "log": "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/process_04_resumed.log"
+    },
+    {
+      "command": [
+        "/mnt/workspace/Native_Policy/user/wyt/.venvs/qwenpi-ppu-py312/bin/python",
+        "-m",
+        "starVLA.training.train_umi_pretrain",
+        "--cpu",
+        "--plan",
+        "/mnt/workspace/Native_Policy/user/wyt/starVLA-umi-pretrain/examples/umi_pretrain/train_files/umi_training_tiny.yaml",
+        "--output-dir",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/instrumentation_disabled"
+      ],
+      "exit_code": 0,
+      "log": "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/process_05_instrumentation_disabled.log"
+    },
+    {
+      "command": [
+        "/mnt/workspace/Native_Policy/user/wyt/.venvs/qwenpi-ppu-py312/bin/python",
+        "-m",
+        "starVLA.training.train_umi_pretrain",
+        "--cpu",
+        "--plan",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/measured_plan.yaml",
+        "--output-dir",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/resumed",
+        "--resume",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/resumed/checkpoints/.update_00000099-partial-injected"
+      ],
+      "exit_code": 1,
+      "log": "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/process_06_resumed.log"
+    },
+    {
+      "command": [
+        "/mnt/workspace/Native_Policy/user/wyt/.venvs/qwenpi-ppu-py312/bin/python",
+        "-m",
+        "starVLA.training.train_umi_pretrain",
+        "--cpu",
+        "--plan",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/measured_plan.yaml",
+        "--output-dir",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/resumed",
+        "--resume",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/resumed/checkpoints/update_00000012/pytorch_model.bin"
+      ],
+      "exit_code": 1,
+      "log": "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/process_07_resumed.log"
+    },
+    {
+      "command": [
+        "/mnt/workspace/Native_Policy/user/wyt/.venvs/qwenpi-ppu-py312/bin/python",
+        "-m",
+        "starVLA.training.train_umi_pretrain",
+        "--cpu",
+        "--plan",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/changed_plan.yaml",
+        "--output-dir",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/resumed",
+        "--resume",
+        "latest"
+      ],
+      "exit_code": 1,
+      "log": "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/process_08_resumed.log"
+    },
+    {
+      "command": [
+        "/mnt/workspace/Native_Policy/user/wyt/.venvs/qwenpi-ppu-py312/bin/python",
+        "-m",
+        "starVLA.training.train_umi_pretrain",
+        "--cpu",
+        "--plan",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/changed_view.yaml",
+        "--output-dir",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/resumed",
+        "--resume",
+        "latest"
+      ],
+      "exit_code": 1,
+      "log": "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/process_09_resumed.log"
+    },
+    {
+      "command": [
+        "/mnt/workspace/Native_Policy/user/wyt/.venvs/qwenpi-ppu-py312/bin/python",
+        "-m",
+        "starVLA.training.train_umi_pretrain",
+        "--cpu",
+        "--plan",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/formal_engineering.yaml",
+        "--output-dir",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/resumed",
+        "--resume",
+        "latest"
+      ],
+      "exit_code": 1,
+      "log": "/mnt/workspace/Native_Policy/user/wyt/runs/umi_perf_cpu_regression_v1/process_10_resumed.log"
+    }
+  ],
+  "instrumentation_on_off_bitwise_equal": true
+}

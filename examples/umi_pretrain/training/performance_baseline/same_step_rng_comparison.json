@@ -1,0 +1,16 @@
+{
+  "step": 21,
+  "all_equal": true,
+  "fields": {
+    "python": true,
+    "numpy": true,
+    "torch_cpu": true,
+    "torch_cuda": true,
+    "loader_generator": true
+  },
+  "paths": [
+    "/mnt/workspace/Native_Policy/user/wyt/runs/umi_performance_v1/decoded_replay/checkpoints/update_00000021/strict_rng_0.pt",
+    "/mnt/workspace/Native_Policy/user/wyt/runs/umi_performance_v1/end_to_end/checkpoints/.update_00000021-partial-iy14bfys/strict_rng_0.pt"
+  ],
+  "note": "Does not prove device arithmetic determinism or identical model parameters."
+}

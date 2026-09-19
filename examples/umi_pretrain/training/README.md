@@ -138,3 +138,58 @@ CUDA_VISIBLE_DEVICES= OMP_NUM_THREADS=1 python \
 `tests/test_umi_training_state.py` 和 `tests/test_umi_checkpoint.py` 另覆盖尾部、
 无效状态、保存中途故障注入、latest不被半成品覆盖，以及统计哈希/卡数变更
 和等长文件损坏。旧 sampler/normalization factory 测试作为本轮改动的回归。
+
+## 可关闭的性能测量
+
+默认没有性能采集。在工程 plan 中设置 `performance.enabled: true` 才启用。
+`warmup_updates: 2`、`detail_updates: 2` 表示前两次更新用设备 events 分解
+forward/backward/clip/optimizer；后续只在连续测量区间边界同步设备。
+这些时间不属于训练恢复状态。性能开启/关闭不消耗模型或采样器 RNG。
+
+`max_training_seconds` 在完整更新边界触发正常暂停并保存完整 checkpoint；
+不是强制杀进程期限，预加载、单次更新、评测和安全保存仍可能超出它。
+修改 performance 配置也属于新 plan，请用新 run，勿修改旧 checkpoint 身份。
+
+三种测量共用以下参数（同一输出目录的配置必须一致）：
+
+```bash
+ROOT=/mnt/workspace/Native_Policy/user/wyt
+PLAN=examples/umi_pretrain/train_files/umi_training_qwenpi_engineering.yaml
+OUT=$ROOT/runs/umi_performance_new
+INDEX=$ROOT/data_preparation/roban_umi_access_v1
+
+python examples/umi_pretrain/tools/profile_umi_pipeline.py loader \
+  --plan "$PLAN" --output-dir "$OUT" --candidate-index "$INDEX"
+python examples/umi_pretrain/tools/profile_umi_pipeline.py training \
+  --plan "$PLAN" --output-dir "$OUT" --candidate-index "$INDEX"
+python examples/umi_pretrain/tools/profile_umi_pipeline.py report \
+  --plan "$PLAN" --output-dir "$OUT" --candidate-index "$INDEX"
+```
+
+先使用现有 PPU SDK 环境和私人 Python。loader 模式只读全量候选池，比较
+sampler 实际顺序与固定跨文件压力序列，各测 worker=0/2/4、prefetch=2。
+默认实际顺序256窗口、跨文件48窗口，每组稳定读取最多约180秒。记录实际
+交付前缀，未完成相同数量时不能忽视内容差异直接比较速度。
+
+training 模式只对已有工程视图更新参数，调用本训练入口，不另写优化循环。
+两组均 batch=1、累积=2，继承 FP32 参数/AdamW 和现有 VLM 内部 BF16 路径，
+默认2次预热+20次更新，最后一次跨入B阶段，结尾评测一次。阶段结束与最终
+结束各完整保存一次，保留 SHA/fsync/完成标记。另启动新进程加载已完成的
+端到端 run，单独记录恢复校验与加载成本，不继续更新。
+
+回放组提前解码各阶段 sampler 前64个样本（PIL/语言/归一化数值），仍使用
+原样本 ID、原 sampler、原视图长度；没有缓存 VLM 特征或冻结参数。
+缓存外访问直接报错，不替换样本。该模式仅支持工程单进程、worker=0，避免
+多 worker 复制缓存。端到端组 worker=2。报告核对两组样本流指纹；若时间
+预算导致更新数不同，需要匹配共同前缀另作比较。
+
+产物为 `performance_config.json`、`loader_benchmark.json`、
+`training_benchmark.json`、`PERFORMANCE.md`。训练 run 保留每进程独立性能
+报告，包含启动/阶段首批、等待/rank检查、设备/主机资源、评测、保存和恢复。
+RSS 为进程 RSS 相加可能重复计算共享页；设备总占用不限于 Torch 分配。
+host 小段可能与设备或 worker 重叠，不能相加冒充纯设备时间。稳定窗口曝光
+吞吐与包含启动/保存的进程吞吐分别报告，均不是独立数据小时数。
+
+重启 worker 不是冷存储测试，本工具不会清空共享 OS/存储缓存。
+`check_umi_training_resume.py --performance` 额外逐位比较开启/关闭计时的
+最终参数、Adam、scheduler 与 RNG，并保留原先的重启续训对照。

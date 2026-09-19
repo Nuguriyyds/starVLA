@@ -26,6 +26,7 @@ from starVLA.training.trainer_utils.umi_checkpoint import (
     UMICheckpoints, main_call, require_all, sha256_file, trim_uncommitted_log, write_json,
 )
 from starVLA.training.trainer_utils.umi_training_state import UMITrainingState, fingerprint, validate_plan
+from starVLA.training.trainer_utils.umi_performance import Performance
 from starVLA.training.trainer_utils.umi_training_data import (
     StageLoader, TinyModel, evaluate, inspect_views, make_loader,
 )
@@ -191,6 +192,8 @@ def run(args):
     if accelerator.num_processes != int(os.environ.get("WORLD_SIZE", "1")):
         raise ValueError("Distributed runtime does not match launcher WORLD_SIZE")
     run_dir = args.output_dir.resolve()
+    perf = Performance(plan.get("performance"), accelerator)
+    perf.timing_probe()
     lock = None
 
     def open_run():
@@ -211,8 +214,8 @@ def run(args):
     loader = None
     try:
         accelerator.print("Inspecting data identities and immutable training plan", flush=True)
-        records = main_call(accelerator, lambda: inspect_views(plan, run_dir))
-        identity = main_call(accelerator, lambda: build_identity(plan, records, accelerator))
+        records = perf.call("inspect_views", main_call, accelerator, lambda: inspect_views(plan, run_dir))
+        identity = perf.call("build_identity", main_call, accelerator, lambda: build_identity(plan, records, accelerator))
         if args.resume:
             def check_before_model():
                 saved = json.loads((run_dir / "run_identity.json").read_text())
@@ -227,8 +230,8 @@ def run(args):
         # restores rank RNG; no seed_start call is permitted after that point.
         seed_start(int(train.get("seed", 42)))
         accelerator.print("Building model/optimizer once for the whole plan", flush=True)
-        model = build_model(plan)
-        optimizer, groups = build_optimizer(model, train)
+        model = perf.call("build_model", build_model, plan)
+        optimizer, groups = perf.call("build_optimizer", build_optimizer, model, train)
         identity["parameter_policy"] = groups
         if hasattr(model, "config"):
             identity["resolved_model_config"] = remove_location_fields(OmegaConf.to_container(model.config, resolve=True))
@@ -266,26 +269,26 @@ def run(args):
 
         # Scheduler is NOT passed to prepare(): this loop is its single owner.
         scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, multiplier)
-        model, optimizer = accelerator.prepare(model, optimizer)
+        model, optimizer = perf.call("prepare_model_optimizer", accelerator.prepare, model, optimizer)
         accelerator.register_for_checkpointing(progress, scheduler)
-        checkpoints = UMICheckpoints(accelerator, run_dir, identity, progress)
-        resolved = checkpoints.resolve(args.resume) if args.resume else None
+        checkpoints = UMICheckpoints(accelerator, run_dir, identity, progress, performance=perf)
+        resolved = perf.call("resume_verify", checkpoints.resolve, args.resume) if args.resume else None
         if resolved:
             progress.load_state_dict(resolved["state"])
 
         def construct_loader():
             stage = plan["stages"][progress.stage_index]
-            raw = make_loader(plan, stage, run_dir)
+            raw = perf.call("loader_construct_or_replay_preload", make_loader, plan, stage, run_dir)
             expected = records[progress.stage_index]["view_fingerprint"]
             if raw.dataset.provenance()["view_fingerprint"] != expected:
                 raise ValueError("Stage view changed after preflight")
-            return StageLoader(accelerator, raw, progress.stage_index, train.get("seed", 42))
+            return StageLoader(accelerator, raw, progress.stage_index, train.get("seed", 42), performance=perf)
 
         if not progress.done:
             loader = construct_loader()
         if resolved:
             accelerator.print(f"Loading full checkpoint {resolved['path']}", flush=True)
-            checkpoints.load(resolved, loader.generator if loader else None)
+            perf.call("resume_load", checkpoints.load, resolved, loader.generator if loader else None)
         # A fresh run uses rank-specific model-noise streams after identical
         # parameter initialization and DDP broadcast.
         else:
@@ -313,45 +316,51 @@ def run(args):
                 stage_i = progress.stage_index
                 before = deepcopy(progress.current())
                 if loader is None or loader.stage_index != stage_i:
+                    perf.suspend()
                     if loader is not None:
-                        loader.close()
+                        perf.call("loader_close_stage", loader.close)
                     loader = construct_loader()
                 if loader.iterator is None or loader.epoch != before["epoch"]:
+                    perf.suspend()
                     iterator_error = None
                     try:
-                        loader.start(before["epoch"], before["cursor"])
+                        perf.call("loader_start_first_batch", loader.start, before["epoch"], before["cursor"])
                     except Exception as error:
                         iterator_error = str(error)
                     require_all(accelerator, iterator_error is None, f"Iterator initialization failed: {iterator_error}")
                 lr_used = [group["lr"] for group in optimizer.param_groups]
+                perf.begin_update()
                 loss_sum, data_wait, identities = 0., 0., []
                 for micro in range(train["gradient_accumulation_steps"]):
                     start = time.monotonic()
                     batch_error = None
                     try:
-                        batch = loader.next()
+                        batch = perf.call("local_batch_wait", loader.next)
                     except Exception as error:
                         batch_error = f"{type(error).__name__}: {error}"
-                    require_all(accelerator, batch_error is None, f"Data read failed on a rank: {batch_error}")
-                    require_all(accelerator, len(batch) == train["batch_size"], "Incomplete micro-batch")
                     data_wait += time.monotonic() - start
+                    with perf.span("batch_rank_checks"):
+                        require_all(accelerator, batch_error is None, f"Data read failed on a rank: {batch_error}")
+                        require_all(accelerator, len(batch) == train["batch_size"], "Incomplete micro-batch")
                     identities.append([{k: sample["umi_metadata"].get(k) for k in
                                         ("dataset_index", "episode_index", "frame_index", "view_fingerprint")}
                                        for sample in batch])
                     with accelerator.accumulate(model):
-                        loss = model(examples=batch)["action_loss"]
-                        require_all(accelerator, loss.ndim == 0 and bool(torch.isfinite(loss)),
-                                    "Nonfinite loss; no cursor/checkpoint commit")
-                        accelerator.backward(loss)
+                        with perf.span("forward_including_processor_transfer"):
+                            loss = model(examples=batch)["action_loss"]
+                        with perf.span("loss_rank_check"):
+                            require_all(accelerator, loss.ndim == 0 and bool(torch.isfinite(loss)),
+                                        "Nonfinite loss; no cursor/checkpoint commit")
+                        perf.call("backward", accelerator.backward, loss)
                         loss_sum += float(loss.detach())
                         expected_sync = micro == train["gradient_accumulation_steps"] - 1
                         if accelerator.sync_gradients != expected_sync:
                             raise RuntimeError("Unexpected accumulation boundary")
                         if accelerator.sync_gradients:
-                            grad_norm = accelerator.clip_grad_norm_(model.parameters(), train["max_grad_norm"])
+                            grad_norm = perf.call("clip_grad", accelerator.clip_grad_norm_, model.parameters(), train["max_grad_norm"])
                             require_all(accelerator, bool(torch.isfinite(grad_norm)),
                                         "Nonfinite gradients; no cursor/checkpoint commit")
-                            optimizer.step()
+                            perf.call("optimizer", optimizer.step)
                             require_all(accelerator, not accelerator.optimizer_step_was_skipped,
                                         "Optimizer update skipped; no scheduler/cursor commit")
                             scheduler.step()
@@ -360,6 +369,7 @@ def run(args):
                 # Committed global cursor, never the prefetched iterator cursor.
                 loader.sampler.set_start_index(progress.stages[stage_i]["cursor"])
                 step = progress.global_update_step
+                perf.end_update(step, global_batch)
                 loss_mean = torch.tensor(loss_sum / train["gradient_accumulation_steps"], device=accelerator.device)
                 if dist.is_initialized():
                     dist.all_reduce(loss_mean)
@@ -374,20 +384,22 @@ def run(args):
                     with trace_path.open("a") as stream:
                         stream.write(json.dumps(dict(event, rank=accelerator.process_index, samples=identities)) + "\n")
                 if train.get("eval_every", 0) and step % train["eval_every"] == 0:
+                    perf.suspend()
                     eval_error = None
                     try:
-                        event["evaluation"] = evaluate(accelerator, model, plan, run_dir)
+                        event["evaluation"] = perf.call("evaluation", evaluate, accelerator, model, plan, run_dir)
                     except Exception as error:
                         eval_error = str(error)
                     require_all(accelerator, eval_error is None, f"Evaluation failed: {eval_error}")
-                stop_flag = torch.tensor(int(stopping["requested"]), device=accelerator.device)
+                stop_flag = torch.tensor(int(stopping["requested"] or perf.expired()), device=accelerator.device)
                 if dist.is_initialized():
                     dist.all_reduce(stop_flag, op=dist.ReduceOp.MAX)
                 pause = bool(stop_flag.item()) or args.stop_after_update == step
                 changed_stage = progress.stage_index != stage_i
                 if pause or progress.done or changed_stage or step % train["save_every"] == 0:
+                    perf.suspend()
                     accelerator.print(f"Saving complete checkpoint at update {step}", flush=True)
-                    checkpoints.save(loader.generator)
+                    perf.call("checkpoint_total", checkpoints.save, loader.generator)
                 event["latest_complete_checkpoint"] = checkpoints.latest
                 if accelerator.is_main_process:
                     with (run_dir / "updates.jsonl").open("a") as stream:
@@ -405,6 +417,7 @@ def run(args):
                 signal.signal(sig, handler)
         accelerator.print(f"Training {'complete' if progress.done else 'paused'}: {run_dir}", flush=True)
     finally:
+        perf.finish(run_dir / f"performance_rank_{accelerator.process_index}_{os.getpid()}.json")
         if loader is not None:
             loader.close()
         if lock is not None:

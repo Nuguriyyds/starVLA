@@ -86,7 +86,26 @@ def make_loader(plan, stage, run_dir, *, evaluation=False, record=True):
                 shuffle=False if evaluation else plan["data"].get("shuffle", True))
     cfg = OmegaConf.create({"framework": plan["framework"], "datasets": {"vla_data": data},
                             "output_dir": str(output)})
-    return build_dataloader(cfg, dataset_py="umi_indexed")
+    loader = build_dataloader(cfg, dataset_py="umi_indexed")
+    performance = plan.get("performance", {})
+    if performance.get("enabled") and performance.get("decoded_replay") and not evaluation and record:
+        if plan["purpose"] != "engineering" or int(__import__("os").environ.get("WORLD_SIZE", "1")) != 1:
+            raise ValueError("Decoded replay is an engineering single-process benchmark only")
+        if workers := train.get("num_workers", 0):
+            raise ValueError("Replay must use num_workers=0; avoid copying decoded cache to workers")
+        from itertools import islice
+        from .umi_performance import DecodedReplayDataset
+        count = int(performance.get("replay_samples", 64))
+        if not 1 <= count <= 512:
+            raise ValueError("Bounded replay requires 1..512 samples")
+        # Iterate an independent iterator: the sampler does not advance committed
+        # state. Its private generator does not consume any model RNG.
+        indices = list(islice(iter(loader.sampler), count))
+        dataset = DecodedReplayDataset(loader.dataset, indices)
+        write_json(output / "replay_samples.json", dict(indices=indices, provenance=dataset.provenance()))
+        loader = DataLoader(dataset, batch_size=train["batch_size"], sampler=loader.sampler,
+                            collate_fn=list_collate, num_workers=0, drop_last=True, generator=loader.generator)
+    return loader
 
 
 def inspect_views(plan, run_dir):
@@ -124,7 +143,7 @@ def inspect_views(plan, run_dir):
 
 class StageLoader:
     """The model is wrapped once; only the active stage owns workers/caches."""
-    def __init__(self, accelerator, loader, stage_index, seed):
+    def __init__(self, accelerator, loader, stage_index, seed, performance=None):
         self.accelerator, self.raw = accelerator, loader
         self.sampler = loader.sampler
         self.generator = loader.generator
@@ -133,6 +152,7 @@ class StageLoader:
         self.iterator = None
         self.first = None
         self.epoch = None
+        self.performance = performance
 
     def start(self, epoch, cursor):
         self.stop_iterator()
@@ -143,8 +163,12 @@ class StageLoader:
         # advance an explicit generator relative to an uninterrupted process.
         with preserve_rng(self.generator):
             self.generator.manual_seed(self.seed + 1000003 * self.stage_index + epoch)
-            self.iterator = iter(self.prepared)
-            self.first = next(self.iterator)
+            if self.performance:
+                self.iterator = self.performance.call("iterator_create", iter, self.prepared)
+                self.first = self.performance.call("iterator_first_batch_workers_start", next, self.iterator)
+            else:
+                self.iterator = iter(self.prepared)
+                self.first = next(self.iterator)
         self.epoch = epoch
 
     def next(self):

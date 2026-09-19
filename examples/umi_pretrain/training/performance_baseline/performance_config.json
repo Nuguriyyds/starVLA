@@ -1,0 +1,242 @@
+{
+  "base_plan": {
+    "version": "umi-training-plan-v1",
+    "purpose": "engineering",
+    "model_kind": "qwenpi",
+    "framework": {
+      "name": "QwenPI",
+      "qwenvl": {
+        "base_vlm": "/mnt/workspace/Native_Policy/user/wyt/models/Qwen3-VL-2B-Instruct",
+        "attn_implementation": "sdpa"
+      },
+      "action_model": {
+        "action_dim": 16,
+        "state_dim": 16,
+        "action_horizon": 16,
+        "diffusion_model_cfg": {
+          "interleave_self_attention": true,
+          "use_canonical_forward": true
+        }
+      }
+    },
+    "data": {
+      "allowed_video_roots": [
+        "/mnt/nas/public/roban_umi/restricted_data/source/umi/videos"
+      ],
+      "normalization": "mean_std",
+      "normalization_statistics": "/mnt/workspace/Native_Policy/user/wyt/data_preparation/umi_normalization_engineering_v1/statistics.json",
+      "normalization_experiment_contract": null,
+      "source_identity": "size_mtime",
+      "image_size": [
+        224,
+        224
+      ],
+      "shuffle": true,
+      "shuffle_block_size": 128,
+      "row_cache_mib": 128
+    },
+    "training": {
+      "seed": 42,
+      "batch_size": 1,
+      "gradient_accumulation_steps": 2,
+      "num_workers": 2,
+      "prefetch_factor": 2,
+      "mixed_precision": "no",
+      "lr": 0.0001,
+      "vlm_lr": 1e-05,
+      "weight_decay": 0.01,
+      "max_grad_norm": 1.0,
+      "warmup_updates": 1,
+      "save_every": 4,
+      "eval_every": 2,
+      "trace_samples": true
+    },
+    "stages": [
+      {
+        "name": "A",
+        "index_dir": "/mnt/workspace/Native_Policy/user/wyt/data_preparation/umi_training_engineering_v1/stage_A",
+        "updates": 2
+      },
+      {
+        "name": "B",
+        "index_dir": "/mnt/workspace/Native_Policy/user/wyt/data_preparation/umi_training_engineering_v1/stage_B",
+        "updates": 2
+      }
+    ],
+    "evaluation": {
+      "name": "engineering_check",
+      "index_dir": "/mnt/workspace/Native_Policy/user/wyt/data_preparation/umi_normalization_engineering_v1/access",
+      "seed": 9876
+    }
+  },
+  "base_commit": "2b2a568acdd9f6b932e2159759b06cae97e50c03",
+  "options": {
+    "plan": "examples/umi_pretrain/train_files/umi_training_qwenpi_engineering.yaml",
+    "output_dir": "/mnt/workspace/Native_Policy/user/wyt/runs/umi_performance_v1",
+    "candidate_index": "/mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_access_v1",
+    "loader_samples": 256,
+    "stress_samples": 48,
+    "loader_seconds": 180,
+    "updates": 20,
+    "training_seconds": 1200
+  },
+  "resolved_training_plans": {
+    "decoded_replay": {
+      "version": "umi-training-plan-v1",
+      "purpose": "engineering",
+      "model_kind": "qwenpi",
+      "framework": {
+        "name": "QwenPI",
+        "qwenvl": {
+          "base_vlm": "/mnt/workspace/Native_Policy/user/wyt/models/Qwen3-VL-2B-Instruct",
+          "attn_implementation": "sdpa"
+        },
+        "action_model": {
+          "action_dim": 16,
+          "state_dim": 16,
+          "action_horizon": 16,
+          "diffusion_model_cfg": {
+            "interleave_self_attention": true,
+            "use_canonical_forward": true
+          }
+        }
+      },
+      "data": {
+        "allowed_video_roots": [
+          "/mnt/nas/public/roban_umi/restricted_data/source/umi/videos"
+        ],
+        "normalization": "mean_std",
+        "normalization_statistics": "/mnt/workspace/Native_Policy/user/wyt/data_preparation/umi_normalization_engineering_v1/statistics.json",
+        "normalization_experiment_contract": null,
+        "source_identity": "size_mtime",
+        "image_size": [
+          224,
+          224
+        ],
+        "shuffle": true,
+        "shuffle_block_size": 128,
+        "row_cache_mib": 128
+      },
+      "training": {
+        "seed": 42,
+        "batch_size": 1,
+        "gradient_accumulation_steps": 2,
+        "num_workers": 0,
+        "prefetch_factor": 2,
+        "mixed_precision": "no",
+        "lr": 0.0001,
+        "vlm_lr": 1e-05,
+        "weight_decay": 0.01,
+        "max_grad_norm": 1.0,
+        "warmup_updates": 1,
+        "save_every": 10000,
+        "eval_every": 22,
+        "trace_samples": true
+      },
+      "stages": [
+        {
+          "name": "A",
+          "index_dir": "/mnt/workspace/Native_Policy/user/wyt/data_preparation/umi_training_engineering_v1/stage_A",
+          "updates": 21
+        },
+        {
+          "name": "B",
+          "index_dir": "/mnt/workspace/Native_Policy/user/wyt/data_preparation/umi_training_engineering_v1/stage_B",
+          "updates": 1
+        }
+      ],
+      "evaluation": {
+        "name": "engineering_check",
+        "index_dir": "/mnt/workspace/Native_Policy/user/wyt/data_preparation/umi_normalization_engineering_v1/access",
+        "seed": 9876
+      },
+      "performance": {
+        "enabled": true,
+        "warmup_updates": 2,
+        "detail_updates": 2,
+        "max_training_seconds": 1200,
+        "decoded_replay": true,
+        "replay_samples": 64
+      }
+    },
+    "end_to_end": {
+      "version": "umi-training-plan-v1",
+      "purpose": "engineering",
+      "model_kind": "qwenpi",
+      "framework": {
+        "name": "QwenPI",
+        "qwenvl": {
+          "base_vlm": "/mnt/workspace/Native_Policy/user/wyt/models/Qwen3-VL-2B-Instruct",
+          "attn_implementation": "sdpa"
+        },
+        "action_model": {
+          "action_dim": 16,
+          "state_dim": 16,
+          "action_horizon": 16,
+          "diffusion_model_cfg": {
+            "interleave_self_attention": true,
+            "use_canonical_forward": true
+          }
+        }
+      },
+      "data": {
+        "allowed_video_roots": [
+          "/mnt/nas/public/roban_umi/restricted_data/source/umi/videos"
+        ],
+        "normalization": "mean_std",
+        "normalization_statistics": "/mnt/workspace/Native_Policy/user/wyt/data_preparation/umi_normalization_engineering_v1/statistics.json",
+        "normalization_experiment_contract": null,
+        "source_identity": "size_mtime",
+        "image_size": [
+          224,
+          224
+        ],
+        "shuffle": true,
+        "shuffle_block_size": 128,
+        "row_cache_mib": 128
+      },
+      "training": {
+        "seed": 42,
+        "batch_size": 1,
+        "gradient_accumulation_steps": 2,
+        "num_workers": 2,
+        "prefetch_factor": 2,
+        "mixed_precision": "no",
+        "lr": 0.0001,
+        "vlm_lr": 1e-05,
+        "weight_decay": 0.01,
+        "max_grad_norm": 1.0,
+        "warmup_updates": 1,
+        "save_every": 10000,
+        "eval_every": 22,
+        "trace_samples": true
+      },
+      "stages": [
+        {
+          "name": "A",
+          "index_dir": "/mnt/workspace/Native_Policy/user/wyt/data_preparation/umi_training_engineering_v1/stage_A",
+          "updates": 21
+        },
+        {
+          "name": "B",
+          "index_dir": "/mnt/workspace/Native_Policy/user/wyt/data_preparation/umi_training_engineering_v1/stage_B",
+          "updates": 1
+        }
+      ],
+      "evaluation": {
+        "name": "engineering_check",
+        "index_dir": "/mnt/workspace/Native_Policy/user/wyt/data_preparation/umi_normalization_engineering_v1/access",
+        "seed": 9876
+      },
+      "performance": {
+        "enabled": true,
+        "warmup_updates": 2,
+        "detail_updates": 2,
+        "max_training_seconds": 1200,
+        "decoded_replay": false,
+        "replay_samples": 64
+      }
+    }
+  },
+  "tested_starvla_source_sha256": "467c68a65183fb295ac9b26db9d845b5f60bde70fa7a07e9d4ae514b909f6d81"
+}
