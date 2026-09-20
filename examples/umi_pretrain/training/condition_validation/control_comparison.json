@@ -1,0 +1,8 @@
+{
+  "reference_updates": 200,
+  "candidate_updates": 50,
+  "same_samples": true,
+  "same_learning_rates": true,
+  "initial_parameter_probes_equal": true,
+  "numerical_bitwise_reproduction": false
+}

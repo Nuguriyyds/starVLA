@@ -1,5 +1,7 @@
 # 动作解码器退化诊断与单变量 LayerNorm 试验
 
+后续对照见 [CONDITION_NORM_STATUS.md](CONDITION_NORM_STATUS.md)：条件 K/V 输入归一化已测，入口尺度恢复，但 50 步仍未学会有效去噪，按约定暂停。
+
 2026-09-20。基于 `fa8ee31`；最小实现和本次归一化试跑代码为 `b45ea930a32d82c3d5a29a76b4f059c9dae742e4`。
 
 **旧终态的 bias-only 退化已得到直接证据。LayerNorm 候选完成 200 次更新，避免了所测全零激活，但小数据可学习性仍未通过。**

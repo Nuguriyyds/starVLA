@@ -1,5 +1,7 @@
 # UMI 分阶段训练与完整续训
 
+后续对照见 [CONDITION_NORM_STATUS.md](CONDITION_NORM_STATUS.md)：条件 K/V 输入归一化已测，入口尺度恢复，但 50 步仍未学会有效去噪，按约定暂停。
+
 最新动作模型诊断见 [DECODER_STATUS.md](DECODER_STATUS.md)：旧终态 bias-only 已确认；单独增加解码器输入 LayerNorm 后完成 200 步，但动作误差仍未达到基线。
 
 入口：`python -m starVLA.training.train_umi_pretrain`。

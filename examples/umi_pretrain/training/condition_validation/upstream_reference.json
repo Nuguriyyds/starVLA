@@ -1,0 +1,9 @@
+{
+  "checked_at": "2026-09-20",
+  "issue": "https://github.com/starVLA/starVLA/issues/356",
+  "maintainer_comment": "https://github.com/starVLA/starVLA/issues/356#issuecomment-4599479900",
+  "finding": "Maintainer confirms missing normalization and plans to switch the tutorial to QwenPI_v3.",
+  "local_baseline": "d0ce5bc7e181647c7386256d9ece4f05dc044b83",
+  "local_v3": "Per-layer LayerNorm + Linear only when hidden dimensions differ; otherwise Identity. v3 also embeds discretized state in text.",
+  "candidate": "Only non-affine tokenwise normalization of external K/V input; preserve continuous state and decoder input LayerNorm."
+}

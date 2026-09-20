@@ -1,0 +1,17 @@
+{
+  "reference_run": "/mnt/workspace/Native_Policy/user/wyt/runs/qwenpi_decoder_layernorm_v1",
+  "only_changed_configuration": "framework.action_model.diffusion_model_cfg.cross_condition_norm",
+  "fresh_initialization": true,
+  "scheduled_updates": 200,
+  "screen_at_update": 50,
+  "script_sha256": "b0471088a996c91325a4899ae52cd7f981b9b6209436d75bb622f8c916809afb",
+  "screen_thresholds": {
+    "noise_directional_gain": 0.05,
+    "noise_cosine": 0.1,
+    "fixed_fm_relative_to_initial": 0.8,
+    "generated_mse_relative_to_initial": 0.8,
+    "endpoint_mse_relative_to_bias": 0.9,
+    "state_delta_rms": 1e-05,
+    "state_repeat_multiplier": 10
+  }
+}

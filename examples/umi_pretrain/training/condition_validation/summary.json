@@ -1,0 +1,52 @@
+{
+  "status": "paused_at_screen",
+  "actual_updates": 50,
+  "scheduled_updates": 200,
+  "checks": {
+    "fixed_fm_decreased": true,
+    "generated_mse_decreased": true,
+    "position_beats_hold": false,
+    "gripper_beats_hold": false,
+    "rotation_beats_hold": false
+  },
+  "criteria_met": false,
+  "first": {
+    "step": 0,
+    "fixed_fm_loss": 1.7718080170452595,
+    "normalized_action_mse": 1.7749806745137964,
+    "prediction": {
+      "position_rmse": 0.1563876656404582,
+      "gripper_rmse": 0.01725153605271763,
+      "rotation_mean_degrees": 37.65854286187466,
+      "invalid_quaternions": 0
+    },
+    "hold_current": {
+      "position_rmse": 0.01916065833127158,
+      "gripper_rmse": 0.008730391464125709,
+      "rotation_mean_degrees": 6.314627289109136,
+      "invalid_quaternions": 0
+    },
+    "evaluation_windows": 32,
+    "training_windows_overlap": true
+  },
+  "last": {
+    "step": 50,
+    "fixed_fm_loss": 1.622395783662796,
+    "normalized_action_mse": 1.6309318427699355,
+    "prediction": {
+      "position_rmse": 0.1311575611748511,
+      "gripper_rmse": 0.016852227917738594,
+      "rotation_mean_degrees": 37.32726258196483,
+      "invalid_quaternions": 0
+    },
+    "hold_current": {
+      "position_rmse": 0.01916065833127158,
+      "gripper_rmse": 0.008730391464125709,
+      "rotation_mean_degrees": 6.314627289109136,
+      "invalid_quaternions": 0
+    },
+    "evaluation_windows": 32,
+    "training_windows_overlap": true
+  },
+  "scope": "32 overlapping training/evaluation windows; no generalization claim"
+}

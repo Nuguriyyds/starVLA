@@ -1,0 +1,51 @@
+{
+  "continue_to_200": false,
+  "checks": {
+    "noise_directional_gain": false,
+    "noise_cosine": true,
+    "fixed_fm_decreased": false,
+    "generation_improved": false,
+    "endpoint_beats_bias": false,
+    "state_above_repeat": false
+  },
+  "noise_reference": [
+    {
+      "cosine": 0.7129788398742676,
+      "rms_gain": 0.0018876356072903804,
+      "directional_gain": 0.001345844124443829,
+      "relative_error": 0.9986550404146443
+    },
+    {
+      "cosine": 0.7259056568145752,
+      "rms_gain": 0.0019239931016206354,
+      "directional_gain": 0.0013966374099254608,
+      "relative_error": 0.9986043011289851
+    },
+    {
+      "cosine": 0.7160935401916504,
+      "rms_gain": 0.0017979060973500095,
+      "directional_gain": 0.0012874689418822527,
+      "relative_error": 0.9987134032491225
+    }
+  ],
+  "evaluation": {
+    "step": 50,
+    "fixed_fm_loss": 1.622395783662796,
+    "normalized_action_mse": 1.6309318427699355,
+    "prediction": {
+      "position_rmse": 0.1311575611748511,
+      "gripper_rmse": 0.016852227917738594,
+      "rotation_mean_degrees": 37.32726258196483,
+      "invalid_quaternions": 0
+    },
+    "hold_current": {
+      "position_rmse": 0.01916065833127158,
+      "gripper_rmse": 0.008730391464125709,
+      "rotation_mean_degrees": 6.314627289109136,
+      "invalid_quaternions": 0
+    },
+    "evaluation_windows": 32,
+    "training_windows_overlap": true
+  },
+  "scope": "engineering continuation screen, not final acceptance"
+}

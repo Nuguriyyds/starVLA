@@ -61,7 +61,7 @@ def main():
         # Keep precise gradients and residual statistics without the 1024-channel lists.
         for fm in decoder['fm'].values():
             for activation in fm['activations']:
-                activation.pop('per_channel_positive_fraction',None)
+                activation['preactivation'].pop('per_channel_positive_fraction',None)
         write_json(root/f'decoder_{step:06d}.json',decoder)
         return report
 

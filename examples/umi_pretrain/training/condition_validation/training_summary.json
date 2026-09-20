@@ -1,0 +1,38 @@
+{
+  "completed_updates": 50,
+  "status": "paused",
+  "all_losses_and_global_gradient_norms_finite": true,
+  "peak_allocated_memory_gib": 62.20164728164673,
+  "checkpoint_sections": [
+    {
+      "name": "checkpoint_total",
+      "host_seconds": 94.17660517001059
+    }
+  ],
+  "code": {
+    "commit": "a0281ea7b8c4d8fbf32dc0fd4f5f84aae58bf436",
+    "source_sha256": "8c75e0332373a11dfa70c66c147fe735b0c26335f47252aeb52172e2a7f9972a"
+  },
+  "runtime": {
+    "world_size": 1,
+    "backend": "DistributedType.NO",
+    "collective_backend": null,
+    "device_type": "cuda",
+    "device_name": "PPU-ZW810E",
+    "batch_size": 1,
+    "accumulation": 2,
+    "precision": "no",
+    "versions": {
+      "torch": "2.7.0",
+      "accelerate": "1.12.0",
+      "numpy": "1.26.4",
+      "transformers": "4.57.1",
+      "diffusers": "0.37.1",
+      "peft": "0.17.1",
+      "pyarrow": "23.0.1",
+      "av": "17.0.0"
+    }
+  },
+  "run_directory": "/mnt/workspace/Native_Policy/user/wyt/runs/qwenpi_condition_layernorm_v1",
+  "process_exit_code": 0
+}

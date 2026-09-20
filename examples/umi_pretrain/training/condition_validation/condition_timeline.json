@@ -1,0 +1,1998 @@
+[
+  {
+    "step": 0,
+    "samples": [
+      {
+        "window_index": 0,
+        "features_cached": true,
+        "parameter_updates": false,
+        "actual_sampling_path": true,
+        "times": [
+          0.0
+        ],
+        "rows": [
+          {
+            "policy": "normal",
+            "time": 0.0,
+            "statistics": {
+              "block_2/condition_raw": {
+                "status": "nonzero",
+                "shape": [
+                  282,
+                  2048
+                ],
+                "rms": 23.094440460205078,
+                "mean": 0.0777352899312973,
+                "std": 23.09430694580078,
+                "minimum": -191.37384033203125,
+                "maximum": 14758.748046875,
+                "max_abs": 14758.748046875,
+                "nonzero_fraction": 0.9999791979789734,
+                "token_centered_std_mean": 3.3899424076080322,
+                "valid_tokens": 282
+              },
+              "block_1/input": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 0.3145141899585724,
+                "mean": 0.006609759759157896,
+                "std": 0.3144446909427643,
+                "minimum": -1.3359569311141968,
+                "maximum": 1.0954487323760986,
+                "max_abs": 1.3359569311141968,
+                "nonzero_fraction": 1.0
+              },
+              "block_1/attention_residual": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 0.3282780349254608,
+                "mean": 0.0005526628810912371,
+                "std": 0.3282775580883026,
+                "minimum": -1.0278849601745605,
+                "maximum": 1.0926846265792847,
+                "max_abs": 1.0926846265792847,
+                "nonzero_fraction": 1.0
+              },
+              "block_1/after_attention": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 0.45531392097473145,
+                "mean": 0.00716242054477334,
+                "std": 0.4552575945854187,
+                "minimum": -1.635303258895874,
+                "maximum": 1.9430222511291504,
+                "max_abs": 1.9430222511291504,
+                "nonzero_fraction": 1.0
+              },
+              "block_1/ffn_residual": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 0.19947652518749237,
+                "mean": -0.005071368999779224,
+                "std": 0.1994120329618454,
+                "minimum": -0.7119554877281189,
+                "maximum": 0.8006478548049927,
+                "max_abs": 0.8006478548049927,
+                "nonzero_fraction": 1.0
+              },
+              "block_1/output": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 0.49710264801979065,
+                "mean": 0.0020910538733005524,
+                "std": 0.49709826707839966,
+                "minimum": -1.9539544582366943,
+                "maximum": 1.8472429513931274,
+                "max_abs": 1.9539544582366943,
+                "nonzero_fraction": 1.0
+              },
+              "block_2/input": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 0.49710264801979065,
+                "mean": 0.0020910538733005524,
+                "std": 0.49709826707839966,
+                "minimum": -1.9539544582366943,
+                "maximum": 1.8472429513931274,
+                "max_abs": 1.9539544582366943,
+                "nonzero_fraction": 1.0
+              },
+              "block_2/condition_actual": {
+                "status": "nonzero",
+                "shape": [
+                  282,
+                  2048
+                ],
+                "rms": 0.999997615814209,
+                "mean": 5.350150877880822e-10,
+                "std": 0.9999976754188538,
+                "minimum": -20.608882904052734,
+                "maximum": 38.20497131347656,
+                "max_abs": 38.20497131347656,
+                "nonzero_fraction": 0.9999999403953552,
+                "token_centered_std_mean": 0.999997615814209,
+                "valid_tokens": 282
+              },
+              "block_2/to_k": {
+                "status": "nonzero",
+                "shape": [
+                  282,
+                  2048
+                ],
+                "rms": 0.5767843127250671,
+                "mean": 0.021380553022027016,
+                "std": 0.576387882232666,
+                "minimum": -2.457874059677124,
+                "maximum": 2.5672638416290283,
+                "max_abs": 2.5672638416290283,
+                "nonzero_fraction": 0.9999999403953552,
+                "token_centered_std_mean": 0.5763046145439148,
+                "valid_tokens": 282
+              },
+              "block_2/to_v": {
+                "status": "nonzero",
+                "shape": [
+                  282,
+                  2048
+                ],
+                "rms": 0.5870811939239502,
+                "mean": 0.00932210311293602,
+                "std": 0.5870071649551392,
+                "minimum": -2.433255672454834,
+                "maximum": 2.5819010734558105,
+                "max_abs": 2.5819010734558105,
+                "nonzero_fraction": 0.9999999403953552,
+                "token_centered_std_mean": 0.5868831872940063,
+                "valid_tokens": 282
+              },
+              "block_2/attention_residual": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 0.26863691210746765,
+                "mean": 0.0010537481866776943,
+                "std": 0.2686348259449005,
+                "minimum": -1.1719988584518433,
+                "maximum": 0.8704714775085449,
+                "max_abs": 1.1719988584518433,
+                "nonzero_fraction": 1.0
+              },
+              "block_2/after_attention": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 0.5676376819610596,
+                "mean": 0.0031448029913008213,
+                "std": 0.5676289200782776,
+                "minimum": -2.3623733520507812,
+                "maximum": 1.8981289863586426,
+                "max_abs": 2.3623733520507812,
+                "nonzero_fraction": 1.0
+              },
+              "block_2/ffn_residual": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 0.19487948715686798,
+                "mean": 0.005418137647211552,
+                "std": 0.19480416178703308,
+                "minimum": -0.63847815990448,
+                "maximum": 0.739682674407959,
+                "max_abs": 0.739682674407959,
+                "nonzero_fraction": 1.0
+              },
+              "block_2/output": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 0.6005181074142456,
+                "mean": 0.008562940172851086,
+                "std": 0.6004570722579956,
+                "minimum": -2.5995326042175293,
+                "maximum": 2.0136027336120605,
+                "max_abs": 2.5995326042175293,
+                "nonzero_fraction": 1.0
+              },
+              "block_3/input": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 0.6005181074142456,
+                "mean": 0.008562940172851086,
+                "std": 0.6004570722579956,
+                "minimum": -2.5995326042175293,
+                "maximum": 2.0136027336120605,
+                "max_abs": 2.5995326042175293,
+                "nonzero_fraction": 1.0
+              },
+              "block_3/attention_residual": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 0.3230780363082886,
+                "mean": -0.009936992079019547,
+                "std": 0.3229251801967621,
+                "minimum": -1.2055249214172363,
+                "maximum": 0.9900920391082764,
+                "max_abs": 1.2055249214172363,
+                "nonzero_fraction": 1.0
+              },
+              "block_3/after_attention": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 0.6873432993888855,
+                "mean": -0.0013740519061684608,
+                "std": 0.6873418688774109,
+                "minimum": -3.7492167949676514,
+                "maximum": 2.7122225761413574,
+                "max_abs": 3.7492167949676514,
+                "nonzero_fraction": 1.0
+              },
+              "block_3/ffn_residual": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 0.19892819225788116,
+                "mean": 0.0013415580615401268,
+                "std": 0.19892366230487823,
+                "minimum": -0.8544597029685974,
+                "maximum": 0.6925279498100281,
+                "max_abs": 0.8544597029685974,
+                "nonzero_fraction": 1.0
+              },
+              "block_3/output": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 0.7104007005691528,
+                "mean": -3.2495008781552315e-05,
+                "std": 0.7104007005691528,
+                "minimum": -3.815401315689087,
+                "maximum": 2.3877615928649902,
+                "max_abs": 3.815401315689087,
+                "nonzero_fraction": 1.0
+              },
+              "block_27/input": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 1.7836852073669434,
+                "mean": -0.05519462376832962,
+                "std": 1.782831072807312,
+                "minimum": -6.530575275421143,
+                "maximum": 6.374840259552002,
+                "max_abs": 6.530575275421143,
+                "nonzero_fraction": 1.0
+              },
+              "block_27/attention_residual": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 0.31881240010261536,
+                "mean": -0.006046573165804148,
+                "std": 0.31875506043434143,
+                "minimum": -0.9375191330909729,
+                "maximum": 1.1984323263168335,
+                "max_abs": 1.1984323263168335,
+                "nonzero_fraction": 1.0
+              },
+              "block_27/after_attention": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 1.8007540702819824,
+                "mean": -0.06124119833111763,
+                "std": 1.7997124195098877,
+                "minimum": -6.934442520141602,
+                "maximum": 6.362139701843262,
+                "max_abs": 6.934442520141602,
+                "nonzero_fraction": 1.0
+              },
+              "block_27/ffn_residual": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 0.20215651392936707,
+                "mean": -0.007358110044151545,
+                "std": 0.20202253758907318,
+                "minimum": -0.8280640840530396,
+                "maximum": 0.6561024188995361,
+                "max_abs": 0.8280640840530396,
+                "nonzero_fraction": 1.0
+              },
+              "block_27/output": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 1.8164565563201904,
+                "mean": -0.06859931349754333,
+                "std": 1.815160870552063,
+                "minimum": -7.120376110076904,
+                "maximum": 6.129540920257568,
+                "max_abs": 7.120376110076904,
+                "nonzero_fraction": 1.0
+              },
+              "block_3/injection_ratio": 0.5379988252125876,
+              "block_1/injection_ratio": 1.043762238414927,
+              "block_2/injection_ratio": 0.5404053130214512,
+              "block_27/injection_ratio": 0.17873804121135478,
+              "velocity": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  16
+                ],
+                "rms": 0.17263226211071014,
+                "mean": 0.061980608850717545,
+                "std": 0.16112199425697327,
+                "minimum": -0.2676337957382202,
+                "maximum": 0.404352068901062,
+                "max_abs": 0.404352068901062,
+                "nonzero_fraction": 1.0
+              }
+            },
+            "repeat_velocity": {
+              "rms": 0.0,
+              "max_abs": 0.0,
+              "relative_rms": 0.0
+            },
+            "interventions": {
+              "noisy_action": {
+                "block_1/input": {
+                  "rms": 0.13136301934719086,
+                  "max_abs": 0.6588826179504395,
+                  "relative_rms": 0.4176696504904972
+                },
+                "block_1/attention_residual": {
+                  "rms": 0.01338098756968975,
+                  "max_abs": 0.04794218763709068,
+                  "relative_rms": 0.04076114191644681
+                },
+                "block_1/after_attention": {
+                  "rms": 0.13212962448596954,
+                  "max_abs": 0.6507813334465027,
+                  "relative_rms": 0.2901945443582007
+                },
+                "block_1/ffn_residual": {
+                  "rms": 0.05943799018859863,
+                  "max_abs": 0.2698041498661041,
+                  "relative_rms": 0.2979698494969951
+                },
+                "block_1/output": {
+                  "rms": 0.14492321014404297,
+                  "max_abs": 0.7072791457176208,
+                  "relative_rms": 0.2915357663706086
+                },
+                "block_2/input": {
+                  "rms": 0.14492321014404297,
+                  "max_abs": 0.7072791457176208,
+                  "relative_rms": 0.2915357663706086
+                },
+                "block_2/attention_residual": {
+                  "rms": 0.0020794151350855827,
+                  "max_abs": 0.010660231113433838,
+                  "relative_rms": 0.007740615832592568
+                },
+                "block_2/after_attention": {
+                  "rms": 0.1449267864227295,
+                  "max_abs": 0.7026599645614624,
+                  "relative_rms": 0.2553156547355788
+                },
+                "block_2/ffn_residual": {
+                  "rms": 0.05184745788574219,
+                  "max_abs": 0.2781641483306885,
+                  "relative_rms": 0.26604882146339803
+                },
+                "block_2/output": {
+                  "rms": 0.1542830914258957,
+                  "max_abs": 0.7643579244613647,
+                  "relative_rms": 0.2569166605206768
+                },
+                "block_3/input": {
+                  "rms": 0.1542830914258957,
+                  "max_abs": 0.7643579244613647,
+                  "relative_rms": 0.2569166605206768
+                },
+                "block_3/attention_residual": {
+                  "rms": 0.011888238601386547,
+                  "max_abs": 0.04874187707901001,
+                  "relative_rms": 0.03679680221284284
+                },
+                "block_3/after_attention": {
+                  "rms": 0.15475821495056152,
+                  "max_abs": 0.7327683568000793,
+                  "relative_rms": 0.225154177087245
+                },
+                "block_3/ffn_residual": {
+                  "rms": 0.046023305505514145,
+                  "max_abs": 0.2271406054496765,
+                  "relative_rms": 0.2313563752975764
+                },
+                "block_3/output": {
+                  "rms": 0.16154369711875916,
+                  "max_abs": 0.7893798351287842,
+                  "relative_rms": 0.22739799804407224
+                },
+                "block_27/input": {
+                  "rms": 0.22852157056331635,
+                  "max_abs": 1.1766412258148193,
+                  "relative_rms": 0.1281176575436925
+                },
+                "block_27/attention_residual": {
+                  "rms": 0.010018845088779926,
+                  "max_abs": 0.03413352370262146,
+                  "relative_rms": 0.031425518849090436
+                },
+                "block_27/after_attention": {
+                  "rms": 0.22866684198379517,
+                  "max_abs": 1.1840146780014038,
+                  "relative_rms": 0.12698393731680468
+                },
+                "block_27/ffn_residual": {
+                  "rms": 0.026167962700128555,
+                  "max_abs": 0.14734482765197754,
+                  "relative_rms": 0.12944407375931563
+                },
+                "block_27/output": {
+                  "rms": 0.2305295318365097,
+                  "max_abs": 1.1600732803344727,
+                  "relative_rms": 0.12691166823355993
+                },
+                "velocity": {
+                  "rms": 0.028804585337638855,
+                  "max_abs": 0.08797630667686462,
+                  "relative_rms": 0.1668551693946954
+                },
+                "noise_endpoint_reference": {
+                  "cosine": -0.04710429161787033,
+                  "rms_gain": 0.02107679414808686,
+                  "directional_gain": -0.0009928076760843396,
+                  "relative_error": 1.0012142056831281
+                }
+              },
+              "state_0": {
+                "block_1/input": {
+                  "rms": 0.0,
+                  "max_abs": 0.0,
+                  "relative_rms": 0.0
+                },
+                "block_1/attention_residual": {
+                  "rms": 0.0007405159412883222,
+                  "max_abs": 0.0027172863483428955,
+                  "relative_rms": 0.0022557584197011806
+                },
+                "block_1/after_attention": {
+                  "rms": 0.0007405159994959831,
+                  "max_abs": 0.002717256546020508,
+                  "relative_rms": 0.0016263854824359492
+                },
+                "block_1/ffn_residual": {
+                  "rms": 0.00033791002351790667,
+                  "max_abs": 0.0011702030897140503,
+                  "relative_rms": 0.0016939839071219212
+                },
+                "block_1/output": {
+                  "rms": 0.0008051994955167174,
+                  "max_abs": 0.0032349824905395508,
+                  "relative_rms": 0.001619785069440395
+                },
+                "block_2/input": {
+                  "rms": 0.0008051994955167174,
+                  "max_abs": 0.0032349824905395508,
+                  "relative_rms": 0.001619785069440395
+                },
+                "block_2/attention_residual": {
+                  "rms": 1.1674668712657876e-05,
+                  "max_abs": 4.661083221435547e-05,
+                  "relative_rms": 4.34589149384802e-05
+                },
+                "block_2/after_attention": {
+                  "rms": 0.0008053619530983269,
+                  "max_abs": 0.0032404065132141113,
+                  "relative_rms": 0.0014187957894454173
+                },
+                "block_2/ffn_residual": {
+                  "rms": 0.00028989987913519144,
+                  "max_abs": 0.0009730719029903412,
+                  "relative_rms": 0.001487585396303662
+                },
+                "block_2/output": {
+                  "rms": 0.000844502414111048,
+                  "max_abs": 0.00325581431388855,
+                  "relative_rms": 0.001406289814585886
+                },
+                "block_3/input": {
+                  "rms": 0.000844502414111048,
+                  "max_abs": 0.00325581431388855,
+                  "relative_rms": 0.001406289814585886
+                },
+                "block_3/attention_residual": {
+                  "rms": 0.0006863212329335511,
+                  "max_abs": 0.0022246241569519043,
+                  "relative_rms": 0.0021243203059353845
+                },
+                "block_3/after_attention": {
+                  "rms": 0.0010859197936952114,
+                  "max_abs": 0.004359900951385498,
+                  "relative_rms": 0.0015798797990161815
+                },
+                "block_3/ffn_residual": {
+                  "rms": 0.0003214397875126451,
+                  "max_abs": 0.001206427812576294,
+                  "relative_rms": 0.0016158583851922296
+                },
+                "block_3/output": {
+                  "rms": 0.0011348649859428406,
+                  "max_abs": 0.0047668516635894775,
+                  "relative_rms": 0.0015974998124748774
+                },
+                "block_27/input": {
+                  "rms": 0.002672918140888214,
+                  "max_abs": 0.010062307119369507,
+                  "relative_rms": 0.0014985369222366585
+                },
+                "block_27/attention_residual": {
+                  "rms": 0.0005445356946438551,
+                  "max_abs": 0.0021474510431289673,
+                  "relative_rms": 0.0017080129081142351
+                },
+                "block_27/after_attention": {
+                  "rms": 0.0027218370232731104,
+                  "max_abs": 0.010006368160247803,
+                  "relative_rms": 0.0015114984706631166
+                },
+                "block_27/ffn_residual": {
+                  "rms": 0.0003067877551075071,
+                  "max_abs": 0.0011167451739311218,
+                  "relative_rms": 0.0015175754129455375
+                },
+                "block_27/output": {
+                  "rms": 0.002727109706029296,
+                  "max_abs": 0.009705722332000732,
+                  "relative_rms": 0.0015013349460734813
+                },
+                "velocity": {
+                  "rms": 0.00031329182093031704,
+                  "max_abs": 0.0007838904857635498,
+                  "relative_rms": 0.0018147930004392009
+                }
+              },
+              "state_8": {
+                "block_1/input": {
+                  "rms": 0.0,
+                  "max_abs": 0.0,
+                  "relative_rms": 0.0
+                },
+                "block_1/attention_residual": {
+                  "rms": 0.0007630728068761528,
+                  "max_abs": 0.002829313278198242,
+                  "relative_rms": 0.002324471105863335
+                },
+                "block_1/after_attention": {
+                  "rms": 0.0007630729232914746,
+                  "max_abs": 0.002829313278198242,
+                  "relative_rms": 0.0016759269554282562
+                },
+                "block_1/ffn_residual": {
+                  "rms": 0.0003397371037863195,
+                  "max_abs": 0.0013210773468017578,
+                  "relative_rms": 0.0017031432819741069
+                },
+                "block_1/output": {
+                  "rms": 0.0008399229845963418,
+                  "max_abs": 0.0028229951858520508,
+                  "relative_rms": 0.0016896368136146242
+                },
+                "block_2/input": {
+                  "rms": 0.0008399229845963418,
+                  "max_abs": 0.0028229951858520508,
+                  "relative_rms": 0.0016896368136146242
+                },
+                "block_2/attention_residual": {
+                  "rms": 1.248476382897934e-05,
+                  "max_abs": 4.583597183227539e-05,
+                  "relative_rms": 4.64744912789139e-05
+                },
+                "block_2/after_attention": {
+                  "rms": 0.0008399478974752128,
+                  "max_abs": 0.0028298497200012207,
+                  "relative_rms": 0.0014797254026052383
+                },
+                "block_2/ffn_residual": {
+                  "rms": 0.0002923215215560049,
+                  "max_abs": 0.001181766390800476,
+                  "relative_rms": 0.0015000117550555798
+                },
+                "block_2/output": {
+                  "rms": 0.0008929851464927197,
+                  "max_abs": 0.003059208393096924,
+                  "relative_rms": 0.0014870246610379325
+                },
+                "block_3/input": {
+                  "rms": 0.0008929851464927197,
+                  "max_abs": 0.003059208393096924,
+                  "relative_rms": 0.0014870246610379325
+                },
+                "block_3/attention_residual": {
+                  "rms": 0.0007085803081281483,
+                  "max_abs": 0.0023742318153381348,
+                  "relative_rms": 0.002193217206043098
+                },
+                "block_3/after_attention": {
+                  "rms": 0.0011387938866391778,
+                  "max_abs": 0.003946781158447266,
+                  "relative_rms": 0.0016568051040142804
+                },
+                "block_3/ffn_residual": {
+                  "rms": 0.00033391331089660525,
+                  "max_abs": 0.0012252181768417358,
+                  "relative_rms": 0.0016785620333897024
+                },
+                "block_3/output": {
+                  "rms": 0.0011893806513398886,
+                  "max_abs": 0.004472255706787109,
+                  "relative_rms": 0.0016742391306558628
+                },
+                "block_27/input": {
+                  "rms": 0.003023439319804311,
+                  "max_abs": 0.011152982711791992,
+                  "relative_rms": 0.001695052079433783
+                },
+                "block_27/attention_residual": {
+                  "rms": 0.0006164952064864337,
+                  "max_abs": 0.0022054314613342285,
+                  "relative_rms": 0.0019337240530357988
+                },
+                "block_27/after_attention": {
+                  "rms": 0.0030643583741039038,
+                  "max_abs": 0.011610269546508789,
+                  "relative_rms": 0.0017017084257498582
+                },
+                "block_27/ffn_residual": {
+                  "rms": 0.00034315165248699486,
+                  "max_abs": 0.0016863644123077393,
+                  "relative_rms": 0.001697455332085879
+                },
+                "block_27/output": {
+                  "rms": 0.003065513912588358,
+                  "max_abs": 0.01188039779663086,
+                  "relative_rms": 0.001687634037775636
+                },
+                "velocity": {
+                  "rms": 0.0004222911084070802,
+                  "max_abs": 0.0009237378835678101,
+                  "relative_rms": 0.0024461888133853918
+                }
+              },
+              "state_15": {
+                "block_1/input": {
+                  "rms": 0.0,
+                  "max_abs": 0.0,
+                  "relative_rms": 0.0
+                },
+                "block_1/attention_residual": {
+                  "rms": 0.0007297837873920798,
+                  "max_abs": 0.0031756609678268433,
+                  "relative_rms": 0.002223066150482966
+                },
+                "block_1/after_attention": {
+                  "rms": 0.0007297837873920798,
+                  "max_abs": 0.0031756460666656494,
+                  "relative_rms": 0.0016028144671275807
+                },
+                "block_1/ffn_residual": {
+                  "rms": 0.00033462379360571504,
+                  "max_abs": 0.0011646747589111328,
+                  "relative_rms": 0.0016775096382369667
+                },
+                "block_1/output": {
+                  "rms": 0.0007986496202647686,
+                  "max_abs": 0.003434121608734131,
+                  "relative_rms": 0.0016066089681153494
+                },
+                "block_2/input": {
+                  "rms": 0.0007986496202647686,
+                  "max_abs": 0.003434121608734131,
+                  "relative_rms": 0.0016066089681153494
+                },
+                "block_2/attention_residual": {
+                  "rms": 1.1076756891270634e-05,
+                  "max_abs": 4.106760025024414e-05,
+                  "relative_rms": 4.1233190198367706e-05
+                },
+                "block_2/after_attention": {
+                  "rms": 0.0007988687721081078,
+                  "max_abs": 0.0034359395503997803,
+                  "relative_rms": 0.0014073568360486392
+                },
+                "block_2/ffn_residual": {
+                  "rms": 0.00028825877234339714,
+                  "max_abs": 0.0010926276445388794,
+                  "relative_rms": 0.0014791642596528615
+                },
+                "block_2/output": {
+                  "rms": 0.0008442352409474552,
+                  "max_abs": 0.0034477412700653076,
+                  "relative_rms": 0.0014058449101162086
+                },
+                "block_3/input": {
+                  "rms": 0.0008442352409474552,
+                  "max_abs": 0.0034477412700653076,
+                  "relative_rms": 0.0014058449101162086
+                },
+                "block_3/attention_residual": {
+                  "rms": 0.0006804912118241191,
+                  "max_abs": 0.0026261359453201294,
+                  "relative_rms": 0.0021062750646802628
+                },
+                "block_3/after_attention": {
+                  "rms": 0.0010774590773507953,
+                  "max_abs": 0.004764676094055176,
+                  "relative_rms": 0.0015675704968786234
+                },
+                "block_3/ffn_residual": {
+                  "rms": 0.00031468545785173774,
+                  "max_abs": 0.0011713355779647827,
+                  "relative_rms": 0.0015819047781935925
+                },
+                "block_3/output": {
+                  "rms": 0.0011188506614416838,
+                  "max_abs": 0.004987776279449463,
+                  "relative_rms": 0.0015749571481893493
+                },
+                "block_27/input": {
+                  "rms": 0.002511307131499052,
+                  "max_abs": 0.009962618350982666,
+                  "relative_rms": 0.0014079318038438006
+                },
+                "block_27/attention_residual": {
+                  "rms": 0.0005293766153044999,
+                  "max_abs": 0.0023579001426696777,
+                  "relative_rms": 0.0016604643204983568
+                },
+                "block_27/after_attention": {
+                  "rms": 0.0025657671503722668,
+                  "max_abs": 0.009252071380615234,
+                  "relative_rms": 0.00142482929385747
+                },
+                "block_27/ffn_residual": {
+                  "rms": 0.00029227466438896954,
+                  "max_abs": 0.0012552589178085327,
+                  "relative_rms": 0.0014457840546738144
+                },
+                "block_27/output": {
+                  "rms": 0.002584905829280615,
+                  "max_abs": 0.009404957294464111,
+                  "relative_rms": 0.0014230485283478176
+                },
+                "velocity": {
+                  "rms": 0.00029571750201284885,
+                  "max_abs": 0.0007412582635879517,
+                  "relative_rms": 0.0017129909461621397
+                }
+              }
+            },
+            "fixed_velocity_mse": 1.4838930368423462,
+            "bias_velocity_mse": 1.3384437561035156
+          }
+        ]
+      },
+      {
+        "window_index": 16,
+        "features_cached": true,
+        "parameter_updates": false,
+        "actual_sampling_path": true,
+        "times": [
+          0.0
+        ],
+        "rows": [
+          {
+            "policy": "normal",
+            "time": 0.0,
+            "statistics": {
+              "velocity": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  16
+                ],
+                "rms": 0.17656786739826202,
+                "mean": 0.07044437527656555,
+                "std": 0.16190677881240845,
+                "minimum": -0.2674928605556488,
+                "maximum": 0.40423154830932617,
+                "max_abs": 0.40423154830932617,
+                "nonzero_fraction": 1.0
+              }
+            },
+            "repeat_velocity": {
+              "rms": 0.0,
+              "max_abs": 0.0,
+              "relative_rms": 0.0
+            },
+            "interventions": {
+              "noisy_action": {
+                "velocity": {
+                  "rms": 0.03125684708356857,
+                  "max_abs": 0.09830921143293381,
+                  "relative_rms": 0.177024548939527
+                },
+                "noise_endpoint_reference": {
+                  "cosine": -0.031238220632076263,
+                  "rms_gain": 0.020660207209238134,
+                  "directional_gain": -0.0006453884416259825,
+                  "relative_error": 1.000858473392407
+                }
+              },
+              "state_0": {
+                "velocity": {
+                  "rms": 0.00036136002745479345,
+                  "max_abs": 0.0010655075311660767,
+                  "relative_rms": 0.0020465786486375368
+                }
+              },
+              "state_8": {
+                "velocity": {
+                  "rms": 0.00035702355671674013,
+                  "max_abs": 0.0007538497447967529,
+                  "relative_rms": 0.0020220188530080886
+                }
+              },
+              "state_15": {
+                "velocity": {
+                  "rms": 0.0002531956124585122,
+                  "max_abs": 0.0006937980651855469,
+                  "relative_rms": 0.001433984655237278
+                }
+              }
+            },
+            "fixed_velocity_mse": 2.1650426387786865,
+            "bias_velocity_mse": 2.171504020690918
+          }
+        ]
+      },
+      {
+        "window_index": 31,
+        "features_cached": true,
+        "parameter_updates": false,
+        "actual_sampling_path": true,
+        "times": [
+          0.0
+        ],
+        "rows": [
+          {
+            "policy": "normal",
+            "time": 0.0,
+            "statistics": {
+              "velocity": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  16
+                ],
+                "rms": 0.16923944652080536,
+                "mean": 0.06633409857749939,
+                "std": 0.15569771826267242,
+                "minimum": -0.23349297046661377,
+                "maximum": 0.39612507820129395,
+                "max_abs": 0.39612507820129395,
+                "nonzero_fraction": 1.0
+              }
+            },
+            "repeat_velocity": {
+              "rms": 0.0,
+              "max_abs": 0.0,
+              "relative_rms": 0.0
+            },
+            "interventions": {
+              "noisy_action": {
+                "velocity": {
+                  "rms": 0.02578580752015114,
+                  "max_abs": 0.07500059902667999,
+                  "relative_rms": 0.15236286840981136
+                },
+                "noise_endpoint_reference": {
+                  "cosine": -0.0856834128499031,
+                  "rms_gain": 0.018917811406308584,
+                  "directional_gain": -0.0016209431923925877,
+                  "relative_error": 1.0017983143492313
+                }
+              },
+              "state_0": {
+                "velocity": {
+                  "rms": 0.00037688238080590963,
+                  "max_abs": 0.0009658485651016235,
+                  "relative_rms": 0.002226918065212125
+                }
+              },
+              "state_8": {
+                "velocity": {
+                  "rms": 0.0004104787076357752,
+                  "max_abs": 0.0009420812129974365,
+                  "relative_rms": 0.0024254316358975317
+                }
+              },
+              "state_15": {
+                "velocity": {
+                  "rms": 0.0003023016906809062,
+                  "max_abs": 0.0006222464144229889,
+                  "relative_rms": 0.0017862365831003628
+                }
+              }
+            },
+            "fixed_velocity_mse": 1.7522019147872925,
+            "bias_velocity_mse": 1.7119935750961304
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "step": 50,
+    "samples": [
+      {
+        "window_index": 0,
+        "features_cached": true,
+        "parameter_updates": false,
+        "actual_sampling_path": true,
+        "times": [
+          0.0
+        ],
+        "rows": [
+          {
+            "policy": "normal",
+            "time": 0.0,
+            "statistics": {
+              "block_2/condition_raw": {
+                "status": "nonzero",
+                "shape": [
+                  282,
+                  2048
+                ],
+                "rms": 23.101362228393555,
+                "mean": 0.07275767624378204,
+                "std": 23.10124969482422,
+                "minimum": -190.8369598388672,
+                "maximum": 14759.23828125,
+                "max_abs": 14759.23828125,
+                "nonzero_fraction": 0.999967098236084,
+                "token_centered_std_mean": 3.459219217300415,
+                "valid_tokens": 282
+              },
+              "block_1/input": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 1.614341378211975,
+                "mean": 0.008782944642007351,
+                "std": 1.614317536354065,
+                "minimum": -5.469301700592041,
+                "maximum": 5.37679386138916,
+                "max_abs": 5.469301700592041,
+                "nonzero_fraction": 1.0
+              },
+              "block_1/attention_residual": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 1.0780459642410278,
+                "mean": 0.02012890763580799,
+                "std": 1.0778579711914062,
+                "minimum": -4.084568023681641,
+                "maximum": 3.909952402114868,
+                "max_abs": 4.084568023681641,
+                "nonzero_fraction": 1.0
+              },
+              "block_1/after_attention": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 2.4457480907440186,
+                "mean": 0.028911851346492767,
+                "std": 2.4455771446228027,
+                "minimum": -9.060094833374023,
+                "maximum": 8.609086990356445,
+                "max_abs": 9.060094833374023,
+                "nonzero_fraction": 1.0
+              },
+              "block_1/ffn_residual": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 1.0112398862838745,
+                "mean": 0.0022374154068529606,
+                "std": 1.011237382888794,
+                "minimum": -3.318286895751953,
+                "maximum": 3.2427399158477783,
+                "max_abs": 3.318286895751953,
+                "nonzero_fraction": 1.0
+              },
+              "block_1/output": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 3.308438301086426,
+                "mean": 0.03114926442503929,
+                "std": 3.308291435241699,
+                "minimum": -11.761624336242676,
+                "maximum": 11.14770221710205,
+                "max_abs": 11.761624336242676,
+                "nonzero_fraction": 1.0
+              },
+              "block_2/input": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 3.308438301086426,
+                "mean": 0.03114926442503929,
+                "std": 3.308291435241699,
+                "minimum": -11.761624336242676,
+                "maximum": 11.14770221710205,
+                "max_abs": 11.761624336242676,
+                "nonzero_fraction": 1.0
+              },
+              "block_2/condition_actual": {
+                "status": "nonzero",
+                "shape": [
+                  282,
+                  2048
+                ],
+                "rms": 0.9999977350234985,
+                "mean": -1.3210249560913212e-10,
+                "std": 0.9999977946281433,
+                "minimum": -19.731958389282227,
+                "maximum": 38.20353698730469,
+                "max_abs": 38.20353698730469,
+                "nonzero_fraction": 0.9999999403953552,
+                "token_centered_std_mean": 0.9999977946281433,
+                "valid_tokens": 282
+              },
+              "block_2/to_k": {
+                "status": "nonzero",
+                "shape": [
+                  282,
+                  2048
+                ],
+                "rms": 0.6034917235374451,
+                "mean": 0.024486733600497246,
+                "std": 0.6029947400093079,
+                "minimum": -2.723747491836548,
+                "maximum": 2.6768338680267334,
+                "max_abs": 2.723747491836548,
+                "nonzero_fraction": 0.9999999403953552,
+                "token_centered_std_mean": 0.6028488874435425,
+                "valid_tokens": 282
+              },
+              "block_2/to_v": {
+                "status": "nonzero",
+                "shape": [
+                  282,
+                  2048
+                ],
+                "rms": 0.6966675519943237,
+                "mean": 0.012228130362927914,
+                "std": 0.696560263633728,
+                "minimum": -2.780078887939453,
+                "maximum": 2.801577568054199,
+                "max_abs": 2.801577568054199,
+                "nonzero_fraction": 0.9999999403953552,
+                "token_centered_std_mean": 0.6955589056015015,
+                "valid_tokens": 282
+              },
+              "block_2/attention_residual": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 0.7188873887062073,
+                "mean": -0.0030973097309470177,
+                "std": 0.7188807725906372,
+                "minimum": -2.680614709854126,
+                "maximum": 2.5433309078216553,
+                "max_abs": 2.680614709854126,
+                "nonzero_fraction": 1.0
+              },
+              "block_2/after_attention": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 3.8695547580718994,
+                "mean": 0.02805195190012455,
+                "std": 3.869452953338623,
+                "minimum": -14.442115783691406,
+                "maximum": 13.24919605255127,
+                "max_abs": 14.442115783691406,
+                "nonzero_fraction": 1.0
+              },
+              "block_2/ffn_residual": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 1.0032058954238892,
+                "mean": 0.01474851369857788,
+                "std": 1.003097414970398,
+                "minimum": -3.4986252784729004,
+                "maximum": 3.271963357925415,
+                "max_abs": 3.4986252784729004,
+                "nonzero_fraction": 1.0
+              },
+              "block_2/output": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 4.762232303619385,
+                "mean": 0.042800482362508774,
+                "std": 4.762039661407471,
+                "minimum": -17.7379093170166,
+                "maximum": 16.505029678344727,
+                "max_abs": 17.7379093170166,
+                "nonzero_fraction": 1.0
+              },
+              "block_3/input": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 4.762232303619385,
+                "mean": 0.042800482362508774,
+                "std": 4.762039661407471,
+                "minimum": -17.7379093170166,
+                "maximum": 16.505029678344727,
+                "max_abs": 17.7379093170166,
+                "nonzero_fraction": 1.0
+              },
+              "block_3/attention_residual": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 0.922925591468811,
+                "mean": -0.027328766882419586,
+                "std": 0.9225209355354309,
+                "minimum": -3.397258758544922,
+                "maximum": 3.1915032863616943,
+                "max_abs": 3.397258758544922,
+                "nonzero_fraction": 1.0
+              },
+              "block_3/after_attention": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 5.474734306335449,
+                "mean": 0.015471700578927994,
+                "std": 5.47471284866333,
+                "minimum": -19.552637100219727,
+                "maximum": 18.777185440063477,
+                "max_abs": 19.552637100219727,
+                "nonzero_fraction": 1.0
+              },
+              "block_3/ffn_residual": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 1.0063581466674805,
+                "mean": -0.004715535789728165,
+                "std": 1.0063470602035522,
+                "minimum": -3.609895706176758,
+                "maximum": 3.467895984649658,
+                "max_abs": 3.609895706176758,
+                "nonzero_fraction": 1.0
+              },
+              "block_3/output": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 6.352810382843018,
+                "mean": 0.010756172239780426,
+                "std": 6.35280179977417,
+                "minimum": -22.81484603881836,
+                "maximum": 21.478586196899414,
+                "max_abs": 22.81484603881836,
+                "nonzero_fraction": 1.0
+              },
+              "block_27/input": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 40.57381057739258,
+                "mean": 0.02751600742340088,
+                "std": 40.57380294799805,
+                "minimum": -142.67596435546875,
+                "maximum": 144.12034606933594,
+                "max_abs": 144.12034606933594,
+                "nonzero_fraction": 1.0
+              },
+              "block_27/attention_residual": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 0.8391000628471375,
+                "mean": -0.011930536478757858,
+                "std": 0.8390153050422668,
+                "minimum": -2.86720609664917,
+                "maximum": 2.719747543334961,
+                "max_abs": 2.86720609664917,
+                "nonzero_fraction": 1.0
+              },
+              "block_27/after_attention": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 41.220924377441406,
+                "mean": 0.015585601329803467,
+                "std": 41.22092056274414,
+                "minimum": -144.912109375,
+                "maximum": 146.64251708984375,
+                "max_abs": 146.64251708984375,
+                "nonzero_fraction": 1.0
+              },
+              "block_27/ffn_residual": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 0.9562379717826843,
+                "mean": -0.005961988121271133,
+                "std": 0.9562194347381592,
+                "minimum": -3.4404141902923584,
+                "maximum": 3.3005526065826416,
+                "max_abs": 3.4404141902923584,
+                "nonzero_fraction": 1.0
+              },
+              "block_27/output": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  2048
+                ],
+                "rms": 42.09307098388672,
+                "mean": 0.009623408317565918,
+                "std": 42.09307098388672,
+                "minimum": -147.69033813476562,
+                "maximum": 149.94288635253906,
+                "max_abs": 149.94288635253906,
+                "nonzero_fraction": 1.0
+              },
+              "block_3/injection_ratio": 0.1938010438439084,
+              "block_1/injection_ratio": 0.667793057150273,
+              "block_2/injection_ratio": 0.21728904192347234,
+              "block_27/injection_ratio": 0.020680829601808635,
+              "velocity": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  16
+                ],
+                "rms": 0.3891955018043518,
+                "mean": -0.2044556587934494,
+                "std": 0.33116614818573,
+                "minimum": -0.8594616651535034,
+                "maximum": 0.38025322556495667,
+                "max_abs": 0.8594616651535034,
+                "nonzero_fraction": 1.0
+              }
+            },
+            "repeat_velocity": {
+              "rms": 0.0,
+              "max_abs": 0.0,
+              "relative_rms": 0.0
+            },
+            "interventions": {
+              "noisy_action": {
+                "block_1/input": {
+                  "rms": 0.20582526922225952,
+                  "max_abs": 1.080704927444458,
+                  "relative_rms": 0.12749798276873853
+                },
+                "block_1/attention_residual": {
+                  "rms": 0.003563500940799713,
+                  "max_abs": 0.012795567512512207,
+                  "relative_rms": 0.0033055185576481463
+                },
+                "block_1/after_attention": {
+                  "rms": 0.20588211715221405,
+                  "max_abs": 1.0773332118988037,
+                  "relative_rms": 0.08417960865687467
+                },
+                "block_1/ffn_residual": {
+                  "rms": 0.018591102212667465,
+                  "max_abs": 0.10367881506681442,
+                  "relative_rms": 0.01838446293981545
+                },
+                "block_1/output": {
+                  "rms": 0.2094612568616867,
+                  "max_abs": 1.0926474332809448,
+                  "relative_rms": 0.0633112174988545
+                },
+                "block_2/input": {
+                  "rms": 0.2094612568616867,
+                  "max_abs": 1.0926474332809448,
+                  "relative_rms": 0.0633112174988545
+                },
+                "block_2/attention_residual": {
+                  "rms": 0.0004340936429798603,
+                  "max_abs": 0.0025458335876464844,
+                  "relative_rms": 0.0006038409489426453
+                },
+                "block_2/after_attention": {
+                  "rms": 0.2094627469778061,
+                  "max_abs": 1.0919902324676514,
+                  "relative_rms": 0.0541309685670715
+                },
+                "block_2/ffn_residual": {
+                  "rms": 0.01176374964416027,
+                  "max_abs": 0.05594980716705322,
+                  "relative_rms": 0.011726156811686152
+                },
+                "block_2/output": {
+                  "rms": 0.2110714614391327,
+                  "max_abs": 1.104896068572998,
+                  "relative_rms": 0.044321958271264957
+                },
+                "block_3/input": {
+                  "rms": 0.2110714614391327,
+                  "max_abs": 1.104896068572998,
+                  "relative_rms": 0.044321958271264957
+                },
+                "block_3/attention_residual": {
+                  "rms": 0.001228534383699298,
+                  "max_abs": 0.004257321357727051,
+                  "relative_rms": 0.0013311304779649545
+                },
+                "block_3/after_attention": {
+                  "rms": 0.2110596001148224,
+                  "max_abs": 1.107541561126709,
+                  "relative_rms": 0.03855156614408175
+                },
+                "block_3/ffn_residual": {
+                  "rms": 0.008147861808538437,
+                  "max_abs": 0.03687196969985962,
+                  "relative_rms": 0.008096384771838909
+                },
+                "block_3/output": {
+                  "rms": 0.21198083460330963,
+                  "max_abs": 1.12424898147583,
+                  "relative_rms": 0.033368038067789756
+                },
+                "block_27/input": {
+                  "rms": 0.21437694132328033,
+                  "max_abs": 1.1180124282836914,
+                  "relative_rms": 0.005283627988525263
+                },
+                "block_27/attention_residual": {
+                  "rms": 0.00014902316615916789,
+                  "max_abs": 0.0005843639373779297,
+                  "relative_rms": 0.00017759878966952923
+                },
+                "block_27/after_attention": {
+                  "rms": 0.2143765538930893,
+                  "max_abs": 1.1178293228149414,
+                  "relative_rms": 0.005200673132172745
+                },
+                "block_27/ffn_residual": {
+                  "rms": 0.0010835592402145267,
+                  "max_abs": 0.005306437611579895,
+                  "relative_rms": 0.001133148099309786
+                },
+                "block_27/output": {
+                  "rms": 0.21437999606132507,
+                  "max_abs": 1.114760398864746,
+                  "relative_rms": 0.005092999656484672
+                },
+                "velocity": {
+                  "rms": 0.0025797358248382807,
+                  "max_abs": 0.007792636752128601,
+                  "relative_rms": 0.00662838037148868
+                },
+                "noise_endpoint_reference": {
+                  "cosine": 0.7129788398742676,
+                  "rms_gain": 0.0018876356072903804,
+                  "directional_gain": 0.001345844124443829,
+                  "relative_error": 0.9986550404146443
+                }
+              },
+              "state_0": {
+                "block_1/input": {
+                  "rms": 0.0,
+                  "max_abs": 0.0,
+                  "relative_rms": 0.0
+                },
+                "block_1/attention_residual": {
+                  "rms": 0.00013394291454460472,
+                  "max_abs": 0.00045871734619140625,
+                  "relative_rms": 0.00012424601453684745
+                },
+                "block_1/after_attention": {
+                  "rms": 0.00013394323468673974,
+                  "max_abs": 0.00045871734619140625,
+                  "relative_rms": 5.4765752529295946e-05
+                },
+                "block_1/ffn_residual": {
+                  "rms": 1.1491634722915478e-05,
+                  "max_abs": 4.6193599700927734e-05,
+                  "relative_rms": 1.1363905714927654e-05
+                },
+                "block_1/output": {
+                  "rms": 0.00013449502876028419,
+                  "max_abs": 0.00045871734619140625,
+                  "relative_rms": 4.065211937489601e-05
+                },
+                "block_2/input": {
+                  "rms": 0.00013449502876028419,
+                  "max_abs": 0.00045871734619140625,
+                  "relative_rms": 4.065211937489601e-05
+                },
+                "block_2/attention_residual": {
+                  "rms": 3.5463108361000195e-07,
+                  "max_abs": 1.9073486328125e-06,
+                  "relative_rms": 4.933054734034821e-07
+                },
+                "block_2/after_attention": {
+                  "rms": 0.00013449702237267047,
+                  "max_abs": 0.00045871734619140625,
+                  "relative_rms": 3.475775141625135e-05
+                },
+                "block_2/ffn_residual": {
+                  "rms": 7.3549158514651936e-06,
+                  "max_abs": 2.9921531677246094e-05,
+                  "relative_rms": 7.3314121109208145e-06
+                },
+                "block_2/output": {
+                  "rms": 0.00013465617666952312,
+                  "max_abs": 0.00045871734619140625,
+                  "relative_rms": 2.827585218116169e-05
+                },
+                "block_3/input": {
+                  "rms": 0.00013465617666952312,
+                  "max_abs": 0.00045871734619140625,
+                  "relative_rms": 2.827585218116169e-05
+                },
+                "block_3/attention_residual": {
+                  "rms": 4.400795660330914e-05,
+                  "max_abs": 0.00015413761138916016,
+                  "relative_rms": 4.768310361101157e-05
+                },
+                "block_3/after_attention": {
+                  "rms": 0.00014119100524112582,
+                  "max_abs": 0.0004494190216064453,
+                  "relative_rms": 2.578956074275435e-05
+                },
+                "block_3/ffn_residual": {
+                  "rms": 5.356757810659474e-06,
+                  "max_abs": 2.372264862060547e-05,
+                  "relative_rms": 5.32291457363736e-06
+                },
+                "block_3/output": {
+                  "rms": 0.00014125627058092505,
+                  "max_abs": 0.0004729032516479492,
+                  "relative_rms": 2.2235239439823993e-05
+                },
+                "block_27/input": {
+                  "rms": 0.00014843608369119465,
+                  "max_abs": 0.0005085468292236328,
+                  "relative_rms": 3.6584207305914446e-06
+                },
+                "block_27/attention_residual": {
+                  "rms": 5.176525064598536e-06,
+                  "max_abs": 1.7911195755004883e-05,
+                  "relative_rms": 6.169138730985979e-06
+                },
+                "block_27/after_attention": {
+                  "rms": 0.0001483971136622131,
+                  "max_abs": 0.000507354736328125,
+                  "relative_rms": 3.6000433251667056e-06
+                },
+                "block_27/ffn_residual": {
+                  "rms": 9.66124616752495e-07,
+                  "max_abs": 4.76837158203125e-06,
+                  "relative_rms": 1.0103391051814948e-06
+                },
+                "block_27/output": {
+                  "rms": 0.0001483943487983197,
+                  "max_abs": 0.000507354736328125,
+                  "relative_rms": 3.52538660947598e-06
+                },
+                "velocity": {
+                  "rms": 3.60981800895388e-07,
+                  "max_abs": 1.0132789611816406e-06,
+                  "relative_rms": 9.275076387597247e-07
+                }
+              },
+              "state_8": {
+                "block_1/input": {
+                  "rms": 0.0,
+                  "max_abs": 0.0,
+                  "relative_rms": 0.0
+                },
+                "block_1/attention_residual": {
+                  "rms": 0.00013177155051380396,
+                  "max_abs": 0.0004914999008178711,
+                  "relative_rms": 0.0001222318480700888
+                },
+                "block_1/after_attention": {
+                  "rms": 0.0001317717251367867,
+                  "max_abs": 0.0004914999008178711,
+                  "relative_rms": 5.387788122391896e-05
+                },
+                "block_1/ffn_residual": {
+                  "rms": 1.1500620530568995e-05,
+                  "max_abs": 4.1484832763671875e-05,
+                  "relative_rms": 1.1372791645729424e-05
+                },
+                "block_1/output": {
+                  "rms": 0.0001322690659435466,
+                  "max_abs": 0.00048363208770751953,
+                  "relative_rms": 3.997930561379128e-05
+                },
+                "block_2/input": {
+                  "rms": 0.0001322690659435466,
+                  "max_abs": 0.00048363208770751953,
+                  "relative_rms": 3.997930561379128e-05
+                },
+                "block_2/attention_residual": {
+                  "rms": 3.985593366451212e-07,
+                  "max_abs": 1.9073486328125e-06,
+                  "relative_rms": 5.544113624831563e-07
+                },
+                "block_2/after_attention": {
+                  "rms": 0.00013226566079538316,
+                  "max_abs": 0.00048351287841796875,
+                  "relative_rms": 3.418110585447655e-05
+                },
+                "block_2/ffn_residual": {
+                  "rms": 6.967557055759244e-06,
+                  "max_abs": 2.8848648071289062e-05,
+                  "relative_rms": 6.945291178545422e-06
+                },
+                "block_2/output": {
+                  "rms": 0.00013271115312818438,
+                  "max_abs": 0.00048160552978515625,
+                  "relative_rms": 2.7867425330615135e-05
+                },
+                "block_3/input": {
+                  "rms": 0.00013271115312818438,
+                  "max_abs": 0.00048160552978515625,
+                  "relative_rms": 2.7867425330615135e-05
+                },
+                "block_3/attention_residual": {
+                  "rms": 4.401351907290518e-05,
+                  "max_abs": 0.00015753507614135742,
+                  "relative_rms": 4.768913060782199e-05
+                },
+                "block_3/after_attention": {
+                  "rms": 0.00014067591109778732,
+                  "max_abs": 0.0004591941833496094,
+                  "relative_rms": 2.5695475063038574e-05
+                },
+                "block_3/ffn_residual": {
+                  "rms": 5.421193691290682e-06,
+                  "max_abs": 2.002716064453125e-05,
+                  "relative_rms": 5.386943357502574e-06
+                },
+                "block_3/output": {
+                  "rms": 0.0001406971859978512,
+                  "max_abs": 0.0004620552062988281,
+                  "relative_rms": 2.214723357983182e-05
+                },
+                "block_27/input": {
+                  "rms": 0.00015091069508343935,
+                  "max_abs": 0.0005340576171875,
+                  "relative_rms": 3.7194110867933765e-06
+                },
+                "block_27/attention_residual": {
+                  "rms": 5.3139742703933734e-06,
+                  "max_abs": 1.8149614334106445e-05,
+                  "relative_rms": 6.332944219886467e-06
+                },
+                "block_27/after_attention": {
+                  "rms": 0.00015097840514499694,
+                  "max_abs": 0.000530242919921875,
+                  "relative_rms": 3.6626642275789873e-06
+                },
+                "block_27/ffn_residual": {
+                  "rms": 9.84099528977822e-07,
+                  "max_abs": 5.4836273193359375e-06,
+                  "relative_rms": 1.0291366354571416e-06
+                },
+                "block_27/output": {
+                  "rms": 0.00015097262803465128,
+                  "max_abs": 0.000530242919921875,
+                  "relative_rms": 3.586638477682947e-06
+                },
+                "velocity": {
+                  "rms": 2.557701748173713e-07,
+                  "max_abs": 6.854534149169922e-07,
+                  "relative_rms": 6.571765953895571e-07
+                }
+              },
+              "state_15": {
+                "block_1/input": {
+                  "rms": 0.0,
+                  "max_abs": 0.0,
+                  "relative_rms": 0.0
+                },
+                "block_1/attention_residual": {
+                  "rms": 0.000134386689751409,
+                  "max_abs": 0.00047779083251953125,
+                  "relative_rms": 0.00012465766229726209
+                },
+                "block_1/after_attention": {
+                  "rms": 0.00013438714086078107,
+                  "max_abs": 0.00047779083251953125,
+                  "relative_rms": 5.494725371321637e-05
+                },
+                "block_1/ffn_residual": {
+                  "rms": 1.1316084055579267e-05,
+                  "max_abs": 4.2438507080078125e-05,
+                  "relative_rms": 1.1190306285438026e-05
+                },
+                "block_1/output": {
+                  "rms": 0.00013449531979858875,
+                  "max_abs": 0.0004775524139404297,
+                  "relative_rms": 4.065220734338086e-05
+                },
+                "block_2/input": {
+                  "rms": 0.00013449531979858875,
+                  "max_abs": 0.0004775524139404297,
+                  "relative_rms": 4.065220734338086e-05
+                },
+                "block_2/attention_residual": {
+                  "rms": 3.745401784271962e-07,
+                  "max_abs": 1.9073486328125e-06,
+                  "relative_rms": 5.209997898290314e-07
+                },
+                "block_2/after_attention": {
+                  "rms": 0.0001344936026725918,
+                  "max_abs": 0.00047707557678222656,
+                  "relative_rms": 3.475686767114566e-05
+                },
+                "block_2/ffn_residual": {
+                  "rms": 7.148000349843642e-06,
+                  "max_abs": 2.6702880859375e-05,
+                  "relative_rms": 7.125157838926214e-06
+                },
+                "block_2/output": {
+                  "rms": 0.00013455425505526364,
+                  "max_abs": 0.000476837158203125,
+                  "relative_rms": 2.8254450114281836e-05
+                },
+                "block_3/input": {
+                  "rms": 0.00013455425505526364,
+                  "max_abs": 0.000476837158203125,
+                  "relative_rms": 2.8254450114281836e-05
+                },
+                "block_3/attention_residual": {
+                  "rms": 4.350231392891146e-05,
+                  "max_abs": 0.00015246868133544922,
+                  "relative_rms": 4.713523422796368e-05
+                },
+                "block_3/after_attention": {
+                  "rms": 0.0001413107238477096,
+                  "max_abs": 0.0005235671997070312,
+                  "relative_rms": 2.5811428214207346e-05
+                },
+                "block_3/ffn_residual": {
+                  "rms": 5.26691610502894e-06,
+                  "max_abs": 1.9490718841552734e-05,
+                  "relative_rms": 5.233640475176237e-06
+                },
+                "block_3/output": {
+                  "rms": 0.00014149793423712254,
+                  "max_abs": 0.0005292892456054688,
+                  "relative_rms": 2.2273279869727428e-05
+                },
+                "block_27/input": {
+                  "rms": 0.00014724524226039648,
+                  "max_abs": 0.00058746337890625,
+                  "relative_rms": 3.629070731124046e-06
+                },
+                "block_27/attention_residual": {
+                  "rms": 5.217674697632901e-06,
+                  "max_abs": 1.8596649169921875e-05,
+                  "relative_rms": 6.218178925276596e-06
+                },
+                "block_27/after_attention": {
+                  "rms": 0.00014734931755810976,
+                  "max_abs": 0.0005950927734375,
+                  "relative_rms": 3.5746242905397987e-06
+                },
+                "block_27/ffn_residual": {
+                  "rms": 9.836027174969786e-07,
+                  "max_abs": 5.125999450683594e-06,
+                  "relative_rms": 1.0286170875041183e-06
+                },
+                "block_27/output": {
+                  "rms": 0.00014736709999851882,
+                  "max_abs": 0.0005950927734375,
+                  "relative_rms": 3.500982383892295e-06
+                },
+                "velocity": {
+                  "rms": 3.54461377582993e-07,
+                  "max_abs": 8.791685104370117e-07,
+                  "relative_rms": 9.107540450461569e-07
+                }
+              }
+            },
+            "fixed_velocity_mse": 1.1703946590423584,
+            "bias_velocity_mse": 1.3382078409194946
+          }
+        ]
+      },
+      {
+        "window_index": 16,
+        "features_cached": true,
+        "parameter_updates": false,
+        "actual_sampling_path": true,
+        "times": [
+          0.0
+        ],
+        "rows": [
+          {
+            "policy": "normal",
+            "time": 0.0,
+            "statistics": {
+              "velocity": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  16
+                ],
+                "rms": 0.3896635174751282,
+                "mean": -0.2045055776834488,
+                "std": 0.33168530464172363,
+                "minimum": -0.8637426495552063,
+                "maximum": 0.3809736371040344,
+                "max_abs": 0.8637426495552063,
+                "nonzero_fraction": 1.0
+              }
+            },
+            "repeat_velocity": {
+              "rms": 0.0,
+              "max_abs": 0.0,
+              "relative_rms": 0.0
+            },
+            "interventions": {
+              "noisy_action": {
+                "velocity": {
+                  "rms": 0.002910810988396406,
+                  "max_abs": 0.00723661482334137,
+                  "relative_rms": 0.00747006290773611
+                },
+                "noise_endpoint_reference": {
+                  "cosine": 0.7259056568145752,
+                  "rms_gain": 0.0019239931016206354,
+                  "directional_gain": 0.0013966374099254608,
+                  "relative_error": 0.9986043011289851
+                }
+              },
+              "state_0": {
+                "velocity": {
+                  "rms": 3.28441558394843e-07,
+                  "max_abs": 5.960464477539062e-07,
+                  "relative_rms": 8.428850627900115e-07
+                }
+              },
+              "state_8": {
+                "velocity": {
+                  "rms": 2.075445166838108e-07,
+                  "max_abs": 6.183981895446777e-07,
+                  "relative_rms": 5.326249632711011e-07
+                }
+              },
+              "state_15": {
+                "velocity": {
+                  "rms": 3.347209656112682e-07,
+                  "max_abs": 1.0579824447631836e-06,
+                  "relative_rms": 8.590000105200357e-07
+                }
+              }
+            },
+            "fixed_velocity_mse": 1.9790403842926025,
+            "bias_velocity_mse": 2.1712162494659424
+          }
+        ]
+      },
+      {
+        "window_index": 31,
+        "features_cached": true,
+        "parameter_updates": false,
+        "actual_sampling_path": true,
+        "times": [
+          0.0
+        ],
+        "rows": [
+          {
+            "policy": "normal",
+            "time": 0.0,
+            "statistics": {
+              "velocity": {
+                "status": "nonzero",
+                "shape": [
+                  1,
+                  16,
+                  16
+                ],
+                "rms": 0.38939422369003296,
+                "mean": -0.20472875237464905,
+                "std": 0.3312309980392456,
+                "minimum": -0.8611956238746643,
+                "maximum": 0.3804495930671692,
+                "max_abs": 0.8611956238746643,
+                "nonzero_fraction": 1.0
+              }
+            },
+            "repeat_velocity": {
+              "rms": 0.0,
+              "max_abs": 0.0,
+              "relative_rms": 0.0
+            },
+            "interventions": {
+              "noisy_action": {
+                "velocity": {
+                  "rms": 0.0024506249465048313,
+                  "max_abs": 0.006902769207954407,
+                  "relative_rms": 0.006293429119917541
+                },
+                "noise_endpoint_reference": {
+                  "cosine": 0.7160935401916504,
+                  "rms_gain": 0.0017979060973500095,
+                  "directional_gain": 0.0012874689418822527,
+                  "relative_error": 0.9987134032491225
+                }
+              },
+              "state_0": {
+                "velocity": {
+                  "rms": 3.546848574842443e-07,
+                  "max_abs": 9.5367431640625e-07,
+                  "relative_rms": 9.108631713183065e-07
+                }
+              },
+              "state_8": {
+                "velocity": {
+                  "rms": 3.750457153728348e-07,
+                  "max_abs": 1.080334186553955e-06,
+                  "relative_rms": 9.63151717603333e-07
+                }
+              },
+              "state_15": {
+                "velocity": {
+                  "rms": 3.1310992198996246e-07,
+                  "max_abs": 8.344650268554688e-07,
+                  "relative_rms": 8.04094932436392e-07
+                }
+              }
+            },
+            "fixed_velocity_mse": 1.6786150932312012,
+            "bias_velocity_mse": 1.7118580341339111
+          }
+        ]
+      }
+    ]
+  }
+]
