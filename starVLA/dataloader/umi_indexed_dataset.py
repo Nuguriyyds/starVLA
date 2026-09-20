@@ -20,7 +20,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 from PIL import Image
 from torch.utils.data import Dataset
-from starVLA.dataloader.umi_video_time import VIDEO_TIME_POLICY, VideoTimeWindow
+from starVLA.dataloader.umi_video_time import VideoTimeWindow, video_time_policy as resolve_video_policy
 
 
 CAMERAS = tuple("observation.images." + name for name in
@@ -116,7 +116,8 @@ class UMIIndexedDataset(Dataset):
                  row_cache_mib=128, row_cache_items=32, file_cache_items=4,
                  video_cache_items=8, episode_cache_items=128,
                  source_identity="size_mtime", decode_tolerance_seconds=None,
-                 return_metadata=False, allowed_video_roots=(), performance_diagnostics=False):
+                 return_metadata=False, allowed_video_roots=(), performance_diagnostics=False,
+                 video_time_policy="legacy_microsecond", boundary_slack_seconds=None):
         self.index_dir = Path(index_dir).resolve()
         self.meta = json.loads((self.index_dir / "meta.json").read_text(encoding="utf-8"))
         if (self.meta.get("version") != "roban-umi-access-v1" or self.meta.get("horizon") != 16
@@ -166,6 +167,10 @@ class UMIIndexedDataset(Dataset):
                                          else float(decode_tolerance_seconds))
         if not math.isfinite(self.decode_tolerance_seconds) or self.decode_tolerance_seconds <= 0:
             raise ValueError("decode_tolerance_seconds must be finite and positive")
+        self.video_policy_name = video_time_policy
+        # Validate once at construction, also included in run provenance.
+        self.video_policy, slack = resolve_video_policy(video_time_policy, boundary_slack_seconds)
+        self.boundary_slack_seconds = float(slack)
         self.return_metadata = bool(return_metadata)
         self.performance_diagnostics = bool(performance_diagnostics)
         if self.performance_diagnostics and not self.return_metadata:
@@ -372,27 +377,19 @@ class UMIIndexedDataset(Dataset):
             cached = self._videos.put(relative, (container, stream))
         container, stream = cached
         window = VideoTimeWindow(camera["from_timestamp"], camera["to_timestamp"], timestamp,
-                                 stream.time_base, self.decode_tolerance_seconds)
+                                 stream.time_base, self.decode_tolerance_seconds,
+                                 policy=self.video_policy_name, boundary_slack_seconds=self.boundary_slack_seconds)
         container.seek(window.seek_pts, stream=stream, backward=True, any_frame=False)
-        closest, closest_time, distance = None, None, math.inf
-        for frame in container.decode(video=0):
-            if frame.pts is None:
-                continue
-            time = window.frame_time(frame.pts, frame.time_base)
-            if window.contains(time):
-                error = abs(time - window.target)
-                if error < distance:
-                    closest, closest_time, distance = frame, time, error
-            if time >= window.target:
-                break
-        if closest is None or distance > window.tolerance:
-            raise ValueError(f"Cannot locate image near {float(window.target):.6f}s in {relative}; closest error={float(distance)}")
+        closest, closest_time = window.select(container.decode(video=0))
         image = Image.fromarray(closest.to_ndarray(format="rgb24")).resize(self.image_size)
         return image, {"camera": camera["camera"], "video_path": relative,
                        "requested_seconds": float(window.target), "decoded_seconds": float(closest_time),
                        "offset_seconds": float(closest_time - window.target),
                        "decoded_pts": closest.pts, "time_base": str(stream.time_base),
-                       "boundary_policy": VIDEO_TIME_POLICY["version"]}
+                       "boundary_policy": self.video_policy["version"],
+                       "boundary_slack_seconds": self.boundary_slack_seconds,
+                       "used_boundary_slack": (not window.legacy and
+                                               not window.start <= closest_time < window.end)}
 
     def __getitem__(self, index):
         try:
@@ -431,7 +428,7 @@ class UMIIndexedDataset(Dataset):
                 "camera_order": list(CAMERAS), "image_size": list(self.image_size),
                 "normalization": "none", "source_identity": self.source_identity,
                 "decode_tolerance_seconds": self.decode_tolerance_seconds,
-                "video_time_policy": dict(VIDEO_TIME_POLICY),
+                "video_time_policy": dict(self.video_policy),
                 "note": "Source checks and decode tolerance do not prove physical label quality or sensor synchronization."}
 
 
@@ -518,7 +515,7 @@ def make_umi_dataloader(cfg):
     options = {key: data[key] for key in (
         "source_root", "allowed_video_roots", "image_size", "row_cache_mib", "row_cache_items", "file_cache_items",
         "video_cache_items", "episode_cache_items", "source_identity", "decode_tolerance_seconds",
-        "return_metadata", "performance_diagnostics") if key in data and data[key] is not None}
+        "return_metadata", "performance_diagnostics", "video_time_policy", "boundary_slack_seconds") if key in data and data[key] is not None}
     dataset = UMIIndexedDataset(data.index_dir, **options)
     dataset = apply_umi_normalization(dataset, data)
     sampler = UMIBlockShuffleSampler(len(dataset), block_size=int(data.get("shuffle_block_size", 4096)),

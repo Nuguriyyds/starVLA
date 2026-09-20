@@ -1,3 +1,19 @@
+# 当前策略：固定 1 ms 逻辑边界余量
+
+2026-09-20：新工程配置显式选择 `engineering_boundary_slack`、`boundary_slack_seconds=0.001`，策略版本 `umi-logical-boundary-slack-v1`。查询必须在原逻辑区间内，候选可在两端最多扩出 1 ms，最终请求匹配容差维持原值。取最近候选，等距取较早 PTS；错误继续抛出。
+
+原 48 请求在 worker=0/2 均全部通过，图像、PTS、样本身份一致；每轮 192 路中 81 路使用余量，与此前捕获候选中的最近合格 PTS 全部一致。时间策略 12 项单测通过，包括旧策略、余量上限、等距、距离拒绝与解码错误传播。
+
+该结论称为“视频读取工程容差回归通过”，不是全量传感器同步证明。6/14 ms 的候选不会因这项政策自动获准；同 MP4 拼接来源边界仍存在工程近似的残余风险。当前索引无独立源 PTS 归属字段，不伪造归属证明。正式长跑不由这次回归自动批准。
+
+旧 `legacy_microsecond` 策略仍可显式选择；直接构造 Dataset 未指定策略时保持旧行为。生产训练计划已显式使用新策略，其配置与 Dataset provenance 进入运行身份。旧 run 不改变政策后强行续训，应使用新 run。低维索引、统计量和 checkpoint 实现均未改变。
+
+结果：[slack_validation/regression.json](slack_validation/regression.json)。复现工具：`examples/umi_pretrain/tools/check_umi_video_slack.py`。本次回归直接复用既有候选证据，没有重扫来源元数据或全量窗口。
+
+以下为此前诊断历史，当前工程政策以上述结论为准。
+
+---
+
 # 视频时间映射：诊断完成，读取政策尚未验收
 
 基线 `061639c`，复核日期 2026-09-20。Checkpoint basic/full 不改动。
