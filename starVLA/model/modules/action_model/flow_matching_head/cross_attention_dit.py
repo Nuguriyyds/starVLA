@@ -89,8 +89,17 @@ class BasicTransformerBlock(nn.Module):
         ff_inner_dim: Optional[int] = None,
         ff_bias: bool = True,
         attention_out_bias: bool = True,
+        cross_condition_norm: str = "none",
     ):
         super().__init__()
+        if cross_condition_norm not in ("none", "layer_norm"):
+            raise ValueError(f"Unknown cross_condition_norm: {cross_condition_norm!r}")
+        # One token at a time, before BOTH K/V projections. Stateless so the
+        # optional experiment changes neither parameter initialization nor RNG.
+        self.cross_condition_norm = (
+            nn.LayerNorm(cross_attention_dim or dim, eps=1e-5, elementwise_affine=False)
+            if cross_condition_norm == "layer_norm" else nn.Identity()
+        )
         self.dim = dim
         self.num_attention_heads = num_attention_heads
         self.attention_head_dim = attention_head_dim
@@ -164,6 +173,9 @@ class BasicTransformerBlock(nn.Module):
         if self.pos_embed is not None:
             norm_hidden_states = self.pos_embed(norm_hidden_states)
 
+        if encoder_hidden_states is not None:
+            encoder_hidden_states = self.cross_condition_norm(encoder_hidden_states)
+
         attn_output = self.attn1(
             norm_hidden_states,
             encoder_hidden_states=encoder_hidden_states,
@@ -213,9 +225,12 @@ class DiT(ModelMixin, ConfigMixin):
         # False reproduces the historical all-cross path for old checkpoints.
         use_canonical_forward: bool = True,
         cross_attention_dim: Optional[int] = None,
+        cross_condition_norm: str = "none",
         **kwargs,
     ):
         super().__init__()
+        if cross_condition_norm not in ("none", "layer_norm"):
+            raise ValueError(f"Unknown cross_condition_norm: {cross_condition_norm!r}")
         if not use_canonical_forward:
             logging.getLogger(__name__).warning(
                 "use_canonical_forward=False selects the legacy all-cross DiT path; "
@@ -256,6 +271,7 @@ class DiT(ModelMixin, ConfigMixin):
                     num_positional_embeddings=self.config.max_num_positional_embeddings,
                     final_dropout=final_dropout,
                     cross_attention_dim=curr_cross_attention_dim,
+                    cross_condition_norm=cross_condition_norm,
                 )
             ]
         self.transformer_blocks = nn.ModuleList(all_blocks)
