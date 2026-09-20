@@ -1,0 +1,263 @@
+{
+  "checkpoint": "/mnt/workspace/Native_Policy/user/wyt/runs/umi_performance_v1/end_to_end/checkpoints/update_00000022",
+  "manifest_version": "umi-full-checkpoint-v1",
+  "integrity": "full",
+  "max_bytes_per_file": 67108864,
+  "mount": "{\n   \"filesystems\": [\n      {\n         \"target\": \"/mnt/workspace\",\n         \"fstype\": \"nfs\",\n         \"source\": \"10.1.13.70:/lpy\"\n      }\n   ]\n}",
+  "mount_error": "",
+  "files": [
+    {
+      "file": "custom_checkpoint_0.pkl",
+      "size_bytes": 1653,
+      "bytes_per_pass": 1653,
+      "full_file_read": true,
+      "passes": [
+        {
+          "method": "read",
+          "bytes": 1653,
+          "seconds": 0.031104395995498635,
+          "MiB_per_second": 0.05068169930860152,
+          "prefix_sha256": null
+        },
+        {
+          "method": "read_sha256",
+          "bytes": 1653,
+          "seconds": 0.001038346003042534,
+          "MiB_per_second": 1.5182064941747129,
+          "prefix_sha256": "af4deec0169e4502b2587ec473af309a11d47e1487ae23f5f8999377c179c2d9"
+        },
+        {
+          "method": "read_sha256",
+          "bytes": 1653,
+          "seconds": 0.001180798004497774,
+          "MiB_per_second": 1.335049381024342,
+          "prefix_sha256": "af4deec0169e4502b2587ec473af309a11d47e1487ae23f5f8999377c179c2d9"
+        },
+        {
+          "method": "read",
+          "bytes": 1653,
+          "seconds": 0.0009263870015274733,
+          "MiB_per_second": 1.7016901601817005,
+          "prefix_sha256": null
+        }
+      ]
+    },
+    {
+      "file": "custom_checkpoint_1.pkl",
+      "size_bytes": 1525,
+      "bytes_per_pass": 1525,
+      "full_file_read": true,
+      "passes": [
+        {
+          "method": "read",
+          "bytes": 1525,
+          "seconds": 0.0164655909902649,
+          "MiB_per_second": 0.08832682248571593,
+          "prefix_sha256": null
+        },
+        {
+          "method": "read_sha256",
+          "bytes": 1525,
+          "seconds": 0.010156984004424885,
+          "MiB_per_second": 0.14318751825206605,
+          "prefix_sha256": "1b27c90be396614ab24d3ad0e2301df5ab863b0770438091f1484adcab403ec5"
+        },
+        {
+          "method": "read_sha256",
+          "bytes": 1525,
+          "seconds": 0.004569579003145918,
+          "MiB_per_second": 0.31826856074012166,
+          "prefix_sha256": "1b27c90be396614ab24d3ad0e2301df5ab863b0770438091f1484adcab403ec5"
+        },
+        {
+          "method": "read",
+          "bytes": 1525,
+          "seconds": 0.007693899009609595,
+          "MiB_per_second": 0.18902682901128023,
+          "prefix_sha256": null
+        }
+      ]
+    },
+    {
+      "file": "optimizer.bin",
+      "size_bytes": 29966731398,
+      "bytes_per_pass": 67108864,
+      "full_file_read": false,
+      "passes": [
+        {
+          "method": "read",
+          "bytes": 67108864,
+          "seconds": 0.4733227060060017,
+          "MiB_per_second": 135.21430345069584,
+          "prefix_sha256": null
+        },
+        {
+          "method": "read_sha256",
+          "bytes": 67108864,
+          "seconds": 0.06038246300886385,
+          "MiB_per_second": 1059.9103913764682,
+          "prefix_sha256": "808a410d7d763af2b50e7d326394e700225faf2eaeafbc4e04a59be8875aebbe"
+        },
+        {
+          "method": "read_sha256",
+          "bytes": 67108864,
+          "seconds": 0.060629963991232216,
+          "MiB_per_second": 1055.583671619121,
+          "prefix_sha256": "808a410d7d763af2b50e7d326394e700225faf2eaeafbc4e04a59be8875aebbe"
+        },
+        {
+          "method": "read",
+          "bytes": 67108864,
+          "seconds": 0.01644084500730969,
+          "MiB_per_second": 3892.743953947942,
+          "prefix_sha256": null
+        }
+      ]
+    },
+    {
+      "file": "pytorch_model.bin",
+      "size_bytes": 15218547652,
+      "bytes_per_pass": 67108864,
+      "full_file_read": false,
+      "passes": [
+        {
+          "method": "read",
+          "bytes": 67108864,
+          "seconds": 0.5393486550019588,
+          "MiB_per_second": 118.66164753811718,
+          "prefix_sha256": null
+        },
+        {
+          "method": "read_sha256",
+          "bytes": 67108864,
+          "seconds": 0.06065996100369375,
+          "MiB_per_second": 1055.061673978044,
+          "prefix_sha256": "9ad0ac081a99f10c3be8d9df8c526f09db0f7e07c50d0bb099b57b9421dbf312"
+        },
+        {
+          "method": "read_sha256",
+          "bytes": 67108864,
+          "seconds": 0.05427018900809344,
+          "MiB_per_second": 1179.284634340513,
+          "prefix_sha256": "9ad0ac081a99f10c3be8d9df8c526f09db0f7e07c50d0bb099b57b9421dbf312"
+        },
+        {
+          "method": "read",
+          "bytes": 67108864,
+          "seconds": 0.010772469991934486,
+          "MiB_per_second": 5941.070158275473,
+          "prefix_sha256": null
+        }
+      ]
+    },
+    {
+      "file": "random_states_0.pkl",
+      "size_bytes": 14821,
+      "bytes_per_pass": 14821,
+      "full_file_read": true,
+      "passes": [
+        {
+          "method": "read",
+          "bytes": 14821,
+          "seconds": 0.033341436996124685,
+          "MiB_per_second": 0.4239291499373554,
+          "prefix_sha256": null
+        },
+        {
+          "method": "read_sha256",
+          "bytes": 14821,
+          "seconds": 0.0015973380068317056,
+          "MiB_per_second": 8.848726432981083,
+          "prefix_sha256": "20c8669582d65b2b5d8774cc52062740b499a58fe046444e9867b3cfd636a016"
+        },
+        {
+          "method": "read_sha256",
+          "bytes": 14821,
+          "seconds": 0.0028750850033247843,
+          "MiB_per_second": 4.916170140052147,
+          "prefix_sha256": "20c8669582d65b2b5d8774cc52062740b499a58fe046444e9867b3cfd636a016"
+        },
+        {
+          "method": "read",
+          "bytes": 14821,
+          "seconds": 0.0026952269981848076,
+          "MiB_per_second": 5.244236219426537,
+          "prefix_sha256": null
+        }
+      ]
+    },
+    {
+      "file": "strict_rng_0.pt",
+      "size_bytes": 20046,
+      "bytes_per_pass": 20046,
+      "full_file_read": true,
+      "passes": [
+        {
+          "method": "read",
+          "bytes": 20046,
+          "seconds": 0.031203517006360926,
+          "MiB_per_second": 0.6126666857066965,
+          "prefix_sha256": null
+        },
+        {
+          "method": "read_sha256",
+          "bytes": 20046,
+          "seconds": 0.004210615996271372,
+          "MiB_per_second": 4.540275190995494,
+          "prefix_sha256": "7d64aceca11d0c3e9ce0b9e7a425ab8eb26f8c356fe52e0ca2aa30817d93609f"
+        },
+        {
+          "method": "read_sha256",
+          "bytes": 20046,
+          "seconds": 0.0012991630064789206,
+          "MiB_per_second": 14.715132166896312,
+          "prefix_sha256": "7d64aceca11d0c3e9ce0b9e7a425ab8eb26f8c356fe52e0ca2aa30817d93609f"
+        },
+        {
+          "method": "read",
+          "bytes": 20046,
+          "seconds": 0.0036761219962500036,
+          "MiB_per_second": 5.200413742030657,
+          "prefix_sha256": null
+        }
+      ]
+    },
+    {
+      "file": "training_state.json",
+      "size_bytes": 456,
+      "bytes_per_pass": 456,
+      "full_file_read": true,
+      "passes": [
+        {
+          "method": "read",
+          "bytes": 456,
+          "seconds": 0.010656246988219209,
+          "MiB_per_second": 0.040809441519328284,
+          "prefix_sha256": null
+        },
+        {
+          "method": "read_sha256",
+          "bytes": 456,
+          "seconds": 0.005711068006348796,
+          "MiB_per_second": 0.07614608822689801,
+          "prefix_sha256": "937ddf8156e94b7265560bca18217ba4d07c683eca107a87d0d8822da5a026d1"
+        },
+        {
+          "method": "read_sha256",
+          "bytes": 456,
+          "seconds": 0.009004185994854197,
+          "MiB_per_second": 0.04829703523780795,
+          "prefix_sha256": "937ddf8156e94b7265560bca18217ba4d07c683eca107a87d0d8822da5a026d1"
+        },
+        {
+          "method": "read",
+          "bytes": 456,
+          "seconds": 0.001038706992403604,
+          "MiB_per_second": 0.4186700305876761,
+          "prefix_sha256": null
+        }
+      ]
+    }
+  ],
+  "caveat": "Read-only prefixes, not a payload validation. Repeated reads warm caches; order alternates but does not establish cold-cache causality. No cache flush."
+}

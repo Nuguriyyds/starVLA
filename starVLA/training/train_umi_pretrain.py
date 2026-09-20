@@ -25,7 +25,9 @@ from omegaconf import OmegaConf
 from starVLA.training.trainer_utils.umi_checkpoint import (
     UMICheckpoints, main_call, require_all, sha256_file, trim_uncommitted_log, write_json,
 )
-from starVLA.training.trainer_utils.umi_training_state import UMITrainingState, fingerprint, validate_plan
+from starVLA.training.trainer_utils.umi_training_state import (
+    UMITrainingState, checkpoint_config, checkpoint_reasons, fingerprint, validate_plan,
+)
 from starVLA.training.trainer_utils.umi_performance import Performance
 from starVLA.training.trainer_utils.umi_training_data import (
     StageLoader, TinyModel, evaluate, inspect_views, make_loader,
@@ -169,6 +171,7 @@ def run(args):
     plan = OmegaConf.to_container(OmegaConf.load(args.plan), resolve=True)
     total_updates = validate_plan(plan)
     train = plan["training"]
+    saving = checkpoint_config(plan)
     if args.stop_after_update is not None and not 0 < args.stop_after_update <= total_updates:
         raise ValueError("Pause step must be within the unchanged full training plan")
     handlers = [DistributedDataParallelKwargs(find_unused_parameters=True)]
@@ -271,7 +274,8 @@ def run(args):
         scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, multiplier)
         model, optimizer = perf.call("prepare_model_optimizer", accelerator.prepare, model, optimizer)
         accelerator.register_for_checkpointing(progress, scheduler)
-        checkpoints = UMICheckpoints(accelerator, run_dir, identity, progress, performance=perf)
+        checkpoints = UMICheckpoints(accelerator, run_dir, identity, progress,
+                                     performance=perf, integrity=saving["integrity"])
         resolved = perf.call("resume_verify", checkpoints.resolve, args.resume) if args.resume else None
         if resolved:
             progress.load_state_dict(resolved["state"])
@@ -396,10 +400,13 @@ def run(args):
                     dist.all_reduce(stop_flag, op=dist.ReduceOp.MAX)
                 pause = bool(stop_flag.item()) or args.stop_after_update == step
                 changed_stage = progress.stage_index != stage_i
-                if pause or progress.done or changed_stage or step % train["save_every"] == 0:
+                reasons = checkpoint_reasons(step, saving["every_updates"], pause=pause,
+                                             complete=progress.done, stage_boundary=changed_stage)
+                event["checkpoint_reasons"] = reasons
+                if reasons:
                     perf.suspend()
                     accelerator.print(f"Saving complete checkpoint at update {step}", flush=True)
-                    perf.call("checkpoint_total", checkpoints.save, loader.generator)
+                    perf.call("checkpoint_total", checkpoints.save, loader.generator, reasons=reasons)
                 event["latest_complete_checkpoint"] = checkpoints.latest
                 if accelerator.is_main_process:
                     with (run_dir / "updates.jsonl").open("a") as stream:

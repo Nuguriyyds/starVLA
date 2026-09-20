@@ -92,7 +92,7 @@ normalization/statistics.json     实际统计文件的原字节副本
 data_access/all_views.json        所有阶段和评测的来源
 data_access/stage_A/...           每阶段来源记录，互不覆盖
 checkpoints/update_XXXXXXXX/      模型+optimizer+进度+scheduler+每rank RNG
-  manifest.json                  所有文件字节数和 SHA-256
+  manifest.json                  校验模式、逐文件大小/校验方式、保存触发原因
   COMPLETED.json                 仅完整写入后发布
 latest.json                      指向最近完整发布点
 exports/                         预留的推理导出位置，不可当作resume
@@ -106,11 +106,16 @@ CPU/设备与 loader generator：Accelerate 某些版本会把 RNG 恢复异常�
 此入口不接受这种静默降级。数据迭代器创建和评测保留训练 RNG；当前 worker
 只执行确定性变换，base seed由stage/epoch确定。
 
-先在隐藏临时目录完成所有 rank 文件，再计算文件摘要，写完成标记、发布
+先在隐藏临时目录完成所有 rank 文件，再按校验模式处理摘要，写完成标记、发布
 目录及 latest 指针。半成品目录不参与 latest 选择；不自动回退到更早点。
 强制中断后未持久化的更新可能重算，恢复时工程 trace/日志去除这些未提交
-记录。SHA-256 校验会产生读取 checkpoint 的开销；这是当前严格验收的取舍。
+记录。默认 basic 只对模型/optimizer 检查大小，其余状态文件保留 SHA-256；
+full 对全部文件计算摘要。旧 v1 检查点继续按全量摘要验证，不自动降级。
 文件与目录执行 fsync，但远端存储的持久性仍依赖其服务端保证。
+
+配置、剩余风险和本轮验证见 [CHECKPOINT_POLICY.md](CHECKPOINT_POLICY.md)。
+保存频率现在使用 `checkpoint.every_updates`，工程 YAML 仍保持高频验收；
+旧 `training.save_every` 可用，但两者不能同时出现。
 
 首次严格恢复要求相同代码内容/commit、模型工件、数据视图、规则、表示、
 归一化内容、完整阶段计划、参数组、world size、batch、累积和关键库版本。
@@ -174,7 +179,9 @@ sampler 实际顺序与固定跨文件压力序列，各测 worker=0/2/4、prefe
 training 模式只对已有工程视图更新参数，调用本训练入口，不另写优化循环。
 两组均 batch=1、累积=2，继承 FP32 参数/AdamW 和现有 VLM 内部 BF16 路径，
 默认2次预热+20次更新，最后一次跨入B阶段，结尾评测一次。阶段结束与最终
-结束各完整保存一次，保留 SHA/fsync/完成标记。另启动新进程加载已完成的
+结束各完整保存一次，按 plan 的 basic/full 策略校验，保留 fsync/完成标记。
+历史 PERFORMANCE.md 的 42 GiB 结果使用旧版全量 SHA，不应直接当作新版测量。
+另启动新进程加载已完成的
 端到端 run，单独记录恢复校验与加载成本，不继续更新。
 
 回放组提前解码各阶段 sampler 前64个样本（PIL/语言/归一化数值），仍使用

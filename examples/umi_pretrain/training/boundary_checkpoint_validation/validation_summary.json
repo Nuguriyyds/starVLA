@@ -1,0 +1,16 @@
+{
+  "date": "2026-09-20",
+  "source_sha256": "4c77a65bf2db12a04eb9d687599e2b13900ce36c9734efd4f425ff40c45b0aa9",
+  "unit_tests": {
+    "result": "passed",
+    "count": 32,
+    "files": [
+      "test_umi_checkpoint.py",
+      "test_umi_video_time.py",
+      "test_umi_training_state.py",
+      "test_umi_sampler.py"
+    ]
+  },
+  "real_qwen_save_timing_rerun": false,
+  "video_original_stress_passed": false
+}

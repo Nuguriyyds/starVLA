@@ -15,6 +15,32 @@ def positive(value, name):
     return value
 
 
+def checkpoint_config(plan):
+    config = plan.get("checkpoint", {})
+    if not isinstance(config, dict) or set(config) - {"integrity", "every_updates"}:
+        raise ValueError("checkpoint supports integrity and every_updates only")
+    if "every_updates" in config and "save_every" in plan["training"]:
+        raise ValueError("Use checkpoint.every_updates OR legacy training.save_every, not both")
+    mode = config.get("integrity", "basic")
+    if mode not in ("basic", "full"):
+        raise ValueError("Checkpoint integrity must be basic or full")
+    interval = config.get("every_updates", plan["training"].get("save_every"))
+    return {"integrity": mode, "every_updates": positive(interval, "checkpoint.every_updates")}
+
+
+def checkpoint_reasons(step, interval, *, pause=False, complete=False, stage_boundary=False):
+    reasons = []
+    if step % interval == 0:
+        reasons.append("periodic")
+    if pause:
+        reasons.append("pause")
+    if stage_boundary:
+        reasons.append("stage_boundary")
+    if complete:
+        reasons.append("complete")
+    return reasons
+
+
 def validate_plan(plan):
     if plan.get("version") != "umi-training-plan-v1":
         raise ValueError("Expected version=umi-training-plan-v1")
@@ -32,7 +58,8 @@ def validate_plan(plan):
             raise ValueError("Stage names must be path-safe identifiers")
         positive(stage["updates"], "stage updates")
     train = plan["training"]
-    for key in ("batch_size", "gradient_accumulation_steps", "save_every"):
+    checkpoint_config(plan)
+    for key in ("batch_size", "gradient_accumulation_steps"):
         positive(train[key], key)
     if type(train.get("num_workers", 0)) is not int or train.get("num_workers", 0) < 0:
         raise ValueError("num_workers must be nonnegative")

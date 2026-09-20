@@ -9,6 +9,7 @@ import json
 import os
 from pathlib import Path
 import random
+import time
 
 import numpy as np
 import torch
@@ -145,6 +146,23 @@ def preserve_rng(generator=None):
         restore_rng(state, generator)
 
 
+LARGE_STATE_FILES = frozenset({"pytorch_model.bin", "optimizer.bin"})
+
+
+def required_files(world_size):
+    names = {"pytorch_model.bin", "optimizer.bin", "custom_checkpoint_0.pkl",
+             "custom_checkpoint_1.pkl", "training_state.json"}
+    for rank in range(world_size):
+        names.update({f"random_states_{rank}.pkl", f"strict_rng_{rank}.pt"})
+    return names
+
+
+def file_check(name, integrity):
+    if integrity not in ("basic", "full"):
+        raise ValueError("Checkpoint integrity must be basic or full")
+    return "size" if integrity == "basic" and name in LARGE_STATE_FILES else "sha256"
+
+
 def inspect_checkpoint(path, identity):
     path = Path(path)
     marker_path = path / "COMPLETED.json"
@@ -155,23 +173,37 @@ def inspect_checkpoint(path, identity):
     if marker.get("manifest_sha256") != sha256_file(manifest_path):
         raise ValueError("Checkpoint manifest hash mismatch")
     manifest = json.loads(manifest_path.read_text())
-    if manifest.get("version") != "umi-full-checkpoint-v1":
+    version = manifest.get("version")
+    if version not in ("umi-full-checkpoint-v1", "umi-full-checkpoint-v2"):
         raise ValueError("Unsupported checkpoint format")
+    integrity = "full" if version == "umi-full-checkpoint-v1" else manifest.get("integrity")
+    file_check("manifest.json", integrity)  # Validate explicitly; never infer from missing hashes.
     if manifest["identity_fingerprint"] != fingerprint(identity) or manifest["identity"] != identity:
         raise ValueError("Resume identity mismatch: plan/data/normalization/code/runtime must match")
     files = manifest["files"]
-    required = {"pytorch_model.bin", "optimizer.bin", "custom_checkpoint_0.pkl",
-                "custom_checkpoint_1.pkl", "training_state.json"}
-    for rank in range(identity["runtime"]["world_size"]):
-        required.update({f"random_states_{rank}.pkl", f"strict_rng_{rank}.pt"})
+    required = required_files(identity["runtime"]["world_size"])
     if not required <= files.keys():
         raise ValueError(f"Missing required checkpoint files: {sorted(required - files.keys())}")
     for name, record in files.items():
         file = path / name
-        if Path(name).name != name or not file.is_file():
+        if Path(name).name != name or file.is_symlink() or not file.is_file():
             raise ValueError(f"Invalid checkpoint file: {name}")
-        if file.stat().st_size != record["bytes"] or sha256_file(file) != record["sha256"]:
+        check = file_check(name, integrity)
+        if version == "umi-full-checkpoint-v2" and record.get("check") != check:
+            raise ValueError(f"Checkpoint file check policy mismatch: {name}")
+        if type(record.get("bytes")) is not int or record["bytes"] <= 0:
+            raise ValueError(f"Invalid checkpoint file size: {name}")
+        if file.stat().st_size != record["bytes"]:
             raise ValueError(f"Checkpoint file corrupt or truncated: {name}")
+        if check == "sha256":
+            digest = record.get("sha256")
+            if (not isinstance(digest, str) or len(digest) != 64
+                    or any(c not in "0123456789abcdef" for c in digest)):
+                raise ValueError(f"Missing or invalid checkpoint SHA-256: {name}")
+            if sha256_file(file) != digest:
+                raise ValueError(f"Checkpoint file corrupt or truncated: {name}")
+        elif "sha256" in record:
+            raise ValueError(f"Size-only record must not claim a content digest: {name}")
     state = json.loads((path / "training_state.json").read_text())
     if state["global_update_step"] != manifest["step"]:
         raise ValueError("Checkpoint step mismatch")
@@ -179,11 +211,13 @@ def inspect_checkpoint(path, identity):
 
 
 class UMICheckpoints:
-    def __init__(self, accelerator, run_dir, identity, progress, performance=None):
+    def __init__(self, accelerator, run_dir, identity, progress, performance=None, integrity="basic"):
         self.accelerator, self.run_dir = accelerator, Path(run_dir)
         self.identity, self.progress = identity, progress
         self.latest = None
         self.performance = performance
+        file_check("manifest.json", integrity)
+        self.integrity = integrity
 
     def measure(self, name):
         return self.performance.span(name) if self.performance else nullcontext()
@@ -203,11 +237,14 @@ class UMICheckpoints:
         self.latest = resolved["path"]
         return resolved
 
-    def save(self, generator=None):
+    def save(self, generator=None, *, reasons=()):
         accelerator = self.accelerator
         step = self.progress.global_update_step
         name = f"update_{step:08d}"
         destination = self.run_dir / "checkpoints" / name
+        reasons = sorted(set(reasons))
+        if any(not isinstance(reason, str) or not reason for reason in reasons):
+            raise ValueError("Checkpoint reasons must be nonempty strings")
 
         def prepare():
             if destination.exists():
@@ -238,19 +275,26 @@ class UMICheckpoints:
                 for file in sorted(temporary.iterdir()):
                     if not file.is_file():
                         raise ValueError("Unexpected sharded checkpoint layout for this backend")
+                    before = time.monotonic()
                     with self.measure("checkpoint_file_fsync"):
                         with file.open("rb") as stream:
                             os.fsync(stream.fileno())
-                    with self.measure("checkpoint_file_hash"):
-                        files[file.name] = {"bytes": file.stat().st_size, "sha256": sha256_file(file)}
-                manifest = dict(version="umi-full-checkpoint-v1", step=step,
+                    record = {"bytes": file.stat().st_size, "check": file_check(file.name, self.integrity),
+                              "fsync_seconds": time.monotonic() - before}
+                    if record["bytes"] <= 0:
+                        raise ValueError(f"Empty checkpoint file: {file.name}")
+                    if record["check"] == "sha256":
+                        before = time.monotonic()
+                        with self.measure("checkpoint_file_hash"):
+                            record["sha256"] = sha256_file(file)
+                        record["read_hash_seconds"] = time.monotonic() - before
+                    files[file.name] = record
+                manifest = dict(version="umi-full-checkpoint-v2", integrity=self.integrity,
+                                save_reasons=reasons, step=step,
                                 identity=self.identity, identity_fingerprint=fingerprint(self.identity), files=files)
                 write_json(temporary / "manifest.json", manifest)
                 # Completion is published only after every required rank file exists.
-                required = {"pytorch_model.bin", "optimizer.bin", "custom_checkpoint_0.pkl",
-                            "custom_checkpoint_1.pkl", "training_state.json"}
-                for rank in range(accelerator.num_processes):
-                    required.update({f"random_states_{rank}.pkl", f"strict_rng_{rank}.pt"})
+                required = required_files(accelerator.num_processes)
                 if not required <= files.keys():
                     raise ValueError("Accelerate did not write all required training/rank states")
                 with self.measure("checkpoint_publish_marker_rename"):

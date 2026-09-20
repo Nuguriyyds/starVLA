@@ -20,6 +20,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 from PIL import Image
 from torch.utils.data import Dataset
+from starVLA.dataloader.umi_video_time import VIDEO_TIME_POLICY, VideoTimeWindow
 
 
 CAMERAS = tuple("observation.images." + name for name in
@@ -363,10 +364,6 @@ class UMIIndexedDataset(Dataset):
     def _video_frame(self, camera, timestamp):
         import av
         relative = camera["video_path"]
-        start, end = float(camera["from_timestamp"]), float(camera["to_timestamp"])
-        target = start + timestamp
-        if not start <= target < end:
-            raise ValueError(f"Requested timestamp outside episode video span: {relative}, {target}")
         cached = self._videos.get(relative)
         if cached is None:
             container = av.open(str(self._path(relative, video=True)))
@@ -374,25 +371,28 @@ class UMIIndexedDataset(Dataset):
             stream.thread_count = 1
             cached = self._videos.put(relative, (container, stream))
         container, stream = cached
-        time_base = float(stream.time_base)
-        container.seek(math.floor(target / time_base), stream=stream, backward=True, any_frame=False)
+        window = VideoTimeWindow(camera["from_timestamp"], camera["to_timestamp"], timestamp,
+                                 stream.time_base, self.decode_tolerance_seconds)
+        container.seek(window.seek_pts, stream=stream, backward=True, any_frame=False)
         closest, closest_time, distance = None, None, math.inf
         for frame in container.decode(video=0):
             if frame.pts is None:
                 continue
-            time = float(frame.pts * stream.time_base)
-            if start <= time < end:
-                error = abs(time - target)
+            time = window.frame_time(frame.pts, frame.time_base)
+            if window.contains(time):
+                error = abs(time - window.target)
                 if error < distance:
                     closest, closest_time, distance = frame, time, error
-            if time >= target:
+            if time >= window.target:
                 break
-        if closest is None or distance > self.decode_tolerance_seconds:
-            raise ValueError(f"Cannot locate image near {target:.6f}s in {relative}; closest error={distance}")
+        if closest is None or distance > window.tolerance:
+            raise ValueError(f"Cannot locate image near {float(window.target):.6f}s in {relative}; closest error={float(distance)}")
         image = Image.fromarray(closest.to_ndarray(format="rgb24")).resize(self.image_size)
         return image, {"camera": camera["camera"], "video_path": relative,
-                       "requested_seconds": target, "decoded_seconds": closest_time,
-                       "offset_seconds": closest_time - target}
+                       "requested_seconds": float(window.target), "decoded_seconds": float(closest_time),
+                       "offset_seconds": float(closest_time - window.target),
+                       "decoded_pts": closest.pts, "time_base": str(stream.time_base),
+                       "boundary_policy": VIDEO_TIME_POLICY["version"]}
 
     def __getitem__(self, index):
         try:
@@ -431,6 +431,7 @@ class UMIIndexedDataset(Dataset):
                 "camera_order": list(CAMERAS), "image_size": list(self.image_size),
                 "normalization": "none", "source_identity": self.source_identity,
                 "decode_tolerance_seconds": self.decode_tolerance_seconds,
+                "video_time_policy": dict(VIDEO_TIME_POLICY),
                 "note": "Source checks and decode tolerance do not prove physical label quality or sensor synchronization."}
 
 

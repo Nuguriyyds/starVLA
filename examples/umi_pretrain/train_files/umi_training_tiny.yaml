@@ -12,9 +12,11 @@ training:
   weight_decay: 0.01
   max_grad_norm: 1.0
   warmup_updates: 2
-  save_every: 6
   eval_every: 2
   trace_samples: true
+checkpoint:
+  integrity: basic
+  every_updates: 6
 stages:
   - {name: A, size: 23, offset: 0, updates: 6}
   - {name: B, size: 27, offset: 100, updates: 6}

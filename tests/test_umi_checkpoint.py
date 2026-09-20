@@ -4,11 +4,16 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import torch
 
-from starVLA.training.trainer_utils.umi_checkpoint import UMICheckpoints, inspect_checkpoint, trim_uncommitted_log
-from starVLA.training.trainer_utils.umi_training_state import UMITrainingState
+from starVLA.training.trainer_utils.umi_checkpoint import (
+    UMICheckpoints, inspect_checkpoint, trim_uncommitted_log, sha256_file, write_json,
+)
+from starVLA.training.trainer_utils.umi_training_state import (
+    UMITrainingState, checkpoint_config, checkpoint_reasons,
+)
 
 
 class FakeAccelerator:
@@ -71,6 +76,7 @@ class CheckpointTests(unittest.TestCase):
                 inspect_checkpoint(path, changed)
 
     def test_rejects_corrupted_bytes_weights_only_and_missing_path(self):
+        self.manager.integrity = "full"
         self.state.commit_update()
         path = Path(self.manager.save())
         weights = path / "pytorch_model.bin"
@@ -83,6 +89,88 @@ class CheckpointTests(unittest.TestCase):
             stream.write(b"corrupt")
         with self.assertRaisesRegex(ValueError, "corrupt"):
             inspect_checkpoint(path, self.identity)
+
+    def test_basic_never_hashes_model_optimizer_and_records_guarantee(self):
+        def metadata_only(path):
+            self.assertNotIn(Path(path).name, ("pytorch_model.bin", "optimizer.bin"))
+            return sha256_file(path)
+        self.state.commit_update()
+        with patch("starVLA.training.trainer_utils.umi_checkpoint.sha256_file", side_effect=metadata_only):
+            path = Path(self.manager.save(reasons=["periodic", "stage_boundary"]))
+            self.assertEqual(inspect_checkpoint(path, self.identity), self.state.state_dict())
+        manifest = json.loads((path / "manifest.json").read_text())
+        self.assertEqual(manifest["integrity"], "basic")
+        self.assertEqual(manifest["save_reasons"], ["periodic", "stage_boundary"])
+        self.assertEqual(manifest["files"]["optimizer.bin"]["check"], "size")
+        self.assertNotIn("sha256", manifest["files"]["optimizer.bin"])
+        # Document the intentional residual risk: equal-length content mutation
+        # in a size-only payload is NOT detected by this layer.
+        weights = path / "pytorch_model.bin"
+        data = bytearray(weights.read_bytes()); data[20] ^= 1; weights.write_bytes(data)
+        self.assertEqual(inspect_checkpoint(path, self.identity), self.state.state_dict())
+
+    def test_both_modes_reject_missing_truncated_and_changed_small_files(self):
+        for mode in ("basic", "full"):
+            with self.subTest(mode=mode):
+                manager = UMICheckpoints(self.accelerator, self.root / mode, self.identity,
+                                         self.state, integrity=mode)
+                path = Path(manager.save())
+                weights = path / "pytorch_model.bin"
+                original = weights.read_bytes()
+                weights.unlink()
+                with self.assertRaisesRegex(ValueError, "Invalid checkpoint file"):
+                    inspect_checkpoint(path, self.identity)
+                weights.write_bytes(original[:-1])
+                with self.assertRaisesRegex(ValueError, "truncated"):
+                    inspect_checkpoint(path, self.identity)
+                weights.write_bytes(original)
+                state = path / "training_state.json"
+                data = bytearray(state.read_bytes()); data[2] ^= 1; state.write_bytes(data)
+                with self.assertRaisesRegex(ValueError, "corrupt"):
+                    inspect_checkpoint(path, self.identity)
+
+    def rewrite_manifest(self, path, manifest):
+        write_json(path / "manifest.json", manifest)
+        write_json(path / "COMPLETED.json", {"manifest_sha256": sha256_file(path / "manifest.json")})
+
+    def test_legacy_v1_always_requires_full_hashes(self):
+        self.manager.integrity = "full"
+        path = Path(self.manager.save())
+        manifest = json.loads((path / "manifest.json").read_text())
+        manifest["version"] = "umi-full-checkpoint-v1"
+        manifest.pop("integrity")
+        for record in manifest["files"].values():
+            record.pop("check")
+        self.rewrite_manifest(path, manifest)  # Synthetic legacy fixture only.
+        self.assertEqual(inspect_checkpoint(path, self.identity), self.state.state_dict())
+        self.manager.integrity = "basic"
+        self.assertEqual(self.manager.resolve(str(path))["state"], self.state.state_dict())
+        manifest["files"]["optimizer.bin"].pop("sha256")
+        self.rewrite_manifest(path, manifest)
+        with self.assertRaisesRegex(ValueError, "SHA-256"):
+            inspect_checkpoint(path, self.identity)
+
+    def test_full_cannot_silently_downgrade_file_checks(self):
+        self.manager.integrity = "full"
+        path = Path(self.manager.save())
+        original = json.loads((path / "manifest.json").read_text())
+        for change in (lambda m: m.pop("integrity"),
+                       lambda m: m["files"]["optimizer.bin"].pop("sha256"),
+                       lambda m: m["files"]["optimizer.bin"].update(check="size")):
+            manifest = deepcopy(original); change(manifest); self.rewrite_manifest(path, manifest)
+            with self.assertRaises(ValueError):
+                inspect_checkpoint(path, self.identity)
+
+    def test_save_triggers_are_combined_and_config_is_explicit(self):
+        reasons = checkpoint_reasons(12, 6, pause=True, complete=True, stage_boundary=True)
+        self.assertEqual(set(reasons), {"periodic", "pause", "complete", "stage_boundary"})
+        path = self.manager.save(reasons=reasons)
+        self.assertEqual(self.manager.save(reasons=reasons), path)
+        self.assertEqual(len(list((self.root / "checkpoints").glob("update_*"))), 1)
+        self.assertEqual(checkpoint_config({"training": {"save_every": 6}}),
+                         {"integrity": "basic", "every_updates": 6})
+        with self.assertRaisesRegex(ValueError, "not both"):
+            checkpoint_config({"training": {"save_every": 6}, "checkpoint": {"every_updates": 6}})
 
     def test_streaming_log_recovery_discards_only_uncommitted_suffix(self):
         path = self.root / "updates.jsonl"

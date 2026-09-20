@@ -1,0 +1,639 @@
+{
+  "status": "failed",
+  "original_indices": [
+    0,
+    59679977,
+    126293227,
+    193328277,
+    259882185,
+    327246856,
+    395166117,
+    462744803,
+    530478891,
+    598619349,
+    666479866,
+    734498741,
+    805445831,
+    876211231,
+    945611674,
+    1013323573,
+    0,
+    59679977,
+    126293227,
+    193328277,
+    259882185,
+    327246856,
+    395166117,
+    462744803,
+    530478891,
+    598619349,
+    666479866,
+    734498741,
+    805445831,
+    876211231,
+    945611674,
+    1013323573,
+    0,
+    59679977,
+    126293227,
+    193328277,
+    259882185,
+    327246856,
+    395166117,
+    462744803,
+    530478891,
+    598619349,
+    666479866,
+    734498741,
+    805445831,
+    876211231,
+    945611674,
+    1013323573
+  ],
+  "cases": [
+    {
+      "workload": "original_case",
+      "workers": 0,
+      "requested": 1,
+      "samples": [
+        {
+          "metadata": {
+            "dataset_index": 126293227,
+            "episode_index": 34300,
+            "frame_index": 0,
+            "video_decode": [
+              {
+                "camera": "observation.images.head_left",
+                "video_path": "videos/observation.images.head_left/chunk-001/file-543.mp4",
+                "requested_seconds": 1421.4342983300003,
+                "decoded_seconds": 1421.467615,
+                "offset_seconds": 0.0333166699997,
+                "decoded_pts": 1421467615000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.head_right",
+                "video_path": "videos/observation.images.head_right/chunk-001/file-557.mp4",
+                "requested_seconds": 286.066677666,
+                "decoded_seconds": 286.066677,
+                "offset_seconds": -6.66e-07,
+                "decoded_pts": 286066677000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.wrist_left",
+                "video_path": "videos/observation.images.wrist_left/chunk-001/file-407.mp4",
+                "requested_seconds": 1100.8516966640002,
+                "decoded_seconds": 1100.870551,
+                "offset_seconds": 0.0188543359998,
+                "decoded_pts": 1100870551000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.wrist_right",
+                "video_path": "videos/observation.images.wrist_right/chunk-001/file-329.mp4",
+                "requested_seconds": 594.046235332,
+                "decoded_seconds": 594.048648,
+                "offset_seconds": 0.002412668,
+                "decoded_pts": 594048648000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              }
+            ]
+          },
+          "pixels_sha256": [
+            "60adad0d749ad7569bd354f352bcca86c193823bac60f6acc0de8272f8cb2b9d",
+            "1ca0d69f2faee8e251d7a5af020e91274fced8973ee547c421eb60779337455a",
+            "d95c6a312820a92358c51ab09e8ea81fe4748d06cf850dbffed02996fee5c253",
+            "aace9092b83c90e7d29dfd6e94df10a133ea52d842a84a281e17438d907182bf"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "workload": "original_case",
+      "workers": 2,
+      "requested": 1,
+      "samples": [
+        {
+          "metadata": {
+            "dataset_index": 126293227,
+            "episode_index": 34300,
+            "frame_index": 0,
+            "video_decode": [
+              {
+                "camera": "observation.images.head_left",
+                "video_path": "videos/observation.images.head_left/chunk-001/file-543.mp4",
+                "requested_seconds": 1421.4342983300003,
+                "decoded_seconds": 1421.467615,
+                "offset_seconds": 0.0333166699997,
+                "decoded_pts": 1421467615000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.head_right",
+                "video_path": "videos/observation.images.head_right/chunk-001/file-557.mp4",
+                "requested_seconds": 286.066677666,
+                "decoded_seconds": 286.066677,
+                "offset_seconds": -6.66e-07,
+                "decoded_pts": 286066677000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.wrist_left",
+                "video_path": "videos/observation.images.wrist_left/chunk-001/file-407.mp4",
+                "requested_seconds": 1100.8516966640002,
+                "decoded_seconds": 1100.870551,
+                "offset_seconds": 0.0188543359998,
+                "decoded_pts": 1100870551000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.wrist_right",
+                "video_path": "videos/observation.images.wrist_right/chunk-001/file-329.mp4",
+                "requested_seconds": 594.046235332,
+                "decoded_seconds": 594.048648,
+                "offset_seconds": 0.002412668,
+                "decoded_pts": 594048648000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              }
+            ]
+          },
+          "pixels_sha256": [
+            "60adad0d749ad7569bd354f352bcca86c193823bac60f6acc0de8272f8cb2b9d",
+            "1ca0d69f2faee8e251d7a5af020e91274fced8973ee547c421eb60779337455a",
+            "d95c6a312820a92358c51ab09e8ea81fe4748d06cf850dbffed02996fee5c253",
+            "aace9092b83c90e7d29dfd6e94df10a133ea52d842a84a281e17438d907182bf"
+          ]
+        }
+      ],
+      "error": null
+    },
+    {
+      "workload": "original_stress",
+      "workers": 0,
+      "requested": 48,
+      "samples": [
+        {
+          "metadata": {
+            "dataset_index": 0,
+            "episode_index": 0,
+            "frame_index": 0,
+            "video_decode": [
+              {
+                "camera": "observation.images.head_left",
+                "video_path": "videos/observation.images.head_left/chunk-000/file-000.mp4",
+                "requested_seconds": 1.1333415653333334,
+                "decoded_seconds": 1.166661,
+                "offset_seconds": 0.0333194346666666,
+                "decoded_pts": 1166661000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.head_right",
+                "video_path": "videos/observation.images.head_right/chunk-000/file-000.mp4",
+                "requested_seconds": 1.0999625653333334,
+                "decoded_seconds": 1.133291,
+                "offset_seconds": 0.0333284346666666,
+                "decoded_pts": 1133291000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.wrist_left",
+                "video_path": "videos/observation.images.wrist_left/chunk-000/file-000.mp4",
+                "requested_seconds": 1.7398815653333333,
+                "decoded_seconds": 1.766671,
+                "offset_seconds": 0.0267894346666667,
+                "decoded_pts": 1766671000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.wrist_right",
+                "video_path": "videos/observation.images.wrist_right/chunk-000/file-000.mp4",
+                "requested_seconds": 1.7592415653333333,
+                "decoded_seconds": 1.76667,
+                "offset_seconds": 0.0074284346666667,
+                "decoded_pts": 1766670000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              }
+            ]
+          },
+          "pixels_sha256": [
+            "0efabf16462958f7b1955aba8064a4aca78f9df6775e1cccdbafcad3055e528b",
+            "bcfad6e5e9555567a992c07374406192ad8577542f8332813e01228c871471b5",
+            "a64717aa09b3cd4686c88b719fb72e51487638dbc3b52ef1bd363201c46ad228",
+            "44488201010836e12abaf3968254bda8d88e701fa265e9ed68ee3f54fc2c9da5"
+          ]
+        },
+        {
+          "metadata": {
+            "dataset_index": 59679977,
+            "episode_index": 16160,
+            "frame_index": 0,
+            "video_decode": [
+              {
+                "camera": "observation.images.head_left",
+                "video_path": "videos/observation.images.head_left/chunk-000/file-741.mp4",
+                "requested_seconds": 200.19965899899998,
+                "decoded_seconds": 200.232988,
+                "offset_seconds": 0.03332900100002,
+                "decoded_pts": 200232988000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.head_right",
+                "video_path": "videos/observation.images.head_right/chunk-000/file-747.mp4",
+                "requested_seconds": 2400.200133658,
+                "decoded_seconds": 2400.233462,
+                "offset_seconds": 0.033328342,
+                "decoded_pts": 2400233462000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.wrist_left",
+                "video_path": "videos/observation.images.wrist_left/chunk-000/file-674.mp4",
+                "requested_seconds": 2158.288505992,
+                "decoded_seconds": 2158.297532,
+                "offset_seconds": 0.009026008,
+                "decoded_pts": 2158297532000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.wrist_right",
+                "video_path": "videos/observation.images.wrist_right/chunk-000/file-636.mp4",
+                "requested_seconds": 1397.5941983280002,
+                "decoded_seconds": 1397.600546,
+                "offset_seconds": 0.0063476719998,
+                "decoded_pts": 1397600546000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              }
+            ]
+          },
+          "pixels_sha256": [
+            "545e54ff9d639e3cba6e1a4a363e0a22870cf2ffc29d4219e5e5ddfc9f272a84",
+            "3ea3b57ed866f964f0be39e5d26513f4a1942ce8f219a9b8b690ba5937b6f1e1",
+            "fd33601d37fb50d9fb90e7c266a98fc1dfc82f0e9e9ce2feec18653cba5ea6e4",
+            "36c1791fdcef207e026ceb7c782713a83da7f27107cc7b9e843bdcff441a9cc6"
+          ]
+        },
+        {
+          "metadata": {
+            "dataset_index": 126293227,
+            "episode_index": 34300,
+            "frame_index": 0,
+            "video_decode": [
+              {
+                "camera": "observation.images.head_left",
+                "video_path": "videos/observation.images.head_left/chunk-001/file-543.mp4",
+                "requested_seconds": 1421.4342983300003,
+                "decoded_seconds": 1421.467615,
+                "offset_seconds": 0.0333166699997,
+                "decoded_pts": 1421467615000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.head_right",
+                "video_path": "videos/observation.images.head_right/chunk-001/file-557.mp4",
+                "requested_seconds": 286.066677666,
+                "decoded_seconds": 286.066677,
+                "offset_seconds": -6.66e-07,
+                "decoded_pts": 286066677000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.wrist_left",
+                "video_path": "videos/observation.images.wrist_left/chunk-001/file-407.mp4",
+                "requested_seconds": 1100.8516966640002,
+                "decoded_seconds": 1100.870551,
+                "offset_seconds": 0.0188543359998,
+                "decoded_pts": 1100870551000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.wrist_right",
+                "video_path": "videos/observation.images.wrist_right/chunk-001/file-329.mp4",
+                "requested_seconds": 594.046235332,
+                "decoded_seconds": 594.048648,
+                "offset_seconds": 0.002412668,
+                "decoded_pts": 594048648000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              }
+            ]
+          },
+          "pixels_sha256": [
+            "60adad0d749ad7569bd354f352bcca86c193823bac60f6acc0de8272f8cb2b9d",
+            "1ca0d69f2faee8e251d7a5af020e91274fced8973ee547c421eb60779337455a",
+            "d95c6a312820a92358c51ab09e8ea81fe4748d06cf850dbffed02996fee5c253",
+            "aace9092b83c90e7d29dfd6e94df10a133ea52d842a84a281e17438d907182bf"
+          ]
+        }
+      ],
+      "error": "UMI read failed at dataset_index=193328277: Cannot locate image near 2383.366924s in videos/observation.images.head_left/chunk-002/file-348.mp4; closest error=0.033427009"
+    },
+    {
+      "workload": "original_stress",
+      "workers": 2,
+      "requested": 48,
+      "samples": [
+        {
+          "metadata": {
+            "dataset_index": 0,
+            "episode_index": 0,
+            "frame_index": 0,
+            "video_decode": [
+              {
+                "camera": "observation.images.head_left",
+                "video_path": "videos/observation.images.head_left/chunk-000/file-000.mp4",
+                "requested_seconds": 1.1333415653333334,
+                "decoded_seconds": 1.166661,
+                "offset_seconds": 0.0333194346666666,
+                "decoded_pts": 1166661000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.head_right",
+                "video_path": "videos/observation.images.head_right/chunk-000/file-000.mp4",
+                "requested_seconds": 1.0999625653333334,
+                "decoded_seconds": 1.133291,
+                "offset_seconds": 0.0333284346666666,
+                "decoded_pts": 1133291000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.wrist_left",
+                "video_path": "videos/observation.images.wrist_left/chunk-000/file-000.mp4",
+                "requested_seconds": 1.7398815653333333,
+                "decoded_seconds": 1.766671,
+                "offset_seconds": 0.0267894346666667,
+                "decoded_pts": 1766671000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.wrist_right",
+                "video_path": "videos/observation.images.wrist_right/chunk-000/file-000.mp4",
+                "requested_seconds": 1.7592415653333333,
+                "decoded_seconds": 1.76667,
+                "offset_seconds": 0.0074284346666667,
+                "decoded_pts": 1766670000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              }
+            ]
+          },
+          "pixels_sha256": [
+            "0efabf16462958f7b1955aba8064a4aca78f9df6775e1cccdbafcad3055e528b",
+            "bcfad6e5e9555567a992c07374406192ad8577542f8332813e01228c871471b5",
+            "a64717aa09b3cd4686c88b719fb72e51487638dbc3b52ef1bd363201c46ad228",
+            "44488201010836e12abaf3968254bda8d88e701fa265e9ed68ee3f54fc2c9da5"
+          ]
+        },
+        {
+          "metadata": {
+            "dataset_index": 59679977,
+            "episode_index": 16160,
+            "frame_index": 0,
+            "video_decode": [
+              {
+                "camera": "observation.images.head_left",
+                "video_path": "videos/observation.images.head_left/chunk-000/file-741.mp4",
+                "requested_seconds": 200.19965899899998,
+                "decoded_seconds": 200.232988,
+                "offset_seconds": 0.03332900100002,
+                "decoded_pts": 200232988000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.head_right",
+                "video_path": "videos/observation.images.head_right/chunk-000/file-747.mp4",
+                "requested_seconds": 2400.200133658,
+                "decoded_seconds": 2400.233462,
+                "offset_seconds": 0.033328342,
+                "decoded_pts": 2400233462000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.wrist_left",
+                "video_path": "videos/observation.images.wrist_left/chunk-000/file-674.mp4",
+                "requested_seconds": 2158.288505992,
+                "decoded_seconds": 2158.297532,
+                "offset_seconds": 0.009026008,
+                "decoded_pts": 2158297532000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.wrist_right",
+                "video_path": "videos/observation.images.wrist_right/chunk-000/file-636.mp4",
+                "requested_seconds": 1397.5941983280002,
+                "decoded_seconds": 1397.600546,
+                "offset_seconds": 0.0063476719998,
+                "decoded_pts": 1397600546000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              }
+            ]
+          },
+          "pixels_sha256": [
+            "545e54ff9d639e3cba6e1a4a363e0a22870cf2ffc29d4219e5e5ddfc9f272a84",
+            "3ea3b57ed866f964f0be39e5d26513f4a1942ce8f219a9b8b690ba5937b6f1e1",
+            "fd33601d37fb50d9fb90e7c266a98fc1dfc82f0e9e9ce2feec18653cba5ea6e4",
+            "36c1791fdcef207e026ceb7c782713a83da7f27107cc7b9e843bdcff441a9cc6"
+          ]
+        },
+        {
+          "metadata": {
+            "dataset_index": 126293227,
+            "episode_index": 34300,
+            "frame_index": 0,
+            "video_decode": [
+              {
+                "camera": "observation.images.head_left",
+                "video_path": "videos/observation.images.head_left/chunk-001/file-543.mp4",
+                "requested_seconds": 1421.4342983300003,
+                "decoded_seconds": 1421.467615,
+                "offset_seconds": 0.0333166699997,
+                "decoded_pts": 1421467615000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.head_right",
+                "video_path": "videos/observation.images.head_right/chunk-001/file-557.mp4",
+                "requested_seconds": 286.066677666,
+                "decoded_seconds": 286.066677,
+                "offset_seconds": -6.66e-07,
+                "decoded_pts": 286066677000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.wrist_left",
+                "video_path": "videos/observation.images.wrist_left/chunk-001/file-407.mp4",
+                "requested_seconds": 1100.8516966640002,
+                "decoded_seconds": 1100.870551,
+                "offset_seconds": 0.0188543359998,
+                "decoded_pts": 1100870551000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              },
+              {
+                "camera": "observation.images.wrist_right",
+                "video_path": "videos/observation.images.wrist_right/chunk-001/file-329.mp4",
+                "requested_seconds": 594.046235332,
+                "decoded_seconds": 594.048648,
+                "offset_seconds": 0.002412668,
+                "decoded_pts": 594048648000,
+                "time_base": "1/1000000000",
+                "boundary_policy": "umi-microsecond-grid-half-open-v1"
+              }
+            ]
+          },
+          "pixels_sha256": [
+            "60adad0d749ad7569bd354f352bcca86c193823bac60f6acc0de8272f8cb2b9d",
+            "1ca0d69f2faee8e251d7a5af020e91274fced8973ee547c421eb60779337455a",
+            "d95c6a312820a92358c51ab09e8ea81fe4748d06cf850dbffed02996fee5c253",
+            "aace9092b83c90e7d29dfd6e94df10a133ea52d842a84a281e17438d907182bf"
+          ]
+        }
+      ],
+      "error": "Caught RuntimeError in DataLoader worker process 1.\nOriginal Traceback (most recent call last):\n  File \"/mnt/workspace/Native_Policy/user/wyt/starVLA-umi-pretrain/starVLA/dataloader/umi_indexed_dataset.py\", line 405, in __getitem__\n    image, timing = self._video_frame(cameras[key], data[\"trace\"][\"timestamp\"])\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/mnt/workspace/Native_Policy/user/wyt/starVLA-umi-pretrain/starVLA/dataloader/umi_indexed_dataset.py\", line 389, in _video_frame\n    raise ValueError(f\"Cannot locate image near {float(window.target):.6f}s in {relative}; closest error={float(distance)}\")\nValueError: Cannot locate image near 2383.366924s in videos/observation.images.head_left/chunk-002/file-348.mp4; closest error=0.033427009\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/usr/local/lib/python3.12/site-packages/torch/utils/data/_utils/worker.py\", line 349, in _worker_loop\n    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/torch/utils/data/_utils/fetch.py\", line 52, in fetch\n    data = [self.dataset[idx] for idx in possibly_batched_index]\n            ~~~~~~~~~~~~^^^^^\n  File \"/mnt/workspace/Native_Policy/user/wyt/starVLA-umi-pretrain/starVLA/dataloader/umi_indexed_dataset.py\", line 421, in __getitem__\n    raise RuntimeError(f\"UMI read failed at dataset_index={index}: {error}\") from error\nRuntimeError: UMI read failed at dataset_index=193328277: Cannot locate image near 2383.366924s in videos/observation.images.head_left/chunk-002/file-348.mp4; closest error=0.033427009\n"
+    }
+  ],
+  "video_time_policy": {
+    "version": "umi-microsecond-grid-half-open-v1",
+    "boundary_quantum_seconds": "1/1000000",
+    "boundary_mapping": "floor both endpoints for microsecond-grid frames only",
+    "non_grid_frames": "strict rational metadata interval",
+    "request_matching": "unchanged decode_tolerance_seconds against original request"
+  },
+  "delivered_worker_pixels_and_locations_equal": true,
+  "neighbouring_spans": [
+    {
+      "episode": 34299,
+      "camera": {
+        "camera": "observation.images.head_right",
+        "video_path": "videos/observation.images.head_right/chunk-001/file-557.mp4",
+        "chunk_index": 1,
+        "file_index": 557,
+        "from_timestamp": 227.26668766633333,
+        "to_timestamp": 286.0000209996667,
+        "source_frame_count": 1768
+      },
+      "first": {
+        "camera": "observation.images.head_right",
+        "video_path": "videos/observation.images.head_right/chunk-001/file-557.mp4",
+        "requested_seconds": 227.26668766633333,
+        "decoded_seconds": 227.3,
+        "offset_seconds": 0.03331233366667,
+        "decoded_pts": 227300000000,
+        "time_base": "1/1000000000",
+        "boundary_policy": "umi-microsecond-grid-half-open-v1"
+      },
+      "last_requested": {
+        "camera": "observation.images.head_right",
+        "video_path": "videos/observation.images.head_right/chunk-001/file-557.mp4",
+        "requested_seconds": 285.96668766633337,
+        "decoded_seconds": 285.966675,
+        "offset_seconds": -1.266633335e-05,
+        "decoded_pts": 285966675000,
+        "time_base": "1/1000000000",
+        "boundary_policy": "umi-microsecond-grid-half-open-v1"
+      },
+      "outside_rejected": true
+    },
+    {
+      "episode": 34300,
+      "camera": {
+        "camera": "observation.images.head_right",
+        "video_path": "videos/observation.images.head_right/chunk-001/file-557.mp4",
+        "chunk_index": 1,
+        "file_index": 557,
+        "from_timestamp": 286.066677666,
+        "to_timestamp": 407.73334433266666,
+        "source_frame_count": 3652
+      },
+      "first": {
+        "camera": "observation.images.head_right",
+        "video_path": "videos/observation.images.head_right/chunk-001/file-557.mp4",
+        "requested_seconds": 286.066677666,
+        "decoded_seconds": 286.066677,
+        "offset_seconds": -6.66e-07,
+        "decoded_pts": 286066677000,
+        "time_base": "1/1000000000",
+        "boundary_policy": "umi-microsecond-grid-half-open-v1"
+      },
+      "last_requested": {
+        "camera": "observation.images.head_right",
+        "video_path": "videos/observation.images.head_right/chunk-001/file-557.mp4",
+        "requested_seconds": 407.70001099933336,
+        "decoded_seconds": 407.700022,
+        "offset_seconds": 1.100066665e-05,
+        "decoded_pts": 407700022000,
+        "time_base": "1/1000000000",
+        "boundary_policy": "umi-microsecond-grid-half-open-v1"
+      },
+      "outside_rejected": true
+    },
+    {
+      "episode": 34301,
+      "camera": {
+        "camera": "observation.images.head_right",
+        "video_path": "videos/observation.images.head_right/chunk-001/file-557.mp4",
+        "chunk_index": 1,
+        "file_index": 557,
+        "from_timestamp": 407.86667533233333,
+        "to_timestamp": 492.50000866566666,
+        "source_frame_count": 2543
+      },
+      "first": {
+        "camera": "observation.images.head_right",
+        "video_path": "videos/observation.images.head_right/chunk-001/file-557.mp4",
+        "requested_seconds": 407.86667533233333,
+        "decoded_seconds": 407.866679,
+        "offset_seconds": 3.66766667e-06,
+        "decoded_pts": 407866679000,
+        "time_base": "1/1000000000",
+        "boundary_policy": "umi-microsecond-grid-half-open-v1"
+      },
+      "last_requested": {
+        "camera": "observation.images.head_right",
+        "video_path": "videos/observation.images.head_right/chunk-001/file-557.mp4",
+        "requested_seconds": 492.46667533233335,
+        "decoded_seconds": 492.466696,
+        "offset_seconds": 2.066766667e-05,
+        "decoded_pts": 492466696000,
+        "time_base": "1/1000000000",
+        "boundary_policy": "umi-microsecond-grid-half-open-v1"
+      },
+      "outside_rejected": true
+    }
+  ],
+  "original_frame_owners": [
+    34300
+  ]
+}

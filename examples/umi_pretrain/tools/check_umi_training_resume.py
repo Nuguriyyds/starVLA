@@ -40,10 +40,14 @@ def main():
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--world-size", type=int, choices=(1, 2), default=1)
     parser.add_argument("--performance", action="store_true", help="Also prove instrumentation on/off preserves exact training states")
+    parser.add_argument("--integrity", choices=("basic", "full"), default="basic")
     args = parser.parse_args()
     root = args.output_dir.resolve()
     root.mkdir(parents=True, exist_ok=False)
-    plan = REPO / "examples/umi_pretrain/train_files/umi_training_tiny.yaml"
+    config = yaml.safe_load((REPO / "examples/umi_pretrain/train_files/umi_training_tiny.yaml").read_text())
+    config.setdefault("checkpoint", {})["integrity"] = args.integrity
+    plan = root / "plan.yaml"
+    plan.write_text(yaml.safe_dump(config))
     unmeasured_plan = plan
     if args.performance:
         measured = yaml.safe_load(plan.read_text())
@@ -147,6 +151,7 @@ def main():
               "model_optimizer_scheduler_rng_bitwise_equal": True,
               "samples_match_global_sampler_exactly": True, "rejection_checks": 5, "processes": calls}
     report["instrumentation_on_off_bitwise_equal"] = bool(args.performance)
+    report["checkpoint_integrity"] = args.integrity
     (root / "acceptance.json").write_text(json.dumps(report, indent=2))
     print(json.dumps({k: v for k, v in report.items() if k != "processes"}, indent=2), flush=True)
 

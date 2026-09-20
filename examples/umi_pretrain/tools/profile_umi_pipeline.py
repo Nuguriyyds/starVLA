@@ -158,7 +158,9 @@ def training_benchmark(args, original):
         plan["stages"] = plan["stages"][:2]
         plan["stages"][0]["updates"] = args.updates+1
         plan["stages"][1]["updates"] = 1
-        plan["training"].update(num_workers=0 if replay else 2, save_every=10000,
+        plan["training"].pop("save_every", None)
+        plan.setdefault("checkpoint", {})["every_updates"] = 10000
+        plan["training"].update(num_workers=0 if replay else 2,
                                 eval_every=args.updates+2, trace_samples=True)
         plan["performance"] = dict(enabled=True, warmup_updates=2, detail_updates=2,
                                     max_training_seconds=args.training_seconds,

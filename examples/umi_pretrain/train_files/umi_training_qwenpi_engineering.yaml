@@ -37,9 +37,11 @@ training:
   weight_decay: 0.01
   max_grad_norm: 1.0
   warmup_updates: 1
-  save_every: 4
   eval_every: 2
   trace_samples: true
+checkpoint:
+  integrity: basic  # Model/optimizer: size; metadata/RNG: SHA-256. Use full for all files.
+  every_updates: 4  # Engineering acceptance frequency, not the formal training interval.
 stages:
   - name: A
     index_dir: /mnt/workspace/Native_Policy/user/wyt/data_preparation/umi_training_engineering_v1/stage_A
