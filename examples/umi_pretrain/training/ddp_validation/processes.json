@@ -1,0 +1,64 @@
+[
+  {
+    "command": [
+      "/mnt/workspace/Native_Policy/user/wyt/.venvs/qwenpi-ppu-py312/bin/python",
+      "-m",
+      "torch.distributed.run",
+      "--standalone",
+      "--nproc_per_node=2",
+      "/mnt/workspace/Native_Policy/user/wyt/starVLA-umi-pretrain/examples/umi_pretrain/tools/check_qwenpi_ddp.py",
+      "worker",
+      "--plan",
+      "/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/plan.yaml",
+      "--run-dir",
+      "/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/continuous"
+    ],
+    "exit_code": 1,
+    "seconds": 396.95571863799705,
+    "log": "/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/process_0_continuous.log"
+  },
+  {
+    "command": [
+      "/mnt/workspace/Native_Policy/user/wyt/.venvs/qwenpi-ppu-py312/bin/python",
+      "-m",
+      "torch.distributed.run",
+      "--standalone",
+      "--nproc_per_node=2",
+      "/mnt/workspace/Native_Policy/user/wyt/starVLA-umi-pretrain/examples/umi_pretrain/tools/check_qwenpi_ddp.py",
+      "worker",
+      "--plan",
+      "/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/plan.yaml",
+      "--run-dir",
+      "/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/resumed",
+      "--stop-after-update",
+      "2"
+    ],
+    "exit_code": 1,
+    "seconds": 201.86218871598248,
+    "log": "/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/process_1_resumed.log",
+    "tool_sha256": "88c71f4ae614efa4f42b58294ea1faffde740bb573e2af2b6ac2319e898dcc63",
+    "known_shutdown_failure_retained": true
+  },
+  {
+    "command": [
+      "/mnt/workspace/Native_Policy/user/wyt/.venvs/qwenpi-ppu-py312/bin/python",
+      "-m",
+      "torch.distributed.run",
+      "--standalone",
+      "--nproc_per_node=2",
+      "/mnt/workspace/Native_Policy/user/wyt/starVLA-umi-pretrain/examples/umi_pretrain/tools/check_qwenpi_ddp.py",
+      "worker",
+      "--plan",
+      "/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/plan.yaml",
+      "--run-dir",
+      "/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/resumed",
+      "--resume",
+      "latest"
+    ],
+    "exit_code": 1,
+    "seconds": 800.4436956619902,
+    "log": "/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/process_2_resumed.log",
+    "tool_sha256": "88c71f4ae614efa4f42b58294ea1faffde740bb573e2af2b6ac2319e898dcc63",
+    "known_shutdown_failure_retained": true
+  }
+]

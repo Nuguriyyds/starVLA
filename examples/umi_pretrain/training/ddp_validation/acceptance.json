@@ -1,0 +1,687 @@
+{
+  "status": "failed_process_group_shutdown",
+  "world_size": 2,
+  "global_batch": 4,
+  "updates": 4,
+  "pause_update": 2,
+  "stage_sequence": [
+    "A",
+    "A",
+    "B",
+    "B"
+  ],
+  "rank_probes": [
+    {
+      "run": "continuous",
+      "step": 4,
+      "status": "not_recorded_before_shutdown_crash"
+    },
+    {
+      "run": "resumed",
+      "step": 2,
+      "equal": true,
+      "devices": [
+        "cuda:0",
+        "cuda:1"
+      ],
+      "parameter_tensors": 1041,
+      "peak_allocated_gib": [
+        76.49683904647827,
+        76.49297094345093
+      ],
+      "scope": "first/middle/last entries per tensor; not full rank tensor equality"
+    },
+    {
+      "run": "resumed",
+      "step": 4,
+      "equal": true,
+      "devices": [
+        "cuda:0",
+        "cuda:1"
+      ],
+      "parameter_tensors": 1041,
+      "peak_allocated_gib": [
+        76.48585605621338,
+        76.4865231513977
+      ],
+      "scope": "first/middle/last entries per tensor; not full rank tensor equality"
+    }
+  ],
+  "checkpoint_comparisons": {
+    "update_2/pytorch_model.bin": {
+      "sampled": true,
+      "tensors": 1042,
+      "elements_compared": 3126,
+      "mismatched_tensors": 1011,
+      "first_mismatched_names": [
+        "/qwen_vl_interface.model.model.visual.patch_embed.proj.weight",
+        "/qwen_vl_interface.model.model.visual.patch_embed.proj.bias",
+        "/qwen_vl_interface.model.model.visual.pos_embed.weight",
+        "/qwen_vl_interface.model.model.visual.blocks.0.norm1.weight",
+        "/qwen_vl_interface.model.model.visual.blocks.0.norm1.bias",
+        "/qwen_vl_interface.model.model.visual.blocks.0.norm2.weight",
+        "/qwen_vl_interface.model.model.visual.blocks.0.norm2.bias",
+        "/qwen_vl_interface.model.model.visual.blocks.0.attn.qkv.weight"
+      ],
+      "exact_equal": false,
+      "max_abs_difference": 0.00015017157420516014,
+      "rms_difference": 1.9460505141438983e-05,
+      "reference_rms": 2.0553586765973795,
+      "seconds": 0.32878334997803904
+    },
+    "update_2/optimizer.bin": {
+      "sampled": true,
+      "tensors": 3075,
+      "elements_compared": 9225,
+      "mismatched_tensors": 2046,
+      "first_mismatched_names": [
+        "/state/0/exp_avg",
+        "/state/0/exp_avg_sq",
+        "/state/1/exp_avg",
+        "/state/1/exp_avg_sq",
+        "/state/2/exp_avg",
+        "/state/2/exp_avg_sq",
+        "/state/3/exp_avg",
+        "/state/3/exp_avg_sq"
+      ],
+      "exact_equal": false,
+      "max_abs_difference": 0.00011461333815532271,
+      "rms_difference": 2.1385083299992867e-06,
+      "reference_rms": 1.15470053838352,
+      "seconds": 0.7130587440042291,
+      "parameter_groups_equal": true,
+      "left_adam_steps": {
+        "2.0": 1025
+      },
+      "right_adam_steps": {
+        "2.0": 1025
+      }
+    },
+    "update_4/pytorch_model.bin": {
+      "sampled": true,
+      "tensors": 1042,
+      "elements_compared": 3126,
+      "mismatched_tensors": 1014,
+      "first_mismatched_names": [
+        "/qwen_vl_interface.model.model.visual.patch_embed.proj.weight",
+        "/qwen_vl_interface.model.model.visual.patch_embed.proj.bias",
+        "/qwen_vl_interface.model.model.visual.pos_embed.weight",
+        "/qwen_vl_interface.model.model.visual.blocks.0.norm1.weight",
+        "/qwen_vl_interface.model.model.visual.blocks.0.norm1.bias",
+        "/qwen_vl_interface.model.model.visual.blocks.0.norm2.weight",
+        "/qwen_vl_interface.model.model.visual.blocks.0.norm2.bias",
+        "/qwen_vl_interface.model.model.visual.blocks.0.attn.qkv.weight"
+      ],
+      "exact_equal": false,
+      "max_abs_difference": 0.0002904636785387993,
+      "rms_difference": 3.431043104910258e-05,
+      "reference_rms": 2.0553583526674695,
+      "seconds": 9.506085206987336
+    },
+    "update_4/optimizer.bin": {
+      "sampled": true,
+      "tensors": 3075,
+      "elements_compared": 9225,
+      "mismatched_tensors": 2048,
+      "first_mismatched_names": [
+        "/state/0/exp_avg",
+        "/state/0/exp_avg_sq",
+        "/state/1/exp_avg",
+        "/state/1/exp_avg_sq",
+        "/state/2/exp_avg",
+        "/state/2/exp_avg_sq",
+        "/state/3/exp_avg",
+        "/state/3/exp_avg_sq"
+      ],
+      "exact_equal": false,
+      "max_abs_difference": 0.00010849262616829947,
+      "rms_difference": 2.5131778972142283e-06,
+      "reference_rms": 2.309401076760715,
+      "seconds": 109.36917222000193,
+      "parameter_groups_equal": true,
+      "left_adam_steps": {
+        "4.0": 1025
+      },
+      "right_adam_steps": {
+        "4.0": 1025
+      }
+    }
+  },
+  "performance": [
+    {
+      "run": "continuous",
+      "file": "performance_rank_0_662437.json",
+      "elapsed_seconds": 387.1613528529997,
+      "completed_updates": 4,
+      "sections": [
+        {
+          "name": "checkpoint_state_write",
+          "host_seconds": 87.48960413300665
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.005042259988840669
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.003244488005293533
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.019117279996862635
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.010766263992991298
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.00765260198386386
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.024401475995546207
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.0023478689836338162
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.0032600380072835833
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.006220267998287454
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.002756077010417357
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.005493903998285532
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.004288562020519748
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.0049626049876678735
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.00197011700947769
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.002188550017308444
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.04344677200424485
+        },
+        {
+          "name": "checkpoint_publish_marker_rename",
+          "host_seconds": 0.20512085701921023
+        },
+        {
+          "name": "checkpoint_total",
+          "host_seconds": 88.02085048198933
+        },
+        {
+          "name": "checkpoint_state_write",
+          "host_seconds": 87.42638914601412
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.019463154982076958
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.0058074319968000054
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.02093619402148761
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.001961461006430909
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.0028069220134057105
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.013350297987926751
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.007601632998557761
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.02956120899762027
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.025592287012841552
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.006821217015385628
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.007857304997742176
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.0023778780014254153
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.01299847400514409
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.015601716004312038
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.008726416010176763
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.027005759999155998
+        },
+        {
+          "name": "checkpoint_publish_marker_rename",
+          "host_seconds": 0.1619115170033183
+        },
+        {
+          "name": "checkpoint_total",
+          "host_seconds": 87.97936351899989
+        }
+      ],
+      "peak_allocated_gib": 76.48908805847168
+    },
+    {
+      "run": "continuous",
+      "file": "performance_rank_1_662438.json",
+      "elapsed_seconds": 387.4584751660004,
+      "completed_updates": 4,
+      "sections": [
+        {
+          "name": "checkpoint_state_write",
+          "host_seconds": 0.10525453599984758
+        },
+        {
+          "name": "checkpoint_total",
+          "host_seconds": 88.02093879599124
+        },
+        {
+          "name": "checkpoint_state_write",
+          "host_seconds": 0.13150112598668784
+        },
+        {
+          "name": "checkpoint_total",
+          "host_seconds": 87.97943736700108
+        }
+      ],
+      "peak_allocated_gib": 76.48651647567749
+    },
+    {
+      "run": "resumed",
+      "file": "performance_rank_0_667203.json",
+      "elapsed_seconds": 191.28709744501975,
+      "completed_updates": 2,
+      "sections": [
+        {
+          "name": "checkpoint_state_write",
+          "host_seconds": 89.40869261699845
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.02501411398407072
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.0020841849909629673
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.0026665029872674495
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.0017123639991041273
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.010031129990238696
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.013225942995632067
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.004799523012479767
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.008033958001760766
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.019535667001036927
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.0017587670008651912
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.005035181005951017
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.0012232309964019805
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.010668650007573888
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.0012474889808800071
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.0023663330066483468
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.04473079400486313
+        },
+        {
+          "name": "checkpoint_publish_marker_rename",
+          "host_seconds": 0.2247468419955112
+        },
+        {
+          "name": "checkpoint_total",
+          "host_seconds": 90.01436707001994
+        }
+      ],
+      "peak_allocated_gib": 76.49683904647827
+    },
+    {
+      "run": "resumed",
+      "file": "performance_rank_0_669228.json",
+      "elapsed_seconds": 789.8013383439975,
+      "completed_updates": 2,
+      "sections": [
+        {
+          "name": "resume_verify",
+          "host_seconds": 0.09934513398911804
+        },
+        {
+          "name": "resume_load",
+          "host_seconds": 607.5274078660004
+        },
+        {
+          "name": "checkpoint_state_write",
+          "host_seconds": 88.90527764800936
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.00750043400330469
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.003940030001103878
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.009448065015021712
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.0036632420087698847
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.005958171997917816
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.005674965999787673
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.005897407012525946
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.0032043830142356455
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.0037241509999148548
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.002397925010882318
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.005043565004598349
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.003288590000011027
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.0047751809761393815
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.002797986991936341
+        },
+        {
+          "name": "checkpoint_file_fsync",
+          "host_seconds": 0.00363284201011993
+        },
+        {
+          "name": "checkpoint_file_hash",
+          "host_seconds": 0.010920249012997374
+        },
+        {
+          "name": "checkpoint_publish_marker_rename",
+          "host_seconds": 0.14216512700659223
+        },
+        {
+          "name": "checkpoint_total",
+          "host_seconds": 89.24896906301728
+        }
+      ],
+      "peak_allocated_gib": 76.48585605621338
+    },
+    {
+      "run": "resumed",
+      "file": "performance_rank_1_667204.json",
+      "elapsed_seconds": 191.27119533799123,
+      "completed_updates": 2,
+      "sections": [
+        {
+          "name": "checkpoint_state_write",
+          "host_seconds": 0.1230089380114805
+        },
+        {
+          "name": "checkpoint_total",
+          "host_seconds": 90.01440760999685
+        }
+      ],
+      "peak_allocated_gib": 76.49297094345093
+    },
+    {
+      "run": "resumed",
+      "file": "performance_rank_1_669229.json",
+      "elapsed_seconds": 789.5433284979954,
+      "completed_updates": 2,
+      "sections": [
+        {
+          "name": "resume_verify",
+          "host_seconds": 0.090821046003839
+        },
+        {
+          "name": "resume_load",
+          "host_seconds": 607.499067650002
+        },
+        {
+          "name": "checkpoint_state_write",
+          "host_seconds": 0.09067958197556436
+        },
+        {
+          "name": "checkpoint_total",
+          "host_seconds": 89.24905138401664
+        }
+      ],
+      "peak_allocated_gib": 76.4865231513977
+    }
+  ],
+  "continuous_runtime": {
+    "world_size": 2,
+    "backend": "DistributedType.MULTI_GPU",
+    "collective_backend": "nccl",
+    "device_type": "cuda",
+    "device_name": "PPU-ZW810E",
+    "batch_size": 1,
+    "accumulation": 2,
+    "precision": "no",
+    "versions": {
+      "torch": "2.7.0",
+      "accelerate": "1.12.0",
+      "numpy": "1.26.4",
+      "transformers": "4.57.1",
+      "diffusers": "0.37.1",
+      "peft": "0.17.1",
+      "pyarrow": "23.0.1",
+      "av": "17.0.0"
+    }
+  },
+  "resumed_runtime": {
+    "world_size": 2,
+    "backend": "DistributedType.MULTI_GPU",
+    "collective_backend": "nccl",
+    "device_type": "cuda",
+    "device_name": "PPU-ZW810E",
+    "batch_size": 1,
+    "accumulation": 2,
+    "precision": "no",
+    "versions": {
+      "torch": "2.7.0",
+      "accelerate": "1.12.0",
+      "numpy": "1.26.4",
+      "transformers": "4.57.1",
+      "diffusers": "0.37.1",
+      "peft": "0.17.1",
+      "pyarrow": "23.0.1",
+      "av": "17.0.0"
+    }
+  },
+  "samples_progress_learning_rates_equal": true,
+  "samples_match_independent_global_stream": true,
+  "losses": {
+    "continuous": [
+      10022.546875,
+      30395.38671875,
+      11382.9248046875,
+      5274.41015625
+    ],
+    "resumed": [
+      10022.546875,
+      30380.564453125,
+      7464.24951171875,
+      6768.7041015625
+    ]
+  },
+  "scheduler_progress_rank_rng_equal": true,
+  "numerical_reproducibility": "differences_measured_not_yet_explained",
+  "full_tensor_equality_proven": false,
+  "processes": [
+    {
+      "command": [
+        "/mnt/workspace/Native_Policy/user/wyt/.venvs/qwenpi-ppu-py312/bin/python",
+        "-m",
+        "torch.distributed.run",
+        "--standalone",
+        "--nproc_per_node=2",
+        "/mnt/workspace/Native_Policy/user/wyt/starVLA-umi-pretrain/examples/umi_pretrain/tools/check_qwenpi_ddp.py",
+        "worker",
+        "--plan",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/plan.yaml",
+        "--run-dir",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/continuous"
+      ],
+      "exit_code": 1,
+      "seconds": 396.95571863799705,
+      "log": "/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/process_0_continuous.log"
+    },
+    {
+      "command": [
+        "/mnt/workspace/Native_Policy/user/wyt/.venvs/qwenpi-ppu-py312/bin/python",
+        "-m",
+        "torch.distributed.run",
+        "--standalone",
+        "--nproc_per_node=2",
+        "/mnt/workspace/Native_Policy/user/wyt/starVLA-umi-pretrain/examples/umi_pretrain/tools/check_qwenpi_ddp.py",
+        "worker",
+        "--plan",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/plan.yaml",
+        "--run-dir",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/resumed",
+        "--stop-after-update",
+        "2"
+      ],
+      "exit_code": 1,
+      "seconds": 201.86218871598248,
+      "log": "/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/process_1_resumed.log",
+      "tool_sha256": "88c71f4ae614efa4f42b58294ea1faffde740bb573e2af2b6ac2319e898dcc63",
+      "known_shutdown_failure_retained": true
+    },
+    {
+      "command": [
+        "/mnt/workspace/Native_Policy/user/wyt/.venvs/qwenpi-ppu-py312/bin/python",
+        "-m",
+        "torch.distributed.run",
+        "--standalone",
+        "--nproc_per_node=2",
+        "/mnt/workspace/Native_Policy/user/wyt/starVLA-umi-pretrain/examples/umi_pretrain/tools/check_qwenpi_ddp.py",
+        "worker",
+        "--plan",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/plan.yaml",
+        "--run-dir",
+        "/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/resumed",
+        "--resume",
+        "latest"
+      ],
+      "exit_code": 1,
+      "seconds": 800.4436956619902,
+      "log": "/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/process_2_resumed.log",
+      "tool_sha256": "88c71f4ae614efa4f42b58294ea1faffde740bb573e2af2b6ac2319e898dcc63",
+      "known_shutdown_failure_retained": true
+    }
+  ],
+  "all_processes_exited_cleanly": false,
+  "caveats": [
+    "Engineering views do not validate video physical synchronization or policy quality.",
+    "Tensor comparisons sample three entries per tensor, not full-tensor equality; excluded from checkpoint costs.",
+    "Two PPU acceptance does not validate multi-node or sharded training."
+  ]
+}

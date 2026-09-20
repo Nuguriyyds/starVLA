@@ -1,0 +1,64 @@
+{
+  "global_update": 4,
+  "stage": "B",
+  "stage_update": 2,
+  "epoch_used": 0,
+  "progress": {
+    "version": "umi-training-state-v1",
+    "budgets": [
+      2,
+      2
+    ],
+    "sizes": [
+      1907,
+      1103
+    ],
+    "global_batch": 4,
+    "global_update_step": 4,
+    "stage_index": 2,
+    "stages": [
+      {
+        "updates": 2,
+        "epoch": 0,
+        "cursor": 8,
+        "used_samples": 8,
+        "dropped_tail_samples": 0
+      },
+      {
+        "updates": 2,
+        "epoch": 0,
+        "cursor": 8,
+        "used_samples": 8,
+        "dropped_tail_samples": 0
+      }
+    ]
+  },
+  "lr_used": [
+    3.3333333333333333e-06,
+    3.3333333333333335e-05
+  ],
+  "lr_next": [
+    0.0,
+    0.0
+  ],
+  "loss": 5274.41015625,
+  "grad_norm_before_clip": 1032727.25,
+  "gradients_finite": true,
+  "data_wait_seconds": 0.003340802009915933,
+  "evaluation": {
+    "purpose": "engineering",
+    "view": "f8adc88606a4472dd0509a1d9f0118d3f011e2bf63c270ccdc4ada864190c9c2",
+    "normalized_action_mse": 2319.6496798186367,
+    "raw_position_rmse": 5.679363694269622,
+    "raw_gripper_rmse": 0.4982312990782232,
+    "raw_quaternion_component_rmse": 6.261460427861966
+  },
+  "checkpoint_reasons": [
+    "periodic",
+    "stage_boundary",
+    "complete"
+  ],
+  "latest_complete_checkpoint": "/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/continuous/checkpoints/update_00000004",
+  "status": "complete",
+  "peak_allocated_memory_gib": 76.48908805847168
+}

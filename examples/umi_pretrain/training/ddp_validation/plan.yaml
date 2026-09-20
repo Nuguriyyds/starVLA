@@ -1,0 +1,60 @@
+version: umi-training-plan-v1
+purpose: engineering
+model_kind: qwenpi
+framework:
+  name: QwenPI
+  qwenvl:
+    base_vlm: /mnt/workspace/Native_Policy/user/wyt/models/Qwen3-VL-2B-Instruct
+    attn_implementation: sdpa
+  action_model:
+    action_dim: 16
+    state_dim: 16
+    action_horizon: 16
+    diffusion_model_cfg:
+      interleave_self_attention: true
+      use_canonical_forward: true
+data:
+  allowed_video_roots:
+  - /mnt/nas/public/roban_umi/restricted_data/source/umi/videos
+  normalization: mean_std
+  normalization_statistics: /mnt/workspace/Native_Policy/user/wyt/data_preparation/umi_normalization_engineering_v1/statistics.json
+  normalization_experiment_contract: null
+  source_identity: size_mtime
+  image_size:
+  - 224
+  - 224
+  shuffle: true
+  shuffle_block_size: 128
+  row_cache_mib: 128
+training:
+  seed: 42
+  batch_size: 1
+  gradient_accumulation_steps: 2
+  num_workers: 2
+  prefetch_factor: 2
+  mixed_precision: 'no'
+  lr: 0.0001
+  vlm_lr: 1.0e-05
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  warmup_updates: 1
+  eval_every: 2
+  trace_samples: true
+checkpoint:
+  integrity: basic
+  every_updates: 4
+stages:
+- name: A
+  index_dir: /mnt/workspace/Native_Policy/user/wyt/data_preparation/umi_training_engineering_v1/stage_A
+  updates: 2
+- name: B
+  index_dir: /mnt/workspace/Native_Policy/user/wyt/data_preparation/umi_training_engineering_v1/stage_B
+  updates: 2
+evaluation:
+  name: engineering_check
+  index_dir: /mnt/workspace/Native_Policy/user/wyt/data_preparation/umi_normalization_engineering_v1/access
+  seed: 9876
+performance:
+  enabled: true
+  warmup_updates: 1
+  detail_updates: 0

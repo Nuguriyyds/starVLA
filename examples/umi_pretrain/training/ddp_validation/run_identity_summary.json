@@ -1,0 +1,164 @@
+{
+  "continuous": {
+    "version": "umi-run-identity-v1",
+    "plan_fingerprint": "43a7eac1f37ede1a52464241f20415cab0368694fdebf2fb87ec07b4f4d5dda2",
+    "code": {
+      "commit": "34023b56bc6275baff0f08cde51835af8321d657",
+      "source_sha256": "4c77a65bf2db12a04eb9d687599e2b13900ce36c9734efd4f425ff40c45b0aa9"
+    },
+    "runtime": {
+      "world_size": 2,
+      "backend": "DistributedType.MULTI_GPU",
+      "collective_backend": "nccl",
+      "device_type": "cuda",
+      "device_name": "PPU-ZW810E",
+      "batch_size": 1,
+      "accumulation": 2,
+      "precision": "no",
+      "versions": {
+        "torch": "2.7.0",
+        "accelerate": "1.12.0",
+        "numpy": "1.26.4",
+        "transformers": "4.57.1",
+        "diffusers": "0.37.1",
+        "peft": "0.17.1",
+        "pyarrow": "23.0.1",
+        "av": "17.0.0"
+      }
+    },
+    "resolved_model_config": {
+      "framework": {
+        "name": "QwenPI",
+        "qwenvl": {
+          "attn_implementation": "sdpa",
+          "vl_hidden_dim": 2048,
+          "num_vl_layers": 28
+        },
+        "action_model": {
+          "action_model_type": "LayerwiseFM",
+          "action_dim": 16,
+          "state_dim": 16,
+          "action_horizon": 16,
+          "repeated_diffusion_steps": 2,
+          "num_inference_timesteps": 4,
+          "add_pos_embed": true,
+          "max_seq_len": 1024,
+          "num_target_vision_tokens": 32,
+          "noise_beta_alpha": 1.5,
+          "noise_beta_beta": 1.0,
+          "noise_s": 0.999,
+          "num_timestep_buckets": 1000,
+          "diffusion_model_cfg": {
+            "dropout": 0.2,
+            "final_dropout": true,
+            "interleave_self_attention": true,
+            "norm_type": "ada_norm",
+            "positional_embeddings": null,
+            "attention_head_dim": 64,
+            "use_canonical_forward": true,
+            "num_layers": 28,
+            "input_embedding_dim": 2048,
+            "cross_attention_dim": 2048,
+            "num_attention_heads": 32
+          }
+        }
+      },
+      "datasets": {
+        "vla_data": {
+          "normalization": "mean_std",
+          "source_identity": "size_mtime",
+          "image_size": [
+            224,
+            224
+          ],
+          "shuffle": true,
+          "shuffle_block_size": 128,
+          "row_cache_mib": 128,
+          "include_state": true
+        }
+      }
+    },
+    "original_identity_path": "/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/continuous/run_identity.json"
+  },
+  "resumed": {
+    "version": "umi-run-identity-v1",
+    "plan_fingerprint": "43a7eac1f37ede1a52464241f20415cab0368694fdebf2fb87ec07b4f4d5dda2",
+    "code": {
+      "commit": "34023b56bc6275baff0f08cde51835af8321d657",
+      "source_sha256": "4c77a65bf2db12a04eb9d687599e2b13900ce36c9734efd4f425ff40c45b0aa9"
+    },
+    "runtime": {
+      "world_size": 2,
+      "backend": "DistributedType.MULTI_GPU",
+      "collective_backend": "nccl",
+      "device_type": "cuda",
+      "device_name": "PPU-ZW810E",
+      "batch_size": 1,
+      "accumulation": 2,
+      "precision": "no",
+      "versions": {
+        "torch": "2.7.0",
+        "accelerate": "1.12.0",
+        "numpy": "1.26.4",
+        "transformers": "4.57.1",
+        "diffusers": "0.37.1",
+        "peft": "0.17.1",
+        "pyarrow": "23.0.1",
+        "av": "17.0.0"
+      }
+    },
+    "resolved_model_config": {
+      "framework": {
+        "name": "QwenPI",
+        "qwenvl": {
+          "attn_implementation": "sdpa",
+          "vl_hidden_dim": 2048,
+          "num_vl_layers": 28
+        },
+        "action_model": {
+          "action_model_type": "LayerwiseFM",
+          "action_dim": 16,
+          "state_dim": 16,
+          "action_horizon": 16,
+          "repeated_diffusion_steps": 2,
+          "num_inference_timesteps": 4,
+          "add_pos_embed": true,
+          "max_seq_len": 1024,
+          "num_target_vision_tokens": 32,
+          "noise_beta_alpha": 1.5,
+          "noise_beta_beta": 1.0,
+          "noise_s": 0.999,
+          "num_timestep_buckets": 1000,
+          "diffusion_model_cfg": {
+            "dropout": 0.2,
+            "final_dropout": true,
+            "interleave_self_attention": true,
+            "norm_type": "ada_norm",
+            "positional_embeddings": null,
+            "attention_head_dim": 64,
+            "use_canonical_forward": true,
+            "num_layers": 28,
+            "input_embedding_dim": 2048,
+            "cross_attention_dim": 2048,
+            "num_attention_heads": 32
+          }
+        }
+      },
+      "datasets": {
+        "vla_data": {
+          "normalization": "mean_std",
+          "source_identity": "size_mtime",
+          "image_size": [
+            224,
+            224
+          ],
+          "shuffle": true,
+          "shuffle_block_size": 128,
+          "row_cache_mib": 128,
+          "include_state": true
+        }
+      }
+    },
+    "original_identity_path": "/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/resumed/run_identity.json"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "code_commit": "34023b56bc6275baff0f08cde51835af8321d657",
+  "tool_sha256": "a070972624e2084652e2a5747f70b7f298a1caf7d9ebbba60d0488631ef2a89b",
+  "processes": 2,
+  "sequence": [
+    "continuous",
+    "pause_after_A",
+    "resume_B"
+  ]
+}

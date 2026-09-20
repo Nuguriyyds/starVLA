@@ -1,0 +1,33 @@
+{
+  "diagnosis": "reproduced_in_bare_torch_ddp_shutdown",
+  "torch": "2.7.0",
+  "torch_git_version": "c5edb158c23608813a61fe976a66482192eb9b6b",
+  "nccl_reported_version": [
+    2,
+    19,
+    3
+  ],
+  "loaded_nccl_path": "/usr/local/PPU_SDK/CUDA_SDK/targets/x86_64-linux/lib/libnccl.so.2.19.3",
+  "environment_modified": false,
+  "variants": {
+    "shutdown_probe.log": {
+      "relative_run_log": "shutdown_probe.log",
+      "segmentation_fault": true,
+      "exitcodes_11": 2,
+      "stack_excerpt": "Fatal Python error: Segmentation fault\n\nThread 0x00007fea1adff6c0 (most recent call first):\n  <no Python frame>\n\nThread 0x00007fea767ff6c0 (most recent call first):\n  <no Python frame>\n\nCurrent thread 0x00007fead12c3b80 (most recent call first):\n  File \"/usr/local/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py\", line 2135 in destroy_process_group\n  File \"/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/probe_shutdown.py\", line 18 in <module>\n\nExtension modules: numpy.core._multiarray_umathFatal Python error: Segmentation fault\n\n, numpy.core._multiarray_testsThread 0x, 00007f4fff4ed6c0 (most recent call first):\n  <no Python frame>\n\nThread 0x00007f505a3fd6c0 (most recent call first):\n  <no Python frame>\nnumpy.linalg._umath_linalg\nCurrent thread 0x00007f50b5732b80 (most recent call first):\n  File , \"/usr/local/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py\"numpy.fft._pocketfft_internal, line 2135 in destroy_process_group\n  File \"/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/probe_shutdown.py\", numpy.random._common, line 18 in <module>\n, numpy.random.bit_generator, \nExtension modules: numpy.random._bounded_integers, numpy.random._mt19937numpy.core._multiarray_umath, numpy.random.mtrand, numpy.random._philox, , numpy.core._multiarray_testsnumpy.random._pcg64, , numpy.linalg._umath_linalg, numpy.random._sfc64numpy.fft._pocketfft_internal, numpy.random._generator, , numpy.random._common, numpy.random.bit_generatortorch._C, numpy.random._bounded_integers, numpy.random._mt19937, numpy.random.mtrand, , numpy.random._philoxtorch._C._dynamo.autograd_compiler, numpy.random._pcg64, numpy.random._sfc64, torch._C._dynamo.eval_frame, , numpy.random._generatortorch._C._dynamo.guards, torch._C._dynamo.utils, , torch._Ctorc"
+    },
+    "implicit_exit_probe.log": {
+      "relative_run_log": "implicit_exit_probe.log",
+      "segmentation_fault": true,
+      "exitcodes_11": 2,
+      "stack_excerpt": "Fatal Python error: Segmentation fault\n\nThread 0x00007fc8ee4b8b80 (most recent call first):\n  <no Python frame>\nFatal Python error: Segmentation fault\n\nThread 0x00007faf93c99b80 (most recent call first):\n  <no Python frame>\nE0920 13:55:18.115000 666774 site-packages/torch/distributed/elastic/multiprocessing/api.py:874] failed (exitcode: -11) local_rank: 0 (pid: 666779) of binary: /mnt/workspace/Native_Policy/user/wyt/.venvs/qwenpi-ppu-py312/bin/python\nTraceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/usr/local/lib/python3.12/site-packages/torch/distributed/run.py\", line 896, in <module>\n    main()\n  File \"/usr/local/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py\", line 355, in wrapper\n    return f(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/torch/distributed/run.py\", line 892, in main\n    run(args)\n  File \"/usr/local/lib/python3.12/site-packages/torch/distributed/run.py\", line 883, in run\n    elastic_launch(\n  File \"/usr/local/lib/python3.12/site-packages/torch/distributed/launcher/api.py\", line 139, in __call__\n    return launch_agent(self._config, self._entrypoint, list(args))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/site-packages/torch/distributed/launcher/api.py\", line 270, in launch_agent\n    raise ChildFailedError(\ntorch.distributed.elastic.multiprocessing.errors.ChildFailedError: \n============================================================\n/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/probe_implicit_exit.py FAILED\n------------------------------------------------------------\nFailures:\n[1]:\n  time   "
+    },
+    "sync_shutdown_probe.log": {
+      "relative_run_log": "sync_shutdown_probe.log",
+      "segmentation_fault": true,
+      "exitcodes_11": 1,
+      "stack_excerpt": "Fatal Python error: Segmentation fault\n\nThread 0x00007fd19bded6c0 (most recent call first):\n  <no Python frame>\n\nThread 0x00007fd1f73ff6c0 (most recent call first):\n  <no Python frame>\n\nCurrent thread 0x00007fd251e8ab80 (most recent call first):\n  File \"/usr/local/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py\", line 2135 in destroy_process_group\n  File \"/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/probe_sync_shutdown.py\", line 19 in <module>\n\nExtension modules: numpy.core._multiarray_umath, numpy.core._multiarray_testsFatal Python error: Segmentation fault, numpy.linalg._umath_linalg, \n\nThread 0x00007fded3ded6c0 (most recent call first):\nnumpy.fft._pocketfft_internal,   <no Python frame>\n\nThread 0x00007fdef4dff6c0 (most recent call first):\n  <no Python frame>\n\nCurrent thread 0x00007fdf8a6f3b80 (most recent call first):\nnumpy.random._common,   File \"numpy.random.bit_generator/usr/local/lib/python3.12/site-packages/torch/distributed/distributed_c10d.py, numpy.random._bounded_integers\", numpy.random._mt19937, numpy.random.mtrand, , line numpy.random._philox2135 in destroy_process_group, numpy.random._pcg64, \n  File \"/mnt/workspace/Native_Policy/user/wyt/runs/umi_qwenpi_ddp_v1/probe_sync_shutdown.py\"numpy.random._sfc64, numpy.random._generator, line 19,  in torch._C, torch._C._dynamo.autograd_compiler<module>, torch._C._dynamo.eval_frame, \ntorch._C._dynamo.guards\nExtension modules: , torch._C._dynamo.utils, numpy.core._multiarray_umathtorch._C._fft, torch._C._linalg, numpy.core._multiarray_tests, torch._C._nested, , numpy.linalg._umath_linalgtorch._C._nn, torch._C._sparse, , numpy.fft._pocketfft_internaltorch._C._special, numpy.random._common, numpy.random.bit_generator (total: , 24)\nnumpy.random._bounded_integers, numpy.random._mt19937,"
+    }
+  },
+  "not_claimed": "Specific faulty component or an upstream fix has not been identified."
+}
