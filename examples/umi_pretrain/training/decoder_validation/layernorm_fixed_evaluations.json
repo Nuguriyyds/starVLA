@@ -1,0 +1,97 @@
+[
+  {
+    "step": 0,
+    "fixed_fm_loss": 1.7889218851923943,
+    "normalized_action_mse": 1.785282384029675,
+    "prediction": {
+      "position_rmse": 0.1621765308084813,
+      "gripper_rmse": 0.017001131012759445,
+      "rotation_mean_degrees": 37.848733845097556,
+      "invalid_quaternions": 0
+    },
+    "hold_current": {
+      "position_rmse": 0.01916065833127158,
+      "gripper_rmse": 0.008730391464125709,
+      "rotation_mean_degrees": 6.314627289109136,
+      "invalid_quaternions": 0
+    },
+    "evaluation_windows": 32,
+    "training_windows_overlap": true
+  },
+  {
+    "step": 50,
+    "fixed_fm_loss": 1.6235360093414783,
+    "normalized_action_mse": 1.6335740716423022,
+    "prediction": {
+      "position_rmse": 0.13021278390828317,
+      "gripper_rmse": 0.016888758655400876,
+      "rotation_mean_degrees": 37.31726432784821,
+      "invalid_quaternions": 0
+    },
+    "hold_current": {
+      "position_rmse": 0.01916065833127158,
+      "gripper_rmse": 0.008730391464125709,
+      "rotation_mean_degrees": 6.314627289109136,
+      "invalid_quaternions": 0
+    },
+    "evaluation_windows": 32,
+    "training_windows_overlap": true
+  },
+  {
+    "step": 100,
+    "fixed_fm_loss": 1.6123734340071678,
+    "normalized_action_mse": 1.6273998140641093,
+    "prediction": {
+      "position_rmse": 0.13043653640366562,
+      "gripper_rmse": 0.01682904621562961,
+      "rotation_mean_degrees": 37.10905697817973,
+      "invalid_quaternions": 0
+    },
+    "hold_current": {
+      "position_rmse": 0.01916065833127158,
+      "gripper_rmse": 0.008730391464125709,
+      "rotation_mean_degrees": 6.314627289109136,
+      "invalid_quaternions": 0
+    },
+    "evaluation_windows": 32,
+    "training_windows_overlap": true
+  },
+  {
+    "step": 150,
+    "fixed_fm_loss": 1.606786411255598,
+    "normalized_action_mse": 1.6200126607129073,
+    "prediction": {
+      "position_rmse": 0.12970189476087612,
+      "gripper_rmse": 0.016808148772711595,
+      "rotation_mean_degrees": 37.10455217151895,
+      "invalid_quaternions": 0
+    },
+    "hold_current": {
+      "position_rmse": 0.01916065833127158,
+      "gripper_rmse": 0.008730391464125709,
+      "rotation_mean_degrees": 6.314627289109136,
+      "invalid_quaternions": 0
+    },
+    "evaluation_windows": 32,
+    "training_windows_overlap": true
+  },
+  {
+    "step": 200,
+    "fixed_fm_loss": 1.5924284681677818,
+    "normalized_action_mse": 1.6052942859283834,
+    "prediction": {
+      "position_rmse": 0.12918070207374893,
+      "gripper_rmse": 0.016696778404196956,
+      "rotation_mean_degrees": 36.74471050037801,
+      "invalid_quaternions": 0
+    },
+    "hold_current": {
+      "position_rmse": 0.01916065833127158,
+      "gripper_rmse": 0.008730391464125709,
+      "rotation_mean_degrees": 6.314627289109136,
+      "invalid_quaternions": 0
+    },
+    "evaluation_windows": 32,
+    "training_windows_overlap": true
+  }
+]

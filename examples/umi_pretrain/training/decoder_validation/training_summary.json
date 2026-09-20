@@ -1,0 +1,38 @@
+{
+  "completed_updates": 200,
+  "status": "complete",
+  "all_losses_and_global_gradient_norms_finite": true,
+  "peak_allocated_memory_gib": 62.17892503738403,
+  "checkpoint_sections": [
+    {
+      "name": "checkpoint_total",
+      "host_seconds": 88.27284071900067
+    }
+  ],
+  "code": {
+    "commit": "b45ea930a32d82c3d5a29a76b4f059c9dae742e4",
+    "source_sha256": "183bce369976b480e2336cf4b239331e532d40bb052b108c5221fa040d15c31c"
+  },
+  "runtime": {
+    "world_size": 1,
+    "backend": "DistributedType.NO",
+    "collective_backend": null,
+    "device_type": "cuda",
+    "device_name": "PPU-ZW810E",
+    "batch_size": 1,
+    "accumulation": 2,
+    "precision": "no",
+    "versions": {
+      "torch": "2.7.0",
+      "accelerate": "1.12.0",
+      "numpy": "1.26.4",
+      "transformers": "4.57.1",
+      "diffusers": "0.37.1",
+      "peft": "0.17.1",
+      "pyarrow": "23.0.1",
+      "av": "17.0.0"
+    }
+  },
+  "run_directory": "/mnt/workspace/Native_Policy/user/wyt/runs/qwenpi_decoder_layernorm_v1",
+  "process_exit_code": 0
+}

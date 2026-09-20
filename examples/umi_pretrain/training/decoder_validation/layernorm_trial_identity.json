@@ -1,0 +1,20 @@
+{
+  "reference_run": "/mnt/workspace/Native_Policy/user/wyt/runs/qwenpi_learnability_v1",
+  "variant": "layer_norm",
+  "scheduled_updates": 200,
+  "stop_after": 200,
+  "diagnostic_steps": [
+    0,
+    1,
+    2,
+    5,
+    10,
+    20,
+    50,
+    200
+  ],
+  "script_sha256": "a9aeb102b3536ca6bd2b12646affcdcdeca8425c41205bf2a56a4b1ceb5793ee",
+  "diagnostic_sha256": "8757b6b8a1ec9879bfaafc8a75a84101bbfda35154605029fa957cfa2f62ef73",
+  "checkpoints_suppressed": false,
+  "initial_parameter_comparison": "deterministic shared initialization; small probes recorded, not full-state equality"
+}

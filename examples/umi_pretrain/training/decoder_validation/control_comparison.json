@@ -1,0 +1,11 @@
+{
+  "reproduce_updates": 50,
+  "layernorm_updates": 200,
+  "reproduce_same_samples": true,
+  "layernorm_same_samples": true,
+  "reproduce_same_lr": true,
+  "layernorm_same_lr": true,
+  "initial_parameter_probes_equal": true,
+  "initial_original_evaluation_equal": true,
+  "numerical_bitwise_reproduction": false
+}
