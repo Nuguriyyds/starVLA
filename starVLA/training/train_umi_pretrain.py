@@ -167,7 +167,7 @@ def seed_start(seed):
     torch.manual_seed(seed)
 
 
-def run(args):
+def run(args, *, on_start=None, evaluation_fn=None):
     plan = OmegaConf.to_container(OmegaConf.load(args.plan), resolve=True)
     total_updates = validate_plan(plan)
     train = plan["training"]
@@ -297,6 +297,10 @@ def run(args):
         # parameter initialization and DDP broadcast.
         else:
             seed_start(train.get("seed", 42) + accelerator.process_index)
+        # Optional task-specific evaluation. Restored state is available here;
+        # callbacks must preserve RNG and model mode and must not update weights.
+        if on_start is not None:
+            on_start(accelerator, model, plan, run_dir, progress.global_update_step)
         if args.stop_after_update is not None and args.stop_after_update <= progress.global_update_step:
             raise ValueError("Pause target must exceed the restored committed step")
 
@@ -391,7 +395,10 @@ def run(args):
                     perf.suspend()
                     eval_error = None
                     try:
-                        event["evaluation"] = perf.call("evaluation", evaluate, accelerator, model, plan, run_dir)
+                        if evaluation_fn is None:
+                            event["evaluation"] = perf.call("evaluation", evaluate, accelerator, model, plan, run_dir)
+                        else:
+                            event["evaluation"] = perf.call("evaluation", evaluation_fn, accelerator, model, plan, run_dir, step)
                     except Exception as error:
                         eval_error = str(error)
                     require_all(accelerator, eval_error is None, f"Evaluation failed: {eval_error}")
