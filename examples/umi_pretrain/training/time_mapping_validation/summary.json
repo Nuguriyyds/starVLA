@@ -1,0 +1,2656 @@
+{
+  "baseline_commit": "061639c",
+  "scope": "offline diagnostics only; training reader and checkpoint unchanged",
+  "original_workload": [
+    {
+      "workers": 0,
+      "requested": 48,
+      "recorded": 48,
+      "passed": 39,
+      "failed": 9
+    },
+    {
+      "workers": 2,
+      "requested": 48,
+      "recorded": 48,
+      "passed": 39,
+      "failed": 9
+    }
+  ],
+  "worker_records_equal": true,
+  "failed_unique_episodes": [
+    52630,
+    154072,
+    194878
+  ],
+  "metadata_scans": [
+    {
+      "root": "/mnt/nas/public/roban_umi/restricted_data/source/umi",
+      "metadata_files": 366,
+      "metadata_rows": 344395,
+      "matched_physical_files": 64,
+      "requested_physical_files": 64
+    },
+    {
+      "root": "/mnt/nas/public/roban_umi/restricted_data/derived/umi_v30_curated_v1",
+      "metadata_files": 366,
+      "metadata_rows": 327667,
+      "matched_physical_files": 64,
+      "requested_physical_files": 64
+    }
+  ],
+  "probes": [
+    {
+      "episode_index": 0,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0333194346666666,
+      "nearest_candidate_offset_seconds": -6.75653333334e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 0,
+      "position": "original_request",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0333284346666666,
+      "nearest_candidate_offset_seconds": -6.05653333334e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 0,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0267894346666667,
+      "nearest_candidate_offset_seconds": -0.0065465653333333,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 0,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0074284346666667,
+      "nearest_candidate_offset_seconds": 0.0074284346666667,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 0,
+      "position": "middle",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0006588315782876,
+      "nearest_candidate_offset_seconds": 0.0006588315782876,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 0,
+      "position": "middle",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0006748315782876,
+      "nearest_candidate_offset_seconds": 0.0006748315782876,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 0,
+      "position": "middle",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.0065481684217123,
+      "nearest_candidate_offset_seconds": -0.0065481684217123,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 0,
+      "position": "middle",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0074268315782877,
+      "nearest_candidate_offset_seconds": 0.0074268315782877,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 0,
+      "position": "last_observation",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0008432284899086,
+      "nearest_candidate_offset_seconds": 0.0008432284899086,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 0,
+      "position": "last_observation",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0008662284899086,
+      "nearest_candidate_offset_seconds": 0.0008662284899086,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 0,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.0065487715100913,
+      "nearest_candidate_offset_seconds": -0.0065487715100913,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 0,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0074262284899087,
+      "nearest_candidate_offset_seconds": 0.0074262284899087,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 16160,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.03332900100002,
+      "nearest_candidate_offset_seconds": -3.99899998e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 16160,
+      "position": "original_request",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.033328342,
+      "nearest_candidate_offset_seconds": -6.658e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 16160,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.009026008,
+      "nearest_candidate_offset_seconds": 0.009026008,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 16160,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0063476719998,
+      "nearest_candidate_offset_seconds": 0.0063476719998,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 16160,
+      "position": "middle",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 2.35158596e-06,
+      "nearest_candidate_offset_seconds": 2.35158596e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 16160,
+      "position": "middle",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 1.69258594e-06,
+      "nearest_candidate_offset_seconds": 1.69258594e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 16160,
+      "position": "middle",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.00902635858594,
+      "nearest_candidate_offset_seconds": 0.00902635858594,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 16160,
+      "position": "middle",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.00656802258574,
+      "nearest_candidate_offset_seconds": 0.00656802258574,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 16160,
+      "position": "last_observation",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 2.615627346e-05,
+      "nearest_candidate_offset_seconds": 2.615627346e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 16160,
+      "position": "last_observation",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 2.649727344e-05,
+      "nearest_candidate_offset_seconds": 2.649727344e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 16160,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.00903616327344,
+      "nearest_candidate_offset_seconds": 0.00903616327344,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 16160,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.00636282727324,
+      "nearest_candidate_offset_seconds": 0.00636282727324,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 34300,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0333166699997,
+      "nearest_candidate_offset_seconds": -1.63300003e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 34300,
+      "position": "original_request",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -6.66e-07,
+      "nearest_candidate_offset_seconds": -6.66e-07,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 34300,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0188543359998,
+      "nearest_candidate_offset_seconds": -0.0144916640002,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 34300,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.002412668,
+      "nearest_candidate_offset_seconds": 0.002412668,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 34300,
+      "position": "middle",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -6.39176788e-06,
+      "nearest_candidate_offset_seconds": -6.39176788e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 34300,
+      "position": "middle",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 1.227223242e-05,
+      "nearest_candidate_offset_seconds": 1.227223242e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 34300,
+      "position": "middle",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.01448672576778,
+      "nearest_candidate_offset_seconds": -0.01448672576778,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 34300,
+      "position": "middle",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.00197960623242,
+      "nearest_candidate_offset_seconds": 0.00197960623242,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 34300,
+      "position": "last_observation",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -2.62882842e-06,
+      "nearest_candidate_offset_seconds": -2.62882842e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 34300,
+      "position": "last_observation",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 1.303517188e-05,
+      "nearest_candidate_offset_seconds": 1.303517188e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 34300,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.01448896282832,
+      "nearest_candidate_offset_seconds": -0.01448896282832,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 34300,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.00197936917188,
+      "nearest_candidate_offset_seconds": 0.00197936917188,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 52630,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "failed",
+      "selected_offset_seconds": null,
+      "nearest_candidate_offset_seconds": -1.4991e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 52630,
+      "position": "original_request",
+      "camera": "observation.images.head_right",
+      "reader_status": "failed",
+      "selected_offset_seconds": null,
+      "nearest_candidate_offset_seconds": -1.998e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 52630,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.012684011,
+      "nearest_candidate_offset_seconds": 0.012684011,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 52630,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0285673409997,
+      "nearest_candidate_offset_seconds": -0.0047606590003,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 52630,
+      "position": "middle",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.00024610452539,
+      "nearest_candidate_offset_seconds": -0.00024610452539,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 52630,
+      "position": "middle",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.00023511152539,
+      "nearest_candidate_offset_seconds": -0.00023511152539,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 52630,
+      "position": "middle",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.01269189747461,
+      "nearest_candidate_offset_seconds": 0.01269189747461,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 52630,
+      "position": "middle",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.00476777252569,
+      "nearest_candidate_offset_seconds": -0.00476777252569,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 52630,
+      "position": "last_observation",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.00023821805078,
+      "nearest_candidate_offset_seconds": -0.00023821805078,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 52630,
+      "position": "last_observation",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.00022622505078,
+      "nearest_candidate_offset_seconds": -0.00022622505078,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 52630,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.01267978394922,
+      "nearest_candidate_offset_seconds": 0.01267978394922,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 52630,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.00476988605108,
+      "nearest_candidate_offset_seconds": -0.00476988605108,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 70690,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.033330334,
+      "nearest_candidate_offset_seconds": -4.666e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 70690,
+      "position": "original_request",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.033327341,
+      "nearest_candidate_offset_seconds": -7.659e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 70690,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.001381006,
+      "nearest_candidate_offset_seconds": 0.001381006,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 70690,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.017841008999,
+      "nearest_candidate_offset_seconds": -0.015492991001,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 70690,
+      "position": "middle",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 2.44752539e-06,
+      "nearest_candidate_offset_seconds": 2.44752539e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 70690,
+      "position": "middle",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 4.5452539e-07,
+      "nearest_candidate_offset_seconds": 4.5452539e-07,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 70690,
+      "position": "middle",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.00138311952539,
+      "nearest_candidate_offset_seconds": 0.00138311952539,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 70690,
+      "position": "middle",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.01523987747561,
+      "nearest_candidate_offset_seconds": -0.01523987747561,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 70690,
+      "position": "last_observation",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 7.56105078e-06,
+      "nearest_candidate_offset_seconds": 7.56105078e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 70690,
+      "position": "last_observation",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 4.56805078e-06,
+      "nearest_candidate_offset_seconds": 4.56805078e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 70690,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.00139023305078,
+      "nearest_candidate_offset_seconds": 0.00139023305078,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 70690,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.01548676395022,
+      "nearest_candidate_offset_seconds": -0.01548676395022,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 90215,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.033322486,
+      "nearest_candidate_offset_seconds": -1.2514e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 90215,
+      "position": "original_request",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0333238259995,
+      "nearest_candidate_offset_seconds": -1.41740005e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 90215,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.025610155,
+      "nearest_candidate_offset_seconds": -0.007943845,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 90215,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.014403494,
+      "nearest_candidate_offset_seconds": 0.014403494,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 90215,
+      "position": "middle",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.00012466129297,
+      "nearest_candidate_offset_seconds": 0.00012466129297,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 90215,
+      "position": "middle",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.00013400129247,
+      "nearest_candidate_offset_seconds": 0.00013400129247,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 90215,
+      "position": "middle",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.00863466970703,
+      "nearest_candidate_offset_seconds": -0.00863466970703,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 90215,
+      "position": "middle",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.01564133070703,
+      "nearest_candidate_offset_seconds": -0.01564133070703,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 90215,
+      "position": "last_observation",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0001698465957,
+      "nearest_candidate_offset_seconds": 0.0001698465957,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 90215,
+      "position": "last_observation",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0001871865952,
+      "nearest_candidate_offset_seconds": 0.0001871865952,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 90215,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.0092594844043,
+      "nearest_candidate_offset_seconds": -0.0092594844043,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 90215,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0034388545957,
+      "nearest_candidate_offset_seconds": 0.0034388545957,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 111835,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0333226686668,
+      "nearest_candidate_offset_seconds": -8.3313332e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 111835,
+      "position": "original_request",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0333196756657,
+      "nearest_candidate_offset_seconds": -8.3243343e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 111835,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.01739033466666,
+      "nearest_candidate_offset_seconds": -0.01594566533334,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 111835,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0229976666666666,
+      "nearest_candidate_offset_seconds": -0.0103423333333334,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 111835,
+      "position": "middle",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 2.792201956e-06,
+      "nearest_candidate_offset_seconds": 2.792201956e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 111835,
+      "position": "middle",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 2.799200856e-06,
+      "nearest_candidate_offset_seconds": 2.799200856e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 111835,
+      "position": "middle",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.015946541798184,
+      "nearest_candidate_offset_seconds": -0.015946541798184,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 111835,
+      "position": "middle",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.0103452097981774,
+      "nearest_candidate_offset_seconds": -0.0103452097981774,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 111835,
+      "position": "last_observation",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 2.91573711e-06,
+      "nearest_candidate_offset_seconds": 2.91573711e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 111835,
+      "position": "last_observation",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 3.92273601e-06,
+      "nearest_candidate_offset_seconds": 3.92273601e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 111835,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.01595241826303,
+      "nearest_candidate_offset_seconds": -0.01595241826303,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 111835,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.0103470862630234,
+      "nearest_candidate_offset_seconds": -0.0103470862630234,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 133400,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.033324368,
+      "nearest_candidate_offset_seconds": -5.632e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 133400,
+      "position": "original_request",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 7.039994e-07,
+      "nearest_candidate_offset_seconds": 7.039994e-07,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 133400,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.030197363,
+      "nearest_candidate_offset_seconds": -0.003137637,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 133400,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0231330319999,
+      "nearest_candidate_offset_seconds": -0.0101959680001,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 133400,
+      "position": "middle",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -2.68375781e-06,
+      "nearest_candidate_offset_seconds": -2.68375781e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 133400,
+      "position": "middle",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 3.65224159e-06,
+      "nearest_candidate_offset_seconds": 3.65224159e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 133400,
+      "position": "middle",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.00293968875781,
+      "nearest_candidate_offset_seconds": -0.00293968875781,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 133400,
+      "position": "middle",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.01019001975791,
+      "nearest_candidate_offset_seconds": -0.01019001975791,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 133400,
+      "position": "last_observation",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 9.71858594e-06,
+      "nearest_candidate_offset_seconds": 9.71858594e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 133400,
+      "position": "last_observation",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 2.105458534e-05,
+      "nearest_candidate_offset_seconds": 2.105458534e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 133400,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.00313828641406,
+      "nearest_candidate_offset_seconds": -0.00313828641406,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 133400,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.01019861741416,
+      "nearest_candidate_offset_seconds": -0.01019861741416,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 154072,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "failed",
+      "selected_offset_seconds": null,
+      "nearest_candidate_offset_seconds": -9.33e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 154072,
+      "position": "original_request",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -6.66e-07,
+      "nearest_candidate_offset_seconds": -6.66e-07,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 154072,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.024478002,
+      "nearest_candidate_offset_seconds": -0.008871998,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 154072,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.022231334,
+      "nearest_candidate_offset_seconds": -0.011152666,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 154072,
+      "position": "middle",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -3.15470703e-06,
+      "nearest_candidate_offset_seconds": -3.15470703e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 154072,
+      "position": "middle",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 7.50929297e-06,
+      "nearest_candidate_offset_seconds": 7.50929297e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 154072,
+      "position": "middle",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.01408817729297,
+      "nearest_candidate_offset_seconds": 0.01408817729297,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 154072,
+      "position": "middle",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.00526850929297,
+      "nearest_candidate_offset_seconds": 0.00526850929297,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 154072,
+      "position": "last_observation",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 2.84529297e-06,
+      "nearest_candidate_offset_seconds": 2.84529297e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 154072,
+      "position": "last_observation",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 1.050929297e-05,
+      "nearest_candidate_offset_seconds": 1.050929297e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 154072,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.01502517729297,
+      "nearest_candidate_offset_seconds": 0.01502517729297,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 154072,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.00162550929297,
+      "nearest_candidate_offset_seconds": 0.00162550929297,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 174702,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0333260026668,
+      "nearest_candidate_offset_seconds": -2.9973332e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 174702,
+      "position": "original_request",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 3.6716666e-06,
+      "nearest_candidate_offset_seconds": 3.6716666e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 174702,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0035056686666,
+      "nearest_candidate_offset_seconds": 0.0035056686666,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 174702,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0235543386665,
+      "nearest_candidate_offset_seconds": -0.0098316613335,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 174702,
+      "position": "middle",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.00048205442461,
+      "nearest_candidate_offset_seconds": 0.00048205442461,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 174702,
+      "position": "middle",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.00048572342441,
+      "nearest_candidate_offset_seconds": 0.00048572342441,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 174702,
+      "position": "middle",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.00520227957559,
+      "nearest_candidate_offset_seconds": -0.00520227957559,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 174702,
+      "position": "middle",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.01300060957569,
+      "nearest_candidate_offset_seconds": -0.01300060957569,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 174702,
+      "position": "last_observation",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 7.0560284e-05,
+      "nearest_candidate_offset_seconds": 7.0560284e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 174702,
+      "position": "last_observation",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 7.32292838e-05,
+      "nearest_candidate_offset_seconds": 7.32292838e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 174702,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.0139317737162,
+      "nearest_candidate_offset_seconds": -0.0139317737162,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 174702,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.0163901037163,
+      "nearest_candidate_offset_seconds": -0.0163901037163,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 194878,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "failed",
+      "selected_offset_seconds": null,
+      "nearest_candidate_offset_seconds": -8.333e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 194878,
+      "position": "original_request",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0,
+      "nearest_candidate_offset_seconds": 0.0,
+      "found_both_sides": false
+    },
+    {
+      "episode_index": 194878,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0156493390002,
+      "nearest_candidate_offset_seconds": 0.0156493390002,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 194878,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.009213337,
+      "nearest_candidate_offset_seconds": 0.009213337,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 194878,
+      "position": "middle",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.00029568358594,
+      "nearest_candidate_offset_seconds": -0.00029568358594,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 194878,
+      "position": "middle",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.00029035058594,
+      "nearest_candidate_offset_seconds": -0.00029035058594,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 194878,
+      "position": "middle",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.01562298841426,
+      "nearest_candidate_offset_seconds": 0.01562298841426,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 194878,
+      "position": "middle",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.00921098641406,
+      "nearest_candidate_offset_seconds": 0.00921098641406,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 194878,
+      "position": "last_observation",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.0002815800703,
+      "nearest_candidate_offset_seconds": -0.0002815800703,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 194878,
+      "position": "last_observation",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.0002762470703,
+      "nearest_candidate_offset_seconds": -0.0002762470703,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 194878,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0159280919299,
+      "nearest_candidate_offset_seconds": 0.0159280919299,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 194878,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0092170899297,
+      "nearest_candidate_offset_seconds": 0.0092170899297,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 216535,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -3.3333333333e-07,
+      "nearest_candidate_offset_seconds": -3.3333333333e-07,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 216535,
+      "position": "original_request",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 3.376665e-07,
+      "nearest_candidate_offset_seconds": 3.376665e-07,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 216535,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.017176004667,
+      "nearest_candidate_offset_seconds": -0.015942995333,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 216535,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.01715866666666666,
+      "nearest_candidate_offset_seconds": -0.01616933333333334,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 216535,
+      "position": "middle",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 1.119254556667e-05,
+      "nearest_candidate_offset_seconds": 1.119254556667e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 216535,
+      "position": "middle",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 1.18635454e-05,
+      "nearest_candidate_offset_seconds": 1.18635454e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 216535,
+      "position": "middle",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.0161544694541,
+      "nearest_candidate_offset_seconds": -0.0161544694541,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 216535,
+      "position": "middle",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.01617280745443334,
+      "nearest_candidate_offset_seconds": -0.01617280745443334,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 216535,
+      "position": "last_observation",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 2.171842446667e-05,
+      "nearest_candidate_offset_seconds": 2.171842446667e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 216535,
+      "position": "last_observation",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 2.23894243e-05,
+      "nearest_candidate_offset_seconds": 2.23894243e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 216535,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.0161519435752,
+      "nearest_candidate_offset_seconds": -0.0161519435752,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 216535,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.01616928157553334,
+      "nearest_candidate_offset_seconds": -0.01616928157553334,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 242413,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.033325667,
+      "nearest_candidate_offset_seconds": -1.0333e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 242413,
+      "position": "original_request",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -3.33e-07,
+      "nearest_candidate_offset_seconds": -3.33e-07,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 242413,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0158363360001,
+      "nearest_candidate_offset_seconds": 0.0158363360001,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 242413,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.016803002,
+      "nearest_candidate_offset_seconds": -0.016533998,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 242413,
+      "position": "middle",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -6.21947461e-06,
+      "nearest_candidate_offset_seconds": -6.21947461e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 242413,
+      "position": "middle",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 5.78052539e-06,
+      "nearest_candidate_offset_seconds": 5.78052539e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 242413,
+      "position": "middle",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.01583544952549,
+      "nearest_candidate_offset_seconds": 0.01583544952549,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 242413,
+      "position": "middle",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.01653188447461,
+      "nearest_candidate_offset_seconds": -0.01653188447461,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 242413,
+      "position": "last_observation",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 1.89405078e-06,
+      "nearest_candidate_offset_seconds": 1.89405078e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 242413,
+      "position": "last_observation",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 1.489405078e-05,
+      "nearest_candidate_offset_seconds": 1.489405078e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 242413,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.01583956305088,
+      "nearest_candidate_offset_seconds": 0.01583956305088,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 242413,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.01653377094922,
+      "nearest_candidate_offset_seconds": -0.01653377094922,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 270503,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0331996690001,
+      "nearest_candidate_offset_seconds": -1.73309999e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 270503,
+      "position": "original_request",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.033205002,
+      "nearest_candidate_offset_seconds": -1.998e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 270503,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.009127676,
+      "nearest_candidate_offset_seconds": 0.009127676,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 270503,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.011953002,
+      "nearest_candidate_offset_seconds": 0.011953002,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 270503,
+      "position": "middle",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -7.644452529e-05,
+      "nearest_candidate_offset_seconds": -7.644452529e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 270503,
+      "position": "middle",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -4.911152539e-05,
+      "nearest_candidate_offset_seconds": -4.911152539e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 270503,
+      "position": "middle",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.01323956247461,
+      "nearest_candidate_offset_seconds": 0.01323956247461,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 270503,
+      "position": "middle",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.01169388847461,
+      "nearest_candidate_offset_seconds": 0.01169388847461,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 270503,
+      "position": "last_observation",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.00012110394912,
+      "nearest_candidate_offset_seconds": -0.00012110394912,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 270503,
+      "position": "last_observation",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.00010577094922,
+      "nearest_candidate_offset_seconds": -0.00010577094922,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 270503,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.01652109694922,
+      "nearest_candidate_offset_seconds": -0.01652109694922,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 270503,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.00911077094922,
+      "nearest_candidate_offset_seconds": -0.00911077094922,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 302653,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0333236746667,
+      "nearest_candidate_offset_seconds": -1.13253333e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 302653,
+      "position": "original_request",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.033334007667,
+      "nearest_candidate_offset_seconds": -6.992333e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 302653,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0288426736663,
+      "nearest_candidate_offset_seconds": -0.0047783263337,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 302653,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0199940056668,
+      "nearest_candidate_offset_seconds": -0.0134949943332,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 302653,
+      "position": "middle",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -4.08827275e-06,
+      "nearest_candidate_offset_seconds": -4.08827275e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 302653,
+      "position": "middle",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 6.24472755e-06,
+      "nearest_candidate_offset_seconds": 6.24472755e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 302653,
+      "position": "middle",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.00791191072685,
+      "nearest_candidate_offset_seconds": 0.00791191072685,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 302653,
+      "position": "middle",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.01141075727265,
+      "nearest_candidate_offset_seconds": -0.01141075727265,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 302653,
+      "position": "last_observation",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -1.8512122e-06,
+      "nearest_candidate_offset_seconds": -1.8512122e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 302653,
+      "position": "last_observation",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 5.4817881e-06,
+      "nearest_candidate_offset_seconds": 5.4817881e-06,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 302653,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.0126568522126,
+      "nearest_candidate_offset_seconds": -0.0126568522126,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 302653,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.0099265202121,
+      "nearest_candidate_offset_seconds": -0.0099265202121,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 327664,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": -2.08e-07,
+      "nearest_candidate_offset_seconds": -2.08e-07,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 327664,
+      "position": "original_request",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 2.3792e-05,
+      "nearest_candidate_offset_seconds": 2.3792e-05,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 327664,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.012545792,
+      "nearest_candidate_offset_seconds": 0.012545792,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 327664,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.026491792,
+      "nearest_candidate_offset_seconds": -0.006855208,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 327664,
+      "position": "middle",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.000748570381348,
+      "nearest_candidate_offset_seconds": 0.000748570381348,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 327664,
+      "position": "middle",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.000769570381348,
+      "nearest_candidate_offset_seconds": 0.000769570381348,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 327664,
+      "position": "middle",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.012534570381348,
+      "nearest_candidate_offset_seconds": 0.012534570381348,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 327664,
+      "position": "middle",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.006846429618652,
+      "nearest_candidate_offset_seconds": -0.006846429618652,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 327664,
+      "position": "last_observation",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.001063173469727,
+      "nearest_candidate_offset_seconds": 0.001063173469727,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 327664,
+      "position": "last_observation",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.001068173469727,
+      "nearest_candidate_offset_seconds": 0.001068173469727,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 327664,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.012547173469727,
+      "nearest_candidate_offset_seconds": 0.012547173469727,
+      "found_both_sides": true
+    },
+    {
+      "episode_index": 327664,
+      "position": "last_observation",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": -0.006852826530273,
+      "nearest_candidate_offset_seconds": -0.006852826530273,
+      "found_both_sides": true
+    }
+  ],
+  "mapping_comparisons": [
+    {
+      "episode_index": 0,
+      "camera": "observation.images.head_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 0,
+      "camera": "observation.images.head_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 0,
+      "camera": "observation.images.wrist_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 0,
+      "camera": "observation.images.wrist_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 16160,
+      "camera": "observation.images.head_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 16160,
+      "camera": "observation.images.head_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 16160,
+      "camera": "observation.images.wrist_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 16160,
+      "camera": "observation.images.wrist_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 34300,
+      "camera": "observation.images.head_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 34300,
+      "camera": "observation.images.head_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 34300,
+      "camera": "observation.images.wrist_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 34300,
+      "camera": "observation.images.wrist_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 52630,
+      "camera": "observation.images.head_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 52630,
+      "camera": "observation.images.head_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 52630,
+      "camera": "observation.images.wrist_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 52630,
+      "camera": "observation.images.wrist_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 70690,
+      "camera": "observation.images.head_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 70690,
+      "camera": "observation.images.head_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 70690,
+      "camera": "observation.images.wrist_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 70690,
+      "camera": "observation.images.wrist_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 90215,
+      "camera": "observation.images.head_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 90215,
+      "camera": "observation.images.head_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 90215,
+      "camera": "observation.images.wrist_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 90215,
+      "camera": "observation.images.wrist_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 111835,
+      "camera": "observation.images.head_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 111835,
+      "camera": "observation.images.head_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 111835,
+      "camera": "observation.images.wrist_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 111835,
+      "camera": "observation.images.wrist_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 133400,
+      "camera": "observation.images.head_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 133400,
+      "camera": "observation.images.head_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 133400,
+      "camera": "observation.images.wrist_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 133400,
+      "camera": "observation.images.wrist_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 154072,
+      "camera": "observation.images.head_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 154072,
+      "camera": "observation.images.head_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 154072,
+      "camera": "observation.images.wrist_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 154072,
+      "camera": "observation.images.wrist_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 174702,
+      "camera": "observation.images.head_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 174702,
+      "camera": "observation.images.head_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 174702,
+      "camera": "observation.images.wrist_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 174702,
+      "camera": "observation.images.wrist_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 194878,
+      "camera": "observation.images.head_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 194878,
+      "camera": "observation.images.head_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 194878,
+      "camera": "observation.images.wrist_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 194878,
+      "camera": "observation.images.wrist_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 216535,
+      "camera": "observation.images.head_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 216535,
+      "camera": "observation.images.head_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 216535,
+      "camera": "observation.images.wrist_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 216535,
+      "camera": "observation.images.wrist_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 242413,
+      "camera": "observation.images.head_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 242413,
+      "camera": "observation.images.head_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 242413,
+      "camera": "observation.images.wrist_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 242413,
+      "camera": "observation.images.wrist_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 270503,
+      "camera": "observation.images.head_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 270503,
+      "camera": "observation.images.head_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 270503,
+      "camera": "observation.images.wrist_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 270503,
+      "camera": "observation.images.wrist_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 302653,
+      "camera": "observation.images.head_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 302653,
+      "camera": "observation.images.head_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 302653,
+      "camera": "observation.images.wrist_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 302653,
+      "camera": "observation.images.wrist_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 327664,
+      "camera": "observation.images.head_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 327664,
+      "camera": "observation.images.head_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 327664,
+      "camera": "observation.images.wrist_left",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    },
+    {
+      "episode_index": 327664,
+      "camera": "observation.images.wrist_right",
+      "same_source_mcap": true,
+      "start_residual_seconds": 0.0,
+      "end_residual_seconds": 0.0,
+      "formula_under_test": "curated from/to = source from + trim start/stop / dataset fps; agreement is observational, not recovered converter code"
+    }
+  ],
+  "successful_selection_differs_from_captured_nearest": [
+    {
+      "episode_index": 0,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0333194346666666,
+      "nearest_candidate_offset_seconds": -6.75653333334e-05,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": true
+    },
+    {
+      "episode_index": 0,
+      "position": "original_request",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0333284346666666,
+      "nearest_candidate_offset_seconds": -6.05653333334e-05,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": true
+    },
+    {
+      "episode_index": 0,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0267894346666667,
+      "nearest_candidate_offset_seconds": -0.0065465653333333,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": true
+    },
+    {
+      "episode_index": 16160,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.03332900100002,
+      "nearest_candidate_offset_seconds": -3.99899998e-06,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": true
+    },
+    {
+      "episode_index": 16160,
+      "position": "original_request",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.033328342,
+      "nearest_candidate_offset_seconds": -6.658e-06,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": true
+    },
+    {
+      "episode_index": 34300,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0333166699997,
+      "nearest_candidate_offset_seconds": -1.63300003e-05,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": false
+    },
+    {
+      "episode_index": 34300,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0188543359998,
+      "nearest_candidate_offset_seconds": -0.0144916640002,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": false
+    },
+    {
+      "episode_index": 52630,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0285673409997,
+      "nearest_candidate_offset_seconds": -0.0047606590003,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": false
+    },
+    {
+      "episode_index": 70690,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.033330334,
+      "nearest_candidate_offset_seconds": -4.666e-06,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": false
+    },
+    {
+      "episode_index": 70690,
+      "position": "original_request",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.033327341,
+      "nearest_candidate_offset_seconds": -7.659e-06,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": false
+    },
+    {
+      "episode_index": 70690,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.017841008999,
+      "nearest_candidate_offset_seconds": -0.015492991001,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": false
+    },
+    {
+      "episode_index": 90215,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.033322486,
+      "nearest_candidate_offset_seconds": -1.2514e-05,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": true
+    },
+    {
+      "episode_index": 90215,
+      "position": "original_request",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0333238259995,
+      "nearest_candidate_offset_seconds": -1.41740005e-05,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": true
+    },
+    {
+      "episode_index": 90215,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.025610155,
+      "nearest_candidate_offset_seconds": -0.007943845,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": true
+    },
+    {
+      "episode_index": 111835,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0333226686668,
+      "nearest_candidate_offset_seconds": -8.3313332e-06,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": true
+    },
+    {
+      "episode_index": 111835,
+      "position": "original_request",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0333196756657,
+      "nearest_candidate_offset_seconds": -8.3243343e-06,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": true
+    },
+    {
+      "episode_index": 111835,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.01739033466666,
+      "nearest_candidate_offset_seconds": -0.01594566533334,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": true
+    },
+    {
+      "episode_index": 111835,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0229976666666666,
+      "nearest_candidate_offset_seconds": -0.0103423333333334,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": true
+    },
+    {
+      "episode_index": 133400,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.033324368,
+      "nearest_candidate_offset_seconds": -5.632e-06,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": false
+    },
+    {
+      "episode_index": 133400,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.030197363,
+      "nearest_candidate_offset_seconds": -0.003137637,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": false
+    },
+    {
+      "episode_index": 133400,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0231330319999,
+      "nearest_candidate_offset_seconds": -0.0101959680001,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": false
+    },
+    {
+      "episode_index": 154072,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.024478002,
+      "nearest_candidate_offset_seconds": -0.008871998,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": false
+    },
+    {
+      "episode_index": 154072,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.022231334,
+      "nearest_candidate_offset_seconds": -0.011152666,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": false
+    },
+    {
+      "episode_index": 174702,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0333260026668,
+      "nearest_candidate_offset_seconds": -2.9973332e-06,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": true
+    },
+    {
+      "episode_index": 174702,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0235543386665,
+      "nearest_candidate_offset_seconds": -0.0098316613335,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": true
+    },
+    {
+      "episode_index": 216535,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.017176004667,
+      "nearest_candidate_offset_seconds": -0.015942995333,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": true
+    },
+    {
+      "episode_index": 216535,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.01715866666666666,
+      "nearest_candidate_offset_seconds": -0.01616933333333334,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": true
+    },
+    {
+      "episode_index": 242413,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.033325667,
+      "nearest_candidate_offset_seconds": -1.0333e-05,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": false
+    },
+    {
+      "episode_index": 242413,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.016803002,
+      "nearest_candidate_offset_seconds": -0.016533998,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": false
+    },
+    {
+      "episode_index": 270503,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0331996690001,
+      "nearest_candidate_offset_seconds": -1.73309999e-05,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": false
+    },
+    {
+      "episode_index": 270503,
+      "position": "original_request",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.033205002,
+      "nearest_candidate_offset_seconds": -1.998e-06,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": false
+    },
+    {
+      "episode_index": 302653,
+      "position": "original_request",
+      "camera": "observation.images.head_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0333236746667,
+      "nearest_candidate_offset_seconds": -1.13253333e-05,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": true
+    },
+    {
+      "episode_index": 302653,
+      "position": "original_request",
+      "camera": "observation.images.head_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.033334007667,
+      "nearest_candidate_offset_seconds": -6.992333e-06,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": true
+    },
+    {
+      "episode_index": 302653,
+      "position": "original_request",
+      "camera": "observation.images.wrist_left",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0288426736663,
+      "nearest_candidate_offset_seconds": -0.0047783263337,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": true
+    },
+    {
+      "episode_index": 302653,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.0199940056668,
+      "nearest_candidate_offset_seconds": -0.0134949943332,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": true
+    },
+    {
+      "episode_index": 327664,
+      "position": "original_request",
+      "camera": "observation.images.wrist_right",
+      "reader_status": "passed",
+      "selected_offset_seconds": 0.026491792,
+      "nearest_candidate_offset_seconds": -0.006855208,
+      "found_both_sides": true,
+      "nearest_inside_source_observation_span": false
+    }
+  ],
+  "caveat": "Captured nearest is diagnostic only; physical source ownership has not been independently verified.",
+  "counts": {
+    "camera_probes": 192,
+    "reader_failed_camera_probes": 4,
+    "candidate_selection_differences": 36,
+    "differences_inside_source_observation_span": 20,
+    "all_64_mapping_comparisons_equal": true
+  }
+}
