@@ -1,0 +1,37 @@
+{
+  "completed_updates": 200,
+  "all_losses_and_global_gradient_norms_finite": true,
+  "process_exit_code": 0,
+  "saved_checkpoints": [
+    "update_00000200"
+  ],
+  "peak_allocated_memory_gib": 62.17321825027466,
+  "checkpoint_seconds": [
+    88.34995500202058
+  ],
+  "code": {
+    "commit": "9dbc4877d8a1cf0745e5f6442d1a36e5574d70d2",
+    "source_sha256": "2796be05b259e040c0e6ce32abfa36417e32f30c71f3011403c0c4e6bc07afa5"
+  },
+  "runtime": {
+    "world_size": 1,
+    "backend": "DistributedType.NO",
+    "collective_backend": null,
+    "device_type": "cuda",
+    "device_name": "PPU-ZW810E",
+    "batch_size": 1,
+    "accumulation": 2,
+    "precision": "no",
+    "versions": {
+      "torch": "2.7.0",
+      "accelerate": "1.12.0",
+      "numpy": "1.26.4",
+      "transformers": "4.57.1",
+      "diffusers": "0.37.1",
+      "peft": "0.17.1",
+      "pyarrow": "23.0.1",
+      "av": "17.0.0"
+    }
+  },
+  "run_directory": "/mnt/workspace/Native_Policy/user/wyt/runs/qwenpi_learnability_v1"
+}

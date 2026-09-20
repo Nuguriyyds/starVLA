@@ -1,0 +1,9 @@
+{
+  "scope": "One bounded output-form diagnostic, no model forward or retraining.",
+  "assumption": "Inference visual encoding in eval mode consumes no RNG before the action head first randn.",
+  "bias_key": "action_model.action_decoder.layer2.bias",
+  "generated_minus_initial_noise_rms": 0.021899985316156445,
+  "max_abs_difference_from_noise_plus_final_bias": 9.5367431640625e-07,
+  "rms_difference_from_noise_plus_final_bias": 9.935953055154017e-08,
+  "bias_rms": 0.0218999855773456
+}

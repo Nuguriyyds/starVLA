@@ -7,6 +7,8 @@ framework:
     action_horizon: 16
 datasets:
   vla_data:
+    video_time_policy: engineering_boundary_slack
+    boundary_slack_seconds: 0.001  # Candidate margin; does not change nearest-frame matching tolerance.
     dataset_py: umi_indexed
     data_mix: roban_umi_indexed
     # Full candidate pool: includes any later validation selection. Use only for

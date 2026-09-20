@@ -1,0 +1,11 @@
+{
+  "sha256": "fe165db12205ca0243cd7fed95b09ed2d2002fe21967bd360e32e8fbb5fc98df",
+  "initialization": "fresh Qwen3-VL-2B-Instruct plus freshly initialized action head",
+  "eval_schedule": [
+    0,
+    50,
+    100,
+    150,
+    200
+  ]
+}
