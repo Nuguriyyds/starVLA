@@ -1,0 +1,75 @@
+{
+  "actual_updates": 2000,
+  "status": "complete",
+  "process_exit_code": null,
+  "process_exit_status": "Training process no longer present; SSH invocation did not return an exit status. Residual local SSH connection closed after complete progress, summary and checkpoints were verified; normal process exit not asserted.",
+  "all_loss_and_gradient_norm_finite": true,
+  "peak_allocated_memory_gib": 62.17560052871704,
+  "code": {
+    "commit": "9307d7a422b0ad68721b028fe2f3eb28d369a3c7",
+    "source_sha256": "8c75e0332373a11dfa70c66c147fe735b0c26335f47252aeb52172e2a7f9972a"
+  },
+  "runtime": {
+    "world_size": 1,
+    "backend": "DistributedType.NO",
+    "collective_backend": null,
+    "device_type": "cuda",
+    "device_name": "PPU-ZW810E",
+    "batch_size": 1,
+    "accumulation": 2,
+    "precision": "no",
+    "versions": {
+      "torch": "2.7.0",
+      "accelerate": "1.12.0",
+      "numpy": "1.26.4",
+      "transformers": "4.57.1",
+      "diffusers": "0.37.1",
+      "peft": "0.17.1",
+      "pyarrow": "23.0.1",
+      "av": "17.0.0"
+    }
+  },
+  "checkpoints": [
+    {
+      "step": 1000,
+      "reasons": [
+        "periodic"
+      ]
+    },
+    {
+      "step": 2000,
+      "reasons": [
+        "periodic",
+        "stage_boundary",
+        "complete"
+      ]
+    }
+  ],
+  "checkpoint_publication": [
+    {
+      "step": 1000,
+      "completion_marker_present": true,
+      "recorded_sizes_match": true,
+      "integrity": "basic",
+      "loaded_into_model": false
+    },
+    {
+      "step": 2000,
+      "completion_marker_present": true,
+      "recorded_sizes_match": true,
+      "integrity": "basic",
+      "loaded_into_model": false
+    }
+  ],
+  "checkpoint_sections": [
+    {
+      "name": "checkpoint_total",
+      "host_seconds": 89.05958185100462
+    },
+    {
+      "name": "checkpoint_total",
+      "host_seconds": 110.78742928299471
+    }
+  ],
+  "run_directory": "/mnt/workspace/Native_Policy/user/wyt/runs/qwenpi_extended_learning_v1"
+}

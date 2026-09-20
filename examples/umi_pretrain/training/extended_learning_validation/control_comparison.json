@@ -1,0 +1,22 @@
+{
+  "reference_updates": 50,
+  "candidate_updates": 2000,
+  "same_initial_parameter_probes": true,
+  "same_first_50_samples": true,
+  "same_model_configuration": true,
+  "same_data_configuration": true,
+  "peak_learning_rates_unchanged": true,
+  "learning_rate_trajectory_changed": true,
+  "example_lr_at_update_50": {
+    "old": [
+      7.947368421052633e-06,
+      7.947368421052632e-05
+    ],
+    "new": [
+      9.804020100502513e-06,
+      9.804020100502513e-05
+    ]
+  },
+  "identical_initial_fixed_evaluation": true,
+  "numerical_bitwise_reproduction": false
+}

@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "times": [
+    0.0,
+    0.25,
+    0.5,
+    0.75
+  ],
+  "normalized_max_error": 2.9802322387695312e-08,
+  "raw_max_error": 2.0489096641540527e-08,
+  "intermediate_path_max_errors": [
+    0.0,
+    1.1920928955078125e-07,
+    1.1920928955078125e-07,
+    1.1920928955078125e-07
+  ],
+  "real_euler_and_action_slice": true,
+  "raw_target_read_independently": true,
+  "truth_injected_for_chain_check_only": true,
+  "parameter_updates": false
+}

@@ -1,0 +1,37 @@
+{
+  "reference_run": "/mnt/workspace/Native_Policy/user/wyt/runs/qwenpi_condition_layernorm_v1",
+  "fresh_initialization": true,
+  "scheduled_updates": 2000,
+  "evaluation_steps": [
+    0,
+    50,
+    200,
+    500,
+    1000,
+    2000
+  ],
+  "checkpoint_steps": [
+    1000,
+    2000
+  ],
+  "soft_early_stopping": false,
+  "changed_training_controls": [
+    "total_updates: 200 -> 2000",
+    "linear decay follows 2000-update horizon",
+    "remove step-50 soft gate",
+    "sparse evaluation and checkpoint cadence"
+  ],
+  "unchanged": [
+    "dual-LN model",
+    "continuous state",
+    "32-window view",
+    "normalization",
+    "seed",
+    "full-model training",
+    "peak learning rates",
+    "10-update warmup",
+    "batch 1 / accumulation 2",
+    "4-step sampling"
+  ],
+  "script_sha256": "13c965a571b7a9e28c875dc042ff8e3e6e4e0c52064d7f8f225fc864d2ae6739"
+}

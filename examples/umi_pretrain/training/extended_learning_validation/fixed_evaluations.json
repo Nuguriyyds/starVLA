@@ -1,0 +1,284 @@
+[
+  {
+    "step": 0,
+    "fixed_fm_loss": 1.7718080170452595,
+    "normalized_action_mse": 1.7749806745137964,
+    "prediction": {
+      "position_rmse": 0.1563876656404582,
+      "gripper_rmse": 0.01725153605271763,
+      "rotation_mean_degrees": 37.65854286187466,
+      "invalid_quaternions": 0
+    },
+    "hold_current": {
+      "position_rmse": 0.01916065833127158,
+      "gripper_rmse": 0.008730391464125709,
+      "rotation_mean_degrees": 6.314627289109136,
+      "invalid_quaternions": 0
+    },
+    "evaluation_windows": 32,
+    "training_windows_overlap": true,
+    "same_noise_bias_only_loss": 1.696871291846037,
+    "noise_endpoint_response": [
+      {
+        "window_index": 0,
+        "repeat_rms": 0.0,
+        "cosine": -0.04710429161787033,
+        "rms_gain": 0.02107679414808686,
+        "directional_gain": -0.0009928076760843396,
+        "relative_error": 1.0012142056831281
+      },
+      {
+        "window_index": 16,
+        "repeat_rms": 0.0,
+        "cosine": -0.031238220632076263,
+        "rms_gain": 0.020660207209238134,
+        "directional_gain": -0.0006453884416259825,
+        "relative_error": 1.000858473392407
+      },
+      {
+        "window_index": 31,
+        "repeat_rms": 0.0,
+        "cosine": -0.0856834128499031,
+        "rms_gain": 0.018917811406308584,
+        "directional_gain": -0.0016209431923925877,
+        "relative_error": 1.0017983143492313
+      }
+    ],
+    "inference_steps": 4
+  },
+  {
+    "step": 50,
+    "fixed_fm_loss": 1.6264410018920898,
+    "normalized_action_mse": 1.6378731221589793,
+    "prediction": {
+      "position_rmse": 0.1306044812164504,
+      "gripper_rmse": 0.017054305643745066,
+      "rotation_mean_degrees": 37.321144010403316,
+      "invalid_quaternions": 0
+    },
+    "hold_current": {
+      "position_rmse": 0.01916065833127158,
+      "gripper_rmse": 0.008730391464125709,
+      "rotation_mean_degrees": 6.314627289109136,
+      "invalid_quaternions": 0
+    },
+    "evaluation_windows": 32,
+    "training_windows_overlap": true,
+    "same_noise_bias_only_loss": 1.6967410743236542,
+    "noise_endpoint_response": [
+      {
+        "window_index": 0,
+        "repeat_rms": 0.0,
+        "cosine": 0.7157336473464966,
+        "rms_gain": 0.0017705929354730802,
+        "directional_gain": 0.0012672728626057506,
+        "relative_error": 0.9987335450924327
+      },
+      {
+        "window_index": 16,
+        "repeat_rms": 0.0,
+        "cosine": 0.7212369441986084,
+        "rms_gain": 0.001682012976353254,
+        "directional_gain": 0.0012131298426538706,
+        "relative_error": 0.9987875786976623
+      },
+      {
+        "window_index": 31,
+        "repeat_rms": 0.0,
+        "cosine": 0.6763527989387512,
+        "rms_gain": 0.0016068483164657186,
+        "directional_gain": 0.0010867964010685682,
+        "relative_error": 0.9989140322305998
+      }
+    ],
+    "inference_steps": 4
+  },
+  {
+    "step": 200,
+    "fixed_fm_loss": 1.292857812717557,
+    "normalized_action_mse": 1.2651904523140745,
+    "prediction": {
+      "position_rmse": 0.10989518532692928,
+      "gripper_rmse": 0.014329004962750453,
+      "rotation_mean_degrees": 32.43690757788441,
+      "invalid_quaternions": 0
+    },
+    "hold_current": {
+      "position_rmse": 0.01916065833127158,
+      "gripper_rmse": 0.008730391464125709,
+      "rotation_mean_degrees": 6.314627289109136,
+      "invalid_quaternions": 0
+    },
+    "evaluation_windows": 32,
+    "training_windows_overlap": true,
+    "same_noise_bias_only_loss": 1.6967196501791477,
+    "noise_endpoint_response": [
+      {
+        "window_index": 0,
+        "repeat_rms": 0.0,
+        "cosine": 0.4517785310745239,
+        "rms_gain": 0.4442478532241653,
+        "directional_gain": 0.20070165395736694,
+        "relative_error": 0.8921619621284712
+      },
+      {
+        "window_index": 16,
+        "repeat_rms": 0.0,
+        "cosine": 0.4375288486480713,
+        "rms_gain": 0.3539048877669157,
+        "directional_gain": 0.15484359860420227,
+        "relative_error": 0.9030844606230193
+      },
+      {
+        "window_index": 31,
+        "repeat_rms": 0.0,
+        "cosine": 0.4221775233745575,
+        "rms_gain": 0.37908461234309027,
+        "directional_gain": 0.1600409895181656,
+        "relative_error": 0.9075368891890453
+      }
+    ],
+    "inference_steps": 4
+  },
+  {
+    "step": 500,
+    "fixed_fm_loss": 0.5786376325413585,
+    "normalized_action_mse": 0.44711296387305666,
+    "prediction": {
+      "position_rmse": 0.04524313123656748,
+      "gripper_rmse": 0.01027653920705375,
+      "rotation_mean_degrees": 18.036075108479707,
+      "invalid_quaternions": 0
+    },
+    "hold_current": {
+      "position_rmse": 0.01916065833127158,
+      "gripper_rmse": 0.008730391464125709,
+      "rotation_mean_degrees": 6.314627289109136,
+      "invalid_quaternions": 0
+    },
+    "evaluation_windows": 32,
+    "training_windows_overlap": true,
+    "same_noise_bias_only_loss": 1.6968218870460987,
+    "noise_endpoint_response": [
+      {
+        "window_index": 0,
+        "repeat_rms": 0.0,
+        "cosine": 0.8534397482872009,
+        "rms_gain": 0.8593149943498439,
+        "directional_gain": 0.7333735823631287,
+        "relative_error": 0.5212245246868863
+      },
+      {
+        "window_index": 16,
+        "repeat_rms": 0.0,
+        "cosine": 0.8355975151062012,
+        "rms_gain": 0.7377788098194228,
+        "directional_gain": 0.6164860725402832,
+        "relative_error": 0.5579833179590822
+      },
+      {
+        "window_index": 31,
+        "repeat_rms": 0.0,
+        "cosine": 0.8535126447677612,
+        "rms_gain": 0.8833303116544711,
+        "directional_gain": 0.7539336085319519,
+        "relative_error": 0.5219245759220209
+      }
+    ],
+    "inference_steps": 4
+  },
+  {
+    "step": 1000,
+    "fixed_fm_loss": 0.23357771639712155,
+    "normalized_action_mse": 0.0878410976370119,
+    "prediction": {
+      "position_rmse": 0.022649690084980207,
+      "gripper_rmse": 0.005471396021364547,
+      "rotation_mean_degrees": 6.93352963812869,
+      "invalid_quaternions": 0
+    },
+    "hold_current": {
+      "position_rmse": 0.01916065833127158,
+      "gripper_rmse": 0.008730391464125709,
+      "rotation_mean_degrees": 6.314627289109136,
+      "invalid_quaternions": 0
+    },
+    "evaluation_windows": 32,
+    "training_windows_overlap": true,
+    "same_noise_bias_only_loss": 1.6968450732529163,
+    "noise_endpoint_response": [
+      {
+        "window_index": 0,
+        "repeat_rms": 0.0,
+        "cosine": 0.9811855554580688,
+        "rms_gain": 1.0757637305771794,
+        "directional_gain": 1.0555236339569092,
+        "relative_error": 0.21498905077813402
+      },
+      {
+        "window_index": 16,
+        "repeat_rms": 0.0,
+        "cosine": 0.9744737148284912,
+        "rms_gain": 0.9965625606476585,
+        "directional_gain": 0.9711238741874695,
+        "relative_error": 0.22558628138244238
+      },
+      {
+        "window_index": 31,
+        "repeat_rms": 0.0,
+        "cosine": 0.9814349412918091,
+        "rms_gain": 1.0840448271962642,
+        "directional_gain": 1.0639194250106812,
+        "relative_error": 0.2175184827481378
+      }
+    ],
+    "inference_steps": 4
+  },
+  {
+    "step": 2000,
+    "fixed_fm_loss": 0.1207523851771839,
+    "normalized_action_mse": 0.05521215482615469,
+    "prediction": {
+      "position_rmse": 0.01316524140447241,
+      "gripper_rmse": 0.004730496041903679,
+      "rotation_mean_degrees": 4.253715665012832,
+      "invalid_quaternions": 0
+    },
+    "hold_current": {
+      "position_rmse": 0.01916065833127158,
+      "gripper_rmse": 0.008730391464125709,
+      "rotation_mean_degrees": 6.314627289109136,
+      "invalid_quaternions": 0
+    },
+    "evaluation_windows": 32,
+    "training_windows_overlap": true,
+    "same_noise_bias_only_loss": 1.6968410462141037,
+    "noise_endpoint_response": [
+      {
+        "window_index": 0,
+        "repeat_rms": 0.0,
+        "cosine": 0.9962664842605591,
+        "rms_gain": 1.0553221592101034,
+        "directional_gain": 1.0513821840286255,
+        "relative_error": 0.10459829156375648
+      },
+      {
+        "window_index": 16,
+        "repeat_rms": 0.0,
+        "cosine": 0.9893434047698975,
+        "rms_gain": 1.0331352606579727,
+        "directional_gain": 1.022125482559204,
+        "relative_error": 0.15204483713156264
+      },
+      {
+        "window_index": 31,
+        "repeat_rms": 0.0,
+        "cosine": 0.9951173067092896,
+        "rms_gain": 1.0440656107495154,
+        "directional_gain": 1.0389677286148071,
+        "relative_error": 0.11017042225054118
+      }
+    ],
+    "inference_steps": 4
+  }
+]

@@ -1,0 +1,104 @@
+{
+  "status": "completed",
+  "actual_updates": 2000,
+  "checks": {
+    "position_beats_hold": true,
+    "gripper_beats_hold": true,
+    "rotation_beats_hold": true
+  },
+  "first": {
+    "step": 0,
+    "fixed_fm_loss": 1.7718080170452595,
+    "normalized_action_mse": 1.7749806745137964,
+    "prediction": {
+      "position_rmse": 0.1563876656404582,
+      "gripper_rmse": 0.01725153605271763,
+      "rotation_mean_degrees": 37.65854286187466,
+      "invalid_quaternions": 0
+    },
+    "hold_current": {
+      "position_rmse": 0.01916065833127158,
+      "gripper_rmse": 0.008730391464125709,
+      "rotation_mean_degrees": 6.314627289109136,
+      "invalid_quaternions": 0
+    },
+    "evaluation_windows": 32,
+    "training_windows_overlap": true,
+    "same_noise_bias_only_loss": 1.696871291846037,
+    "noise_endpoint_response": [
+      {
+        "window_index": 0,
+        "repeat_rms": 0.0,
+        "cosine": -0.04710429161787033,
+        "rms_gain": 0.02107679414808686,
+        "directional_gain": -0.0009928076760843396,
+        "relative_error": 1.0012142056831281
+      },
+      {
+        "window_index": 16,
+        "repeat_rms": 0.0,
+        "cosine": -0.031238220632076263,
+        "rms_gain": 0.020660207209238134,
+        "directional_gain": -0.0006453884416259825,
+        "relative_error": 1.000858473392407
+      },
+      {
+        "window_index": 31,
+        "repeat_rms": 0.0,
+        "cosine": -0.0856834128499031,
+        "rms_gain": 0.018917811406308584,
+        "directional_gain": -0.0016209431923925877,
+        "relative_error": 1.0017983143492313
+      }
+    ],
+    "inference_steps": 4
+  },
+  "last": {
+    "step": 2000,
+    "fixed_fm_loss": 0.1207523851771839,
+    "normalized_action_mse": 0.05521215482615469,
+    "prediction": {
+      "position_rmse": 0.01316524140447241,
+      "gripper_rmse": 0.004730496041903679,
+      "rotation_mean_degrees": 4.253715665012832,
+      "invalid_quaternions": 0
+    },
+    "hold_current": {
+      "position_rmse": 0.01916065833127158,
+      "gripper_rmse": 0.008730391464125709,
+      "rotation_mean_degrees": 6.314627289109136,
+      "invalid_quaternions": 0
+    },
+    "evaluation_windows": 32,
+    "training_windows_overlap": true,
+    "same_noise_bias_only_loss": 1.6968410462141037,
+    "noise_endpoint_response": [
+      {
+        "window_index": 0,
+        "repeat_rms": 0.0,
+        "cosine": 0.9962664842605591,
+        "rms_gain": 1.0553221592101034,
+        "directional_gain": 1.0513821840286255,
+        "relative_error": 0.10459829156375648
+      },
+      {
+        "window_index": 16,
+        "repeat_rms": 0.0,
+        "cosine": 0.9893434047698975,
+        "rms_gain": 1.0331352606579727,
+        "directional_gain": 1.022125482559204,
+        "relative_error": 0.15204483713156264
+      },
+      {
+        "window_index": 31,
+        "repeat_rms": 0.0,
+        "cosine": 0.9951173067092896,
+        "rms_gain": 1.0440656107495154,
+        "directional_gain": 1.0389677286148071,
+        "relative_error": 0.11017042225054118
+      }
+    ],
+    "inference_steps": 4
+  },
+  "scope": "fixed training windows only; not generalization"
+}
