@@ -267,6 +267,17 @@ class LayerwiseFlowmatchingActionHead(nn.Module):
             hidden_dim=1024,
             output_dim=self.action_dim,
         )
+        # return_pre_output bypasses DiT.norm_out. Keep legacy behavior by
+        # default; this opt-in bounds the residual scale at the decoder only.
+        # Non-affine LayerNorm adds no parameters or RNG draws, preserving the
+        # initial weights of every existing module for a one-variable trial.
+        decoder_input_norm = action_config.get("decoder_input_norm", "none")
+        if decoder_input_norm not in ("none", "layer_norm"):
+            raise ValueError(f"Unknown decoder_input_norm: {decoder_input_norm}")
+        self.decoder_input_norm = (
+            nn.LayerNorm(self.input_embedding_dim, eps=1e-5, elementwise_affine=False)
+            if decoder_input_norm == "layer_norm" else nn.Identity()
+        )
         self.future_tokens = nn.Embedding(action_config.num_target_vision_tokens, self.input_embedding_dim)
         nn.init.normal_(self.future_tokens.weight, mean=0.0, std=0.02)
 
@@ -339,7 +350,7 @@ class LayerwiseFlowmatchingActionHead(nn.Module):
         )
 
         # Keep the existing decoder; DiT returns hidden states before its output head.
-        pred = self.action_decoder(model_output)
+        pred = self.action_decoder(self.decoder_input_norm(model_output))
         pred_actions = pred[:, -actions.shape[1] :]
 
         # Slice out only the action portion of pred and target.
@@ -401,7 +412,7 @@ class LayerwiseFlowmatchingActionHead(nn.Module):
             )
 
             # Keep the same action decoder as the training path.
-            pred = self.action_decoder(model_output)
+            pred = self.action_decoder(self.decoder_input_norm(model_output))
             pred_velocity = pred[:, -self.action_horizon :]
 
             # Euler integration
