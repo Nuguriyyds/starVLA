@@ -41,7 +41,11 @@ def main():
     p.add_argument('--save-every',type=int,default=1000)
     p.add_argument('--eval-every',type=int,default=2000)
     p.add_argument('--workers',type=int,default=2)
+    p.add_argument('--shuffle-block-size',type=int,default=16,
+                   help='Consecutive valid-window indices per shuffle block; fixed for a run (default: 16)')
     args=p.parse_args()
+    if args.shuffle_block_size < 1:
+        p.error('--shuffle-block-size must be a positive integer')
     if args.output.exists():
         raise ValueError('Plan output already exists; use a new filename to preserve frozen runs')
     root=args.preparation_dir.resolve()
@@ -62,7 +66,7 @@ def main():
     data=deepcopy(reference['data'])
     data.update(normalization_statistics=str(root/'statistics.json'),
                 normalization_experiment_contract=str(root/'normalization_experiment.json'),
-                shuffle=True, shuffle_block_size=512)
+                shuffle=True, shuffle_block_size=args.shuffle_block_size)
     train=dict(seed=42,batch_size=args.batch_size,gradient_accumulation_steps=args.accumulation,
                global_batch_size=global_batch,num_workers=args.workers,prefetch_factor=2,
                mixed_precision='no',lr=reference['training']['lr'],vlm_lr=reference['training']['vlm_lr'],
@@ -97,7 +101,8 @@ def main():
             '# TEMPLATE ONLY: fill total budget using render_umi_formal_plan.py; null updates cannot run.\n')
     args.output.write_text(header+yaml.safe_dump(plan,sort_keys=False,allow_unicode=True),encoding='utf-8')
     print(json.dumps(dict(path=str(args.output),budget_status=plan['formal']['budget_status'],
-                         global_batch_size=global_batch,stage_updates=budgets),ensure_ascii=False))
+                         global_batch_size=global_batch,shuffle_block_size=args.shuffle_block_size,
+                         stage_updates=budgets),ensure_ascii=False))
 
 
 if __name__=='__main__':

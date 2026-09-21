@@ -43,9 +43,13 @@ cat "$PREP/statistics.exit_code"
 
 `plan.template.yaml` 中总更新数、各阶段更新数和 warmup 尚未填写，不能启动。总预算由团队决定，没有把一万小时解释成遍历一遍，也没有沿用 pilot 的10000步。
 
+仓库中的模板默认块长为16。本机私人准备目录中的新版是`plan.block16.template.yaml`，原`plan.template.yaml`作为块长512的历史草案保留；生成最终计划时显式传入`--shuffle-block-size 16`。
+
 默认运行配置为4节点×16进程、每卡batch1、累积2，全局batch128。动作头LR1e-4、VLM LR1e-5沿用已固定配方；全程一次线性warmup再线性衰减，默认warmup占所填总更新数1%，可显式覆盖。每1000更新保存basic，每2000更新和最终更新评测480个固定验证窗口。它们是可在首次启动前调整的配置值，不是最优预算结论。
 
-为避免十亿窗口逐元素随机排列的内存开销，正式训练使用现有 block shuffle，块长512：块顺序及块内顺序均打乱，窗口权重仍相同。每次完整epoch末不足全局batch的部分沿用 trainer 的丢弃并记账规则。五阶段更新预算按窗口数比例以最大余数法分配；不重置Adam或学习率。
+正式训练使用现有 block shuffle，默认块长16，通过生成器的`--shuffle-block-size`配置。块顺序及块内顺序均打乱，窗口权重仍相同。全局batch128时通常跨越8个块，减少同一局部块连续主导更新的情况，但不保证恰好8条不同轨迹或任务等比例。每阶段约2.03亿窗口对应的int64块排列约97MiB/进程，不是进程总内存；读取局部性可能下降，吞吐在正式运行中记录。这个选项只改变采样顺序，不重建索引、不重新计算统计；同一严格续训run中不能随意更改。
+
+每次完整epoch末不足全局batch的部分沿用 trainer 的丢弃并记账规则。五阶段更新预算按窗口数比例以最大余数法分配；不重置Adam或学习率。现有sampler类的通用默认值不变，正式入口从plan显式读取块长。
 
 团队给出总预算后，在仓库根目录执行（先设置真实 `TOTAL_UPDATES`）：
 
@@ -56,6 +60,7 @@ python examples/umi_pretrain/tools/render_umi_formal_plan.py \
   --preparation-dir "$PREP" \
   --reference-plan /mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_pilot_v1/plan.yaml \
   --total-updates "$TOTAL_UPDATES" \
+  --shuffle-block-size 16 \
   --output "$PREP/plan.yaml"
 ```
 
@@ -71,6 +76,8 @@ bash examples/umi_pretrain/formal/start_node.sh
 ```
 
 所有节点需要同一代码/环境、相同的公共数据/私有索引/模型挂载，以及共享持久化输出目录。通信网卡和PPU通信参数由实际云任务提供，本脚本不猜测、不安装环境、不自动换后端。当前仅支持普通DDP；4×16是配置目标，不是已经验证的64卡运行结论。已知PPU通信清理异常仍未解决，继续由平台处理。
+
+保留云任务分配的设备可见范围，不沿用单卡测试的`CUDA_VISIBLE_DEVICES=0`。启动脚本在启动训练进程前检查至少16个设备可见；不足就明确报错，不自动解除平台的设备限制。各节点仍只启动16个训练进程。
 
 计划在某次完整更新后暂停，在四节点同一任务命令中设置：
 

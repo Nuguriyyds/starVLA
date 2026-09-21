@@ -27,11 +27,13 @@ export MKL_NUM_THREADS="${MKL_NUM_THREADS:-1}"
 "$PYTHON_BIN" - "$PLAN" <<'PY'
 import json,sys
 from pathlib import Path
+import torch
 from omegaconf import OmegaConf
 from starVLA.training.trainer_utils.umi_training_state import validate_plan
 p=OmegaConf.to_container(OmegaConf.load(sys.argv[1]),resolve=True)
 validate_plan(p)
-if p['purpose']!='formal' or p['deployment']['world_size']!=64 or p['formal']['budget_status']!='fixed':
+if (p['purpose']!='formal' or p['formal']['budget_status']!='fixed'
+        or tuple(p['deployment'][key] for key in ('nodes','processes_per_node','world_size')) != (4,16,64)):
     raise ValueError('Require a finalized formal 64-process plan')
 s=Path(p['data']['normalization_statistics'])
 if not s.is_file():
@@ -39,6 +41,13 @@ if not s.is_file():
 stats=json.loads(s.read_text())
 if stats.get('purpose')!='formal':
     raise ValueError('Engineering/pilot statistics cannot initialize the formal run')
+visible = torch.cuda.device_count()
+required = p['deployment']['processes_per_node']
+if visible < required:
+    raise RuntimeError(f'This node exposes {visible} devices but needs {required}; '
+                       'check the cloud allocation and CUDA_VISIBLE_DEVICES. '
+                       'Do not reuse the single-device debug setting; visibility is not changed automatically.')
+print('Visible devices:',visible,'training processes on this node:',required,flush=True)
 print('Plan budget:',p['formal']['total_updates'],'global batch:',p['training']['global_batch_size'],flush=True)
 PY
 OPTIONS=(--plan "$PLAN" --output-dir "$RUN_DIR")

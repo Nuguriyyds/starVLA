@@ -29,7 +29,7 @@ data:
   - 224
   - 224
   shuffle: true
-  shuffle_block_size: 512
+  shuffle_block_size: 16
   row_cache_mib: 128
 training:
   seed: 42
