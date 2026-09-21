@@ -33,7 +33,7 @@
 ```bash
 PREP=/mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_formal_v1
 tail -n 20 "$PREP/statistics.log"
-cat "$PREP/statistics.json.work/progress.json"
+find "$PREP/statistics.json.work/completed" -maxdepth 1 -type f -name '*.json' | wc -l
 cat "$PREP/statistics.exit_code"
 ```
 
