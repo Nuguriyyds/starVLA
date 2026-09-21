@@ -1,0 +1,97 @@
+# TEMPLATE ONLY: fill total budget using render_umi_formal_plan.py; null updates cannot run.
+version: umi-training-plan-v1
+purpose: formal
+model_kind: qwenpi
+framework:
+  name: QwenPI
+  qwenvl:
+    base_vlm: /mnt/workspace/Native_Policy/user/wyt/models/Qwen3-VL-2B-Instruct
+    attn_implementation: sdpa
+  action_model:
+    action_dim: 16
+    state_dim: 16
+    action_horizon: 16
+    diffusion_model_cfg:
+      interleave_self_attention: true
+      use_canonical_forward: true
+      cross_condition_norm: layer_norm
+    decoder_input_norm: layer_norm
+data:
+  video_time_policy: engineering_boundary_slack
+  boundary_slack_seconds: 0.001
+  allowed_video_roots:
+  - /mnt/nas/public/roban_umi/restricted_data/source/umi/videos
+  normalization: mean_std
+  normalization_statistics: /mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_formal_v1/statistics.json
+  normalization_experiment_contract: /mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_formal_v1/normalization_experiment.json
+  source_identity: size_mtime
+  image_size:
+  - 224
+  - 224
+  shuffle: true
+  shuffle_block_size: 512
+  row_cache_mib: 128
+training:
+  seed: 42
+  batch_size: 1
+  gradient_accumulation_steps: 2
+  global_batch_size: 128
+  num_workers: 2
+  prefetch_factor: 2
+  mixed_precision: 'no'
+  lr: 0.0001
+  vlm_lr: 1.0e-05
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  warmup_updates: null
+  eval_every: 2000
+  trace_samples: false
+checkpoint:
+  integrity: basic
+  every_updates: 1000
+stages:
+- name: stage_01
+  index_dir: /mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_formal_v1/views/stage_01
+  updates: null
+- name: stage_02
+  index_dir: /mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_formal_v1/views/stage_02
+  updates: null
+- name: stage_03
+  index_dir: /mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_formal_v1/views/stage_03
+  updates: null
+- name: stage_04
+  index_dir: /mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_formal_v1/views/stage_04
+  updates: null
+- name: stage_05
+  index_dir: /mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_formal_v1/views/stage_05
+  updates: null
+evaluation:
+  name: fixed_development_validation
+  index_dir: /mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_formal_v1/views/validation_monitor
+  labels: /mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_formal_v1/manifests/validation_monitor.json
+  windows: 480
+  labels_sha256: c5843ce247b630721a4eb2db5138c4844c4472e0e8fda7658f6186d5b3e7ce08
+  seed: 19876
+  metrics: pilot_action_errors
+  at_end: true
+performance:
+  enabled: false
+deployment:
+  nodes: 4
+  processes_per_node: 16
+  world_size: 64
+  backend: plain_ddp
+  platform: Alibaba Cloud; actual addresses/ranks/mounts supplied at launch
+  known_issue: PPU communication cleanup crash unresolved; platform handling pending
+formal:
+  manifest: /mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_formal_v1/formal_manifest.json
+  manifest_sha256: 88788b6cf01e90673fdc13895d3a11da65a645ac95e2c59fe042bb86ced7b6bc
+  validation_pool: /mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_formal_v1/views/validation
+  initialization: Original Qwen perception weights plus newly initialized action head;
+    no pilot resume
+  budget_status: 'REQUIRED: total update budget'
+  total_updates: null
+  total_window_exposures: null
+  stage_budget_policy: proportional to valid windows, integer largest remainder
+  scheduler: one global linear warmup and linear decay; no stage reset
+  sampling: natural window weights; bounded block shuffle changes order only

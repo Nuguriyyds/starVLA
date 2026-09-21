@@ -1,0 +1,3306 @@
+{
+  "version": "umi-formal-partition-v1",
+  "seed": 42,
+  "labels": "Existing directory labels accepted by user: 60 tasks and 7 scenes; original instructions unchanged",
+  "quality_policy": "Existing valid-window policy unchanged; no new exclusions or threshold changes",
+  "parent_view_fingerprint": "96735ecbc752fa60784c770af2e7166604a6f4285639ba696965091ff715350e",
+  "inputs": {
+    "inventory_sha256": "6f7b4943553560c7c4ee2e591ca970536fe53d0bcbbeaf28d299ef62b6af89ed",
+    "candidate_sha256": "63139290f9953054e8e867c752114fdf05cba3afdd4a2639cc22d841a6fdc94a",
+    "preserved_validation_sha256": "f5acdc6148c1be1c3d6a78d6556f439c53a19f4fd16edac1f9a58e4b521f8588"
+  },
+  "counts": {
+    "train": {
+      "episodes": 327547,
+      "source_groups": 327547,
+      "valid_windows": 1012896944,
+      "recorded_episode_hours": 9472.058583333333,
+      "duration_basis": "catalog episode duration; not summed overlapping-window durations",
+      "distributions": {
+        "task_class": {
+          "T001": {
+            "episodes": 3428,
+            "valid_windows": 18239759,
+            "duration_seconds": 613488.2999999984,
+            "window_fraction": 0.0180075170608867
+          },
+          "T002": {
+            "episodes": 6586,
+            "valid_windows": 32067648,
+            "duration_seconds": 1085621.6333333321,
+            "window_fraction": 0.031659339274302326
+          },
+          "T003": {
+            "episodes": 6202,
+            "valid_windows": 29036276,
+            "duration_seconds": 979211.8333333315,
+            "window_fraction": 0.028666564917585534
+          },
+          "T004": {
+            "episodes": 6571,
+            "valid_windows": 30235612,
+            "duration_seconds": 1018605.7999999991,
+            "window_fraction": 0.02985063009529625
+          },
+          "T005": {
+            "episodes": 5225,
+            "valid_windows": 24733545,
+            "duration_seconds": 834552.7000000003,
+            "window_fraction": 0.024418619432620185
+          },
+          "T006": {
+            "episodes": 3682,
+            "valid_windows": 13051373,
+            "duration_seconds": 439531.4000000004,
+            "window_fraction": 0.012885193382516515
+          },
+          "T007": {
+            "episodes": 5402,
+            "valid_windows": 19422634,
+            "duration_seconds": 651697.9333333316,
+            "window_fraction": 0.019175330832077227
+          },
+          "T008": {
+            "episodes": 7626,
+            "valid_windows": 12523555,
+            "duration_seconds": 423489.4666666677,
+            "window_fraction": 0.012364095946961412
+          },
+          "T009": {
+            "episodes": 7365,
+            "valid_windows": 23337071,
+            "duration_seconds": 786269.8666666672,
+            "window_fraction": 0.023039926359971326
+          },
+          "T010": {
+            "episodes": 4419,
+            "valid_windows": 17976736,
+            "duration_seconds": 605553.0333333353,
+            "window_fraction": 0.01774784306190976
+          },
+          "T011": {
+            "episodes": 1636,
+            "valid_windows": 9630525,
+            "duration_seconds": 324459.20000000024,
+            "window_fraction": 0.009507902118816147
+          },
+          "T012": {
+            "episodes": 6331,
+            "valid_windows": 13838694,
+            "duration_seconds": 466316.1666666655,
+            "window_fraction": 0.013662489636260567
+          },
+          "T013": {
+            "episodes": 2870,
+            "valid_windows": 12352192,
+            "duration_seconds": 416101.5000000001,
+            "window_fraction": 0.01219491486588985
+          },
+          "T014": {
+            "episodes": 6775,
+            "valid_windows": 25169587,
+            "duration_seconds": 843740.8666666673,
+            "window_fraction": 0.02484910942726667
+          },
+          "T015": {
+            "episodes": 8663,
+            "valid_windows": 18256688,
+            "duration_seconds": 615179.9666666648,
+            "window_fraction": 0.018024230508488927
+          },
+          "T016": {
+            "episodes": 4017,
+            "valid_windows": 12628259,
+            "duration_seconds": 424006.20000000077,
+            "window_fraction": 0.01246746677912773
+          },
+          "T017": {
+            "episodes": 4646,
+            "valid_windows": 16768052,
+            "duration_seconds": 563748.0000000028,
+            "window_fraction": 0.016554548909765494
+          },
+          "T018": {
+            "episodes": 3701,
+            "valid_windows": 12834874,
+            "duration_seconds": 432687.96666666557,
+            "window_fraction": 0.012671451005977169
+          },
+          "T019": {
+            "episodes": 7333,
+            "valid_windows": 22311159,
+            "duration_seconds": 750775.033333333,
+            "window_fraction": 0.022027077021174228
+          },
+          "T020": {
+            "episodes": 1806,
+            "valid_windows": 10507496,
+            "duration_seconds": 353084.50000000023,
+            "window_fraction": 0.010373706883254256
+          },
+          "T021": {
+            "episodes": 736,
+            "valid_windows": 3210623,
+            "duration_seconds": 108030.33333333328,
+            "window_fraction": 0.003169743002008702
+          },
+          "T022": {
+            "episodes": 4330,
+            "valid_windows": 22977185,
+            "duration_seconds": 771722.8333333352,
+            "window_fraction": 0.022684622691486765
+          },
+          "T023": {
+            "episodes": 10108,
+            "valid_windows": 18394133,
+            "duration_seconds": 620326.166666664,
+            "window_fraction": 0.018159925458319875
+          },
+          "T024": {
+            "episodes": 2733,
+            "valid_windows": 14084444,
+            "duration_seconds": 472936.2333333335,
+            "window_fraction": 0.013905110567694634
+          },
+          "T025": {
+            "episodes": 6235,
+            "valid_windows": 11327742,
+            "duration_seconds": 381415.2666666691,
+            "window_fraction": 0.011183508911840492
+          },
+          "T026": {
+            "episodes": 3107,
+            "valid_windows": 15751204,
+            "duration_seconds": 528754.5333333337,
+            "window_fraction": 0.015550648161497465
+          },
+          "T027": {
+            "episodes": 2985,
+            "valid_windows": 9835207,
+            "duration_seconds": 331042.0333333335,
+            "window_fraction": 0.009709977958034001
+          },
+          "T028": {
+            "episodes": 5942,
+            "valid_windows": 23208331,
+            "duration_seconds": 779248.5333333338,
+            "window_fraction": 0.022912825571719763
+          },
+          "T029": {
+            "episodes": 10235,
+            "valid_windows": 22614744,
+            "duration_seconds": 761802.0666666673,
+            "window_fraction": 0.022326796555129105
+          },
+          "T030": {
+            "episodes": 7530,
+            "valid_windows": 19742270,
+            "duration_seconds": 664291.5,
+            "window_fraction": 0.019490896992971872
+          },
+          "T031": {
+            "episodes": 813,
+            "valid_windows": 2623379,
+            "duration_seconds": 88861.80000000012,
+            "window_fraction": 0.002589976221707309
+          },
+          "T032": {
+            "episodes": 2387,
+            "valid_windows": 3434366,
+            "duration_seconds": 116131.20000000004,
+            "window_fraction": 0.003390637142646962
+          },
+          "T033": {
+            "episodes": 7922,
+            "valid_windows": 31916459,
+            "duration_seconds": 1072942.9999999995,
+            "window_fraction": 0.03151007532312192
+          },
+          "T034": {
+            "episodes": 1727,
+            "valid_windows": 7340164,
+            "duration_seconds": 246774.5333333333,
+            "window_fraction": 0.007246703668601452
+          },
+          "T035": {
+            "episodes": 4281,
+            "valid_windows": 15757486,
+            "duration_seconds": 531016.000000001,
+            "window_fraction": 0.015556850174483298
+          },
+          "T036": {
+            "episodes": 2545,
+            "valid_windows": 13537977,
+            "duration_seconds": 456706.43333333236,
+            "window_fraction": 0.013365601584834083
+          },
+          "T037": {
+            "episodes": 10359,
+            "valid_windows": 22297451,
+            "duration_seconds": 751430.7000000034,
+            "window_fraction": 0.022013543561446466
+          },
+          "T038": {
+            "episodes": 3530,
+            "valid_windows": 16036751,
+            "duration_seconds": 540362.9333333333,
+            "window_fraction": 0.015832559368448445
+          },
+          "T039": {
+            "episodes": 3782,
+            "valid_windows": 13969764,
+            "duration_seconds": 471810.4999999999,
+            "window_fraction": 0.013791890757249634
+          },
+          "T040": {
+            "episodes": 4542,
+            "valid_windows": 15281266,
+            "duration_seconds": 514641.16666666634,
+            "window_fraction": 0.015086693755490292
+          },
+          "T041": {
+            "episodes": 1667,
+            "valid_windows": 5296543,
+            "duration_seconds": 178009.83333333326,
+            "window_fraction": 0.005229103544417447
+          },
+          "T042": {
+            "episodes": 2451,
+            "valid_windows": 9410532,
+            "duration_seconds": 317066.89999999956,
+            "window_fraction": 0.009290710230437817
+          },
+          "T043": {
+            "episodes": 5460,
+            "valid_windows": 17099120,
+            "duration_seconds": 574570.9666666677,
+            "window_fraction": 0.016881401510082945
+          },
+          "T044": {
+            "episodes": 5495,
+            "valid_windows": 12381387,
+            "duration_seconds": 415983.5000000009,
+            "window_fraction": 0.012223738133817491
+          },
+          "T045": {
+            "episodes": 4556,
+            "valid_windows": 23650213,
+            "duration_seconds": 792997.2666666651,
+            "window_fraction": 0.023349081207219045
+          },
+          "T046": {
+            "episodes": 6678,
+            "valid_windows": 26228911,
+            "duration_seconds": 879637.03333333,
+            "window_fraction": 0.025894945340066106
+          },
+          "T047": {
+            "episodes": 9945,
+            "valid_windows": 21480854,
+            "duration_seconds": 723956.4000000006,
+            "window_fraction": 0.021207344071125955
+          },
+          "T048": {
+            "episodes": 10694,
+            "valid_windows": 21028536,
+            "duration_seconds": 708778.9666666671,
+            "window_fraction": 0.020760785314404107
+          },
+          "T049": {
+            "episodes": 8084,
+            "valid_windows": 16406450,
+            "duration_seconds": 553711.9000000007,
+            "window_fraction": 0.01619755109064679
+          },
+          "T050": {
+            "episodes": 1874,
+            "valid_windows": 5212995,
+            "duration_seconds": 175633.20000000048,
+            "window_fraction": 0.005146619338600749
+          },
+          "T051": {
+            "episodes": 5453,
+            "valid_windows": 20578005,
+            "duration_seconds": 690020.6333333332,
+            "window_fraction": 0.020315990804292524
+          },
+          "T052": {
+            "episodes": 10951,
+            "valid_windows": 14165091,
+            "duration_seconds": 479086.86666666745,
+            "window_fraction": 0.01398473071116305
+          },
+          "T053": {
+            "episodes": 10920,
+            "valid_windows": 16133089,
+            "duration_seconds": 545209.9666666674,
+            "window_fraction": 0.015927670722639675
+          },
+          "T054": {
+            "episodes": 7037,
+            "valid_windows": 19766188,
+            "duration_seconds": 664864.4666666662,
+            "window_fraction": 0.01951451045151934
+          },
+          "T055": {
+            "episodes": 5231,
+            "valid_windows": 20264999,
+            "duration_seconds": 685332.266666664,
+            "window_fraction": 0.020006970225393432
+          },
+          "T056": {
+            "episodes": 7401,
+            "valid_windows": 19174337,
+            "duration_seconds": 645339.0000000007,
+            "window_fraction": 0.018930195330908214
+          },
+          "T057": {
+            "episodes": 4947,
+            "valid_windows": 13954734,
+            "duration_seconds": 468984.8333333342,
+            "window_fraction": 0.013777052130191834
+          },
+          "T058": {
+            "episodes": 3117,
+            "valid_windows": 11513845,
+            "duration_seconds": 385804.6666666676,
+            "window_fraction": 0.01136724231246175
+          },
+          "T059": {
+            "episodes": 9959,
+            "valid_windows": 20954890,
+            "duration_seconds": 704986.5999999964,
+            "window_fraction": 0.020688077029088165
+          },
+          "T060": {
+            "episodes": 5514,
+            "valid_windows": 19933544,
+            "duration_seconds": 671066.4999999997,
+            "window_fraction": 0.019679735552642758
+          }
+        },
+        "scene": {
+          "balcony": {
+            "episodes": 3428,
+            "valid_windows": 18239759,
+            "duration_seconds": 613488.2999999984,
+            "window_fraction": 0.0180075170608867
+          },
+          "bedroom": {
+            "episodes": 33668,
+            "valid_windows": 148547088,
+            "duration_seconds": 5009221.299999967,
+            "window_fraction": 0.14665567793439804
+          },
+          "entrance_hall": {
+            "episodes": 14991,
+            "valid_windows": 35860626,
+            "duration_seconds": 1209759.3333333356,
+            "window_fraction": 0.035404022306932736
+          },
+          "kitchen": {
+            "episodes": 6055,
+            "valid_windows": 27607261,
+            "duration_seconds": 930012.2333333356,
+            "window_fraction": 0.027255745180725908
+          },
+          "living_room": {
+            "episodes": 233236,
+            "valid_windows": 676845861,
+            "duration_seconds": 22775415.866666846,
+            "window_fraction": 0.6682277649363705
+          },
+          "patio": {
+            "episodes": 12632,
+            "valid_windows": 39439336,
+            "duration_seconds": 1330671.26666667,
+            "window_fraction": 0.038937165556301646
+          },
+          "study": {
+            "episodes": 23537,
+            "valid_windows": 66357013,
+            "duration_seconds": 2230842.599999989,
+            "window_fraction": 0.06551210702438451
+          }
+        },
+        "task_category": {
+          "clothing_organization": {
+            "episodes": 24584,
+            "valid_windows": 116073081,
+            "duration_seconds": 3917991.9666666742,
+            "window_fraction": 0.11459515371980429
+          },
+          "daily_work": {
+            "episodes": 12632,
+            "valid_windows": 39439336,
+            "duration_seconds": 1330671.26666667,
+            "window_fraction": 0.038937165556301646
+          },
+          "home_cleaning": {
+            "episodes": 6331,
+            "valid_windows": 13838694,
+            "duration_seconds": 466316.1666666655,
+            "window_fraction": 0.013662489636260567
+          },
+          "life_operations": {
+            "episodes": 123293,
+            "valid_windows": 384048779,
+            "duration_seconds": 12920077.166666845,
+            "window_fraction": 0.37915878932694264
+          },
+          "organization": {
+            "episodes": 153670,
+            "valid_windows": 439730866,
+            "duration_seconds": 14799489.86666647,
+            "window_fraction": 0.4341318913091715
+          },
+          "other": {
+            "episodes": 7037,
+            "valid_windows": 19766188,
+            "duration_seconds": 664864.4666666662,
+            "window_fraction": 0.01951451045151934
+          }
+        }
+      }
+    },
+    "validation": {
+      "episodes": 120,
+      "source_groups": 120,
+      "valid_windows": 428943,
+      "recorded_episode_hours": 4.009814814814815,
+      "duration_basis": "catalog episode duration; not summed overlapping-window durations",
+      "distributions": {
+        "task_class": {
+          "T001": {
+            "episodes": 2,
+            "valid_windows": 10463,
+            "duration_seconds": 350.9666666666667,
+            "window_fraction": 0.024392518353254396
+          },
+          "T002": {
+            "episodes": 2,
+            "valid_windows": 11684,
+            "duration_seconds": 395.29999999999995,
+            "window_fraction": 0.02723905040996123
+          },
+          "T003": {
+            "episodes": 2,
+            "valid_windows": 8504,
+            "duration_seconds": 288.16666666666663,
+            "window_fraction": 0.01982547797726038
+          },
+          "T004": {
+            "episodes": 2,
+            "valid_windows": 10770,
+            "duration_seconds": 360.6666666666667,
+            "window_fraction": 0.025108231163581175
+          },
+          "T005": {
+            "episodes": 2,
+            "valid_windows": 9106,
+            "duration_seconds": 312.3333333333333,
+            "window_fraction": 0.021228927852884882
+          },
+          "T006": {
+            "episodes": 2,
+            "valid_windows": 9948,
+            "duration_seconds": 334.3666666666667,
+            "window_fraction": 0.023191892629090577
+          },
+          "T007": {
+            "episodes": 2,
+            "valid_windows": 7991,
+            "duration_seconds": 269.59999999999997,
+            "window_fraction": 0.018629514877268074
+          },
+          "T008": {
+            "episodes": 2,
+            "valid_windows": 3338,
+            "duration_seconds": 112.33333333333334,
+            "window_fraction": 0.0077819197422501355
+          },
+          "T009": {
+            "episodes": 2,
+            "valid_windows": 6028,
+            "duration_seconds": 203.16666666666666,
+            "window_fraction": 0.014053149252931042
+          },
+          "T010": {
+            "episodes": 2,
+            "valid_windows": 7764,
+            "duration_seconds": 260.43333333333334,
+            "window_fraction": 0.018100307033801694
+          },
+          "T011": {
+            "episodes": 2,
+            "valid_windows": 18568,
+            "duration_seconds": 623.9,
+            "window_fraction": 0.04328780280829854
+          },
+          "T012": {
+            "episodes": 2,
+            "valid_windows": 5853,
+            "duration_seconds": 196.16666666666669,
+            "window_fraction": 0.01364516963792392
+          },
+          "T013": {
+            "episodes": 2,
+            "valid_windows": 7740,
+            "duration_seconds": 262.5,
+            "window_fraction": 0.018044355543743576
+          },
+          "T014": {
+            "episodes": 2,
+            "valid_windows": 8104,
+            "duration_seconds": 271.8666666666667,
+            "window_fraction": 0.01889295314295839
+          },
+          "T015": {
+            "episodes": 2,
+            "valid_windows": 3456,
+            "duration_seconds": 116.26666666666667,
+            "window_fraction": 0.008057014568369224
+          },
+          "T016": {
+            "episodes": 2,
+            "valid_windows": 5898,
+            "duration_seconds": 200.0,
+            "window_fraction": 0.013750078681782895
+          },
+          "T017": {
+            "episodes": 2,
+            "valid_windows": 6376,
+            "duration_seconds": 213.86666666666667,
+            "window_fraction": 0.014864445858773776
+          },
+          "T018": {
+            "episodes": 2,
+            "valid_windows": 6468,
+            "duration_seconds": 218.0,
+            "window_fraction": 0.015078926570663235
+          },
+          "T019": {
+            "episodes": 2,
+            "valid_windows": 9567,
+            "duration_seconds": 320.6333333333333,
+            "window_fraction": 0.02230366272441793
+          },
+          "T020": {
+            "episodes": 2,
+            "valid_windows": 10668,
+            "duration_seconds": 357.23333333333335,
+            "window_fraction": 0.024870437330834168
+          },
+          "T021": {
+            "episodes": 2,
+            "valid_windows": 8680,
+            "duration_seconds": 293.70000000000005,
+            "window_fraction": 0.02023578890435326
+          },
+          "T022": {
+            "episodes": 2,
+            "valid_windows": 10919,
+            "duration_seconds": 366.6333333333333,
+            "window_fraction": 0.02545559666435867
+          },
+          "T023": {
+            "episodes": 2,
+            "valid_windows": 3277,
+            "duration_seconds": 110.56666666666666,
+            "window_fraction": 0.007639709705019082
+          },
+          "T024": {
+            "episodes": 2,
+            "valid_windows": 10979,
+            "duration_seconds": 370.1333333333333,
+            "window_fraction": 0.025595475389503967
+          },
+          "T025": {
+            "episodes": 2,
+            "valid_windows": 3197,
+            "duration_seconds": 107.63333333333333,
+            "window_fraction": 0.007453204738158683
+          },
+          "T026": {
+            "episodes": 2,
+            "valid_windows": 8585,
+            "duration_seconds": 287.23333333333335,
+            "window_fraction": 0.020014314256206537
+          },
+          "T027": {
+            "episodes": 2,
+            "valid_windows": 4429,
+            "duration_seconds": 149.26666666666665,
+            "window_fraction": 0.010325381227808824
+          },
+          "T028": {
+            "episodes": 2,
+            "valid_windows": 6451,
+            "duration_seconds": 221.60000000000002,
+            "window_fraction": 0.015039294265205401
+          },
+          "T029": {
+            "episodes": 2,
+            "valid_windows": 7722,
+            "duration_seconds": 259.0333333333333,
+            "window_fraction": 0.018002391926199984
+          },
+          "T030": {
+            "episodes": 2,
+            "valid_windows": 5701,
+            "duration_seconds": 191.66666666666669,
+            "window_fraction": 0.013290810200889163
+          },
+          "T031": {
+            "episodes": 2,
+            "valid_windows": 5028,
+            "duration_seconds": 169.26666666666665,
+            "window_fraction": 0.011721837167176058
+          },
+          "T032": {
+            "episodes": 2,
+            "valid_windows": 3378,
+            "duration_seconds": 114.2,
+            "window_fraction": 0.007875172225680335
+          },
+          "T033": {
+            "episodes": 2,
+            "valid_windows": 10847,
+            "duration_seconds": 362.6333333333333,
+            "window_fraction": 0.02528774219418431
+          },
+          "T034": {
+            "episodes": 2,
+            "valid_windows": 10404,
+            "duration_seconds": 351.3,
+            "window_fraction": 0.02425497094019485
+          },
+          "T035": {
+            "episodes": 2,
+            "valid_windows": 11317,
+            "duration_seconds": 380.26666666666665,
+            "window_fraction": 0.02638345887448915
+          },
+          "T036": {
+            "episodes": 2,
+            "valid_windows": 10577,
+            "duration_seconds": 358.9666666666667,
+            "window_fraction": 0.024658287931030462
+          },
+          "T037": {
+            "episodes": 2,
+            "valid_windows": 3009,
+            "duration_seconds": 101.36666666666667,
+            "window_fraction": 0.007014918066036746
+          },
+          "T038": {
+            "episodes": 2,
+            "valid_windows": 10199,
+            "duration_seconds": 341.8,
+            "window_fraction": 0.02377705196261508
+          },
+          "T039": {
+            "episodes": 2,
+            "valid_windows": 8043,
+            "duration_seconds": 270.06666666666666,
+            "window_fraction": 0.018750743105727333
+          },
+          "T040": {
+            "episodes": 2,
+            "valid_windows": 7037,
+            "duration_seconds": 237.53333333333333,
+            "window_fraction": 0.016405443147457822
+          },
+          "T041": {
+            "episodes": 2,
+            "valid_windows": 9153,
+            "duration_seconds": 306.76666666666665,
+            "window_fraction": 0.021338499520915367
+          },
+          "T042": {
+            "episodes": 2,
+            "valid_windows": 8706,
+            "duration_seconds": 291.26666666666665,
+            "window_fraction": 0.02029640301858289
+          },
+          "T043": {
+            "episodes": 2,
+            "valid_windows": 3413,
+            "duration_seconds": 114.83333333333334,
+            "window_fraction": 0.007956768148681759
+          },
+          "T044": {
+            "episodes": 2,
+            "valid_windows": 5860,
+            "duration_seconds": 196.4,
+            "window_fraction": 0.013661488822524204
+          },
+          "T045": {
+            "episodes": 2,
+            "valid_windows": 7380,
+            "duration_seconds": 247.06666666666666,
+            "window_fraction": 0.01720508319287178
+          },
+          "T046": {
+            "episodes": 2,
+            "valid_windows": 7381,
+            "duration_seconds": 247.10000000000002,
+            "window_fraction": 0.017207414504957535
+          },
+          "T047": {
+            "episodes": 2,
+            "valid_windows": 4796,
+            "duration_seconds": 160.93333333333334,
+            "window_fraction": 0.011180972763280903
+          },
+          "T048": {
+            "episodes": 2,
+            "valid_windows": 3747,
+            "duration_seconds": 125.96666666666667,
+            "window_fraction": 0.008735426385323925
+          },
+          "T049": {
+            "episodes": 2,
+            "valid_windows": 3484,
+            "duration_seconds": 117.76666666666667,
+            "window_fraction": 0.008122291306770363
+          },
+          "T050": {
+            "episodes": 2,
+            "valid_windows": 3205,
+            "duration_seconds": 109.5,
+            "window_fraction": 0.007471855234844723
+          },
+          "T051": {
+            "episodes": 2,
+            "valid_windows": 8569,
+            "duration_seconds": 286.7,
+            "window_fraction": 0.019977013262834457
+          },
+          "T052": {
+            "episodes": 2,
+            "valid_windows": 1853,
+            "duration_seconds": 62.833333333333336,
+            "window_fraction": 0.004319921294903985
+          },
+          "T053": {
+            "episodes": 2,
+            "valid_windows": 3699,
+            "duration_seconds": 125.13333333333334,
+            "window_fraction": 0.008623523405207684
+          },
+          "T054": {
+            "episodes": 2,
+            "valid_windows": 6864,
+            "duration_seconds": 230.5,
+            "window_fraction": 0.01600212615662221
+          },
+          "T055": {
+            "episodes": 2,
+            "valid_windows": 8133,
+            "duration_seconds": 272.1666666666667,
+            "window_fraction": 0.01896056119344528
+          },
+          "T056": {
+            "episodes": 2,
+            "valid_windows": 4235,
+            "duration_seconds": 142.23333333333335,
+            "window_fraction": 0.009873106683172357
+          },
+          "T057": {
+            "episodes": 2,
+            "valid_windows": 3144,
+            "duration_seconds": 105.86666666666667,
+            "window_fraction": 0.007329645197613669
+          },
+          "T058": {
+            "episodes": 2,
+            "valid_windows": 7279,
+            "duration_seconds": 244.63333333333333,
+            "window_fraction": 0.016969620672210528
+          },
+          "T059": {
+            "episodes": 2,
+            "valid_windows": 3501,
+            "duration_seconds": 117.76666666666667,
+            "window_fraction": 0.008161923612228198
+          },
+          "T060": {
+            "episodes": 2,
+            "valid_windows": 6468,
+            "duration_seconds": 217.26666666666665,
+            "window_fraction": 0.015078926570663235
+          }
+        },
+        "scene": {
+          "balcony": {
+            "episodes": 2,
+            "valid_windows": 10463,
+            "duration_seconds": 350.9666666666667,
+            "window_fraction": 0.024392518353254396
+          },
+          "bedroom": {
+            "episodes": 12,
+            "valid_windows": 58003,
+            "duration_seconds": 1960.4333333333334,
+            "window_fraction": 0.13522309491004633
+          },
+          "entrance_hall": {
+            "episodes": 4,
+            "valid_windows": 9366,
+            "duration_seconds": 315.5,
+            "window_fraction": 0.021835068995181176
+          },
+          "kitchen": {
+            "episodes": 4,
+            "valid_windows": 26332,
+            "duration_seconds": 884.3333333333334,
+            "window_fraction": 0.06138810984210023
+          },
+          "living_room": {
+            "episodes": 86,
+            "valid_windows": 292019,
+            "duration_seconds": 9824.166666666664,
+            "window_fraction": 0.6807874239700846
+          },
+          "patio": {
+            "episodes": 4,
+            "valid_windows": 12368,
+            "duration_seconds": 414.40000000000003,
+            "window_fraction": 0.02883366787661764
+          },
+          "study": {
+            "episodes": 8,
+            "valid_windows": 20392,
+            "duration_seconds": 685.5333333333333,
+            "window_fraction": 0.04754011605271563
+          }
+        },
+        "task_category": {
+          "clothing_organization": {
+            "episodes": 8,
+            "valid_windows": 40064,
+            "duration_seconds": 1356.4666666666667,
+            "window_fraction": 0.09340168740368766
+          },
+          "daily_work": {
+            "episodes": 4,
+            "valid_windows": 12368,
+            "duration_seconds": 414.40000000000003,
+            "window_fraction": 0.02883366787661764
+          },
+          "home_cleaning": {
+            "episodes": 2,
+            "valid_windows": 5853,
+            "duration_seconds": 196.16666666666669,
+            "window_fraction": 0.01364516963792392
+          },
+          "life_operations": {
+            "episodes": 48,
+            "valid_windows": 167299,
+            "duration_seconds": 5630.4000000000015,
+            "window_fraction": 0.39002618063472305
+          },
+          "organization": {
+            "episodes": 56,
+            "valid_windows": 196495,
+            "duration_seconds": 6607.400000000001,
+            "window_fraction": 0.4580911682904255
+          },
+          "other": {
+            "episodes": 2,
+            "valid_windows": 6864,
+            "duration_seconds": 230.5,
+            "window_fraction": 0.01600212615662221
+          }
+        }
+      }
+    },
+    "stage_01": {
+      "episodes": 65510,
+      "source_groups": 65510,
+      "valid_windows": 202579260,
+      "recorded_episode_hours": 1894.4972037037037,
+      "duration_basis": "catalog episode duration; not summed overlapping-window durations",
+      "distributions": {
+        "task_class": {
+          "T001": {
+            "episodes": 685,
+            "valid_windows": 3647513,
+            "duration_seconds": 122687.66666666654,
+            "window_fraction": 0.01800536244430945
+          },
+          "T002": {
+            "episodes": 1317,
+            "valid_windows": 6413502,
+            "duration_seconds": 217140.1000000003,
+            "window_fraction": 0.03165922316035709
+          },
+          "T003": {
+            "episodes": 1241,
+            "valid_windows": 5807317,
+            "duration_seconds": 195826.533333333,
+            "window_fraction": 0.02866688820958276
+          },
+          "T004": {
+            "episodes": 1314,
+            "valid_windows": 6047104,
+            "duration_seconds": 203738.26666666652,
+            "window_fraction": 0.02985055824569603
+          },
+          "T005": {
+            "episodes": 1045,
+            "valid_windows": 4946740,
+            "duration_seconds": 166903.6666666669,
+            "window_fraction": 0.024418787984515297
+          },
+          "T006": {
+            "episodes": 737,
+            "valid_windows": 2610469,
+            "duration_seconds": 87945.7333333333,
+            "window_fraction": 0.012886161199325143
+          },
+          "T007": {
+            "episodes": 1080,
+            "valid_windows": 3884439,
+            "duration_seconds": 130339.73333333325,
+            "window_fraction": 0.01917490961315586
+          },
+          "T008": {
+            "episodes": 1525,
+            "valid_windows": 2504551,
+            "duration_seconds": 84693.43333333342,
+            "window_fraction": 0.012363313993742499
+          },
+          "T009": {
+            "episodes": 1473,
+            "valid_windows": 4667627,
+            "duration_seconds": 157322.79999999993,
+            "window_fraction": 0.023040991461811045
+          },
+          "T010": {
+            "episodes": 883,
+            "valid_windows": 3595521,
+            "duration_seconds": 121110.69999999995,
+            "window_fraction": 0.01774871228180022
+          },
+          "T011": {
+            "episodes": 328,
+            "valid_windows": 1925607,
+            "duration_seconds": 64878.13333333336,
+            "window_fraction": 0.009505449866881734
+          },
+          "T012": {
+            "episodes": 1266,
+            "valid_windows": 2767652,
+            "duration_seconds": 93290.56666666656,
+            "window_fraction": 0.013662069848611354
+          },
+          "T013": {
+            "episodes": 574,
+            "valid_windows": 2470469,
+            "duration_seconds": 83269.96666666663,
+            "window_fraction": 0.012195073671411377
+          },
+          "T014": {
+            "episodes": 1355,
+            "valid_windows": 5033936,
+            "duration_seconds": 168754.43333333355,
+            "window_fraction": 0.02484921704225793
+          },
+          "T015": {
+            "episodes": 1732,
+            "valid_windows": 3651140,
+            "duration_seconds": 123025.33333333331,
+            "window_fraction": 0.018023266547621902
+          },
+          "T016": {
+            "episodes": 804,
+            "valid_windows": 2525895,
+            "duration_seconds": 84794.76666666669,
+            "window_fraction": 0.012468675223712438
+          },
+          "T017": {
+            "episodes": 929,
+            "valid_windows": 3353508,
+            "duration_seconds": 112776.2333333334,
+            "window_fraction": 0.01655405395399312
+          },
+          "T018": {
+            "episodes": 740,
+            "valid_windows": 2566934,
+            "duration_seconds": 86587.70000000007,
+            "window_fraction": 0.012671257659841388
+          },
+          "T019": {
+            "episodes": 1467,
+            "valid_windows": 4462383,
+            "duration_seconds": 150142.03333333327,
+            "window_fraction": 0.022027837400531526
+          },
+          "T020": {
+            "episodes": 362,
+            "valid_windows": 2101563,
+            "duration_seconds": 70628.66666666664,
+            "window_fraction": 0.010374028417321695
+          },
+          "T021": {
+            "episodes": 147,
+            "valid_windows": 642040,
+            "duration_seconds": 21593.066666666673,
+            "window_fraction": 0.0031693274030125296
+          },
+          "T022": {
+            "episodes": 866,
+            "valid_windows": 4595490,
+            "duration_seconds": 154328.16666666674,
+            "window_fraction": 0.022684898740374507
+          },
+          "T023": {
+            "episodes": 2021,
+            "valid_windows": 3678739,
+            "duration_seconds": 124073.33333333347,
+            "window_fraction": 0.018159504581071132
+          },
+          "T024": {
+            "episodes": 547,
+            "valid_windows": 2816898,
+            "duration_seconds": 94569.03333333334,
+            "window_fraction": 0.013905164822894505
+          },
+          "T025": {
+            "episodes": 1247,
+            "valid_windows": 2265668,
+            "duration_seconds": 76299.40000000008,
+            "window_fraction": 0.011184106408523756
+          },
+          "T026": {
+            "episodes": 621,
+            "valid_windows": 3150515,
+            "duration_seconds": 105787.50000000001,
+            "window_fraction": 0.015552011592894554
+          },
+          "T027": {
+            "episodes": 597,
+            "valid_windows": 1967061,
+            "duration_seconds": 66218.53333333338,
+            "window_fraction": 0.009710080883896998
+          },
+          "T028": {
+            "episodes": 1188,
+            "valid_windows": 4641560,
+            "duration_seconds": 155832.86666666667,
+            "window_fraction": 0.02291231590045299
+          },
+          "T029": {
+            "episodes": 2047,
+            "valid_windows": 4522944,
+            "duration_seconds": 152374.3000000002,
+            "window_fraction": 0.022326787056088565
+          },
+          "T030": {
+            "episodes": 1506,
+            "valid_windows": 3948500,
+            "duration_seconds": 132863.40000000008,
+            "window_fraction": 0.01949113645691074
+          },
+          "T031": {
+            "episodes": 163,
+            "valid_windows": 524626,
+            "duration_seconds": 17785.266666666666,
+            "window_fraction": 0.0025897320387091947
+          },
+          "T032": {
+            "episodes": 478,
+            "valid_windows": 686910,
+            "duration_seconds": 23213.133333333335,
+            "window_fraction": 0.0033908209557088915
+          },
+          "T033": {
+            "episodes": 1585,
+            "valid_windows": 6383455,
+            "duration_seconds": 214541.6333333335,
+            "window_fraction": 0.03151090096784834
+          },
+          "T034": {
+            "episodes": 346,
+            "valid_windows": 1468240,
+            "duration_seconds": 49352.5666666667,
+            "window_fraction": 0.007247731085600767
+          },
+          "T035": {
+            "episodes": 856,
+            "valid_windows": 3151413,
+            "duration_seconds": 106218.06666666672,
+            "window_fraction": 0.015556444425752172
+          },
+          "T036": {
+            "episodes": 509,
+            "valid_windows": 2707609,
+            "duration_seconds": 91336.80000000005,
+            "window_fraction": 0.013365677216907594
+          },
+          "T037": {
+            "episodes": 2072,
+            "valid_windows": 4459601,
+            "duration_seconds": 150331.93333333306,
+            "window_fraction": 0.022014104504083983
+          },
+          "T038": {
+            "episodes": 706,
+            "valid_windows": 3207322,
+            "duration_seconds": 108105.2333333334,
+            "window_fraction": 0.015832430230024536
+          },
+          "T039": {
+            "episodes": 756,
+            "valid_windows": 2793876,
+            "duration_seconds": 94366.56666666681,
+            "window_fraction": 0.013791520415268571
+          },
+          "T040": {
+            "episodes": 908,
+            "valid_windows": 3056134,
+            "duration_seconds": 102881.8999999999,
+            "window_fraction": 0.01508611493595149
+          },
+          "T041": {
+            "episodes": 333,
+            "valid_windows": 1059218,
+            "duration_seconds": 35599.36666666668,
+            "window_fraction": 0.005228659636726879
+          },
+          "T042": {
+            "episodes": 490,
+            "valid_windows": 1881988,
+            "duration_seconds": 63397.03333333329,
+            "window_fraction": 0.009290131674881229
+          },
+          "T043": {
+            "episodes": 1092,
+            "valid_windows": 3419921,
+            "duration_seconds": 114901.73333333332,
+            "window_fraction": 0.016881891068216952
+          },
+          "T044": {
+            "episodes": 1099,
+            "valid_windows": 2476058,
+            "duration_seconds": 83173.13333333339,
+            "window_fraction": 0.012222662872793591
+          },
+          "T045": {
+            "episodes": 912,
+            "valid_windows": 4730206,
+            "duration_seconds": 158653.76666666692,
+            "window_fraction": 0.023349902650449013
+          },
+          "T046": {
+            "episodes": 1336,
+            "valid_windows": 5245947,
+            "duration_seconds": 175929.066666667,
+            "window_fraction": 0.02589577531283311
+          },
+          "T047": {
+            "episodes": 1989,
+            "valid_windows": 4296210,
+            "duration_seconds": 144789.60000000012,
+            "window_fraction": 0.02120755105927428
+          },
+          "T048": {
+            "episodes": 2139,
+            "valid_windows": 4205757,
+            "duration_seconds": 141725.69999999995,
+            "window_fraction": 0.020761044343828684
+          },
+          "T049": {
+            "episodes": 1617,
+            "valid_windows": 3281265,
+            "duration_seconds": 110703.50000000004,
+            "window_fraction": 0.01619743798057116
+          },
+          "T050": {
+            "episodes": 374,
+            "valid_windows": 1042212,
+            "duration_seconds": 35127.53333333335,
+            "window_fraction": 0.005144712247443297
+          },
+          "T051": {
+            "episodes": 1091,
+            "valid_windows": 4115743,
+            "duration_seconds": 138043.2666666667,
+            "window_fraction": 0.020316704681417042
+          },
+          "T052": {
+            "episodes": 2190,
+            "valid_windows": 2833000,
+            "duration_seconds": 95793.56666666653,
+            "window_fraction": 0.013984649761283559
+          },
+          "T053": {
+            "episodes": 2184,
+            "valid_windows": 3226645,
+            "duration_seconds": 109031.13333333343,
+            "window_fraction": 0.01592781511789509
+          },
+          "T054": {
+            "episodes": 1407,
+            "valid_windows": 3953064,
+            "duration_seconds": 132979.69999999992,
+            "window_fraction": 0.01951366591032073
+          },
+          "T055": {
+            "episodes": 1046,
+            "valid_windows": 4053134,
+            "duration_seconds": 137141.2666666666,
+            "window_fraction": 0.02000764540259452
+          },
+          "T056": {
+            "episodes": 1480,
+            "valid_windows": 3834828,
+            "duration_seconds": 129048.06666666671,
+            "window_fraction": 0.018930012874960645
+          },
+          "T057": {
+            "episodes": 990,
+            "valid_windows": 2790959,
+            "duration_seconds": 93819.5666666665,
+            "window_fraction": 0.01377712111299054
+          },
+          "T058": {
+            "episodes": 623,
+            "valid_windows": 2302746,
+            "duration_seconds": 77152.29999999999,
+            "window_fraction": 0.01136713600395223
+          },
+          "T059": {
+            "episodes": 1992,
+            "valid_windows": 4191023,
+            "duration_seconds": 141008.3666666665,
+            "window_fraction": 0.020688312317855242
+          },
+          "T060": {
+            "episodes": 1103,
+            "valid_windows": 3986865,
+            "duration_seconds": 134243.1000000001,
+            "window_fraction": 0.01968051912125654
+          }
+        },
+        "scene": {
+          "balcony": {
+            "episodes": 685,
+            "valid_windows": 3647513,
+            "duration_seconds": 122687.66666666654,
+            "window_fraction": 0.01800536244430945
+          },
+          "bedroom": {
+            "episodes": 6734,
+            "valid_windows": 29709571,
+            "duration_seconds": 1001894.033333333,
+            "window_fraction": 0.14665652841263216
+          },
+          "entrance_hall": {
+            "episodes": 2998,
+            "valid_windows": 7172178,
+            "duration_seconds": 242016.2333333326,
+            "window_fraction": 0.03540430545555354
+          },
+          "kitchen": {
+            "episodes": 1211,
+            "valid_windows": 5521128,
+            "duration_seconds": 185988.83333333328,
+            "window_fraction": 0.027254162148681954
+          },
+          "living_room": {
+            "episodes": 46648,
+            "valid_windows": 135369315,
+            "duration_seconds": 4555190.500000022,
+            "window_fraction": 0.6682288947052132
+          },
+          "patio": {
+            "episodes": 2526,
+            "valid_windows": 7887962,
+            "duration_seconds": 266189.3333333338,
+            "window_fraction": 0.038937658277555166
+          },
+          "study": {
+            "episodes": 4708,
+            "valid_windows": 13271593,
+            "duration_seconds": 446223.3333333336,
+            "window_fraction": 0.06551308855605455
+          }
+        },
+        "task_category": {
+          "clothing_organization": {
+            "episodes": 4917,
+            "valid_windows": 23214663,
+            "duration_seconds": 783608.5666666677,
+            "window_fraction": 0.11459545760015118
+          },
+          "daily_work": {
+            "episodes": 2526,
+            "valid_windows": 7887962,
+            "duration_seconds": 266189.3333333338,
+            "window_fraction": 0.038937658277555166
+          },
+          "home_cleaning": {
+            "episodes": 1266,
+            "valid_windows": 2767652,
+            "duration_seconds": 93290.56666666656,
+            "window_fraction": 0.013662069848611354
+          },
+          "life_operations": {
+            "episodes": 24659,
+            "valid_windows": 76809925,
+            "duration_seconds": 2584162.66666667,
+            "window_fraction": 0.3791598656249411
+          },
+          "organization": {
+            "episodes": 30735,
+            "valid_windows": 87945994,
+            "duration_seconds": 2959959.099999996,
+            "window_fraction": 0.4341312827384205
+          },
+          "other": {
+            "episodes": 1407,
+            "valid_windows": 3953064,
+            "duration_seconds": 132979.69999999992,
+            "window_fraction": 0.01951366591032073
+          }
+        }
+      },
+      "window_relative_deviation_from_one_fifth": -6.358001215511777e-07,
+      "total_variation_from_training_pool": {
+        "task_class": 1.6486113886363682e-05,
+        "scene": 3.7376486211916637e-06,
+        "task_category": 1.8728995988459216e-06
+      }
+    },
+    "stage_02": {
+      "episodes": 65511,
+      "source_groups": 65511,
+      "valid_windows": 202579682,
+      "recorded_episode_hours": 1894.4261574074076,
+      "duration_basis": "catalog episode duration; not summed overlapping-window durations",
+      "distributions": {
+        "task_class": {
+          "T001": {
+            "episodes": 686,
+            "valid_windows": 3648404,
+            "duration_seconds": 122681.96666666667,
+            "window_fraction": 0.018009723206101193
+          },
+          "T002": {
+            "episodes": 1317,
+            "valid_windows": 6413370,
+            "duration_seconds": 217069.33333333326,
+            "window_fraction": 0.03165850561459564
+          },
+          "T003": {
+            "episodes": 1240,
+            "valid_windows": 5807278,
+            "duration_seconds": 195784.96666666627,
+            "window_fraction": 0.028666635975862574
+          },
+          "T004": {
+            "episodes": 1314,
+            "valid_windows": 6047168,
+            "duration_seconds": 203761.93333333367,
+            "window_fraction": 0.029850811988144002
+          },
+          "T005": {
+            "episodes": 1045,
+            "valid_windows": 4946643,
+            "duration_seconds": 166884.8666666668,
+            "window_fraction": 0.024418258293050336
+          },
+          "T006": {
+            "episodes": 737,
+            "valid_windows": 2610209,
+            "duration_seconds": 87904.70000000001,
+            "window_fraction": 0.012884850910171731
+          },
+          "T007": {
+            "episodes": 1080,
+            "valid_windows": 3884516,
+            "duration_seconds": 130368.3999999999,
+            "window_fraction": 0.01917524976665725
+          },
+          "T008": {
+            "episodes": 1525,
+            "valid_windows": 2504611,
+            "duration_seconds": 84735.13333333338,
+            "window_fraction": 0.012363584419092927
+          },
+          "T009": {
+            "episodes": 1473,
+            "valid_windows": 4667570,
+            "duration_seconds": 157266.7,
+            "window_fraction": 0.023040662093644713
+          },
+          "T010": {
+            "episodes": 884,
+            "valid_windows": 3595691,
+            "duration_seconds": 121108.26666666672,
+            "window_fraction": 0.017749514484873167
+          },
+          "T011": {
+            "episodes": 327,
+            "valid_windows": 1925332,
+            "duration_seconds": 64864.63333333331,
+            "window_fraction": 0.00950407257525461
+          },
+          "T012": {
+            "episodes": 1266,
+            "valid_windows": 2767671,
+            "duration_seconds": 93234.36666666671,
+            "window_fraction": 0.013662135178986016
+          },
+          "T013": {
+            "episodes": 574,
+            "valid_windows": 2470331,
+            "duration_seconds": 83201.56666666665,
+            "window_fraction": 0.012194367054046418
+          },
+          "T014": {
+            "episodes": 1355,
+            "valid_windows": 5033859,
+            "duration_seconds": 168746.56666666683,
+            "window_fraction": 0.02484878518073693
+          },
+          "T015": {
+            "episodes": 1733,
+            "valid_windows": 3651546,
+            "duration_seconds": 123023.8333333334,
+            "window_fraction": 0.018025233152454054
+          },
+          "T016": {
+            "episodes": 804,
+            "valid_windows": 2525925,
+            "duration_seconds": 84795.69999999997,
+            "window_fraction": 0.012468797339705568
+          },
+          "T017": {
+            "episodes": 929,
+            "valid_windows": 3353648,
+            "duration_seconds": 112761.43333333317,
+            "window_fraction": 0.01655471055581971
+          },
+          "T018": {
+            "episodes": 740,
+            "valid_windows": 2566895,
+            "duration_seconds": 86559.73333333338,
+            "window_fraction": 0.012671038747113839
+          },
+          "T019": {
+            "episodes": 1467,
+            "valid_windows": 4462355,
+            "duration_seconds": 150154.2666666665,
+            "window_fraction": 0.022027653296444606
+          },
+          "T020": {
+            "episodes": 362,
+            "valid_windows": 2101538,
+            "duration_seconds": 70611.1333333333,
+            "window_fraction": 0.010373883398632247
+          },
+          "T021": {
+            "episodes": 147,
+            "valid_windows": 642376,
+            "duration_seconds": 21605.86666666667,
+            "window_fraction": 0.0031709794075005016
+          },
+          "T022": {
+            "episodes": 866,
+            "valid_windows": 4595442,
+            "duration_seconds": 154394.5333333332,
+            "window_fraction": 0.022684614540958752
+          },
+          "T023": {
+            "episodes": 2021,
+            "valid_windows": 3678705,
+            "duration_seconds": 124060.96666666676,
+            "window_fraction": 0.01815929891725272
+          },
+          "T024": {
+            "episodes": 546,
+            "valid_windows": 2816699,
+            "duration_seconds": 94591.73333333322,
+            "window_fraction": 0.01390415352710446
+          },
+          "T025": {
+            "episodes": 1247,
+            "valid_windows": 2265447,
+            "duration_seconds": 76286.6000000002,
+            "window_fraction": 0.011182992181812191
+          },
+          "T026": {
+            "episodes": 623,
+            "valid_windows": 3150187,
+            "duration_seconds": 105756.9666666668,
+            "window_fraction": 0.01555036008004001
+          },
+          "T027": {
+            "episodes": 597,
+            "valid_windows": 1967071,
+            "duration_seconds": 66213.5666666667,
+            "window_fraction": 0.009710110019819264
+          },
+          "T028": {
+            "episodes": 1188,
+            "valid_windows": 4641553,
+            "duration_seconds": 155831.66666666657,
+            "window_fraction": 0.022912233616794796
+          },
+          "T029": {
+            "episodes": 2047,
+            "valid_windows": 4522975,
+            "duration_seconds": 152363.46666666665,
+            "window_fraction": 0.022326893572673295
+          },
+          "T030": {
+            "episodes": 1506,
+            "valid_windows": 3948446,
+            "duration_seconds": 132837.1666666665,
+            "window_fraction": 0.019490829292544747
+          },
+          "T031": {
+            "episodes": 163,
+            "valid_windows": 524823,
+            "duration_seconds": 17771.633333333335,
+            "window_fraction": 0.002590699100811107
+          },
+          "T032": {
+            "episodes": 477,
+            "valid_windows": 686780,
+            "duration_seconds": 23230.133333333346,
+            "window_fraction": 0.003390172169388636
+          },
+          "T033": {
+            "episodes": 1585,
+            "valid_windows": 6383391,
+            "duration_seconds": 214612.3333333333,
+            "window_fraction": 0.03151051940144718
+          },
+          "T034": {
+            "episodes": 345,
+            "valid_windows": 1467885,
+            "duration_seconds": 49350.03333333332,
+            "window_fraction": 0.007245963590761289
+          },
+          "T035": {
+            "episodes": 856,
+            "valid_windows": 3151472,
+            "duration_seconds": 106246.6999999999,
+            "window_fraction": 0.015556703263064655
+          },
+          "T036": {
+            "episodes": 509,
+            "valid_windows": 2707718,
+            "duration_seconds": 91344.13333333326,
+            "window_fraction": 0.013366187434335097
+          },
+          "T037": {
+            "episodes": 2072,
+            "valid_windows": 4459478,
+            "duration_seconds": 150214.10000000015,
+            "window_fraction": 0.02201345147733029
+          },
+          "T038": {
+            "episodes": 706,
+            "valid_windows": 3207387,
+            "duration_seconds": 108086.53333333335,
+            "window_fraction": 0.015832718110397666
+          },
+          "T039": {
+            "episodes": 757,
+            "valid_windows": 2794015,
+            "duration_seconds": 94377.19999999997,
+            "window_fraction": 0.013792177835485002
+          },
+          "T040": {
+            "episodes": 909,
+            "valid_windows": 3056379,
+            "duration_seconds": 102960.70000000006,
+            "window_fraction": 0.015087292910253458
+          },
+          "T041": {
+            "episodes": 333,
+            "valid_windows": 1059180,
+            "duration_seconds": 35600.06666666668,
+            "window_fraction": 0.005228461164234624
+          },
+          "T042": {
+            "episodes": 491,
+            "valid_windows": 1882892,
+            "duration_seconds": 63445.066666666666,
+            "window_fraction": 0.009294574763919315
+          },
+          "T043": {
+            "episodes": 1092,
+            "valid_windows": 3419687,
+            "duration_seconds": 114917.53333333344,
+            "window_fraction": 0.016880700799994344
+          },
+          "T044": {
+            "episodes": 1099,
+            "valid_windows": 2476157,
+            "duration_seconds": 83192.73333333324,
+            "window_fraction": 0.0122231261079776
+          },
+          "T045": {
+            "episodes": 911,
+            "valid_windows": 4730011,
+            "duration_seconds": 158549.5666666666,
+            "window_fraction": 0.023348891425350345
+          },
+          "T046": {
+            "episodes": 1335,
+            "valid_windows": 5245703,
+            "duration_seconds": 175935.20000000024,
+            "window_fraction": 0.02589451690421747
+          },
+          "T047": {
+            "episodes": 1989,
+            "valid_windows": 4296237,
+            "duration_seconds": 144792.1666666667,
+            "window_fraction": 0.02120764016205732
+          },
+          "T048": {
+            "episodes": 2138,
+            "valid_windows": 4205462,
+            "duration_seconds": 141759.86666666693,
+            "window_fraction": 0.020759544878740602
+          },
+          "T049": {
+            "episodes": 1616,
+            "valid_windows": 3281145,
+            "duration_seconds": 110788.43333333328,
+            "window_fraction": 0.016196811879682978
+          },
+          "T050": {
+            "episodes": 375,
+            "valid_windows": 1042580,
+            "duration_seconds": 35099.13333333332,
+            "window_fraction": 0.00514651809948048
+          },
+          "T051": {
+            "episodes": 1091,
+            "valid_windows": 4115735,
+            "duration_seconds": 137973.96666666667,
+            "window_fraction": 0.020316622868427645
+          },
+          "T052": {
+            "episodes": 2191,
+            "valid_windows": 2833180,
+            "duration_seconds": 95837.99999999991,
+            "window_fraction": 0.01398550916868356
+          },
+          "T053": {
+            "episodes": 2184,
+            "valid_windows": 3226620,
+            "duration_seconds": 109037.56666666645,
+            "window_fraction": 0.015927658529940825
+          },
+          "T054": {
+            "episodes": 1408,
+            "valid_windows": 3953254,
+            "duration_seconds": 132985.23333333334,
+            "window_fraction": 0.019514563163348236
+          },
+          "T055": {
+            "episodes": 1046,
+            "valid_windows": 4052934,
+            "duration_seconds": 137078.76666666652,
+            "window_fraction": 0.02000661645820927
+          },
+          "T056": {
+            "episodes": 1480,
+            "valid_windows": 3834734,
+            "duration_seconds": 129103.96666666663,
+            "window_fraction": 0.018929509426320455
+          },
+          "T057": {
+            "episodes": 990,
+            "valid_windows": 2791037,
+            "duration_seconds": 93802.8,
+            "window_fraction": 0.013777477447121277
+          },
+          "T058": {
+            "episodes": 623,
+            "valid_windows": 2302743,
+            "duration_seconds": 77161.69999999995,
+            "window_fraction": 0.011367097515732106
+          },
+          "T059": {
+            "episodes": 1991,
+            "valid_windows": 4190779,
+            "duration_seconds": 140979.5666666669,
+            "window_fraction": 0.020687064757066803
+          },
+          "T060": {
+            "episodes": 1103,
+            "valid_windows": 3986823,
+            "duration_seconds": 134237.3000000001,
+            "window_fraction": 0.019680270798332084
+          }
+        },
+        "scene": {
+          "balcony": {
+            "episodes": 686,
+            "valid_windows": 3648404,
+            "duration_seconds": 122681.96666666667,
+            "window_fraction": 0.018009723206101193
+          },
+          "bedroom": {
+            "episodes": 6733,
+            "valid_windows": 29709184,
+            "duration_seconds": 1001774.2000000017,
+            "window_fraction": 0.14665431254848155
+          },
+          "entrance_hall": {
+            "episodes": 2998,
+            "valid_windows": 7172181,
+            "duration_seconds": 242001.83333333317,
+            "window_fraction": 0.03540424651273764
+          },
+          "kitchen": {
+            "episodes": 1211,
+            "valid_windows": 5521023,
+            "duration_seconds": 185972.90000000002,
+            "window_fraction": 0.027253587060127777
+          },
+          "living_room": {
+            "episodes": 46650,
+            "valid_windows": 135369840,
+            "duration_seconds": 4555139.1666666325,
+            "window_fraction": 0.6682300942697699
+          },
+          "patio": {
+            "episodes": 2526,
+            "valid_windows": 7887668,
+            "duration_seconds": 266182.73333333316,
+            "window_fraction": 0.03893612588452972
+          },
+          "study": {
+            "episodes": 4707,
+            "valid_windows": 13271382,
+            "duration_seconds": 446181.3666666657,
+            "window_fraction": 0.06551191051825227
+          }
+        },
+        "task_category": {
+          "clothing_organization": {
+            "episodes": 4916,
+            "valid_windows": 23214459,
+            "duration_seconds": 783501.1000000023,
+            "window_fraction": 0.11459421187165256
+          },
+          "daily_work": {
+            "episodes": 2526,
+            "valid_windows": 7887668,
+            "duration_seconds": 266182.73333333316,
+            "window_fraction": 0.03893612588452972
+          },
+          "home_cleaning": {
+            "episodes": 1266,
+            "valid_windows": 2767671,
+            "duration_seconds": 93234.36666666671,
+            "window_fraction": 0.013662135178986016
+          },
+          "life_operations": {
+            "episodes": 24661,
+            "valid_windows": 76810577,
+            "duration_seconds": 2584094.666666649,
+            "window_fraction": 0.37916229427193987
+          },
+          "organization": {
+            "episodes": 30734,
+            "valid_windows": 87946053,
+            "duration_seconds": 2959936.0666666697,
+            "window_fraction": 0.4341306696295436
+          },
+          "other": {
+            "episodes": 1408,
+            "valid_windows": 3953254,
+            "duration_seconds": 132985.23333333334,
+            "window_fraction": 0.019514563163348236
+          }
+        }
+      },
+      "window_relative_deviation_from_one_fifth": 1.4473338167952932e-06,
+      "total_variation_from_training_pool": {
+        "task_class": 1.8961581436877442e-05,
+        "scene": 4.759684418787283e-06,
+        "task_category": 3.5576568261216565e-06
+      }
+    },
+    "stage_03": {
+      "episodes": 65509,
+      "source_groups": 65509,
+      "valid_windows": 202579432,
+      "recorded_episode_hours": 1894.2648703703703,
+      "duration_basis": "catalog episode duration; not summed overlapping-window durations",
+      "distributions": {
+        "task_class": {
+          "T001": {
+            "episodes": 685,
+            "valid_windows": 3647502,
+            "duration_seconds": 122660.80000000018,
+            "window_fraction": 0.018005292857174168
+          },
+          "T002": {
+            "episodes": 1317,
+            "valid_windows": 6413580,
+            "duration_seconds": 217047.20000000024,
+            "window_fraction": 0.031659581314257015
+          },
+          "T003": {
+            "episodes": 1241,
+            "valid_windows": 5807476,
+            "duration_seconds": 195877.53333333356,
+            "window_fraction": 0.028667648747282497
+          },
+          "T004": {
+            "episodes": 1314,
+            "valid_windows": 6046937,
+            "duration_seconds": 203700.69999999978,
+            "window_fraction": 0.029849708533095303
+          },
+          "T005": {
+            "episodes": 1045,
+            "valid_windows": 4946707,
+            "duration_seconds": 166962.29999999993,
+            "window_fraction": 0.024418604352686703
+          },
+          "T006": {
+            "episodes": 736,
+            "valid_windows": 2610272,
+            "duration_seconds": 87885.29999999993,
+            "window_fraction": 0.012885177800281323
+          },
+          "T007": {
+            "episodes": 1081,
+            "valid_windows": 3884614,
+            "duration_seconds": 130343.0000000003,
+            "window_fraction": 0.0191757571913816
+          },
+          "T008": {
+            "episodes": 1526,
+            "valid_windows": 2505053,
+            "duration_seconds": 84690.83333333328,
+            "window_fraction": 0.012365781536992363
+          },
+          "T009": {
+            "episodes": 1473,
+            "valid_windows": 4667166,
+            "duration_seconds": 157142.13333333336,
+            "window_fraction": 0.023038696248294348
+          },
+          "T010": {
+            "episodes": 884,
+            "valid_windows": 3595232,
+            "duration_seconds": 121098.1333333333,
+            "window_fraction": 0.017747270611361967
+          },
+          "T011": {
+            "episodes": 327,
+            "valid_windows": 1926423,
+            "duration_seconds": 64867.43333333337,
+            "window_fraction": 0.009509469845882478
+          },
+          "T012": {
+            "episodes": 1267,
+            "valid_windows": 2767920,
+            "duration_seconds": 93262.2333333333,
+            "window_fraction": 0.013663381186694214
+          },
+          "T013": {
+            "episodes": 574,
+            "valid_windows": 2470497,
+            "duration_seconds": 83185.03333333333,
+            "window_fraction": 0.012195201534576323
+          },
+          "T014": {
+            "episodes": 1355,
+            "valid_windows": 5033874,
+            "duration_seconds": 168735.16666666666,
+            "window_fraction": 0.024848889891250163
+          },
+          "T015": {
+            "episodes": 1733,
+            "valid_windows": 3651423,
+            "duration_seconds": 123011.20000000007,
+            "window_fraction": 0.018024648227861553
+          },
+          "T016": {
+            "episodes": 803,
+            "valid_windows": 2525428,
+            "duration_seconds": 84782.10000000011,
+            "window_fraction": 0.012466359368605595
+          },
+          "T017": {
+            "episodes": 930,
+            "valid_windows": 3353713,
+            "duration_seconds": 112783.19999999978,
+            "window_fraction": 0.016555051847514313
+          },
+          "T018": {
+            "episodes": 741,
+            "valid_windows": 2567206,
+            "duration_seconds": 86470.46666666678,
+            "window_fraction": 0.012672589584514187
+          },
+          "T019": {
+            "episodes": 1466,
+            "valid_windows": 4462099,
+            "duration_seconds": 150167.59999999992,
+            "window_fraction": 0.022026416778579968
+          },
+          "T020": {
+            "episodes": 360,
+            "valid_windows": 2101421,
+            "duration_seconds": 70677.36666666662,
+            "window_fraction": 0.010373318649644551
+          },
+          "T021": {
+            "episodes": 147,
+            "valid_windows": 642282,
+            "duration_seconds": 21605.466666666674,
+            "window_fraction": 0.003170519305237266
+          },
+          "T022": {
+            "episodes": 866,
+            "valid_windows": 4595439,
+            "duration_seconds": 154284.4,
+            "window_fraction": 0.022684627726668717
+          },
+          "T023": {
+            "episodes": 2022,
+            "valid_windows": 3678873,
+            "duration_seconds": 124051.10000000022,
+            "window_fraction": 0.018160150631679133
+          },
+          "T024": {
+            "episodes": 547,
+            "valid_windows": 2816977,
+            "duration_seconds": 94586.13333333342,
+            "window_fraction": 0.013905542987207111
+          },
+          "T025": {
+            "episodes": 1247,
+            "valid_windows": 2265412,
+            "duration_seconds": 76267.2333333333,
+            "window_fraction": 0.011182833210826654
+          },
+          "T026": {
+            "episodes": 621,
+            "valid_windows": 3150456,
+            "duration_seconds": 105744.20000000001,
+            "window_fraction": 0.015551707144681895
+          },
+          "T027": {
+            "episodes": 597,
+            "valid_windows": 1966954,
+            "duration_seconds": 66185.96666666667,
+            "window_fraction": 0.009709544451679576
+          },
+          "T028": {
+            "episodes": 1189,
+            "valid_windows": 4641750,
+            "duration_seconds": 155857.29999999976,
+            "window_fraction": 0.02291323435046456
+          },
+          "T029": {
+            "episodes": 2047,
+            "valid_windows": 4522907,
+            "duration_seconds": 152331.40000000005,
+            "window_fraction": 0.022326585455131498
+          },
+          "T030": {
+            "episodes": 1506,
+            "valid_windows": 3948460,
+            "duration_seconds": 132881.23333333322,
+            "window_fraction": 0.019490922454555998
+          },
+          "T031": {
+            "episodes": 162,
+            "valid_windows": 524434,
+            "duration_seconds": 17746.066666666666,
+            "window_fraction": 0.0025887820635216315
+          },
+          "T032": {
+            "episodes": 477,
+            "valid_windows": 686813,
+            "duration_seconds": 23232.43333333332,
+            "window_fraction": 0.0033903392522099678
+          },
+          "T033": {
+            "episodes": 1584,
+            "valid_windows": 6383227,
+            "duration_seconds": 214557.13333333327,
+            "window_fraction": 0.031509748729081244
+          },
+          "T034": {
+            "episodes": 346,
+            "valid_windows": 1468256,
+            "duration_seconds": 49380.73333333334,
+            "window_fraction": 0.007247803913281779
+          },
+          "T035": {
+            "episodes": 856,
+            "valid_windows": 3151498,
+            "duration_seconds": 106197.13333333323,
+            "window_fraction": 0.01555685080605814
+          },
+          "T036": {
+            "episodes": 509,
+            "valid_windows": 2707476,
+            "duration_seconds": 91258.03333333331,
+            "window_fraction": 0.013365009336189669
+          },
+          "T037": {
+            "episodes": 2071,
+            "valid_windows": 4459353,
+            "duration_seconds": 150313.43333333344,
+            "window_fraction": 0.02201286160186292
+          },
+          "T038": {
+            "episodes": 706,
+            "valid_windows": 3207300,
+            "duration_seconds": 108016.00000000009,
+            "window_fraction": 0.015832308188128398
+          },
+          "T039": {
+            "episodes": 756,
+            "valid_windows": 2793875,
+            "duration_seconds": 94354.20000000011,
+            "window_fraction": 0.013791503769247412
+          },
+          "T040": {
+            "episodes": 909,
+            "valid_windows": 3056414,
+            "duration_seconds": 102939.9000000001,
+            "window_fraction": 0.015087484300972865
+          },
+          "T041": {
+            "episodes": 333,
+            "valid_windows": 1059215,
+            "duration_seconds": 35595.76666666667,
+            "window_fraction": 0.005228640388329256
+          },
+          "T042": {
+            "episodes": 490,
+            "valid_windows": 1881994,
+            "duration_seconds": 63414.46666666671,
+            "window_fraction": 0.009290153405109755
+          },
+          "T043": {
+            "episodes": 1092,
+            "valid_windows": 3419867,
+            "duration_seconds": 114888.13333333323,
+            "window_fraction": 0.016881610172547034
+          },
+          "T044": {
+            "episodes": 1099,
+            "valid_windows": 2476401,
+            "duration_seconds": 83201.93333333329,
+            "window_fraction": 0.012224345658151515
+          },
+          "T045": {
+            "episodes": 911,
+            "valid_windows": 4729875,
+            "duration_seconds": 158629.9666666667,
+            "window_fraction": 0.023348248898239582
+          },
+          "T046": {
+            "episodes": 1335,
+            "valid_windows": 5245642,
+            "duration_seconds": 175938.90000000029,
+            "window_fraction": 0.025894247743768972
+          },
+          "T047": {
+            "episodes": 1989,
+            "valid_windows": 4296157,
+            "duration_seconds": 144796.73333333325,
+            "window_fraction": 0.021207271427239466
+          },
+          "T048": {
+            "episodes": 2139,
+            "valid_windows": 4205792,
+            "duration_seconds": 141756.66666666677,
+            "window_fraction": 0.020761199488406108
+          },
+          "T049": {
+            "episodes": 1617,
+            "valid_windows": 3281305,
+            "duration_seconds": 110725.59999999999,
+            "window_fraction": 0.016197621681553535
+          },
+          "T050": {
+            "episodes": 375,
+            "valid_windows": 1042720,
+            "duration_seconds": 35150.33333333332,
+            "window_fraction": 0.00514721553765636
+          },
+          "T051": {
+            "episodes": 1090,
+            "valid_windows": 4115436,
+            "duration_seconds": 137991.9333333334,
+            "window_fraction": 0.0203151719765904
+          },
+          "T052": {
+            "episodes": 2190,
+            "valid_windows": 2832962,
+            "duration_seconds": 95808.4666666669,
+            "window_fraction": 0.013984450306880118
+          },
+          "T053": {
+            "episodes": 2184,
+            "valid_windows": 3226577,
+            "duration_seconds": 109059.89999999992,
+            "window_fraction": 0.015927465923588926
+          },
+          "T054": {
+            "episodes": 1407,
+            "valid_windows": 3953315,
+            "duration_seconds": 132995.1666666665,
+            "window_fraction": 0.019514888362407886
+          },
+          "T055": {
+            "episodes": 1047,
+            "valid_windows": 4053108,
+            "duration_seconds": 137035.89999999994,
+            "window_fraction": 0.02000750007039214
+          },
+          "T056": {
+            "episodes": 1480,
+            "valid_windows": 3834874,
+            "duration_seconds": 129032.59999999996,
+            "window_fraction": 0.01893022387386297
+          },
+          "T057": {
+            "episodes": 989,
+            "valid_windows": 2790997,
+            "duration_seconds": 93802.70000000001,
+            "window_fraction": 0.013777296996271567
+          },
+          "T058": {
+            "episodes": 624,
+            "valid_windows": 2302952,
+            "duration_seconds": 77159.56666666662,
+            "window_fraction": 0.011368143237759695
+          },
+          "T059": {
+            "episodes": 1992,
+            "valid_windows": 4190987,
+            "duration_seconds": 141012.2333333331,
+            "window_fraction": 0.020688117044379905
+          },
+          "T060": {
+            "episodes": 1103,
+            "valid_windows": 3986557,
+            "duration_seconds": 134217.33333333323,
+            "window_fraction": 0.019678982020247742
+          }
+        },
+        "scene": {
+          "balcony": {
+            "episodes": 685,
+            "valid_windows": 3647502,
+            "duration_seconds": 122660.80000000018,
+            "window_fraction": 0.018005292857174168
+          },
+          "bedroom": {
+            "episodes": 6734,
+            "valid_windows": 29709586,
+            "duration_seconds": 1001816.0333333303,
+            "window_fraction": 0.14665647793898445
+          },
+          "entrance_hall": {
+            "episodes": 2999,
+            "valid_windows": 7172219,
+            "duration_seconds": 241832.96666666697,
+            "window_fraction": 0.035404477785286714
+          },
+          "kitchen": {
+            "episodes": 1211,
+            "valid_windows": 5521655,
+            "duration_seconds": 185965.56666666648,
+            "window_fraction": 0.027256740457244445
+          },
+          "living_room": {
+            "episodes": 46645,
+            "valid_windows": 135368995,
+            "duration_seconds": 4554817.833333332,
+            "window_fraction": 0.6682267477183962
+          },
+          "patio": {
+            "episodes": 2527,
+            "valid_windows": 7887982,
+            "duration_seconds": 266068.49999999977,
+            "window_fraction": 0.03893772394425511
+          },
+          "study": {
+            "episodes": 4708,
+            "valid_windows": 13271493,
+            "duration_seconds": 446191.83333333343,
+            "window_fraction": 0.06551253929865891
+          }
+        },
+        "task_category": {
+          "clothing_organization": {
+            "episodes": 4917,
+            "valid_windows": 23214700,
+            "duration_seconds": 783587.7333333321,
+            "window_fraction": 0.11459554294732152
+          },
+          "daily_work": {
+            "episodes": 2527,
+            "valid_windows": 7887982,
+            "duration_seconds": 266068.49999999977,
+            "window_fraction": 0.03893772394425511
+          },
+          "home_cleaning": {
+            "episodes": 1267,
+            "valid_windows": 2767920,
+            "duration_seconds": 93262.2333333333,
+            "window_fraction": 0.013663381186694214
+          },
+          "life_operations": {
+            "episodes": 24658,
+            "valid_windows": 76809366,
+            "duration_seconds": 2583635.9666666663,
+            "window_fraction": 0.3791567842879528
+          },
+          "organization": {
+            "episodes": 30733,
+            "valid_windows": 87946149,
+            "duration_seconds": 2959803.9333333564,
+            "window_fraction": 0.4341316792713685
+          },
+          "other": {
+            "episodes": 1407,
+            "valid_windows": 3953315,
+            "duration_seconds": 132995.1666666665,
+            "window_fraction": 0.019514888362407886
+          }
+        }
+      },
+      "window_relative_deviation_from_one_fifth": 2.1324973009662074e-07,
+      "total_variation_from_training_pool": {
+        "task_class": 1.7085833639134303e-05,
+        "scene": 3.2414216868115187e-06,
+        "task_category": 2.2170767928824872e-06
+      }
+    },
+    "stage_04": {
+      "episodes": 65508,
+      "source_groups": 65508,
+      "valid_windows": 202579205,
+      "recorded_episode_hours": 1894.2794814814815,
+      "duration_basis": "catalog episode duration; not summed overlapping-window durations",
+      "distributions": {
+        "task_class": {
+          "T001": {
+            "episodes": 686,
+            "valid_windows": 3648337,
+            "duration_seconds": 122686.83333333321,
+            "window_fraction": 0.01800943487758282
+          },
+          "T002": {
+            "episodes": 1318,
+            "valid_windows": 6413846,
+            "duration_seconds": 217117.033333333,
+            "window_fraction": 0.03166092985704036
+          },
+          "T003": {
+            "episodes": 1240,
+            "valid_windows": 5807030,
+            "duration_seconds": 195882.96666666673,
+            "window_fraction": 0.02866547926279008
+          },
+          "T004": {
+            "episodes": 1315,
+            "valid_windows": 6047237,
+            "duration_seconds": 203665.5,
+            "window_fraction": 0.02985122288341491
+          },
+          "T005": {
+            "episodes": 1045,
+            "valid_windows": 4946616,
+            "duration_seconds": 166799.33333333302,
+            "window_fraction": 0.02441818250792326
+          },
+          "T006": {
+            "episodes": 736,
+            "valid_windows": 2610275,
+            "duration_seconds": 87912.69999999994,
+            "window_fraction": 0.012885207047781632
+          },
+          "T007": {
+            "episodes": 1080,
+            "valid_windows": 3884459,
+            "duration_seconds": 130316.66666666682,
+            "window_fraction": 0.019175013545936266
+          },
+          "T008": {
+            "episodes": 1525,
+            "valid_windows": 2504727,
+            "duration_seconds": 84680.59999999987,
+            "window_fraction": 0.01236418614635199
+          },
+          "T009": {
+            "episodes": 1473,
+            "valid_windows": 4667207,
+            "duration_seconds": 157263.9333333331,
+            "window_fraction": 0.02303892445426469
+          },
+          "T010": {
+            "episodes": 884,
+            "valid_windows": 3595074,
+            "duration_seconds": 121082.30000000005,
+            "window_fraction": 0.017746510556204423
+          },
+          "T011": {
+            "episodes": 327,
+            "valid_windows": 1926743,
+            "duration_seconds": 64938.33333333332,
+            "window_fraction": 0.009511060130776997
+          },
+          "T012": {
+            "episodes": 1267,
+            "valid_windows": 2767820,
+            "duration_seconds": 93267.63333333326,
+            "window_fraction": 0.013662902863104828
+          },
+          "T013": {
+            "episodes": 574,
+            "valid_windows": 2470433,
+            "duration_seconds": 83252.10000000002,
+            "window_fraction": 0.012194899274088868
+          },
+          "T014": {
+            "episodes": 1355,
+            "valid_windows": 5033904,
+            "duration_seconds": 168783.66666666695,
+            "window_fraction": 0.02484906582588277
+          },
+          "T015": {
+            "episodes": 1733,
+            "valid_windows": 3651372,
+            "duration_seconds": 123027.70000000006,
+            "window_fraction": 0.01802441667198763
+          },
+          "T016": {
+            "episodes": 803,
+            "valid_windows": 2525494,
+            "duration_seconds": 84835.96666666659,
+            "window_fraction": 0.01246669913627117
+          },
+          "T017": {
+            "episodes": 929,
+            "valid_windows": 3353845,
+            "duration_seconds": 112718.66666666673,
+            "window_fraction": 0.016555721995256126
+          },
+          "T018": {
+            "episodes": 740,
+            "valid_windows": 2566903,
+            "duration_seconds": 86498.76666666665,
+            "window_fraction": 0.01267110807350636
+          },
+          "T019": {
+            "episodes": 1466,
+            "valid_windows": 4462073,
+            "duration_seconds": 150196.69999999995,
+            "window_fraction": 0.0220263131154059
+          },
+          "T020": {
+            "episodes": 360,
+            "valid_windows": 2101435,
+            "duration_seconds": 70571.53333333333,
+            "window_fraction": 0.010373399382231755
+          },
+          "T021": {
+            "episodes": 147,
+            "valid_windows": 641902,
+            "duration_seconds": 21605.833333333336,
+            "window_fraction": 0.0031686470484470508
+          },
+          "T022": {
+            "episodes": 867,
+            "valid_windows": 4595627,
+            "duration_seconds": 154362.83333333314,
+            "window_fraction": 0.022685581177989123
+          },
+          "T023": {
+            "episodes": 2022,
+            "valid_windows": 3678907,
+            "duration_seconds": 124061.16666666686,
+            "window_fraction": 0.018160338816612494
+          },
+          "T024": {
+            "episodes": 546,
+            "valid_windows": 2816882,
+            "duration_seconds": 94603.20000000004,
+            "window_fraction": 0.013905089616676105
+          },
+          "T025": {
+            "episodes": 1247,
+            "valid_windows": 2265534,
+            "duration_seconds": 76275.63333333332,
+            "window_fraction": 0.011183447975324022
+          },
+          "T026": {
+            "episodes": 620,
+            "valid_windows": 3149946,
+            "duration_seconds": 105715.83333333328,
+            "window_fraction": 0.01554920703731659
+          },
+          "T027": {
+            "episodes": 597,
+            "valid_windows": 1967037,
+            "duration_seconds": 66227.99999999997,
+            "window_fraction": 0.009709965047991969
+          },
+          "T028": {
+            "episodes": 1189,
+            "valid_windows": 4641787,
+            "duration_seconds": 155877.5999999999,
+            "window_fraction": 0.022913442670485354
+          },
+          "T029": {
+            "episodes": 2047,
+            "valid_windows": 4522999,
+            "duration_seconds": 152366.6000000001,
+            "window_fraction": 0.02232706461652863
+          },
+          "T030": {
+            "episodes": 1506,
+            "valid_windows": 3948437,
+            "duration_seconds": 132849.30000000002,
+            "window_fraction": 0.01949083075925784
+          },
+          "T031": {
+            "episodes": 162,
+            "valid_windows": 524533,
+            "duration_seconds": 17770.733333333326,
+            "window_fraction": 0.00258927366212144
+          },
+          "T032": {
+            "episodes": 477,
+            "valid_windows": 686792,
+            "duration_seconds": 23213.000000000007,
+            "window_fraction": 0.0033902393880951404
+          },
+          "T033": {
+            "episodes": 1584,
+            "valid_windows": 6383270,
+            "duration_seconds": 214554.5666666666,
+            "window_fraction": 0.03150999629996573
+          },
+          "T034": {
+            "episodes": 345,
+            "valid_windows": 1467881,
+            "duration_seconds": 49334.299999999996,
+            "window_fraction": 0.007245960906994378
+          },
+          "T035": {
+            "episodes": 857,
+            "valid_windows": 3151499,
+            "duration_seconds": 106168.8666666666,
+            "window_fraction": 0.015556873174618293
+          },
+          "T036": {
+            "episodes": 509,
+            "valid_windows": 2707538,
+            "duration_seconds": 91376.79999999993,
+            "window_fraction": 0.013365330365473594
+          },
+          "T037": {
+            "episodes": 2072,
+            "valid_windows": 4459481,
+            "duration_seconds": 150246.63333333348,
+            "window_fraction": 0.022013518119986697
+          },
+          "T038": {
+            "episodes": 706,
+            "valid_windows": 3207438,
+            "duration_seconds": 108073.83333333336,
+            "window_fraction": 0.015833007144045213
+          },
+          "T039": {
+            "episodes": 756,
+            "valid_windows": 2793885,
+            "duration_seconds": 94353.99999999996,
+            "window_fraction": 0.01379156858671649
+          },
+          "T040": {
+            "episodes": 908,
+            "valid_windows": 3056147,
+            "duration_seconds": 102935.7999999998,
+            "window_fraction": 0.015086183204243495
+          },
+          "T041": {
+            "episodes": 335,
+            "valid_windows": 1059682,
+            "duration_seconds": 35616.06666666668,
+            "window_fraction": 0.005230951518444354
+          },
+          "T042": {
+            "episodes": 490,
+            "valid_windows": 1881812,
+            "duration_seconds": 63387.13333333332,
+            "window_fraction": 0.009289265401155069
+          },
+          "T043": {
+            "episodes": 1092,
+            "valid_windows": 3419860,
+            "duration_seconds": 114936.93333333319,
+            "window_fraction": 0.016881594534838854
+          },
+          "T044": {
+            "episodes": 1099,
+            "valid_windows": 2476371,
+            "duration_seconds": 83207.7666666668,
+            "window_fraction": 0.012224211265909548
+          },
+          "T045": {
+            "episodes": 911,
+            "valid_windows": 4730022,
+            "duration_seconds": 158593.66666666683,
+            "window_fraction": 0.023349000703206432
+          },
+          "T046": {
+            "episodes": 1336,
+            "valid_windows": 5245825,
+            "duration_seconds": 175917.8666666665,
+            "window_fraction": 0.025895180109922932
+          },
+          "T047": {
+            "episodes": 1989,
+            "valid_windows": 4296135,
+            "duration_seconds": 144732.39999999985,
+            "window_fraction": 0.02120718659153589
+          },
+          "T048": {
+            "episodes": 2139,
+            "valid_windows": 4205693,
+            "duration_seconds": 141773.9666666667,
+            "window_fraction": 0.020760734054613355
+          },
+          "T049": {
+            "episodes": 1617,
+            "valid_windows": 3281421,
+            "duration_seconds": 110737.56666666677,
+            "window_fraction": 0.016198212447323997
+          },
+          "T050": {
+            "episodes": 375,
+            "valid_windows": 1042758,
+            "duration_seconds": 35114.43333333331,
+            "window_fraction": 0.005147408886316836
+          },
+          "T051": {
+            "episodes": 1090,
+            "valid_windows": 4115470,
+            "duration_seconds": 138018.09999999986,
+            "window_fraction": 0.020315362576331562
+          },
+          "T052": {
+            "episodes": 2190,
+            "valid_windows": 2832976,
+            "duration_seconds": 95828.9666666666,
+            "window_fraction": 0.013984535085918617
+          },
+          "T053": {
+            "episodes": 2184,
+            "valid_windows": 3226613,
+            "duration_seconds": 109028.86666666664,
+            "window_fraction": 0.0159276614793705
+          },
+          "T054": {
+            "episodes": 1408,
+            "valid_windows": 3953227,
+            "duration_seconds": 132950.39999999976,
+            "window_fraction": 0.019514475831811068
+          },
+          "T055": {
+            "episodes": 1046,
+            "valid_windows": 4053030,
+            "duration_seconds": 136923.79999999996,
+            "window_fraction": 0.020007137455199313
+          },
+          "T056": {
+            "episodes": 1481,
+            "valid_windows": 3834894,
+            "duration_seconds": 129052.6666666666,
+            "window_fraction": 0.01893034381292986
+          },
+          "T057": {
+            "episodes": 989,
+            "valid_windows": 2790994,
+            "duration_seconds": 93771.36666666664,
+            "window_fraction": 0.013777297625390523
+          },
+          "T058": {
+            "episodes": 623,
+            "valid_windows": 2302488,
+            "duration_seconds": 77172.03333333337,
+            "window_fraction": 0.011365865514182465
+          },
+          "T059": {
+            "episodes": 1992,
+            "valid_windows": 4191102,
+            "duration_seconds": 141000.59999999995,
+            "window_fraction": 0.020688707905631282
+          },
+          "T060": {
+            "episodes": 1102,
+            "valid_windows": 3986480,
+            "duration_seconds": 134168.0666666667,
+            "window_fraction": 0.019678623973275047
+          }
+        },
+        "scene": {
+          "balcony": {
+            "episodes": 686,
+            "valid_windows": 3648337,
+            "duration_seconds": 122686.83333333321,
+            "window_fraction": 0.01800943487758282
+          },
+          "bedroom": {
+            "episodes": 6734,
+            "valid_windows": 29709463,
+            "duration_seconds": 1001694.2000000015,
+            "window_fraction": 0.1466560351048865
+          },
+          "entrance_hall": {
+            "episodes": 2998,
+            "valid_windows": 7171934,
+            "duration_seconds": 241944.5333333333,
+            "window_fraction": 0.03540311060061668
+          },
+          "kitchen": {
+            "episodes": 1211,
+            "valid_windows": 5521817,
+            "duration_seconds": 186020.63333333345,
+            "window_fraction": 0.02725757068698142
+          },
+          "living_room": {
+            "episodes": 46646,
+            "valid_windows": 135368666,
+            "duration_seconds": 4554971.400000026,
+            "window_fraction": 0.6682258724433241
+          },
+          "patio": {
+            "episodes": 2527,
+            "valid_windows": 7887924,
+            "duration_seconds": 265976.4666666667,
+            "window_fraction": 0.038937481268129175
+          },
+          "study": {
+            "episodes": 4706,
+            "valid_windows": 13271064,
+            "duration_seconds": 446112.0666666663,
+            "window_fraction": 0.06551049501847932
+          }
+        },
+        "task_category": {
+          "clothing_organization": {
+            "episodes": 4918,
+            "valid_windows": 23214729,
+            "duration_seconds": 783464.8333333344,
+            "window_fraction": 0.11459581451116861
+          },
+          "daily_work": {
+            "episodes": 2527,
+            "valid_windows": 7887924,
+            "duration_seconds": 265976.4666666667,
+            "window_fraction": 0.038937481268129175
+          },
+          "home_cleaning": {
+            "episodes": 1267,
+            "valid_windows": 2767820,
+            "duration_seconds": 93267.63333333326,
+            "window_fraction": 0.013662902863104828
+          },
+          "life_operations": {
+            "episodes": 24655,
+            "valid_windows": 76809383,
+            "duration_seconds": 2584000.76666668,
+            "window_fraction": 0.3791572930696416
+          },
+          "organization": {
+            "episodes": 30733,
+            "valid_windows": 87946122,
+            "duration_seconds": 2959746.033333333,
+            "window_fraction": 0.43413203245614473
+          },
+          "other": {
+            "episodes": 1408,
+            "valid_windows": 3953227,
+            "duration_seconds": 132950.39999999976,
+            "window_fraction": 0.019514475831811068
+          }
+        }
+      },
+      "window_relative_deviation_from_one_fifth": -9.07298620567154e-07,
+      "total_variation_from_training_pool": {
+        "task_class": 1.725520938914934e-05,
+        "scene": 4.41620526762769e-06,
+        "task_category": 1.530877009331931e-06
+      }
+    },
+    "stage_05": {
+      "episodes": 65509,
+      "source_groups": 65509,
+      "valid_windows": 202579365,
+      "recorded_episode_hours": 1894.5908703703706,
+      "duration_basis": "catalog episode duration; not summed overlapping-window durations",
+      "distributions": {
+        "task_class": {
+          "T001": {
+            "episodes": 686,
+            "valid_windows": 3648003,
+            "duration_seconds": 122771.0333333332,
+            "window_fraction": 0.01800777191694722
+          },
+          "T002": {
+            "episodes": 1317,
+            "valid_windows": 6413350,
+            "duration_seconds": 217247.9666666666,
+            "window_fraction": 0.03165845642768206
+          },
+          "T003": {
+            "episodes": 1240,
+            "valid_windows": 5807175,
+            "duration_seconds": 195839.83333333305,
+            "window_fraction": 0.028666172391250213
+          },
+          "T004": {
+            "episodes": 1314,
+            "valid_windows": 6047166,
+            "duration_seconds": 203739.4000000003,
+            "window_fraction": 0.029850848826582115
+          },
+          "T005": {
+            "episodes": 1045,
+            "valid_windows": 4946839,
+            "duration_seconds": 167002.53333333356,
+            "window_fraction": 0.024419264025237714
+          },
+          "T006": {
+            "episodes": 736,
+            "valid_windows": 2610148,
+            "duration_seconds": 87882.96666666669,
+            "window_fraction": 0.012884569956076227
+          },
+          "T007": {
+            "episodes": 1081,
+            "valid_windows": 3884606,
+            "duration_seconds": 130330.13333333349,
+            "window_fraction": 0.019175724042772076
+          },
+          "T008": {
+            "episodes": 1525,
+            "valid_windows": 2504613,
+            "duration_seconds": 84689.46666666663,
+            "window_fraction": 0.012363613638536185
+          },
+          "T009": {
+            "episodes": 1473,
+            "valid_windows": 4667501,
+            "duration_seconds": 157274.29999999996,
+            "window_fraction": 0.023040357540858123
+          },
+          "T010": {
+            "episodes": 884,
+            "valid_windows": 3595218,
+            "duration_seconds": 121153.63333333313,
+            "window_fraction": 0.01774720737228098
+          },
+          "T011": {
+            "episodes": 327,
+            "valid_windows": 1926420,
+            "duration_seconds": 64910.66666666664,
+            "window_fraction": 0.009509458181982159
+          },
+          "T012": {
+            "episodes": 1265,
+            "valid_windows": 2767631,
+            "duration_seconds": 93261.36666666673,
+            "window_fraction": 0.013661959104275008
+          },
+          "T013": {
+            "episodes": 574,
+            "valid_windows": 2470462,
+            "duration_seconds": 83192.83333333326,
+            "window_fraction": 0.01219503279615868
+          },
+          "T014": {
+            "episodes": 1355,
+            "valid_windows": 5034014,
+            "duration_seconds": 168721.03333333356,
+            "window_fraction": 0.024849589196806892
+          },
+          "T015": {
+            "episodes": 1732,
+            "valid_windows": 3651207,
+            "duration_seconds": 123091.89999999989,
+            "window_fraction": 0.01802358794045978
+          },
+          "T016": {
+            "episodes": 803,
+            "valid_windows": 2525517,
+            "duration_seconds": 84797.66666666663,
+            "window_fraction": 0.012466802825648111
+          },
+          "T017": {
+            "episodes": 929,
+            "valid_windows": 3353338,
+            "duration_seconds": 112708.46666666649,
+            "window_fraction": 0.01655320619649489
+          },
+          "T018": {
+            "episodes": 740,
+            "valid_windows": 2566936,
+            "duration_seconds": 86571.29999999986,
+            "window_fraction": 0.012671260964807547
+          },
+          "T019": {
+            "episodes": 1467,
+            "valid_windows": 4462249,
+            "duration_seconds": 150114.43333333335,
+            "window_fraction": 0.02202716451401652
+          },
+          "T020": {
+            "episodes": 362,
+            "valid_windows": 2101539,
+            "duration_seconds": 70595.80000000002,
+            "window_fraction": 0.010373904568217004
+          },
+          "T021": {
+            "episodes": 148,
+            "valid_windows": 642023,
+            "duration_seconds": 21620.1,
+            "window_fraction": 0.00316924184257365
+          },
+          "T022": {
+            "episodes": 865,
+            "valid_windows": 4595187,
+            "duration_seconds": 154352.90000000017,
+            "window_fraction": 0.022683391272353925
+          },
+          "T023": {
+            "episodes": 2022,
+            "valid_windows": 3678909,
+            "duration_seconds": 124079.6000000002,
+            "window_fraction": 0.01816033434599817
+          },
+          "T024": {
+            "episodes": 547,
+            "valid_windows": 2816988,
+            "duration_seconds": 94586.13333333335,
+            "window_fraction": 0.013905601885957141
+          },
+          "T025": {
+            "episodes": 1247,
+            "valid_windows": 2265681,
+            "duration_seconds": 76286.40000000013,
+            "window_fraction": 0.011184164784009467
+          },
+          "T026": {
+            "episodes": 622,
+            "valid_windows": 3150100,
+            "duration_seconds": 105750.03333333327,
+            "window_fraction": 0.015549954952223293
+          },
+          "T027": {
+            "episodes": 597,
+            "valid_windows": 1967084,
+            "duration_seconds": 66195.9666666667,
+            "window_fraction": 0.009710189386762073
+          },
+          "T028": {
+            "episodes": 1188,
+            "valid_windows": 4641681,
+            "duration_seconds": 155849.10000000012,
+            "window_fraction": 0.022912901321415435
+          },
+          "T029": {
+            "episodes": 2047,
+            "valid_windows": 4522919,
+            "duration_seconds": 152366.2999999999,
+            "window_fraction": 0.022326652075348345
+          },
+          "T030": {
+            "episodes": 1506,
+            "valid_windows": 3948427,
+            "duration_seconds": 132860.39999999997,
+            "window_fraction": 0.01949076600175936
+          },
+          "T031": {
+            "episodes": 163,
+            "valid_windows": 524963,
+            "duration_seconds": 17788.1,
+            "window_fraction": 0.0025913942419554924
+          },
+          "T032": {
+            "episodes": 478,
+            "valid_windows": 687071,
+            "duration_seconds": 23242.500000000015,
+            "window_fraction": 0.0033916139484394176
+          },
+          "T033": {
+            "episodes": 1584,
+            "valid_windows": 6383116,
+            "duration_seconds": 214677.333333333,
+            "window_fraction": 0.031509211217045724
+          },
+          "T034": {
+            "episodes": 345,
+            "valid_windows": 1467902,
+            "duration_seconds": 49356.90000000001,
+            "window_fraction": 0.007246058847109132
+          },
+          "T035": {
+            "episodes": 856,
+            "valid_windows": 3151604,
+            "duration_seconds": 106185.23333333337,
+            "window_fraction": 0.015557379202960775
+          },
+          "T036": {
+            "episodes": 509,
+            "valid_windows": 2707636,
+            "duration_seconds": 91390.66666666672,
+            "window_fraction": 0.013365803570368581
+          },
+          "T037": {
+            "episodes": 2072,
+            "valid_windows": 4459538,
+            "duration_seconds": 150324.60000000003,
+            "window_fraction": 0.02201378210460873
+          },
+          "T038": {
+            "episodes": 706,
+            "valid_windows": 3207304,
+            "duration_seconds": 108081.33333333337,
+            "window_fraction": 0.015832333169767808
+          },
+          "T039": {
+            "episodes": 757,
+            "valid_windows": 2794113,
+            "duration_seconds": 94358.53333333335,
+            "window_fraction": 0.01379268317876305
+          },
+          "T040": {
+            "episodes": 908,
+            "valid_windows": 3056192,
+            "duration_seconds": 102922.86666666667,
+            "window_fraction": 0.015086393424127872
+          },
+          "T041": {
+            "episodes": 333,
+            "valid_windows": 1059248,
+            "duration_seconds": 35598.56666666666,
+            "window_fraction": 0.005228805016739982
+          },
+          "T042": {
+            "episodes": 490,
+            "valid_windows": 1881846,
+            "duration_seconds": 63423.2,
+            "window_fraction": 0.00928942589981956
+          },
+          "T043": {
+            "episodes": 1092,
+            "valid_windows": 3419785,
+            "duration_seconds": 114926.63333333329,
+            "window_fraction": 0.01688121097625121
+          },
+          "T044": {
+            "episodes": 1099,
+            "valid_windows": 2476400,
+            "duration_seconds": 83207.93333333332,
+            "window_fraction": 0.012224344764828343
+          },
+          "T045": {
+            "episodes": 911,
+            "valid_windows": 4730099,
+            "duration_seconds": 158570.30000000013,
+            "window_fraction": 0.023349362359784274
+          },
+          "T046": {
+            "episodes": 1336,
+            "valid_windows": 5245794,
+            "duration_seconds": 175916.00000000006,
+            "window_fraction": 0.025895006631104802
+          },
+          "T047": {
+            "episodes": 1989,
+            "valid_windows": 4296115,
+            "duration_seconds": 144845.50000000017,
+            "window_fraction": 0.021207071115066433
+          },
+          "T048": {
+            "episodes": 2139,
+            "valid_windows": 4205832,
+            "duration_seconds": 141762.76666666628,
+            "window_fraction": 0.02076140380832964
+          },
+          "T049": {
+            "episodes": 1617,
+            "valid_windows": 3281314,
+            "duration_seconds": 110756.79999999983,
+            "window_fraction": 0.016197671465699382
+          },
+          "T050": {
+            "episodes": 375,
+            "valid_windows": 1042725,
+            "duration_seconds": 35141.76666666665,
+            "window_fraction": 0.005147241921703131
+          },
+          "T051": {
+            "episodes": 1091,
+            "valid_windows": 4115621,
+            "duration_seconds": 137993.36666666679,
+            "window_fraction": 0.020316091917851553
+          },
+          "T052": {
+            "episodes": 2190,
+            "valid_windows": 2832973,
+            "duration_seconds": 95817.86666666664,
+            "window_fraction": 0.013984509231727525
+          },
+          "T053": {
+            "episodes": 2184,
+            "valid_windows": 3226634,
+            "duration_seconds": 109052.49999999994,
+            "window_fraction": 0.015927752562557396
+          },
+          "T054": {
+            "episodes": 1407,
+            "valid_windows": 3953328,
+            "duration_seconds": 132953.96666666656,
+            "window_fraction": 0.019514958989036223
+          },
+          "T055": {
+            "episodes": 1046,
+            "valid_windows": 4052793,
+            "duration_seconds": 137152.53333333335,
+            "window_fraction": 0.020005951741432302
+          },
+          "T056": {
+            "episodes": 1480,
+            "valid_windows": 3835007,
+            "duration_seconds": 129101.69999999982,
+            "window_fraction": 0.018930886667553725
+          },
+          "T057": {
+            "episodes": 989,
+            "valid_windows": 2790747,
+            "duration_seconds": 93788.39999999989,
+            "window_fraction": 0.01377606746866839
+          },
+          "T058": {
+            "episodes": 624,
+            "valid_windows": 2302916,
+            "duration_seconds": 77159.06666666668,
+            "window_fraction": 0.011367969289468352
+          },
+          "T059": {
+            "episodes": 1992,
+            "valid_windows": 4190999,
+            "duration_seconds": 140985.83333333314,
+            "window_fraction": 0.020688183122698604
+          },
+          "T060": {
+            "episodes": 1103,
+            "valid_windows": 3986819,
+            "duration_seconds": 134200.69999999987,
+            "window_fraction": 0.019680281849042226
+          }
+        },
+        "scene": {
+          "balcony": {
+            "episodes": 686,
+            "valid_windows": 3648003,
+            "duration_seconds": 122771.0333333332,
+            "window_fraction": 0.01800777191694722
+          },
+          "bedroom": {
+            "episodes": 6733,
+            "valid_windows": 29709284,
+            "duration_seconds": 1002042.8333333282,
+            "window_fraction": 0.1466550356696004
+          },
+          "entrance_hall": {
+            "episodes": 2998,
+            "valid_windows": 7172114,
+            "duration_seconds": 241963.7666666665,
+            "window_fraction": 0.03540397117939431
+          },
+          "kitchen": {
+            "episodes": 1211,
+            "valid_windows": 5521638,
+            "duration_seconds": 186064.29999999987,
+            "window_fraction": 0.02725666555426314
+          },
+          "living_room": {
+            "episodes": 46647,
+            "valid_windows": 135369045,
+            "duration_seconds": 4555296.966666694,
+            "window_fraction": 0.6682272155409313
+          },
+          "patio": {
+            "episodes": 2526,
+            "valid_windows": 7887800,
+            "duration_seconds": 266254.2333333333,
+            "window_fraction": 0.03893683840898603
+          },
+          "study": {
+            "episodes": 4708,
+            "valid_windows": 13271481,
+            "duration_seconds": 446134.0000000014,
+            "window_fraction": 0.06551250172987758
+          }
+        },
+        "task_category": {
+          "clothing_organization": {
+            "episodes": 4916,
+            "valid_windows": 23214530,
+            "duration_seconds": 783829.7333333303,
+            "window_fraction": 0.1145947416707521
+          },
+          "daily_work": {
+            "episodes": 2526,
+            "valid_windows": 7887800,
+            "duration_seconds": 266254.2333333333,
+            "window_fraction": 0.03893683840898603
+          },
+          "home_cleaning": {
+            "episodes": 1265,
+            "valid_windows": 2767631,
+            "duration_seconds": 93261.36666666673,
+            "window_fraction": 0.013661959104275008
+          },
+          "life_operations": {
+            "episodes": 24660,
+            "valid_windows": 76809528,
+            "duration_seconds": 2584183.0999999847,
+            "window_fraction": 0.37915770937479243
+          },
+          "organization": {
+            "episodes": 30735,
+            "valid_windows": 87946548,
+            "duration_seconds": 2960044.7333333218,
+            "window_fraction": 0.4341337924521582
+          },
+          "other": {
+            "episodes": 1407,
+            "valid_windows": 3953328,
+            "duration_seconds": 132953.96666666656,
+            "window_fraction": 0.019514958989036223
+          }
+        }
+      },
+      "window_relative_deviation_from_one_fifth": -1.1748480510664905e-07,
+      "total_variation_from_training_pool": {
+        "task_class": 1.5394294938415008e-05,
+        "scene": 1.569935090829297e-06,
+        "task_category": 2.3496805035775475e-06
+      }
+    }
+  },
+  "views": {
+    "train": {
+      "path": "/mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_formal_v1/views/train",
+      "episodes": 327547,
+      "trainable_episodes": 327547,
+      "windows": 1012896944,
+      "ranges": 504458,
+      "view_fingerprint": "0a51fe374ca2f47e86478c3152d3966a801970c022cfb264af874f5bea478086"
+    },
+    "validation": {
+      "path": "/mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_formal_v1/views/validation",
+      "episodes": 120,
+      "trainable_episodes": 120,
+      "windows": 428943,
+      "ranges": 201,
+      "view_fingerprint": "a22afdb613032dbcddbec6e22ff5e45f626a685e738abd268a6b6a2847254697"
+    },
+    "stage_01": {
+      "path": "/mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_formal_v1/views/stage_01",
+      "episodes": 65510,
+      "trainable_episodes": 65510,
+      "windows": 202579260,
+      "ranges": 101185,
+      "view_fingerprint": "0f970a24c014c8a990846c51334a361ead2b69e537ea07781c145d86ff7e0d44"
+    },
+    "stage_02": {
+      "path": "/mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_formal_v1/views/stage_02",
+      "episodes": 65511,
+      "trainable_episodes": 65511,
+      "windows": 202579682,
+      "ranges": 100773,
+      "view_fingerprint": "925451ec0d4c5abc8d342d763ac9edbcf7352c69b66658405274e2bed1bdbb3f"
+    },
+    "stage_03": {
+      "path": "/mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_formal_v1/views/stage_03",
+      "episodes": 65509,
+      "trainable_episodes": 65509,
+      "windows": 202579432,
+      "ranges": 100351,
+      "view_fingerprint": "5a7e23bfa3dd5f6fe29e1f1f69e1dadd16aee7169874dfd5f9d5862bec233b44"
+    },
+    "stage_04": {
+      "path": "/mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_formal_v1/views/stage_04",
+      "episodes": 65508,
+      "trainable_episodes": 65508,
+      "windows": 202579205,
+      "ranges": 100501,
+      "view_fingerprint": "0a6c90750d2a62dfff959319bc801575d62bd7f7f96da32898cf2da39330a4f8"
+    },
+    "stage_05": {
+      "path": "/mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_formal_v1/views/stage_05",
+      "episodes": 65509,
+      "trainable_episodes": 65509,
+      "windows": 202579365,
+      "ranges": 101648,
+      "view_fingerprint": "92c0c9a4ba76c0447c180abbd0ff2b62e10781cb4dee4c696e66c3cd787e6879"
+    },
+    "validation_monitor": {
+      "path": "/mnt/workspace/Native_Policy/user/wyt/data_preparation/roban_umi_formal_v1/views/validation_monitor",
+      "episodes": 120,
+      "trainable_episodes": 120,
+      "windows": 480,
+      "ranges": 480,
+      "view_fingerprint": "5cecf4845937bbdeb428f081f626d8022367e9f33a3214920921dc1cadee24c2"
+    }
+  },
+  "partition_disjoint": true,
+  "partition_covers_parent": true,
+  "validation_source_group_expansion_episodes": [],
+  "status": {
+    "manifests_and_views": "completed",
+    "normalization": "running; final statistics.json not yet produced",
+    "training_budget": "not supplied by user; template uses null",
+    "platform_addresses_and_mounts": "pending Alibaba Cloud job configuration",
+    "model_training": "not launched",
+    "known_ppu_cleanup_issue": "unresolved; platform handling pending"
+  },
+  "checks": {
+    "status": "passed",
+    "checks": [
+      "Python parse",
+      "Bash syntax (separate command)",
+      "lossless compact range partition",
+      "five-stage union equals training view",
+      "original validation episode preservation"
+    ],
+    "formal_state_weight": 1012896944,
+    "formal_action_weight": 16206351104,
+    "scope": "metadata/configuration checks only; no model or sensor audit; multi-node launch not tested"
+  },
+  "recorded_at_utc": "2026-09-21T01:09:19.325110+00:00"
+}

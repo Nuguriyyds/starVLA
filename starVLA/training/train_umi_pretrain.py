@@ -172,6 +172,13 @@ def run(args, *, on_start=None, evaluation_fn=None):
     total_updates = validate_plan(plan)
     train = plan["training"]
     saving = checkpoint_config(plan)
+    expected_world = plan.get("deployment", {}).get("world_size")
+    if expected_world is not None and int(os.environ.get("WORLD_SIZE", "1")) != expected_world:
+        raise ValueError("Launcher WORLD_SIZE differs from the frozen plan deployment.world_size")
+    if "global_batch_size" in train:
+        actual_batch = int(os.environ.get("WORLD_SIZE", "1"))*train["batch_size"]*train["gradient_accumulation_steps"]
+        if actual_batch != train["global_batch_size"]:
+            raise ValueError("Global batch differs from the frozen training budget")
     if args.stop_after_update is not None and not 0 < args.stop_after_update <= total_updates:
         raise ValueError("Pause step must be within the unchanged full training plan")
     handlers = [DistributedDataParallelKwargs(find_unused_parameters=True)]
@@ -391,11 +398,15 @@ def run(args, *, on_start=None, evaluation_fn=None):
                 if train.get("trace_samples", False):
                     with trace_path.open("a") as stream:
                         stream.write(json.dumps(dict(event, rank=accelerator.process_index, samples=identities)) + "\n")
-                if train.get("eval_every", 0) and step % train["eval_every"] == 0:
+                if ((train.get("eval_every", 0) and step % train["eval_every"] == 0)
+                        or (progress.done and plan.get("evaluation", {}).get("at_end", False))):
                     perf.suspend()
                     eval_error = None
                     try:
-                        if evaluation_fn is None:
+                        if evaluation_fn is None and plan.get("evaluation", {}).get("metrics") == "pilot_action_errors":
+                            from starVLA.training.trainer_utils.umi_action_evaluation import evaluate_actions
+                            event["evaluation"] = perf.call("evaluation", evaluate_actions, accelerator, model, plan, run_dir, step)
+                        elif evaluation_fn is None:
                             event["evaluation"] = perf.call("evaluation", evaluate, accelerator, model, plan, run_dir)
                         else:
                             event["evaluation"] = perf.call("evaluation", evaluation_fn, accelerator, model, plan, run_dir, step)

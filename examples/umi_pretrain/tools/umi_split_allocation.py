@@ -257,6 +257,36 @@ def _distribution_report(
     }
 
 
+def allocate_training_stages(groups, *, seed=42, stages=5, task_balance=0.15, source_balance=0.15):
+    """Allocate an already isolated training pool; never select validation here.
+
+    The caller supplies label weights. Formal UMI uses directory task classes
+    as ``tasks`` and directory scenes as ``sources``, not raw task/source IDs.
+    These weights balance partition composition, not runtime sampling frequency.
+    """
+    if type(seed) is not int or type(stages) is not int or stages < 1:
+        raise ValueError("Require an integer seed and positive stage count")
+    for value in (task_balance, source_balance):
+        if not math.isfinite(value) or value < 0:
+            raise ValueError("Balance weights must be finite and nonnegative")
+    prepared = _normalize(groups)
+    names = [f"stage_{i:02d}" for i in range(1, stages + 1)]
+    assigned, report = _allocate_pass(
+        [g for g in prepared if g.windows], tuple((n, 1.0/stages) for n in names),
+        seed=seed, namespace="formal-training-stages", task_balance=task_balance,
+        source_balance=source_balance,
+    )
+    for group in prepared:
+        if not group.windows:
+            assigned[group.gid] = names[int.from_bytes(_digest(seed, "zero-window", group.gid), "big") % stages]
+    if set(assigned) != {g.gid for g in prepared}:
+        raise RuntimeError("Training source group lost during allocation")
+    return assigned, {"algorithm": ALGORITHM_VERSION, "seed": seed,
+                      "stages": stages, "allocation": report,
+                      "label_axes": {"tasks": "caller-supplied task classes", "sources": "caller-supplied scenes"},
+                      "sampling": "natural valid-window distribution; no inverse-frequency weights"}
+
+
 def allocate_groups(
     groups: Iterable[Mapping[str, Any]],
     *,

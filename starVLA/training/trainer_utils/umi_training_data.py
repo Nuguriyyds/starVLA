@@ -110,7 +110,7 @@ def make_loader(plan, stage, run_dir, *, evaluation=False, record=True):
 
 def inspect_views(plan, run_dir):
     """Verify compact index bytes once on rank 0, never scan source frames/videos."""
-    records, checked = [], set()
+    records, checked = [], {}
     views = list(plan["stages"]) + ([plan["evaluation"]] if plan.get("evaluation") else [])
     for i, stage in enumerate(views):
         loader = make_loader(plan, stage, run_dir, evaluation=i == len(plan["stages"]), record=False)
@@ -121,10 +121,16 @@ def inspect_views(plan, run_dir):
                 raw = getattr(dataset, "raw_dataset", dataset)
                 for name, artifact in raw.meta["artifacts"].items():
                     file = raw.index_dir / name
-                    if file not in checked:
-                        if sha256_file(file) != artifact["sha256"]:
-                            raise ValueError(f"Access artifact changed: {file}")
-                        checked.add(file)
+                    stat = file.stat()
+                    # Formal views hard-link one immutable metadata database.
+                    # Read its bytes once, while checking every view's expected
+                    # digest. Different physical files are never deduplicated
+                    # solely because their declared hashes happen to match.
+                    key = (stat.st_dev, stat.st_ino or str(file.resolve()), stat.st_size, stat.st_mtime_ns)
+                    if key not in checked:
+                        checked[key] = sha256_file(file)
+                    if checked[key] != artifact["sha256"]:
+                        raise ValueError(f"Access artifact changed: {file}")
                 if plan["purpose"] == "formal" and not hasattr(dataset, "normalizer"):
                     raise ValueError("Formal training requires the approved normalization experiment contract")
                 from starVLA.dataloader.umi_normalization import build_representation, parent_fingerprint
